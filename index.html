@@ -262,30 +262,38 @@
   <!-- Three problems with icons -->
   <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:28px;">
     <div style="text-align:center;">
-      <svg width="120" height="60" viewBox="0 0 120 60">
-        <rect x="5" y="10" width="45" height="40" rx="6" fill="#6DBFAB" opacity="0.15" stroke="#6DBFAB" stroke-width="1.5"/>
-        <text x="27" y="35" text-anchor="middle" font-size="11" fill="#4A8E7E" font-weight="700">Claude</text>
-        <text x="62" y="30" font-size="20" fill="#9ca3af">&ne;</text>
-        <rect x="70" y="10" width="45" height="40" rx="6" fill="#F0C75E" opacity="0.15" stroke="#F0C75E" stroke-width="1.5"/>
-        <text x="92" y="35" text-anchor="middle" font-size="11" fill="#b8860b" font-weight="700">GPT</text>
+      <svg width="160" height="70" viewBox="0 0 160 70">
+        <!-- 3 bars different heights -->
+        <rect x="15" y="15" width="30" height="45" rx="4" fill="#6DBFAB" opacity="0.6"/>
+        <rect x="55" y="30" width="30" height="30" rx="4" fill="#F0C75E" opacity="0.6"/>
+        <rect x="95" y="8" width="30" height="52" rx="4" fill="#f9a8d4" opacity="0.6"/>
+        <text x="30" y="68" text-anchor="middle" font-size="10" fill="#6b7280">Claude</text>
+        <text x="70" y="68" text-anchor="middle" font-size="10" fill="#6b7280">GPT</text>
+        <text x="110" y="68" text-anchor="middle" font-size="10" fill="#6b7280">Gemini</text>
       </svg>
       <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Inconsistent behavior<br>across models</p>
     </div>
     <div style="text-align:center;">
-      <svg width="120" height="60" viewBox="0 0 120 60">
-        <line x1="10" y1="30" x2="110" y2="30" stroke="#d1d5db" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="35" cy="30" r="6" fill="#6DBFAB"/>
-        <text x="35" y="22" text-anchor="middle" font-size="9" fill="#6b7280">0.3</text>
-        <circle cx="85" cy="30" r="6" fill="#6DBFAB"/>
-        <text x="85" y="22" text-anchor="middle" font-size="9" fill="#6b7280">0.8</text>
-        <text x="60" y="50" text-anchor="middle" font-size="10" fill="#9ca3af">how much?</text>
+      <svg width="160" height="70" viewBox="0 0 160 70">
+        <!-- Slider track -->
+        <line x1="15" y1="35" x2="125" y2="35" stroke="#d1d5db" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="70" cy="35" r="8" fill="white" stroke="#6DBFAB" stroke-width="2.5"/>
+        <!-- Question mark on the knob -->
+        <text x="70" y="40" text-anchor="middle" font-size="13" fill="#6DBFAB" font-weight="700">?</text>
+        <!-- Arrow left-right -->
+        <text x="8" y="39" font-size="11" fill="#9ca3af">&larr;</text>
+        <text x="130" y="39" font-size="11" fill="#9ca3af">&rarr;</text>
+        <text x="70" y="60" text-anchor="middle" font-size="11" fill="#9ca3af">how much? which direction?</text>
       </svg>
       <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Uncontrollable behavior<br>direction &amp; magnitude</p>
     </div>
     <div style="text-align:center;">
-      <svg width="120" height="60" viewBox="0 0 120 60">
-        <polyline points="10,45 30,20 50,40 70,10 90,35 110,15" fill="none" stroke="#6DBFAB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="30" cy="20" r="4" fill="#6DBFAB"/><circle cx="70" cy="10" r="4" fill="#6DBFAB"/><circle cx="110" cy="15" r="4" fill="#6DBFAB"/>
+      <svg width="160" height="70" viewBox="0 0 160 70">
+        <!-- Erratic zigzag line -->
+        <polyline points="10,50 35,15 55,48 75,8 100,42 125,12 145,38" fill="none" stroke="#6DBFAB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="35" cy="15" r="4" fill="#6DBFAB"/><circle cx="75" cy="8" r="4" fill="#6DBFAB"/><circle cx="125" cy="12" r="4" fill="#6DBFAB"/>
+        <!-- Ideal smooth line (dashed) -->
+        <line x1="10" y1="55" x2="145" y2="20" stroke="#d1d5db" stroke-width="2" stroke-dasharray="5 3"/>
       </svg>
       <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Unpredictable<br>user interface</p>
     </div>
