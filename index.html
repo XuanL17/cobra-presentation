@@ -23,8 +23,8 @@
   .slide.active { display:flex; animation:fadeIn .25s ease; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
 
-  h1{font-size:50px;font-weight:700;color:var(--cobra-dark);line-height:1.15}
-  h2{font-size:40px;font-weight:700;color:var(--g800);line-height:1.25;margin-bottom:14px}
+  h1{font-size:56px;font-weight:700;color:var(--cobra-dark);line-height:1.15}
+  h2{font-size:46px;font-weight:700;color:var(--g800);line-height:1.25;margin-bottom:14px}
   h2 .cobra{color:var(--cobra-dark)}
   h3{font-size:26px;font-weight:700;color:var(--cobra-darker);margin-bottom:6px}
   p,li{font-size:26px;line-height:1.6;color:var(--g600)}
@@ -67,12 +67,12 @@
 
   .slide-section{background:linear-gradient(135deg,var(--cobra-lighter),white);border-top:4px solid var(--cobra);justify-content:center;padding:64px 100px}
   .slide-section .section-label{font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cobra);margin-bottom:14px}
-  .slide-section h2{font-size:44px;color:var(--cobra-dark);margin-bottom:10px}
+  .slide-section h2{font-size:50px;color:var(--cobra-dark);margin-bottom:10px}
   .slide-section p{font-size:26px;color:var(--g500)}
 
   .slide-title{background:linear-gradient(to bottom,var(--cobra-lighter),white);border-bottom:1px solid var(--cobra-light);padding:44px 64px}
   .slide-end{background:var(--cobra-lighter);align-items:center;text-align:center;justify-content:center}
-  .slide-end h2{color:var(--cobra-dark);font-size:44px}
+  .slide-end h2{color:var(--cobra-dark);font-size:50px}
   .slide-end .links{display:flex;gap:24px;margin-top:24px}
   .slide-end .links a{color:var(--cobra-darker);font-size:18px;text-decoration:none;font-weight:700;padding:8px 16px;border:1px solid rgba(109,191,171,.3);border-radius:8px;background:white;transition:background .2s}
   .slide-end .links a:hover{background:var(--cobra-light)}
@@ -129,18 +129,18 @@
 
 <!-- ============ 1. TITLE ============ -->
 <div class="slide slide-title active" data-slide="1">
-  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:20px;">
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:16px;">
     <!-- Title -->
-    <div style="text-align:center; max-width:1000px;">
-      <h1 style="font-size:28px; line-height:1.3; margin-bottom:0;">
-        <img src="co_website/public/snake.svg" alt="" style="width:44px; height:44px; vertical-align:-0.15em; margin-right:6px;"><span style="font-size:40px; color:var(--cobra-dark);">CoBRA:</span> <span style="color:var(--g800);">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
+    <div style="text-align:center;">
+      <h1 style="font-size:40px; line-height:1.3; margin-bottom:0;">
+        <img src="co_website/public/snake.svg" alt="" style="width:56px; height:56px; vertical-align:-0.15em; margin-right:8px;"><span style="font-size:56px; color:var(--cobra-dark);">CoBRA:</span> <span style="color:var(--g800);">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
       </h1>
-      <p style="font-size:22px; color:var(--cobra); font-style:italic; margin-top:14px; line-height:1.5;">
+      <p style="font-size:28px; color:var(--cobra); font-style:italic; margin-top:16px; line-height:1.5;">
         Toolkits for Precise and Consistent Agent Behavior Specification Using Social Science Experiments as Anchor
       </p>
     </div>
     <!-- Video -->
-    <div class="video-wrap" style="width:800px; margin-top:4px;">
+    <div class="video-wrap" style="width:90%; max-width:1100px; margin-top:4px;">
       <video controls preload="metadata" style="width:100%; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,.1);"><source src="Demo_Video.mp4" type="video/mp4"></video>
     </div>
   </div>
@@ -148,158 +148,147 @@
 
 <!-- ============ 2. BACKGROUND ============ -->
 <div class="slide" data-slide="2">
-  <h2>AI-powered social agents are everywhere</h2>
+  <h2 style="text-align:center;">AI-powered social agents are everywhere</h2>
 
-  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:14px;">
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <rect x="5" y="32" width="22" height="18" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-          <rect x="35" y="25" width="26" height="25" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-          <rect x="72" y="28" width="20" height="22" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-          <rect x="98" y="35" width="18" height="15" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-          <line x1="16" y1="50" x2="48" y2="50" stroke="#e5e7eb" stroke-width="4"/>
-          <line x1="61" y1="50" x2="82" y2="50" stroke="#e5e7eb" stroke-width="4"/>
-          <circle cx="20" cy="23" r="4" fill="#6DBFAB"/><circle cx="52" cy="17" r="4" fill="#F0C75E"/>
-          <circle cx="80" cy="20" r="4" fill="#f9a8d4"/><circle cx="105" cy="27" r="4" fill="#93c5fd"/>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Virtual Towns</p>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px 60px; margin-top:28px; max-width:100%; margin-left:auto; margin-right:auto;">
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <rect x="5" y="32" width="22" height="18" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
+        <rect x="35" y="25" width="26" height="25" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
+        <rect x="72" y="28" width="20" height="22" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
+        <rect x="98" y="35" width="18" height="15" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
+        <circle cx="20" cy="23" r="4" fill="#6DBFAB"/><circle cx="52" cy="17" r="4" fill="#F0C75E"/>
+        <circle cx="80" cy="20" r="4" fill="#f9a8d4"/><circle cx="105" cy="27" r="4" fill="#93c5fd"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Virtual Towns</p>
     </div>
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <line x1="30" y1="18" x2="60" y2="30" stroke="#d1d5db" stroke-width="1.2"/>
-          <line x1="60" y1="30" x2="90" y2="15" stroke="#d1d5db" stroke-width="1.2"/>
-          <line x1="60" y1="30" x2="40" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
-          <line x1="60" y1="30" x2="80" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
-          <line x1="30" y1="18" x2="40" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
-          <line x1="90" y1="15" x2="80" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
-          <circle cx="60" cy="30" r="6" fill="#6DBFAB"/>
-          <circle cx="30" cy="18" r="5" fill="#5BA898"/>
-          <circle cx="90" cy="15" r="5" fill="#F0C75E"/>
-          <circle cx="40" cy="48" r="5" fill="#f9a8d4"/>
-          <circle cx="80" cy="48" r="5" fill="#93c5fd"/>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Online Communities</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <line x1="30" y1="18" x2="60" y2="30" stroke="#d1d5db" stroke-width="1.2"/>
+        <line x1="60" y1="30" x2="90" y2="15" stroke="#d1d5db" stroke-width="1.2"/>
+        <line x1="60" y1="30" x2="40" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
+        <line x1="60" y1="30" x2="80" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
+        <circle cx="60" cy="30" r="6" fill="#6DBFAB"/><circle cx="30" cy="18" r="5" fill="#5BA898"/>
+        <circle cx="90" cy="15" r="5" fill="#F0C75E"/><circle cx="40" cy="48" r="5" fill="#f9a8d4"/><circle cx="80" cy="48" r="5" fill="#93c5fd"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Online Communities</p>
     </div>
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <rect x="10" y="8" width="45" height="18" rx="6" fill="#6DBFAB" opacity="0.25"/>
-          <text x="32" y="21" text-anchor="middle" font-size="9" fill="#4A8E7E">Buy $5</text>
-          <rect x="65" y="20" width="45" height="18" rx="6" fill="#e5e7eb"/>
-          <text x="87" y="33" text-anchor="middle" font-size="9" fill="#374151">Sell $7</text>
-          <rect x="15" y="36" width="40" height="18" rx="6" fill="#6DBFAB" opacity="0.25"/>
-          <text x="35" y="49" text-anchor="middle" font-size="9" fill="#4A8E7E">Deal?</text>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Economic Simulations</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <rect x="10" y="8" width="45" height="18" rx="6" fill="#6DBFAB" opacity="0.25"/>
+        <text x="32" y="21" text-anchor="middle" font-size="9" fill="#4A8E7E">Buy $5</text>
+        <rect x="65" y="20" width="45" height="18" rx="6" fill="#e5e7eb"/>
+        <text x="87" y="33" text-anchor="middle" font-size="9" fill="#374151">Sell $7</text>
+        <rect x="15" y="36" width="40" height="18" rx="6" fill="#6DBFAB" opacity="0.25"/>
+        <text x="35" y="49" text-anchor="middle" font-size="9" fill="#4A8E7E">Deal?</text>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Economic Simulations</p>
     </div>
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <rect x="8" y="10" width="30" height="40" rx="3" fill="#e5e7eb"/>
-          <rect x="12" y="14" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
-          <rect x="12" y="23" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
-          <rect x="12" y="32" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
-          <text x="56" y="34" text-anchor="middle" font-size="14" fill="#9ca3af">&rarr;</text>
-          <circle cx="82" cy="22" r="7" fill="#F0C75E" opacity="0.5"/>
-          <circle cx="98" cy="36" r="7" fill="#93c5fd" opacity="0.5"/>
-          <circle cx="78" cy="40" r="5" fill="#f9a8d4" opacity="0.5"/>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Survey &amp; Polling</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <rect x="8" y="10" width="30" height="40" rx="3" fill="#e5e7eb"/>
+        <rect x="12" y="14" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
+        <rect x="12" y="23" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
+        <rect x="12" y="32" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
+        <text x="56" y="34" text-anchor="middle" font-size="14" fill="#9ca3af">&rarr;</text>
+        <circle cx="82" cy="22" r="7" fill="#F0C75E" opacity="0.5"/><circle cx="98" cy="36" r="7" fill="#93c5fd" opacity="0.5"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Survey &amp; Polling</p>
     </div>
-
-    <!-- Row 2 -->
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <circle cx="35" cy="30" r="10" fill="none" stroke="#6DBFAB" stroke-width="1.5"/>
-          <circle cx="35" cy="30" r="4" fill="#6DBFAB"/>
-          <circle cx="85" cy="30" r="10" fill="none" stroke="#F0C75E" stroke-width="1.5"/>
-          <circle cx="85" cy="30" r="4" fill="#F0C75E"/>
-          <line x1="45" y1="30" x2="75" y2="30" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="3 2"/>
-          <text x="60" y="26" text-anchor="middle" font-size="8" fill="#9ca3af">interact</text>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Social Interaction</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <circle cx="35" cy="30" r="10" fill="none" stroke="#6DBFAB" stroke-width="1.5"/><circle cx="35" cy="30" r="4" fill="#6DBFAB"/>
+        <circle cx="85" cy="30" r="10" fill="none" stroke="#F0C75E" stroke-width="1.5"/><circle cx="85" cy="30" r="4" fill="#F0C75E"/>
+        <line x1="45" y1="30" x2="75" y2="30" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="3 2"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Social Interaction</p>
     </div>
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <circle cx="30" cy="20" r="6" fill="#6DBFAB"/><text x="30" y="23" text-anchor="middle" font-size="7" fill="white">+</text>
-          <circle cx="60" cy="20" r="6" fill="#f9a8d4"/><text x="60" y="23" text-anchor="middle" font-size="7" fill="white">&minus;</text>
-          <circle cx="90" cy="20" r="6" fill="#93c5fd"/><text x="90" y="23" text-anchor="middle" font-size="7" fill="white">+</text>
-          <rect x="15" y="32" width="90" height="4" rx="2" fill="#e5e7eb"/>
-          <rect x="15" y="32" width="60" height="4" rx="2" fill="#6DBFAB" opacity="0.4"/>
-          <rect x="15" y="40" width="90" height="4" rx="2" fill="#e5e7eb"/>
-          <rect x="15" y="40" width="30" height="4" rx="2" fill="#f9a8d4" opacity="0.4"/>
-          <rect x="15" y="48" width="90" height="4" rx="2" fill="#e5e7eb"/>
-          <rect x="15" y="48" width="75" height="4" rx="2" fill="#93c5fd" opacity="0.4"/>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Opinion Dynamics</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <circle cx="30" cy="20" r="6" fill="#6DBFAB"/><circle cx="60" cy="20" r="6" fill="#f9a8d4"/><circle cx="90" cy="20" r="6" fill="#93c5fd"/>
+        <rect x="15" y="32" width="90" height="4" rx="2" fill="#e5e7eb"/><rect x="15" y="32" width="60" height="4" rx="2" fill="#6DBFAB" opacity="0.4"/>
+        <rect x="15" y="40" width="90" height="4" rx="2" fill="#e5e7eb"/><rect x="15" y="40" width="30" height="4" rx="2" fill="#f9a8d4" opacity="0.4"/>
+        <rect x="15" y="48" width="90" height="4" rx="2" fill="#e5e7eb"/><rect x="15" y="48" width="75" height="4" rx="2" fill="#93c5fd" opacity="0.4"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Opinion Dynamics</p>
     </div>
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <rect x="10" y="8" width="40" height="44" rx="4" fill="none" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 2"/>
-          <text x="30" y="26" text-anchor="middle" font-size="8" fill="#dc2626">Nation A</text>
-          <circle cx="30" cy="38" r="5" fill="#dc2626" opacity="0.3"/>
-          <rect x="70" y="8" width="40" height="44" rx="4" fill="none" stroke="#2563eb" stroke-width="1" stroke-dasharray="3 2"/>
-          <text x="90" y="26" text-anchor="middle" font-size="8" fill="#2563eb">Nation B</text>
-          <circle cx="90" cy="38" r="5" fill="#2563eb" opacity="0.3"/>
-          <line x1="50" y1="30" x2="70" y2="30" stroke="#9ca3af" stroke-width="1" stroke-dasharray="2 2"/>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Geopolitical Simulation</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <rect x="10" y="8" width="40" height="44" rx="4" fill="none" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 2"/>
+        <text x="30" y="26" text-anchor="middle" font-size="8" fill="#dc2626">Nation A</text>
+        <circle cx="30" cy="38" r="5" fill="#dc2626" opacity="0.3"/>
+        <rect x="70" y="8" width="40" height="44" rx="4" fill="none" stroke="#2563eb" stroke-width="1" stroke-dasharray="3 2"/>
+        <text x="90" y="26" text-anchor="middle" font-size="8" fill="#2563eb">Nation B</text>
+        <circle cx="90" cy="38" r="5" fill="#2563eb" opacity="0.3"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Geopolitical Simulation</p>
     </div>
-
-    <div style="padding:12px; text-align:center;">
-      <div style="background:var(--cobra-lighter); border-radius:8px; padding:14px 8px; margin-bottom:6px;">
-        <svg width="120" height="60" viewBox="0 0 120 60">
-          <circle cx="25" cy="18" r="7" fill="#6DBFAB"/><circle cx="60" cy="18" r="7" fill="#F0C75E"/><circle cx="95" cy="18" r="7" fill="#f9a8d4"/>
-          <circle cx="25" cy="44" r="7" fill="#93c5fd"/><circle cx="60" cy="44" r="7" fill="#c4b5fd"/><circle cx="95" cy="44" r="7" fill="#fda4af"/>
-          <line x1="25" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"/>
-          <line x1="60" y1="25" x2="25" y2="37" stroke="#d1d5db" stroke-width="1"/>
-          <line x1="60" y1="25" x2="95" y2="37" stroke="#d1d5db" stroke-width="1"/>
-          <line x1="95" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"/>
-        </svg>
-      </div>
-      <p style="font-size:18px; font-weight:700; color:var(--g700);">Multi-Agent Collaboration</p>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <circle cx="25" cy="18" r="7" fill="#6DBFAB"/><circle cx="60" cy="18" r="7" fill="#F0C75E"/><circle cx="95" cy="18" r="7" fill="#f9a8d4"/>
+        <circle cx="25" cy="44" r="7" fill="#93c5fd"/><circle cx="60" cy="44" r="7" fill="#c4b5fd"/><circle cx="95" cy="44" r="7" fill="#fda4af"/>
+        <line x1="25" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"/><line x1="60" y1="25" x2="25" y2="37" stroke="#d1d5db" stroke-width="1"/>
+        <line x1="60" y1="25" x2="95" y2="37" stroke="#d1d5db" stroke-width="1"/><line x1="95" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Multi-Agent Collaboration</p>
+    </div>
+    <div style="text-align:center;">
+      <svg width="180" height="90" viewBox="0 0 120 60">
+        <circle cx="30" cy="30" r="8" fill="#6DBFAB" opacity="0.6"/><circle cx="60" cy="20" r="8" fill="#F0C75E" opacity="0.6"/>
+        <circle cx="90" cy="35" r="8" fill="#f9a8d4" opacity="0.6"/>
+        <line x1="38" y1="28" x2="52" y2="22" stroke="#d1d5db" stroke-width="1.2"/>
+        <line x1="68" y1="22" x2="82" y2="33" stroke="#d1d5db" stroke-width="1.2"/>
+        <rect x="20" y="45" width="80" height="6" rx="3" fill="#e5e7eb"/>
+        <rect x="20" y="45" width="50" height="6" rx="3" fill="#6DBFAB" opacity="0.3"/>
+      </svg>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Disaster Response</p>
     </div>
   </div>
-
-
 </div>
 
 <!-- ============ 3. HOW SPECIFIED + PROBLEMS ============ -->
 <div class="slide" data-slide="3">
-  <h2>The dominant approach: <span class="cobra">Implicit Natural Language Descriptions</span></h2>
-  <div class="card" style="padding:24px 30px; margin-top:12px;">
-    <p style="font-size:22px; font-style:italic; color:var(--g700); line-height:1.7;">
-      "John Lin is a <strong>pharmacy shopkeeper</strong> at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers..."
-    </p>
+  <h2 style="text-align:center;">People use <span class="cobra">Natural Language Descriptions</span> to specify these agents</h2>
+
+  <!-- Example centered -->
+  <div style="display:flex; justify-content:center; margin-top:20px;">
+    <div class="card" style="padding:28px 36px; max-width:800px;">
+      <p style="font-size:26px; font-style:italic; color:var(--g700); line-height:1.7;">
+        "John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers..."
+      </p>
+    </div>
   </div>
-  <div style="display:flex; gap:28px; margin-top:24px;">
-    <p style="font-size:22px; color:var(--g600); line-height:1.6; flex:1;">
-      <strong style="color:var(--cobra-dark);">Inconsistent</strong> &mdash; same description, different behavior across models
-    </p>
-    <p style="font-size:22px; color:var(--g600); line-height:1.6; flex:1;">
-      <strong style="color:var(--cobra-dark);">Uncontrollable</strong> &mdash; no way to specify <em>how much</em> of a trait
-    </p>
-    <p style="font-size:22px; color:var(--g600); line-height:1.6; flex:1;">
-      <strong style="color:var(--cobra-dark);">Unpredictable</strong> &mdash; small prompt edits cause large behavioral shifts
-    </p>
+
+  <!-- Three problems with icons -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:28px;">
+    <div style="text-align:center;">
+      <svg width="120" height="60" viewBox="0 0 120 60">
+        <rect x="5" y="10" width="45" height="40" rx="6" fill="#6DBFAB" opacity="0.15" stroke="#6DBFAB" stroke-width="1.5"/>
+        <text x="27" y="35" text-anchor="middle" font-size="11" fill="#4A8E7E" font-weight="700">Claude</text>
+        <text x="62" y="30" font-size="20" fill="#9ca3af">&ne;</text>
+        <rect x="70" y="10" width="45" height="40" rx="6" fill="#F0C75E" opacity="0.15" stroke="#F0C75E" stroke-width="1.5"/>
+        <text x="92" y="35" text-anchor="middle" font-size="11" fill="#b8860b" font-weight="700">GPT</text>
+      </svg>
+      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Inconsistent behavior<br>across models</p>
+    </div>
+    <div style="text-align:center;">
+      <svg width="120" height="60" viewBox="0 0 120 60">
+        <line x1="10" y1="30" x2="110" y2="30" stroke="#d1d5db" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="35" cy="30" r="6" fill="#6DBFAB"/>
+        <text x="35" y="22" text-anchor="middle" font-size="9" fill="#6b7280">0.3</text>
+        <circle cx="85" cy="30" r="6" fill="#6DBFAB"/>
+        <text x="85" y="22" text-anchor="middle" font-size="9" fill="#6b7280">0.8</text>
+        <text x="60" y="50" text-anchor="middle" font-size="10" fill="#9ca3af">how much?</text>
+      </svg>
+      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Uncontrollable behavior<br>direction &amp; magnitude</p>
+    </div>
+    <div style="text-align:center;">
+      <svg width="120" height="60" viewBox="0 0 120 60">
+        <polyline points="10,45 30,20 50,40 70,10 90,35 110,15" fill="none" stroke="#6DBFAB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="30" cy="20" r="4" fill="#6DBFAB"/><circle cx="70" cy="10" r="4" fill="#6DBFAB"/><circle cx="110" cy="15" r="4" fill="#6DBFAB"/>
+      </svg>
+      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Unpredictable<br>user interface</p>
+    </div>
   </div>
   <p style="font-size:18px; color:var(--g400); position:absolute; bottom:20px; left:64px; right:64px; line-height:1.6;">
     [1] Generative Agents (UIST 2023) &nbsp; [2] CAMEL (NeurIPS 2023) &nbsp; [3] SOTOPIA (ICLR 2024) &nbsp; [4] Prosocial Irrationality for LLM Agents (ICLR 2025) &nbsp; etc.
@@ -309,24 +298,13 @@
 <!-- ============ WHAT WE NEED ============ -->
 <div class="slide" data-slide="need">
   <div class="center">
-    <h2 style="font-size:36px; max-width:960px; line-height:1.4; margin-bottom:28px;">
-      NL descriptions fail to yield consistent behavior &mdash;<br>
-      we need <span style="color:var(--cobra-dark);">explicit, quantitative control</span>
+    <h2 style="font-size:40px; max-width:960px; line-height:1.4; margin-bottom:20px;">
+      These gaps make <span style="color:var(--cobra-dark);">reproducibility</span> and <span style="color:var(--cobra-dark);">controllability</span><br>
+      &mdash; fundamental to scientific research &mdash; unachievable
     </h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:900px; margin-top:12px;">
-      <div class="card" style="padding:24px 28px;">
-        <h3 style="font-size:24px; margin-bottom:10px;">Reproducible</h3>
-        <p style="font-size:22px; color:var(--g600); line-height:1.6;">
-          Same specification &rarr; <strong>consistent behavior</strong> across models
-        </p>
-      </div>
-      <div class="card" style="padding:24px 28px;">
-        <h3 style="font-size:24px; margin-bottom:10px;">Controllable</h3>
-        <p style="font-size:22px; color:var(--g600); line-height:1.6;">
-          Researchers can <strong>precisely specify and adjust</strong> behavioral magnitude
-        </p>
-      </div>
-    </div>
+    <p style="font-size:34px; color:var(--g700); margin-top:24px; line-height:1.5;">
+      We need <strong style="color:var(--cobra-dark);">explicit, quantitative agent specification</strong>
+    </p>
   </div>
 </div>
 
