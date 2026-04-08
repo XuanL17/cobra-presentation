@@ -248,7 +248,7 @@
 
 <!-- ============ 3. HOW SPECIFIED + PROBLEMS ============ -->
 <div class="slide" data-slide="3">
-  <h2 style="text-align:center;">People use <span class="cobra">Natural Language Descriptions</span> to specify these agents</h2>
+  <h2 style="text-align:center;">People use <span class="cobra">natural language descriptions</span> to specify these agents</h2>
 
   <!-- Example centered -->
   <div style="display:flex; justify-content:center; margin-top:20px;">
@@ -260,50 +260,49 @@
   </div>
 
   <!-- Three problems with icons -->
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:28px;">
-    <div style="text-align:center;">
-      <svg width="160" height="70" viewBox="0 0 160 70">
-        <!-- 3 bars different heights -->
-        <rect x="15" y="15" width="30" height="45" rx="4" fill="#6DBFAB" opacity="0.6"/>
-        <rect x="55" y="30" width="30" height="30" rx="4" fill="#F0C75E" opacity="0.6"/>
-        <rect x="95" y="8" width="30" height="52" rx="4" fill="#f9a8d4" opacity="0.6"/>
-        <text x="30" y="68" text-anchor="middle" font-size="10" fill="#6b7280">Claude</text>
-        <text x="70" y="68" text-anchor="middle" font-size="10" fill="#6b7280">GPT</text>
-        <text x="110" y="68" text-anchor="middle" font-size="10" fill="#6b7280">Gemini</text>
-      </svg>
-      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Inconsistent behavior<br>across models</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; margin-top:28px;">
+    <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+      <div style="height:100px; display:flex; align-items:center;">
+        <svg width="220" height="90" viewBox="0 0 160 65">
+          <rect x="12" y="12" width="32" height="48" rx="4" fill="#6DBFAB" opacity="0.6"/>
+          <rect x="54" y="28" width="32" height="32" rx="4" fill="#F0C75E" opacity="0.6"/>
+          <rect x="96" y="5" width="32" height="55" rx="4" fill="#f9a8d4" opacity="0.6"/>
+          <text x="28" y="63" text-anchor="middle" font-size="13" fill="#6b7280" font-weight="500">Claude</text>
+          <text x="70" y="63" text-anchor="middle" font-size="13" fill="#6b7280" font-weight="500">GPT</text>
+          <text x="112" y="63" text-anchor="middle" font-size="13" fill="#6b7280" font-weight="500">Gemini</text>
+        </svg>
+      </div>
+      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:10px;">Inconsistent behavior<br>across models</p>
     </div>
-    <div style="text-align:center;">
-      <svg width="160" height="70" viewBox="0 0 160 70">
-        <!-- Slider track -->
-        <line x1="15" y1="35" x2="125" y2="35" stroke="#d1d5db" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="70" cy="35" r="8" fill="white" stroke="#6DBFAB" stroke-width="2.5"/>
-        <!-- Question mark on the knob -->
-        <text x="70" y="40" text-anchor="middle" font-size="13" fill="#6DBFAB" font-weight="700">?</text>
-        <!-- Arrow left-right -->
-        <text x="8" y="39" font-size="11" fill="#9ca3af">&larr;</text>
-        <text x="130" y="39" font-size="11" fill="#9ca3af">&rarr;</text>
-        <text x="70" y="60" text-anchor="middle" font-size="11" fill="#9ca3af">how much? which direction?</text>
-      </svg>
-      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Uncontrollable behavior<br>direction &amp; magnitude</p>
+    <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+      <div style="height:100px; display:flex; align-items:center;">
+        <svg width="220" height="80" viewBox="0 0 160 55">
+          <line x1="10" y1="25" x2="130" y2="25" stroke="#d1d5db" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="70" cy="25" r="10" fill="white" stroke="#6DBFAB" stroke-width="3"/>
+          <text x="70" y="30" text-anchor="middle" font-size="16" fill="#6DBFAB" font-weight="700">?</text>
+          <text x="5" y="29" font-size="14" fill="#9ca3af">&larr;</text>
+          <text x="135" y="29" font-size="14" fill="#9ca3af">&rarr;</text>
+          <text x="70" y="50" text-anchor="middle" font-size="13" fill="#9ca3af">how much? which direction?</text>
+        </svg>
+      </div>
+      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:10px;">Uncontrollable behavior<br>direction &amp; magnitude</p>
     </div>
-    <div style="text-align:center;">
-      <svg width="160" height="70" viewBox="0 0 160 70">
-        <!-- Input box -->
-        <rect x="5" y="15" width="50" height="40" rx="6" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.2"/>
-        <text x="30" y="39" text-anchor="middle" font-size="11" fill="#374151" font-weight="700">input</text>
-        <!-- Arrow -->
-        <line x1="60" y1="35" x2="90" y2="35" stroke="#9ca3af" stroke-width="2"/>
-        <polygon points="90,31 100,35 90,39" fill="#9ca3af"/>
-        <!-- Output box with "?!" -->
-        <rect x="105" y="15" width="50" height="40" rx="6" fill="#fecaca" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 2"/>
-        <text x="130" y="40" text-anchor="middle" font-size="16" fill="#dc2626" font-weight="700">?!</text>
-      </svg>
-      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Unpredictable<br>user interface</p>
+    <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+      <div style="height:100px; display:flex; align-items:center;">
+        <svg width="220" height="80" viewBox="0 0 160 55">
+          <rect x="5" y="8" width="55" height="40" rx="6" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.2"/>
+          <text x="32" y="32" text-anchor="middle" font-size="15" fill="#374151" font-weight="700">input</text>
+          <line x1="65" y1="28" x2="92" y2="28" stroke="#9ca3af" stroke-width="2.5"/>
+          <polygon points="92,24 102,28 92,32" fill="#9ca3af"/>
+          <rect x="105" y="8" width="55" height="40" rx="6" fill="#fecaca" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 2"/>
+          <text x="132" y="33" text-anchor="middle" font-size="20" fill="#dc2626" font-weight="700">?!</text>
+        </svg>
+      </div>
+      <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:10px;">Unpredictable<br>user interface</p>
     </div>
   </div>
   <p style="font-size:18px; color:var(--g400); position:absolute; bottom:20px; left:64px; right:64px; line-height:1.6;">
-    [1] Generative Agents (UIST 2023) &nbsp; [2] CAMEL (NeurIPS 2023) &nbsp; [3] SOTOPIA (ICLR 2024) &nbsp; [4] Prosocial Irrationality for LLM Agents (ICLR 2025) &nbsp; etc.
+    [1] Generative Agents: Interactive Simulacra of Human Behavior (UIST 2023) &nbsp; [2] CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society (NeurIPS 2023) &nbsp; [3] SOTOPIA: Interactive Evaluation for Social Intelligence in Language Agents (ICLR 2024) &nbsp; [4] Exploring Prosocial Irrationality for LLM Agents: A Social Cognition View (ICLR 2025) &nbsp; etc.
   </p>
 </div>
 
