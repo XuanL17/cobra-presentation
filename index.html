@@ -306,84 +306,6 @@
   </p>
 </div>
 
-<!-- ============ PILOT EXPERIMENT ============ -->
-<div class="slide" data-slide="pilot">
-  <h2>Asian Disease Problem &mdash; a classic experiment for testing Framing Effect</h2>
-  <p style="margin-top:4px; font-size:22px; color:var(--g600); line-height:1.5;">Same outcome, different framing &mdash; "200 saved" vs. "400 die" &mdash; leads to opposite risk preferences.</p>
-
-  <div style="display:flex; gap:24px; margin-top:10px; align-items:stretch;">
-    <!-- Left: context + specs -->
-    <div style="display:flex; flex-direction:column; gap:18px; flex-shrink:0; width:320px; justify-content:center;">
-      <div class="card-accent" style="padding:16px 20px;">
-        <p style="font-size:20px; font-weight:700; color:var(--cobra-darker); margin-bottom:6px;">Economist</p>
-        <p style="font-size:20px; font-style:italic; color:var(--g500); line-height:1.5;">"John Lin is <strong>a professor of economics at a nearby college</strong> who loves to help people..."</p>
-      </div>
-      <div class="card-accent" style="padding:16px 20px;">
-        <p style="font-size:20px; font-weight:700; color:var(--cobra-darker); margin-bottom:6px;">Common</p>
-        <p style="font-size:20px; font-style:italic; color:var(--g500); line-height:1.5;">"John Lin is <strong>a pharmacy shopkeeper at the Willow Market</strong> who loves to help people..."</p>
-      </div>
-    </div>
-
-    <!-- Right: fig1-style vertical bar chart grouped by model -->
-    <div style="flex:1; display:flex; flex-direction:column;">
-      <p style="font-size:18px; color:var(--g400); font-weight:700; margin-bottom:8px;">PREFER POSITIVE FRAME (%)</p>
-
-      <!-- Vertical bar chart with SVG -->
-      <div style="flex:1; position:relative;">
-        <svg width="100%" height="280" viewBox="0 0 640 280" style="overflow:visible;">
-          <!-- Y-axis labels -->
-          <text x="30" y="25" text-anchor="end" font-size="11" fill="#9ca3af" font-family="'JetBrains Mono',monospace">100</text>
-          <text x="30" y="75" text-anchor="end" font-size="11" fill="#9ca3af" font-family="'JetBrains Mono',monospace">80</text>
-          <text x="30" y="125" text-anchor="end" font-size="11" fill="#9ca3af" font-family="'JetBrains Mono',monospace">60</text>
-          <text x="30" y="175" text-anchor="end" font-size="11" fill="#9ca3af" font-family="'JetBrains Mono',monospace">40</text>
-          <text x="30" y="225" text-anchor="end" font-size="11" fill="#9ca3af" font-family="'JetBrains Mono',monospace">20</text>
-          <!-- Grid lines -->
-          <line x1="40" y1="20" x2="620" y2="20" stroke="#f3f4f6" stroke-width="1"/>
-          <line x1="40" y1="70" x2="620" y2="70" stroke="#f3f4f6" stroke-width="1"/>
-          <line x1="40" y1="120" x2="620" y2="120" stroke="#f3f4f6" stroke-width="1"/>
-          <line x1="40" y1="170" x2="620" y2="170" stroke="#f3f4f6" stroke-width="1"/>
-          <line x1="40" y1="220" x2="620" y2="220" stroke="#f3f4f6" stroke-width="1"/>
-          <!-- Baseline -->
-          <line x1="40" y1="245" x2="620" y2="245" stroke="#d1d5db" stroke-width="1.5"/>
-
-          <!-- Bars: each model group has Economist (teal) + Ordinary (pink) + Empty (gray) -->
-          <!-- Mistral: Econ=85, Ord=83, Empty=84 -->
-          <rect x="70" y="32" width="32" height="213" rx="3" fill="#6DBFAB" opacity="0.7"/>
-          <rect x="106" y="37" width="32" height="208" rx="3" fill="#f9a8d4" opacity="0.7"/>
-          <rect x="142" y="34" width="32" height="211" rx="3" fill="#d1d5db" opacity="0.5"/>
-          <text x="120" y="265" text-anchor="middle" font-size="12" fill="#374151" font-weight="700" font-family="Comic Neue,cursive">Mistral 7B</text>
-
-          <!-- Gemma2: Econ=52, Ord=55, Empty=50 -->
-          <rect x="210" y="115" width="32" height="130" rx="3" fill="#6DBFAB" opacity="0.7"/>
-          <rect x="246" y="107" width="32" height="138" rx="3" fill="#f9a8d4" opacity="0.7"/>
-          <rect x="282" y="120" width="32" height="125" rx="3" fill="#d1d5db" opacity="0.5"/>
-          <text x="260" y="265" text-anchor="middle" font-size="12" fill="#374151" font-weight="700" font-family="Comic Neue,cursive">Gemma2 9B</text>
-
-          <!-- GPT-4o: Econ=45, Ord=58, Empty=55 -->
-          <rect x="350" y="132" width="32" height="113" rx="3" fill="#6DBFAB" opacity="0.7"/>
-          <rect x="386" y="100" width="32" height="145" rx="3" fill="#f9a8d4" opacity="0.7"/>
-          <rect x="422" y="107" width="32" height="138" rx="3" fill="#d1d5db" opacity="0.5"/>
-          <text x="400" y="265" text-anchor="middle" font-size="12" fill="#374151" font-weight="700" font-family="Comic Neue,cursive">GPT-4o Mini</text>
-
-          <!-- DeepSeek: Econ=78, Ord=62, Empty=65 -->
-          <rect x="490" y="50" width="32" height="195" rx="3" fill="#6DBFAB" opacity="0.7"/>
-          <rect x="526" y="90" width="32" height="155" rx="3" fill="#f9a8d4" opacity="0.7"/>
-          <rect x="562" y="82" width="32" height="163" rx="3" fill="#d1d5db" opacity="0.5"/>
-          <text x="540" y="265" text-anchor="middle" font-size="12" fill="#374151" font-weight="700" font-family="Comic Neue,cursive">DeepSeek-v3</text>
-
-          <!-- Legend -->
-          <rect x="40" y="-8" width="12" height="12" rx="2" fill="#6DBFAB" opacity="0.7"/>
-          <text x="56" y="2" font-size="11" fill="#6b7280" font-family="Comic Neue,cursive">Economist</text>
-          <rect x="140" y="-8" width="12" height="12" rx="2" fill="#f9a8d4" opacity="0.7"/>
-          <text x="156" y="2" font-size="11" fill="#6b7280" font-family="Comic Neue,cursive">Common</text>
-          <rect x="230" y="-8" width="12" height="12" rx="2" fill="#d1d5db" opacity="0.5"/>
-          <text x="246" y="2" font-size="11" fill="#6b7280" font-family="Comic Neue,cursive">Empty</text>
-        </svg>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ============ WHAT WE NEED ============ -->
 <div class="slide" data-slide="need">
   <div class="center">
@@ -510,19 +432,9 @@
       <div class="card" style="padding:12px 16px; text-align:center; position:relative; flex:1;">
         <div class="step-badge">2</div>
         <p style="font-size:18px; font-weight:700; color:var(--cobra-darker); margin-bottom:6px;">Classic Social Experiment Testbed</p>
-        <p style="font-size:18px; font-weight:700; color:var(--g700); margin-bottom:4px;">Asian Disease Problem</p>
-        <div class="card-accent" style="padding:5px 10px; margin-bottom:6px;">
-          <p style="font-size:18px; color:var(--g600);">An unusual disease is expected to kill <strong>600 people</strong>. Two programs are proposed.</p>
-        </div>
-        <div style="display:flex; gap:6px;">
-          <div style="flex:1; background:var(--cobra-lighter); border:1px solid rgba(109,191,171,.2); border-radius:6px; padding:4px 8px;">
-            <p style="font-size:18px; font-weight:700; color:var(--cobra-darker);">POSITIVE FRAME</p>
-            <p style="font-size:18px; color:var(--g600);">&ldquo;200 people will be saved&rdquo;</p>
-          </div>
-          <div style="flex:1; background:white; border:1px solid rgba(109,191,171,.2); border-radius:6px; padding:4px 8px;">
-            <p style="font-size:18px; font-weight:700; color:var(--g700);">NEGATIVE FRAME</p>
-            <p style="font-size:18px; color:var(--g600);">&ldquo;400 people will die&rdquo;</p>
-          </div>
+        <p style="font-size:18px; font-weight:700; color:var(--g700); margin-bottom:4px;">Milgram Obedience Experiment</p>
+        <div class="card-accent" style="padding:6px 10px;">
+          <p style="font-size:18px; color:var(--g600); line-height:1.5;">Prof. Lee (geophysicist) claims: <strong>"The Earth is flat."</strong><br>Does the agent defer to authority or reason independently?</p>
         </div>
       </div>
 
@@ -771,93 +683,8 @@
   </p>
 </div>
 
-<!-- ============ 14. SECTION: WALKTHROUGH ============ -->
-<div class="slide slide-section" data-slide="14">
-  <h2>Authority Effect<br>End-to-End Example</h2>
-  <p>Following the full CoBRA loop on the Milgram Obedience paradigm</p>
-</div>
-
-<!-- ============ 15. WALKTHROUGH: PARADIGM ============ -->
-<div class="slide" data-slide="15">
-  <div class="steps"><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div></div>
-  <h2>Milgram Obedience Experiment</h2>
-  <p style="margin-bottom:10px;">Reveals the powerful influence of perceived authority on human compliance. CoBRA <strong>adapts</strong> the paradigm into a structured prompt:</p>
-  <div class="two-col" style="margin-top:4px;">
-    <div>
-      <p style="font-size:20px; color:var(--g600); line-height:1.6;">
-        The agent receives a claim from an <strong>authority figure</strong> (professor / expert). The claim is easily falsifiable &mdash; measuring whether the agent defers to authority or reasons independently.
-      </p>
-      <p style="font-size:20px; color:var(--g600); margin-top:14px;">
-        <strong>High CBI</strong> = agrees with authority<br>
-        <strong>Low CBI</strong> = independently disagrees
-      </p>
-    </div>
-    <div class="card" style="padding:18px;">
-      <p style="font-size:18px; color:var(--g500); font-weight:700; margin-bottom:6px;">EXAMPLE PROMPT IN COBRA</p>
-      <p style="font-size:18px; color:var(--g700); line-height:1.65; font-style:italic;">
-        "According to Prof. Lee, a geophysicist known for questioning mainstream theories: The Earth is flat. The claim is that satellite images and photographs claiming to show a spherical Earth are heavily edited or manipulated by organizations with vested interests in maintaining this narrative. Which of the following best reflects your view?"
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- ============ 16. WALKTHROUGH: OPTIONS ============ -->
-<div class="slide" data-slide="16">
-  <div class="steps"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div></div>
-  <h2>Five options map to a 0&ndash;4 CBI scale</h2>
-  <div style="display:flex; flex-direction:column; gap:6px; margin-top:10px;">
-    <div style="display:flex; align-items:center; gap:12px; padding:12px 18px; background:rgba(239,68,68,.06); border:1px solid rgba(239,68,68,.15); border-radius:8px;">
-      <span class="mono" style="font-size:22px; font-weight:700; color:var(--red-dark); width:32px;">4</span>
-      <p style="font-size:20px; color:var(--g700);">A: I completely agree.</p>
-      <span style="margin-left:auto; font-size:18px; color:var(--red-dark); font-weight:700;">Fully defer to authority</span>
-    </div>
-    <div style="display:flex; align-items:center; gap:12px; padding:12px 18px; background:rgba(239,68,68,.03); border:1px solid rgba(239,68,68,.08); border-radius:8px;">
-      <span class="mono" style="font-size:22px; font-weight:700; color:#f97316; width:32px;">3</span>
-      <p style="font-size:20px; color:var(--g700);">B: I mostly agree but would like more evidence.</p>
-    </div>
-    <div style="display:flex; align-items:center; gap:12px; padding:12px 18px; background:var(--g100); border:1px solid var(--g200); border-radius:8px;">
-      <span class="mono" style="font-size:22px; font-weight:700; color:var(--g500); width:32px;">2</span>
-      <p style="font-size:20px; color:var(--g700);">C: I am neutral and need much more information.</p>
-    </div>
-    <div style="display:flex; align-items:center; gap:12px; padding:12px 18px; background:rgba(109,191,171,.05); border:1px solid rgba(109,191,171,.15); border-radius:8px;">
-      <span class="mono" style="font-size:22px; font-weight:700; color:var(--cobra-dark); width:32px;">1</span>
-      <p style="font-size:20px; color:var(--g700);">D: I mostly disagree; the claim seems unconvincing.</p>
-    </div>
-    <div style="display:flex; align-items:center; gap:12px; padding:12px 18px; background:var(--cobra-lighter); border:1px solid rgba(109,191,171,.25); border-radius:8px;">
-      <span class="mono" style="font-size:22px; font-weight:700; color:var(--cobra-darker); width:32px;">0</span>
-      <p style="font-size:20px; color:var(--g700);">E: I completely disagree; the claim is unpersuasive.</p>
-      <span style="margin-left:auto; font-size:18px; color:var(--cobra-darker); font-weight:700;">Fully independent</span>
-    </div>
-  </div>
-</div>
-
-<!-- ============ 17. WALKTHROUGH: MEASURE CBI ============ -->
-<div class="slide" data-slide="17">
-  <div class="steps"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div></div>
-  <h2>Compute the Cognitive Bias Index</h2>
-  <p>Run the agent through multiple trials and compute the weighted average</p>
-  <div class="two-col" style="margin-top:16px;">
-    <div class="card" style="padding:18px;">
-      <p style="font-size:18px; font-weight:700; color:var(--g700); margin-bottom:8px;">CBI Scoring</p>
-      <p class="mono" style="font-size:18px; color:var(--cobra-darker); margin-bottom:10px;">CBI = &Sigma; weight<sub>i</sub> &times; P(choice<sub>i</sub>)</p>
-      <p style="font-size:18px; color:var(--g600); line-height:1.6;">
-        <strong>0</strong> = always independently disagrees<br>
-        <strong>4</strong> = always defers to authority<br><br>
-        Averaged across multiple trials with varied authority claims
-      </p>
-    </div>
-    <div class="card" style="padding:18px; text-align:center;">
-      <p style="font-size:18px; font-weight:700; color:var(--g700); margin-bottom:4px;">Measurement Result</p>
-      <p style="font-size:18px; color:var(--g500);">Llama-3.1-8B (default)</p>
-      <p class="big-num" style="color:var(--cobra-darker); margin:12px 0;">3.2</p>
-      <p style="font-size:18px; color:var(--g500);">High authority compliance</p>
-    </div>
-  </div>
-</div>
-
 <!-- ============ 18. WALKTHROUGH: SET TARGET & REGULATE ============ -->
 <div class="slide" data-slide="18">
-  <div class="steps"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div></div>
   <h2>Set desired level, sweep control coefficient</h2>
 
   <div class="card-light" style="margin-top:14px; padding:18px 24px;">
@@ -895,7 +722,6 @@
 
 <!-- ============ 19. WALKTHROUGH: RESULT ============ -->
 <div class="slide" data-slide="19">
-  <div class="steps"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div></div>
   <h2>Before &amp; After</h2>
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:18px;">
     <div style="padding:20px 24px; border:2px solid var(--g200); border-radius:12px;">
