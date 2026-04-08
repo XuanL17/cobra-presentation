@@ -416,79 +416,77 @@
 
 <!-- ============ 7. CoBRA INTERNAL STRUCTURE ============ -->
 <div class="slide" data-slide="7">
-  <h2>CoBRA Closed-Loop</h2>
-
-  <div class="cobra-panel">
+  <div class="cobra-panel" style="padding:16px 20px;">
     <!-- Row: Agent → Experiment → Measure → CBI -->
-    <div style="display:flex; align-items:center; justify-content:center; gap:12px; width:100%;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%;">
       <div style="text-align:center; width:70px; flex-shrink:0;">
         <img src="co_website/public/agent.png" alt="Agent" style="width:44px;height:44px;object-fit:contain;display:block;margin:0 auto 2px;">
-        <span style="font-size:18px;color:var(--g500);font-weight:700;">AI Agent</span>
+        <span style="font-size:14px;color:var(--g500);font-weight:700;">AI Agent</span>
       </div>
 
       <svg width="28" height="12" viewBox="0 0 28 12" style="flex-shrink:0;"><line x1="0" y1="6" x2="18" y2="6" stroke="#9ca3af" stroke-width="2"/><polygon points="18,2 28,6 18,11" fill="#9ca3af"/></svg>
 
-      <!-- Experiment Testbed -->
-      <div class="card" style="padding:12px 16px; text-align:center; position:relative; flex:1;">
+      <!-- Experiment Testbed — narrower -->
+      <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:420px; flex-shrink:0;">
         <div class="step-badge">2</div>
-        <p style="font-size:18px; font-weight:700; color:var(--cobra-darker); margin-bottom:6px;">Classic Social Experiment Testbed</p>
-        <p style="font-size:18px; font-weight:700; color:var(--g700); margin-bottom:4px;">Milgram Obedience Experiment</p>
-        <div class="card-accent" style="padding:6px 10px;">
-          <p style="font-size:18px; color:var(--g600); line-height:1.5;">Prof. Lee (geophysicist) claims: <strong>"The Earth is flat."</strong><br>Does the agent defer to authority or reason independently?</p>
+        <p style="font-size:16px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;">Classic Social Experiment Testbed</p>
+        <p style="font-size:15px; font-weight:700; color:var(--g700); margin-bottom:4px;">Milgram Obedience Experiment</p>
+        <div class="card-accent" style="padding:5px 8px;">
+          <p style="font-size:14px; color:var(--g600); line-height:1.45;">Prof. Lee claims: <strong>"The Earth is flat."</strong><br>Defer to authority or reason independently?</p>
         </div>
       </div>
 
-      <div class="measure-pill">Measure <svg width="14" height="8" viewBox="0 0 14 8"><line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.5"/><polygon points="8,1 14,4 8,7" fill="currentColor"/></svg></div>
+      <div class="measure-pill" style="font-size:14px;">Measure <svg width="14" height="8" viewBox="0 0 14 8"><line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.5"/><polygon points="8,1 14,4 8,7" fill="currentColor"/></svg></div>
 
-      <!-- CBI -->
-      <div class="card" style="padding:12px 16px; text-align:center; position:relative; width:180px; flex-shrink:0;">
+      <!-- CBI — wider -->
+      <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:260px; flex-shrink:0;">
         <div class="step-badge">3</div>
-        <p style="font-size:18px; font-weight:700; color:var(--cobra-darker); margin-bottom:2px;">Cognitive Bias Index</p>
-        <table style="width:100%; margin-top:3px;">
-          <thead><tr><th style="font-size:18px;padding:2px 3px;">Choice</th><th style="font-size:18px;padding:2px 3px;text-align:center;">Wt</th><th style="font-size:18px;padding:2px 3px;text-align:right;">Prob</th></tr></thead>
-          <tbody style="font-size:18px;">
-            <tr><td style="padding:1px 3px;">Agree</td><td style="padding:1px 3px;text-align:center;font-weight:700;color:var(--cobra-darker);">4</td><td style="padding:1px 3px;text-align:right;" class="mono">P(A)</td></tr>
-            <tr><td style="padding:1px 3px;">Mostly<br>agree</td><td style="padding:1px 3px;text-align:center;font-weight:700;color:var(--cobra-darker);">3</td><td style="padding:1px 3px;text-align:right;" class="mono">P(B)</td></tr>
-            <tr><td style="padding:1px 3px;">Neutral</td><td style="padding:1px 3px;text-align:center;font-weight:700;color:var(--cobra-darker);">2</td><td style="padding:1px 3px;text-align:right;" class="mono">P(C)</td></tr>
-            <tr><td style="padding:1px 3px;">Mostly disagree</td><td style="padding:1px 3px;text-align:center;font-weight:700;color:var(--cobra-darker);">1</td><td style="padding:1px 3px;text-align:right;" class="mono">P(D)</td></tr>
-            <tr><td style="padding:1px 3px;">Disagree</td><td style="padding:1px 3px;text-align:center;font-weight:700;color:var(--cobra-darker);">0</td><td style="padding:1px 3px;text-align:right;" class="mono">P(E)</td></tr>
+        <p style="font-size:16px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;">Cognitive Bias Index</p>
+        <table style="width:100%; margin-top:2px;">
+          <thead><tr><th style="font-size:13px;padding:2px 4px;">Choice</th><th style="font-size:13px;padding:2px 4px;text-align:center;">Wt</th><th style="font-size:13px;padding:2px 4px;text-align:right;">Prob</th></tr></thead>
+          <tbody style="font-size:14px;">
+            <tr><td style="padding:2px 4px;">Agree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">4</td><td style="padding:2px 4px;text-align:right;" class="mono">P(A)</td></tr>
+            <tr><td style="padding:2px 4px;">Mostly agree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">3</td><td style="padding:2px 4px;text-align:right;" class="mono">P(B)</td></tr>
+            <tr><td style="padding:2px 4px;">Neutral</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">2</td><td style="padding:2px 4px;text-align:right;" class="mono">P(C)</td></tr>
+            <tr><td style="padding:2px 4px;">Mostly disagree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">1</td><td style="padding:2px 4px;text-align:right;" class="mono">P(D)</td></tr>
+            <tr><td style="padding:2px 4px;">Disagree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">0</td><td style="padding:2px 4px;text-align:right;" class="mono">P(E)</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- Loop arrows + label -->
-    <div style="display:flex; align-items:center; margin:8px 0;">
+    <div style="display:flex; align-items:center; margin:6px 0;">
       <div style="width:70px; flex-shrink:0; display:flex; justify-content:center;">
-        <svg width="18" height="28" viewBox="0 0 18 28"><line x1="9" y1="5" x2="9" y2="28" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"/><polygon points="3,5 9,0 15,5" fill="#6DBFAB"/></svg>
+        <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="4" x2="9" y2="24" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"/><polygon points="3,4 9,0 15,4" fill="#6DBFAB"/></svg>
       </div>
       <div style="flex:1; display:flex; justify-content:center;">
-        <div class="loop-pill">&#8635; Loop until Cognitive Bias Index matches target</div>
+        <div class="loop-pill" style="font-size:14px;">&#8635; Loop until CBI matches target</div>
       </div>
-      <div style="width:180px; flex-shrink:0; display:flex; justify-content:center;">
-        <svg width="18" height="28" viewBox="0 0 18 28"><line x1="9" y1="0" x2="9" y2="23" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"/><polygon points="3,23 9,28 15,23" fill="#6DBFAB"/></svg>
+      <div style="width:260px; flex-shrink:0; display:flex; justify-content:center;">
+        <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="0" x2="9" y2="20" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"/><polygon points="3,20 9,24 15,20" fill="#6DBFAB"/></svg>
       </div>
     </div>
 
     <!-- BRE -->
-    <div class="card" style="position:relative; padding:12px 18px;">
+    <div class="card" style="position:relative; padding:10px 16px;">
       <div class="step-badge">4</div>
-      <p style="font-size:18px; font-weight:700; color:var(--cobra-darker); text-align:center; margin-bottom:8px;">Behavioral Regulation Engine</p>
+      <p style="font-size:16px; font-weight:700; color:var(--cobra-darker); text-align:center; margin-bottom:6px;">Behavioral Regulation Engine</p>
       <div class="three-col" style="gap:10px;">
         <div class="bre-card">
-          <h4>Prompt Engineering</h4>
-          <p class="bre-desc">Adjust Agent <strong>Input</strong> Space</p>
-          <div class="formula">x&prime; = x + &Delta;x</div>
+          <h4 style="font-size:15px;">Prompt Engineering</h4>
+          <p class="bre-desc" style="font-size:14px;">Adjust Agent <strong>Input</strong> Space</p>
+          <div class="formula" style="font-size:14px;">x&prime; = x + &Delta;x</div>
         </div>
         <div class="bre-card">
-          <h4>Representation Engineering</h4>
-          <p class="bre-desc">Adjust Agent <strong>Activation</strong> Space</p>
-          <div class="formula">h&prime; = h(x) + &alpha;&middot;v</div>
+          <h4 style="font-size:15px;">Representation Engineering</h4>
+          <p class="bre-desc" style="font-size:14px;">Adjust Agent <strong>Activation</strong> Space</p>
+          <div class="formula" style="font-size:14px;">h&prime; = h(x) + &alpha;&middot;v</div>
         </div>
         <div class="bre-card">
-          <h4>Fine-Tuning</h4>
-          <p class="bre-desc">Adjust Agent <strong>Parameter</strong> Space</p>
-          <div class="formula">&theta;&prime; = &theta; &minus; &eta;&nabla;L</div>
+          <h4 style="font-size:15px;">Fine-Tuning</h4>
+          <p class="bre-desc" style="font-size:14px;">Adjust Agent <strong>Parameter</strong> Space</p>
+          <div class="formula" style="font-size:14px;">&theta;&prime; = &theta; &minus; &eta;&nabla;L</div>
         </div>
       </div>
     </div>
