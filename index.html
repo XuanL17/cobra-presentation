@@ -289,11 +289,15 @@
     </div>
     <div style="text-align:center;">
       <svg width="160" height="70" viewBox="0 0 160 70">
-        <!-- Erratic zigzag line -->
-        <polyline points="10,50 35,15 55,48 75,8 100,42 125,12 145,38" fill="none" stroke="#6DBFAB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="35" cy="15" r="4" fill="#6DBFAB"/><circle cx="75" cy="8" r="4" fill="#6DBFAB"/><circle cx="125" cy="12" r="4" fill="#6DBFAB"/>
-        <!-- Ideal smooth line (dashed) -->
-        <line x1="10" y1="55" x2="145" y2="20" stroke="#d1d5db" stroke-width="2" stroke-dasharray="5 3"/>
+        <!-- Input box -->
+        <rect x="5" y="15" width="50" height="40" rx="6" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.2"/>
+        <text x="30" y="39" text-anchor="middle" font-size="11" fill="#374151" font-weight="700">input</text>
+        <!-- Arrow -->
+        <line x1="60" y1="35" x2="90" y2="35" stroke="#9ca3af" stroke-width="2"/>
+        <polygon points="90,31 100,35 90,39" fill="#9ca3af"/>
+        <!-- Output box with "?!" -->
+        <rect x="105" y="15" width="50" height="40" rx="6" fill="#fecaca" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 2"/>
+        <text x="130" y="40" text-anchor="middle" font-size="16" fill="#dc2626" font-weight="700">?!</text>
       </svg>
       <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:8px;">Unpredictable<br>user interface</p>
     </div>
