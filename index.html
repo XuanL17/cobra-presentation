@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CoBRA — CHI 2026 Presentation</title>
@@ -16,10 +15,10 @@
     --red: #ef4444; --red-dark: #dc2626;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Comic Neue','Comic Sans MS',cursive,sans-serif; background:#ffffff; color:var(--fg); overflow:hidden; height:100vh; width:100vw; }
+  body { font-family:'Comic Neue','Comic Sans MS',cursive,sans-serif; background:#000; color:var(--fg); overflow:hidden; height:100vh; width:100vw; margin:0; }
 
-  .deck { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; }
-  .slide { position:absolute; width:100vw; height:100vh; background:var(--bg); padding:48px 64px; display:none; flex-direction:column; justify-content:center; overflow:hidden; }
+  .deck { position:relative; width:1920px; height:1080px; transform-origin:top left; overflow:hidden; }
+  .slide { position:absolute; width:1920px; height:1080px; background:var(--bg); padding:48px 64px; display:none; flex-direction:column; justify-content:center; overflow:hidden; }
   .slide.active { display:flex; animation:fadeIn .25s ease; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
 
@@ -73,7 +72,7 @@
   .slide-title{background:linear-gradient(to bottom,var(--cobra-lighter),white);border-bottom:1px solid var(--cobra-light);padding:44px 64px}
   .slide-end{background:var(--cobra-lighter);align-items:center;text-align:center;justify-content:center}
   .slide-end h2{color:var(--cobra-dark);font-size:50px}
-  .slide-end .links{display:flex;gap:24px;margin-top:24px}
+  .slide-end .links{display:flex;gap:24px;margin-top:24px;justify-content:center}
   .slide-end .links a{color:var(--cobra-darker);font-size:18px;text-decoration:none;font-weight:700;padding:8px 16px;border:1px solid rgba(109,191,171,.3);border-radius:8px;background:white;transition:background .2s}
   .slide-end .links a:hover{background:var(--cobra-light)}
 
@@ -123,123 +122,468 @@
   .bar-fill.pos{background:var(--cobra)}
   .bar-fill.neg{background:#f9a8d4}
 </style>
-</head>
-<body>
+<style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style></head>
+<body class="">
 <div class="deck" id="deck">
 
 <!-- ============ 1. TITLE ============ -->
-<div class="slide slide-title active" data-slide="1">
+<div class="slide slide-title" data-slide="1" style="" data-rw="1127" data-rh="634">
   <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:16px;">
     <!-- Title -->
     <div style="text-align:center;">
-      <h1 style="font-size:40px; line-height:1.3; margin-bottom:0;">
-        <img src="co_website/public/snake.svg" alt="" style="width:56px; height:56px; vertical-align:-0.15em; margin-right:8px;"><span style="font-size:56px; color:var(--cobra-dark);">CoBRA:</span> <span style="color:var(--g800);">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
+      <h1 style="font-size: 40px; line-height: 1.3; margin-bottom: 0px;" class="">
+        <img src="co_website/public/snake.svg" alt="" style="width:46px; height:46px; vertical-align:-0.12em; margin-right:8px;"><span style="font-size:46px; color:var(--cobra-dark);" class="">CoBRA:</span> <span style="color: var(--g800); font-size: 37px;" class="">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
       </h1>
-      <p style="font-size:28px; color:var(--cobra); font-style:italic; margin-top:16px; line-height:1.5;">
-        Toolkits for Precise and Consistent Agent Behavior Specification Using Social Science Experiments as Anchor
+      <p style="font-size: 21px; color: var(--cobra); font-style: italic; margin-top: 16px; line-height: 1.5;" class="">
+        Toolkits for Precise and Consistent Agent Specification Using Social Science Experiments as Anchor
       </p>
     </div>
-    <!-- Video -->
-    <div class="video-wrap" style="width:90%; max-width:1100px; margin-top:4px;">
-      <video controls preload="metadata" style="width:100%; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,.1);"><source src="Demo_Video.mp4" type="video/mp4"></video>
+    <!-- Live Demo (scaled down to fit slide) -->
+    <div style="width:1100px; height:440px; margin-top:4px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+      <iframe src="video_demo.html" style="width:1572px; height:630px; border:none; transform:scale(1.0); flex-shrink:0;"></iframe>
     </div>
   </div>
 </div>
 
 <!-- ============ 2. BACKGROUND ============ -->
-<div class="slide" data-slide="2">
+<div class="slide" data-slide="2" style="" data-zoom="0.85" data-rw="1127" data-rh="634">
   <h2 style="text-align:center;">AI-powered social agents are everywhere</h2>
 
   <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px 60px; margin-top:28px; max-width:100%; margin-left:auto; margin-right:auto;">
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <rect x="5" y="32" width="22" height="18" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-        <rect x="35" y="25" width="26" height="25" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-        <rect x="72" y="28" width="20" height="22" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-        <rect x="98" y="35" width="18" height="15" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"/>
-        <circle cx="20" cy="23" r="4" fill="#6DBFAB"/><circle cx="52" cy="17" r="4" fill="#F0C75E"/>
-        <circle cx="80" cy="20" r="4" fill="#f9a8d4"/><circle cx="105" cy="27" r="4" fill="#93c5fd"/>
+        <rect x="5" y="32" width="22" height="18" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"></rect>
+        <rect x="35" y="25" width="26" height="25" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"></rect>
+        <rect x="72" y="28" width="20" height="22" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"></rect>
+        <rect x="98" y="35" width="18" height="15" rx="2" fill="#d1d5db" stroke="#9ca3af" stroke-width=".8"></rect>
+        <circle cx="20" cy="23" r="4" fill="#6DBFAB"></circle><circle cx="52" cy="17" r="4" fill="#F0C75E"></circle>
+        <circle cx="80" cy="20" r="4" fill="#f9a8d4"></circle><circle cx="105" cy="27" r="4" fill="#93c5fd"></circle>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Virtual Towns</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <line x1="30" y1="18" x2="60" y2="30" stroke="#d1d5db" stroke-width="1.2"/>
-        <line x1="60" y1="30" x2="90" y2="15" stroke="#d1d5db" stroke-width="1.2"/>
-        <line x1="60" y1="30" x2="40" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
-        <line x1="60" y1="30" x2="80" y2="48" stroke="#d1d5db" stroke-width="1.2"/>
-        <circle cx="60" cy="30" r="6" fill="#6DBFAB"/><circle cx="30" cy="18" r="5" fill="#5BA898"/>
-        <circle cx="90" cy="15" r="5" fill="#F0C75E"/><circle cx="40" cy="48" r="5" fill="#f9a8d4"/><circle cx="80" cy="48" r="5" fill="#93c5fd"/>
+        <line x1="30" y1="18" x2="60" y2="30" stroke="#d1d5db" stroke-width="1.2"></line>
+        <line x1="60" y1="30" x2="90" y2="15" stroke="#d1d5db" stroke-width="1.2"></line>
+        <line x1="60" y1="30" x2="40" y2="48" stroke="#d1d5db" stroke-width="1.2"></line>
+        <line x1="60" y1="30" x2="80" y2="48" stroke="#d1d5db" stroke-width="1.2"></line>
+        <circle cx="60" cy="30" r="6" fill="#6DBFAB"></circle><circle cx="30" cy="18" r="5" fill="#5BA898"></circle>
+        <circle cx="90" cy="15" r="5" fill="#F0C75E"></circle><circle cx="40" cy="48" r="5" fill="#f9a8d4"></circle><circle cx="80" cy="48" r="5" fill="#93c5fd"></circle>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Online Communities</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <rect x="10" y="8" width="45" height="18" rx="6" fill="#6DBFAB" opacity="0.25"/>
+        <rect x="10" y="8" width="45" height="18" rx="6" fill="#6DBFAB" opacity="0.25"></rect>
         <text x="32" y="21" text-anchor="middle" font-size="9" fill="#4A8E7E">Buy $5</text>
-        <rect x="65" y="20" width="45" height="18" rx="6" fill="#e5e7eb"/>
+        <rect x="65" y="20" width="45" height="18" rx="6" fill="#e5e7eb"></rect>
         <text x="87" y="33" text-anchor="middle" font-size="9" fill="#374151">Sell $7</text>
-        <rect x="15" y="36" width="40" height="18" rx="6" fill="#6DBFAB" opacity="0.25"/>
+        <rect x="15" y="36" width="40" height="18" rx="6" fill="#6DBFAB" opacity="0.25"></rect>
         <text x="35" y="49" text-anchor="middle" font-size="9" fill="#4A8E7E">Deal?</text>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Economic Simulations</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <rect x="8" y="10" width="30" height="40" rx="3" fill="#e5e7eb"/>
-        <rect x="12" y="14" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
-        <rect x="12" y="23" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
-        <rect x="12" y="32" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"/>
-        <text x="56" y="34" text-anchor="middle" font-size="14" fill="#9ca3af">&rarr;</text>
-        <circle cx="82" cy="22" r="7" fill="#F0C75E" opacity="0.5"/><circle cx="98" cy="36" r="7" fill="#93c5fd" opacity="0.5"/>
+        <rect x="8" y="10" width="30" height="40" rx="3" fill="#e5e7eb"></rect>
+        <rect x="12" y="14" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"></rect>
+        <rect x="12" y="23" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"></rect>
+        <rect x="12" y="32" width="22" height="5" rx="1" fill="#6DBFAB" opacity="0.4"></rect>
+        <text x="56" y="34" text-anchor="middle" font-size="14" fill="#9ca3af">→</text>
+        <circle cx="82" cy="22" r="7" fill="#F0C75E" opacity="0.5"></circle><circle cx="98" cy="36" r="7" fill="#93c5fd" opacity="0.5"></circle>
       </svg>
-      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Survey &amp; Polling</p>
+      <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;" class="">Survey &amp; Polling</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <circle cx="35" cy="30" r="10" fill="none" stroke="#6DBFAB" stroke-width="1.5"/><circle cx="35" cy="30" r="4" fill="#6DBFAB"/>
-        <circle cx="85" cy="30" r="10" fill="none" stroke="#F0C75E" stroke-width="1.5"/><circle cx="85" cy="30" r="4" fill="#F0C75E"/>
-        <line x1="45" y1="30" x2="75" y2="30" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <circle cx="35" cy="30" r="10" fill="none" stroke="#6DBFAB" stroke-width="1.5"></circle><circle cx="35" cy="30" r="4" fill="#6DBFAB"></circle>
+        <circle cx="85" cy="30" r="10" fill="none" stroke="#F0C75E" stroke-width="1.5"></circle><circle cx="85" cy="30" r="4" fill="#F0C75E"></circle>
+        <line x1="45" y1="30" x2="75" y2="30" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="3 2"></line>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Social Interaction</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <circle cx="30" cy="20" r="6" fill="#6DBFAB"/><circle cx="60" cy="20" r="6" fill="#f9a8d4"/><circle cx="90" cy="20" r="6" fill="#93c5fd"/>
-        <rect x="15" y="32" width="90" height="4" rx="2" fill="#e5e7eb"/><rect x="15" y="32" width="60" height="4" rx="2" fill="#6DBFAB" opacity="0.4"/>
-        <rect x="15" y="40" width="90" height="4" rx="2" fill="#e5e7eb"/><rect x="15" y="40" width="30" height="4" rx="2" fill="#f9a8d4" opacity="0.4"/>
-        <rect x="15" y="48" width="90" height="4" rx="2" fill="#e5e7eb"/><rect x="15" y="48" width="75" height="4" rx="2" fill="#93c5fd" opacity="0.4"/>
+        <circle cx="30" cy="20" r="6" fill="#6DBFAB"></circle><circle cx="60" cy="20" r="6" fill="#f9a8d4"></circle><circle cx="90" cy="20" r="6" fill="#93c5fd"></circle>
+        <rect x="15" y="32" width="90" height="4" rx="2" fill="#e5e7eb"></rect><rect x="15" y="32" width="60" height="4" rx="2" fill="#6DBFAB" opacity="0.4"></rect>
+        <rect x="15" y="40" width="90" height="4" rx="2" fill="#e5e7eb"></rect><rect x="15" y="40" width="30" height="4" rx="2" fill="#f9a8d4" opacity="0.4"></rect>
+        <rect x="15" y="48" width="90" height="4" rx="2" fill="#e5e7eb"></rect><rect x="15" y="48" width="75" height="4" rx="2" fill="#93c5fd" opacity="0.4"></rect>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Opinion Dynamics</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <rect x="10" y="8" width="40" height="44" rx="4" fill="none" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 2"/>
+        <rect x="10" y="8" width="40" height="44" rx="4" fill="none" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 2"></rect>
         <text x="30" y="26" text-anchor="middle" font-size="8" fill="#dc2626">Nation A</text>
-        <circle cx="30" cy="38" r="5" fill="#dc2626" opacity="0.3"/>
-        <rect x="70" y="8" width="40" height="44" rx="4" fill="none" stroke="#2563eb" stroke-width="1" stroke-dasharray="3 2"/>
+        <circle cx="30" cy="38" r="5" fill="#dc2626" opacity="0.3"></circle>
+        <rect x="70" y="8" width="40" height="44" rx="4" fill="none" stroke="#2563eb" stroke-width="1" stroke-dasharray="3 2"></rect>
         <text x="90" y="26" text-anchor="middle" font-size="8" fill="#2563eb">Nation B</text>
-        <circle cx="90" cy="38" r="5" fill="#2563eb" opacity="0.3"/>
+        <circle cx="90" cy="38" r="5" fill="#2563eb" opacity="0.3"></circle>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Geopolitical Simulation</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <circle cx="25" cy="18" r="7" fill="#6DBFAB"/><circle cx="60" cy="18" r="7" fill="#F0C75E"/><circle cx="95" cy="18" r="7" fill="#f9a8d4"/>
-        <circle cx="25" cy="44" r="7" fill="#93c5fd"/><circle cx="60" cy="44" r="7" fill="#c4b5fd"/><circle cx="95" cy="44" r="7" fill="#fda4af"/>
-        <line x1="25" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"/><line x1="60" y1="25" x2="25" y2="37" stroke="#d1d5db" stroke-width="1"/>
-        <line x1="60" y1="25" x2="95" y2="37" stroke="#d1d5db" stroke-width="1"/><line x1="95" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"/>
+        <circle cx="25" cy="18" r="7" fill="#6DBFAB"></circle><circle cx="60" cy="18" r="7" fill="#F0C75E"></circle><circle cx="95" cy="18" r="7" fill="#f9a8d4"></circle>
+        <circle cx="25" cy="44" r="7" fill="#93c5fd"></circle><circle cx="60" cy="44" r="7" fill="#c4b5fd"></circle><circle cx="95" cy="44" r="7" fill="#fda4af"></circle>
+        <line x1="25" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"></line><line x1="60" y1="25" x2="25" y2="37" stroke="#d1d5db" stroke-width="1"></line>
+        <line x1="60" y1="25" x2="95" y2="37" stroke="#d1d5db" stroke-width="1"></line><line x1="95" y1="25" x2="60" y2="37" stroke="#d1d5db" stroke-width="1"></line>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Multi-Agent Collaboration</p>
     </div>
     <div style="text-align:center;">
       <svg width="180" height="90" viewBox="0 0 120 60">
-        <circle cx="30" cy="30" r="8" fill="#6DBFAB" opacity="0.6"/><circle cx="60" cy="20" r="8" fill="#F0C75E" opacity="0.6"/>
-        <circle cx="90" cy="35" r="8" fill="#f9a8d4" opacity="0.6"/>
-        <line x1="38" y1="28" x2="52" y2="22" stroke="#d1d5db" stroke-width="1.2"/>
-        <line x1="68" y1="22" x2="82" y2="33" stroke="#d1d5db" stroke-width="1.2"/>
-        <rect x="20" y="45" width="80" height="6" rx="3" fill="#e5e7eb"/>
-        <rect x="20" y="45" width="50" height="6" rx="3" fill="#6DBFAB" opacity="0.3"/>
+        <circle cx="30" cy="30" r="8" fill="#6DBFAB" opacity="0.6"></circle><circle cx="60" cy="20" r="8" fill="#F0C75E" opacity="0.6"></circle>
+        <circle cx="90" cy="35" r="8" fill="#f9a8d4" opacity="0.6"></circle>
+        <line x1="38" y1="28" x2="52" y2="22" stroke="#d1d5db" stroke-width="1.2"></line>
+        <line x1="68" y1="22" x2="82" y2="33" stroke="#d1d5db" stroke-width="1.2"></line>
+        <rect x="20" y="45" width="80" height="6" rx="3" fill="#e5e7eb"></rect>
+        <rect x="20" y="45" width="50" height="6" rx="3" fill="#6DBFAB" opacity="0.3"></rect>
       </svg>
       <p style="font-size:26px; font-weight:700; color:var(--g700); margin-top:8px;">Disaster Response</p>
     </div>
@@ -247,7 +591,7 @@
 </div>
 
 <!-- ============ 3. HOW SPECIFIED + PROBLEMS ============ -->
-<div class="slide" data-slide="3">
+<div class="slide" data-slide="3" style="" data-rw="1440" data-rh="809">
   <h2 style="text-align:center;">People use <span class="cobra">natural language descriptions</span> to specify these agents</h2>
 
   <!-- Example centered -->
@@ -264,9 +608,9 @@
     <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
       <div style="height:110px; display:flex; align-items:center;">
         <svg width="220" height="100" viewBox="0 0 160 75">
-          <rect x="12" y="10" width="32" height="42" rx="4" fill="#6DBFAB" opacity="0.6"/>
-          <rect x="54" y="24" width="32" height="28" rx="4" fill="#F0C75E" opacity="0.6"/>
-          <rect x="96" y="4" width="32" height="48" rx="4" fill="#f9a8d4" opacity="0.6"/>
+          <rect x="12" y="10" width="32" height="42" rx="4" fill="#6DBFAB" opacity="0.6"></rect>
+          <rect x="54" y="24" width="32" height="28" rx="4" fill="#F0C75E" opacity="0.6"></rect>
+          <rect x="96" y="4" width="32" height="48" rx="4" fill="#f9a8d4" opacity="0.6"></rect>
           <text x="28" y="68" text-anchor="middle" font-size="13" fill="#6b7280" font-weight="500">Claude</text>
           <text x="70" y="68" text-anchor="middle" font-size="13" fill="#6b7280" font-weight="500">GPT</text>
           <text x="112" y="68" text-anchor="middle" font-size="13" fill="#6b7280" font-weight="500">Gemini</text>
@@ -277,9 +621,9 @@
     <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
       <div style="height:110px; display:flex; align-items:center;">
         <svg width="220" height="100" viewBox="0 0 160 50">
-          <text x="20" y="30" font-size="22" fill="#9ca3af">&larr;</text>
+          <text x="20" y="30" font-size="22" fill="#9ca3af">←</text>
           <text x="70" y="32" text-anchor="middle" font-size="28" fill="#6DBFAB" font-weight="700">?</text>
-          <text x="120" y="30" font-size="22" fill="#9ca3af">&rarr;</text>
+          <text x="120" y="30" font-size="22" fill="#9ca3af">→</text>
         </svg>
       </div>
       <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:10px;">Uncontrollable behavior<br>direction &amp; magnitude</p>
@@ -287,51 +631,93 @@
     <div style="text-align:center; display:flex; flex-direction:column; align-items:center;">
       <div style="height:110px; display:flex; align-items:center;">
         <svg width="220" height="100" viewBox="0 0 160 55">
-          <rect x="5" y="8" width="55" height="40" rx="6" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.2"/>
+          <rect x="5" y="8" width="55" height="40" rx="6" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1.2"></rect>
           <text x="32" y="32" text-anchor="middle" font-size="15" fill="#374151" font-weight="700">input</text>
-          <line x1="65" y1="28" x2="92" y2="28" stroke="#9ca3af" stroke-width="2.5"/>
-          <polygon points="92,24 102,28 92,32" fill="#9ca3af"/>
-          <rect x="105" y="8" width="55" height="40" rx="6" fill="#fecaca" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 2"/>
+          <line x1="65" y1="28" x2="92" y2="28" stroke="#9ca3af" stroke-width="2.5"></line>
+          <polygon points="92,24 102,28 92,32" fill="#9ca3af"></polygon>
+          <rect x="105" y="8" width="55" height="40" rx="6" fill="#fecaca" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 2"></rect>
           <text x="132" y="33" text-anchor="middle" font-size="20" fill="#dc2626" font-weight="700">?!</text>
         </svg>
       </div>
       <p style="font-size:26px; color:var(--cobra-dark); font-weight:700; margin-top:10px;">Unpredictable<br>user interface</p>
     </div>
   </div>
-  <p style="font-size:18px; color:var(--g400); position:absolute; bottom:20px; left:64px; right:64px; line-height:1.6;">
+  <p style="font-size: 18px; color: var(--g400); position: absolute; inset: 670px 64px 20px; line-height: 1.6;" class="">
     [1] Generative Agents: Interactive Simulacra of Human Behavior (UIST 2023) &nbsp; [2] SOTOPIA: Interactive Evaluation for Social Intelligence in Language Agents (ICLR 2024) &nbsp; [3] Exploring Prosocial Irrationality for LLM Agents: A Social Cognition View (ICLR 2025) &nbsp; etc.
   </p>
 </div>
 
 <!-- ============ WHAT WE NEED ============ -->
-<div class="slide" data-slide="need">
-  <p style="font-size:26px; color:var(--g500); margin-bottom:24px;">
-    Scientific research demands <strong style="color:var(--cobra-dark);">reproducibility</strong> and <strong style="color:var(--cobra-dark);">controllability</strong>
-  </p>
-  <div class="center">
-    <h2 style="font-size:42px; max-width:960px; line-height:1.5; margin-bottom:0;">
-      <span style="color:var(--cobra-dark);">CoBRA</span> introduces a quantifiable way to control agent behavior that lets researchers explicitly specify desired nuances and obtain consistent behavior across models
+<div class="slide" data-slide="need" style="position:relative;" data-rw="1127" data-rh="634">
+  <!-- Frustrated person decoration -->
+  <div style="position:absolute; top:20px; left:30px; opacity:0.85;">
+    <svg width="110" height="110" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="100" y1="85" x2="100" y2="135" stroke="#4A8E7E" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="100" y1="135" x2="82" y2="172" stroke="#4A8E7E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="100" y1="135" x2="118" y2="172" stroke="#4A8E7E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="100" y1="100" x2="72" y2="78" stroke="#4A8E7E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="72" y1="78" x2="78" y2="58" stroke="#4A8E7E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="100" y1="100" x2="128" y2="78" stroke="#4A8E7E" stroke-width="3" stroke-linecap="round"/>
+      <line x1="128" y1="78" x2="122" y2="58" stroke="#4A8E7E" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="78" cy="56" r="4" fill="#6DBFAB"/>
+      <circle cx="122" cy="56" r="4" fill="#6DBFAB"/>
+      <circle cx="100" cy="62" r="20" fill="#E8F5F0" stroke="#4A8E7E" stroke-width="3"/>
+      <line x1="87" y1="56" x2="95" y2="54" stroke="#4A8E7E" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="113" y1="56" x2="105" y2="54" stroke="#4A8E7E" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="92" cy="60" r="2.2" fill="#4A8E7E"/>
+      <circle cx="108" cy="60" r="2.2" fill="#4A8E7E"/>
+      <path d="M93 72 Q100 68 107 72" stroke="#4A8E7E" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <ellipse cx="73" cy="48" rx="2" ry="3.5" fill="#6DBFAB" opacity="0.5"/>
+      <ellipse cx="129" cy="50" rx="2" ry="3.5" fill="#6DBFAB" opacity="0.5"/>
+      <line x1="78" y1="40" x2="74" y2="34" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+      <line x1="122" y1="40" x2="126" y2="34" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+      <path d="M96 32 Q92 28 96 24 Q100 20 104 24 Q108 28 104 32" stroke="#EF4444" stroke-width="1.5" fill="none" opacity="0.45"/>
+      <rect x="60" y="168" width="18" height="14" rx="1.5" fill="#E5E7EB" stroke="#9CA3AF" stroke-width="0.8" transform="rotate(-15 69 175)"/>
+      <line x1="63" y1="172" x2="75" y2="170" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="63" y1="175" x2="75" y2="173" stroke="#D1D5DB" stroke-width="0.8"/>
+      <rect x="120" y="165" width="18" height="14" rx="1.5" fill="#E5E7EB" stroke="#9CA3AF" stroke-width="0.8" transform="rotate(12 129 172)"/>
+      <line x1="123" y1="169" x2="135" y2="170" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="123" y1="172" x2="135" y2="173" stroke="#D1D5DB" stroke-width="0.8"/>
+      <rect x="88" y="176" width="18" height="14" rx="1.5" fill="#E5E7EB" stroke="#9CA3AF" stroke-width="0.8" transform="rotate(-5 97 183)" opacity="0.5"/>
+      <line x1="91" y1="180" x2="103" y2="179" stroke="#D1D5DB" stroke-width="0.8"/>
+      <line x1="91" y1="183" x2="103" y2="182" stroke="#D1D5DB" stroke-width="0.8"/>
+      <text x="62" y="50" font-size="13" fill="#9CA3AF" font-weight="700" opacity="0.5" font-family="Comic Neue, cursive">?</text>
+      <text x="135" y="44" font-size="15" fill="#9CA3AF" font-weight="700" opacity="0.4" font-family="Comic Neue, cursive">?</text>
+    </svg>
+  </div>
+  <div class="center" style="flex:1; justify-content:center;">
+    <h2 style="font-size:36px; max-width:960px; line-height:1.5; margin-bottom:0; font-weight:400;">
+      These gaps of natural language specification make the <strong style="color:var(--cobra-dark);">reproducibility</strong> and <strong style="color:var(--cobra-dark);">controllability</strong> that scientific research demands unachievable
     </h2>
   </div>
 </div>
 
 <!-- ============ CoBRA INTRO ============ -->
-<div class="slide slide-section" data-slide="cobra-intro">
+<div class="slide slide-section" data-slide="cobra-intro" style="" data-rw="1127" data-rh="634">
   <div style="display:flex; align-items:center; gap:14px; justify-content:center;">
-    <svg width="28" height="16" viewBox="0 0 28 16" style="flex-shrink:0;"><line x1="0" y1="8" x2="18" y2="8" stroke="var(--cobra)" stroke-width="2.5"/><polygon points="18,3 28,8 18,13" fill="var(--cobra)"/></svg>
+    <svg width="28" height="16" viewBox="0 0 28 16" style="flex-shrink:0;"><line x1="0" y1="8" x2="18" y2="8" stroke="var(--cobra)" stroke-width="2.5"></line><polygon points="18,3 28,8 18,13" fill="var(--cobra)"></polygon></svg>
     <h2 style="font-size:48px; margin-bottom:0;"><img src="co_website/public/snake.svg" alt="" style="width:42px;height:42px;vertical-align:-0.12em;"> CoBRA</h2>
   </div>
   <div style="margin-top:28px; text-align:center;">
+    <p style="font-size:32px; color:var(--g700); line-height:1.45; margin-top:14px; max-width:960px; display:inline-block;">
+      A quantifiable way to control agent behavior — letting researchers explicitly specify desired nuances and obtain consistent behavior across models.
+    </p>
+  </div>
+</div>
+
+<!-- ============ CoBRA IDEA ============ -->
+<div class="slide slide-section" data-slide="cobra-idea" style="" data-rw="1127" data-rh="634">
+  <div style="text-align:center;">
     <p style="font-size:30px; color:var(--g600); line-height:1.5;">The idea is simple:</p>
-    <p style="font-size:32px; color:var(--g700); line-height:1.45; margin-top:14px; max-width:900px; display:inline-block;">
-      Use <span style="color:var(--cobra-dark); font-weight:700;">classic social science experiments</span> as calibration tasks &mdash; continuously measure and adjust agent behavior until on target.
+    <p style="font-size:32px; color:var(--g700); line-height:1.45; margin-top:20px; max-width:960px; display:inline-block;">
+      Use <span style="color:var(--cobra-dark); font-weight:700;">classic social science experiments</span> as calibration tasks — continuously measure and adjust until on target.
     </p>
   </div>
 </div>
 
 <!-- ============ 6. CoBRA TOP-LEVEL OVERVIEW (fig2 top part) ============ -->
-<div class="slide" data-slide="6">
-  <h2 style="text-align:center;"><span class="cobra">CoBRA</span>: Closed-Loop Calibration Toolkit</h2>
+<div class="slide" data-slide="6" style="" data-zoom="0.85" data-rw="1127" data-rh="634">
+  <h2 style="text-align:center;" class=""><span class="cobra">CoBRA</span>: Closed-Loop Calibration Toolkit</h2>
   <p style="font-size:28px; margin-bottom:16px; text-align:center;">The researcher specifies a target bias type and magnitude, and CoBRA measures and adjusts until on target.</p>
 
   <!-- fig2 top-level: Researcher → CoBRA + NL Spec -->
@@ -347,7 +733,7 @@
       </div>
     </div>
 
-    <svg width="32" height="16" viewBox="0 0 32 16" style="flex-shrink:0;"><line x1="0" y1="8" x2="22" y2="8" stroke="#9ca3af" stroke-width="2"/><polygon points="22,4 32,8 22,12" fill="#9ca3af"/></svg>
+    <svg width="32" height="16" viewBox="0 0 32 16" style="flex-shrink:0;"><line x1="0" y1="8" x2="22" y2="8" stroke="#9ca3af" stroke-width="2"></line><polygon points="22,4 32,8 22,12" fill="#9ca3af"></polygon></svg>
 
     <!-- CoBRA Panel -->
     <div class="card" style="padding:20px 28px; position:relative; flex:0 0 auto; width:320px;">
@@ -357,7 +743,7 @@
         <span style="font-weight:700; color:var(--cobra-dark); font-size:28px;">CoBRA</span>
       </div>
       <div style="display:flex; align-items:center; gap:6px; font-size:22px;">
-        <span style="color:var(--g500);">Authority Effect</span>
+        <span style="color:var(--g500);" class="">Authority Effect</span>
         <div style="flex:1; display:flex; align-items:center; gap:3px;">
           <span style="color:var(--g400); font-size:22px;">0</span>
           <div style="flex:1; height:6px; background:var(--g200); border-radius:99px; position:relative;">
@@ -369,7 +755,7 @@
       </div>
       <!-- 1.2 aligned under the slider knob: "Authority Effect" takes ~130px, then 0 takes ~15px, slider starts there, 30% of remaining -->
       <div style="position:relative; height:24px; margin-top:4px;">
-        <p style="font-size:22px; font-weight:700; color:var(--cobra-darker); position:absolute; left:30%; transform:translateX(-50%); white-space:nowrap;" class="mono">1.2</p>
+        <p style="font-size:22px; font-weight:700; color:var(--cobra-darker); position:absolute; left:74.5%; transform:translateX(-50%); white-space:nowrap;" class="mono">1.2</p>
       </div>
     </div>
 
@@ -383,15 +769,15 @@
 </div>
 
 <!-- ============ 7. CoBRA INTERNAL STRUCTURE ============ -->
-<div class="slide" data-slide="7">
+<div class="slide" data-slide="7" style="" data-rw="1127" data-rh="634">
   <div class="cobra-panel" style="padding:16px 20px;">
     <!-- Row: Agent → Experiment → Measure → CBI -->
     <div style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%;">
       <div style="text-align:center; width:100px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:4px;">
         <img src="co_website/public/agent.png" alt="Agent" style="width:44px;height:44px;object-fit:contain;">
-        <span style="font-size:16px;color:var(--g500);font-weight:700;">AI Agent</span>
+        <span style="font-size:16px;color:var(--g500);font-weight:700;" class="">AI Agent</span>
       </div>
-      <svg width="20" height="12" viewBox="0 0 20 12" style="flex-shrink:0;"><line x1="0" y1="6" x2="12" y2="6" stroke="#9ca3af" stroke-width="2"/><polygon points="12,2 20,6 12,11" fill="#9ca3af"/></svg>
+      <svg width="20" height="12" viewBox="0 0 20 12" style="flex-shrink:0;"><line x1="0" y1="6" x2="12" y2="6" stroke="#9ca3af" stroke-width="2"></line><polygon points="12,2 20,6 12,11" fill="#9ca3af"></polygon></svg>
 
       <!-- Experiment Testbed -->
       <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:420px; flex-shrink:0;">
@@ -399,24 +785,24 @@
         <p style="font-size:19px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;">Classic Social Experiment Testbed</p>
         <p style="font-size:16px; font-weight:700; color:var(--g700); margin-bottom:4px;">Milgram Obedience Experiment</p>
         <div class="card-accent" style="padding:5px 8px;">
-          <p style="font-size:16px; color:var(--g600); line-height:1.45;">Prof. Lee claims: <strong>"The Earth is flat."</strong><br>Defer to authority or reason independently?</p>
+          <p style="font-size:16px; color:var(--g600); line-height:1.45;" class="">Prof. Lee claims: <strong>"The Earth is flat."</strong><br>Defer to authority or reason independently?</p>
         </div>
       </div>
 
-      <div class="measure-pill" style="font-size:14px;">Measure <svg width="14" height="8" viewBox="0 0 14 8"><line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.5"/><polygon points="8,1 14,4 8,7" fill="currentColor"/></svg></div>
+      <div class="measure-pill" style="font-size: 16px;">Measure <svg width="14" height="8" viewBox="0 0 14 8"><line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.5"></line><polygon points="8,1 14,4 8,7" fill="currentColor"></polygon></svg></div>
 
       <!-- CBI -->
       <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:260px; flex-shrink:0;">
         <div class="step-badge">3</div>
-        <p style="font-size:19px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;">Cognitive Bias Index</p>
+        <p style="font-size:19px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;" class="">Cognitive Bias Index</p>
         <table style="width:100%; margin-top:2px;">
-          <thead><tr><th style="font-size:14px;padding:2px 4px;">Choice</th><th style="font-size:14px;padding:2px 4px;text-align:center;">Wt</th><th style="font-size:14px;padding:2px 4px;text-align:right;">Prob</th></tr></thead>
+          <thead><tr><th style="font-size: 16px; padding: 2px 4px;" class="">Choice</th><th style="font-size: 16px; padding: 2px 4px; text-align: center;" class="">Wt</th><th style="font-size: 16px; padding: 2px 4px; text-align: right;" class="">Prob</th></tr></thead>
           <tbody style="font-size:16px;">
-            <tr><td style="padding:2px 4px;">Agree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">4</td><td style="padding:2px 4px;text-align:right;" class="mono">P(A)</td></tr>
-            <tr><td style="padding:2px 4px;">Mostly agree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">3</td><td style="padding:2px 4px;text-align:right;" class="mono">P(B)</td></tr>
-            <tr><td style="padding:2px 4px;">Neutral</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">2</td><td style="padding:2px 4px;text-align:right;" class="mono">P(C)</td></tr>
-            <tr><td style="padding:2px 4px;">Mostly disagree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">1</td><td style="padding:2px 4px;text-align:right;" class="mono">P(D)</td></tr>
-            <tr><td style="padding:2px 4px;">Disagree</td><td style="padding:2px 4px;text-align:center;font-weight:700;color:var(--cobra-darker);">0</td><td style="padding:2px 4px;text-align:right;" class="mono">P(E)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 16px;" class="">Agree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 16px;" class="">4</td><td style="padding: 2px 4px; text-align: right; font-size: 16px;" class="mono">P(A)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 16px;" class="">Mostly agree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 16px;" class="">3</td><td style="padding: 2px 4px; text-align: right; font-size: 16px;" class="mono">P(B)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 16px;" class="">Neutral</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 16px;" class="">2</td><td style="padding: 2px 4px; text-align: right; font-size: 16px;" class="mono">P(C)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 16px;" class="">Mostly disagree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 16px;" class="">1</td><td style="padding: 2px 4px; text-align: right; font-size: 16px;" class="mono">P(D)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 16px;" class="">Disagree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 16px;" class="">0</td><td style="padding: 2px 4px; text-align: right; font-size: 16px;" class="mono">P(E)</td></tr>
           </tbody>
         </table>
       </div>
@@ -425,27 +811,27 @@
     <!-- Loop arrows + label — columns aligned with top row -->
     <div style="display:flex; align-items:center; margin:6px 0;">
       <div style="width:130px; flex-shrink:0; display:flex; justify-content:center;">
-        <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="4" x2="9" y2="24" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"/><polygon points="3,4 9,0 15,4" fill="#6DBFAB"/></svg>
+        <svg width="18" height="24" viewBox="0 0 18 24" class=""><line x1="9" y1="4" x2="9" y2="24" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,4 9,0 15,4" fill="#6DBFAB"></polygon></svg>
       </div>
       <div style="flex:1; display:flex; justify-content:center;">
-        <div class="loop-pill" style="font-size:16px;">&#8635; Loop until CBI matches target</div>
+        <div class="loop-pill" style="font-size:16px;">↻ Loop until CBI matches target</div>
       </div>
       <div style="width:270px; flex-shrink:0; display:flex; justify-content:center;">
-        <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="0" x2="9" y2="20" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"/><polygon points="3,20 9,24 15,20" fill="#6DBFAB"/></svg>
+        <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="0" x2="9" y2="20" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,20 9,24 15,20" fill="#6DBFAB"></polygon></svg>
       </div>
     </div>
 
     <!-- BRE -->
     <div class="card" style="position:relative; padding:10px 16px;">
       <div class="step-badge">4</div>
-      <p style="font-size:19px; font-weight:700; color:var(--cobra-darker); text-align:center; margin-bottom:6px;">Behavioral Regulation Engine</p>
+      <p style="font-size:19px; font-weight:700; color:var(--cobra-darker); text-align:center; margin-bottom:6px;" class="">Behavioral Regulation Engine</p>
       <div class="three-col" style="gap:10px;">
         <div class="bre-card">
-          <h4 style="font-size:16px;">Prompt Engineering</h4>
+          <h4 style="font-size:16px;" class="">Prompt Engineering</h4>
           <p class="bre-desc" style="font-size:16px;"><strong>Input</strong> Space</p>
         </div>
         <div class="bre-card">
-          <h4 style="font-size:16px;">Representation Engineering</h4>
+          <h4 style="font-size:16px;" class="">Representation Engineering</h4>
           <p class="bre-desc" style="font-size:16px;"><strong>Activation</strong> Space</p>
         </div>
         <div class="bre-card">
@@ -457,30 +843,9 @@
   </div>
 </div>
 
-<!-- ============ 8. CBI CONCEPT ============ -->
-<div class="slide" data-slide="8">
-  <h2>Cognitive Bias Index (CBI)</h2>
-  <p>Measures the cognitive bias of a social agent by quantifying its reactions in validated classic social science experiments. Standardized, reproducible score on a <strong>0&ndash;4 scale</strong>.</p>
-
-  <div style="display:flex; align-items:center; gap:14px; margin-top:18px; padding:16px 22px;" class="card-light">
-    <span class="mono" style="font-size:18px; font-weight:700; color:var(--g500);">0</span>
-    <div class="slider-track"><div class="slider-fill" style="width:65%;"></div><div class="slider-thumb" style="left:65%;"></div></div>
-    <span class="mono" style="font-size:18px; font-weight:700; color:var(--g500);">4</span>
-    <span class="mono" style="font-size:22px; font-weight:700; color:var(--cobra-darker); margin-left:10px;">CBI = 2.6</span>
-  </div>
-
-  <div style="text-align:center; margin-top:14px;"><div style="background:var(--cobra-lighter); border:1px solid rgba(109,191,171,.15); border-radius:8px; padding:10px 18px; display:inline-block;">
-    <p class="mono" style="font-size:18px; color:var(--cobra-darker);">CBI = &Sigma; weight<sub>i</sub> &times; P(choice<sub>i</sub>)</p>
-  </div></div>
-
-  <p style="font-size:20px; color:var(--cobra-darker); margin-top:16px; text-align:center; font-style:italic;">
-    Like turning a dial &mdash; researchers can precisely specify how biased an agent should be
-  </p>
-</div>
-
-<!-- ============ 9. THE 4 BIASES ============ -->
-<div class="slide" data-slide="9">
-  <h2>4 Biases &times; 2 Paradigms</h2>
+<!-- ============ 9. CLASSIC SOCIAL EXPERIMENT TESTBED ============ -->
+<div class="slide" data-slide="9" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;">Classic Social Experiment Testbed</h2>
   <div style="position:relative; margin-top:6px;">
     <table>
       <thead><tr><th>Cognitive Bias</th><th>Paradigm A</th><th>Paradigm B</th></tr></thead>
@@ -492,58 +857,82 @@
       </tbody>
     </table>
     <div style="display:flex; align-items:center; gap:8px; margin-top:16px;">
-      <svg width="24" height="14" viewBox="0 0 24 14" style="flex-shrink:0;"><line x1="0" y1="7" x2="16" y2="7" stroke="var(--cobra)" stroke-width="2"/><polygon points="16,3 24,7 16,11" fill="var(--cobra)"/></svg>
+      <svg width="24" height="14" viewBox="0 0 24 14" style="flex-shrink:0;"><line x1="0" y1="7" x2="16" y2="7" stroke="var(--cobra)" stroke-width="2"></line><polygon points="16,3 24,7 16,11" fill="var(--cobra)"></polygon></svg>
       <p style="font-size:22px; color:var(--cobra-darker); font-style:italic;">Open for contribution &amp; collaboration</p>
     </div>
   </div>
 </div>
 
+<!-- ============ 8. CBI CONCEPT ============ -->
+<div class="slide" data-slide="8" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;">Cognitive Bias Index (CBI)</h2>
+  <p>Measures the cognitive bias of a social agent by quantifying its reactions in validated classic social science experiments. Standardized, reproducible score on a 0–4 scale.</p>
+
+  <div style="display:flex; align-items:center; gap:14px; margin-top:18px; padding:16px 22px; width:50%; margin-left:auto; margin-right:auto;">
+    <span class="mono" style="font-size:18px; font-weight:700; color:var(--g500);">0</span>
+    <div class="slider-track" style="position:relative;">
+      <div class="slider-fill" style="width:30%; height:8px; background:linear-gradient(to right,var(--cobra-light),var(--cobra)); border-radius:9999px;"></div>
+      <div style="left:30%; position:absolute; top:50%; transform:translate(-50%,-50%); width:18px; height:18px; background:white; border:3px solid var(--cobra); border-radius:50%; box-shadow:0 2px 5px rgba(0,0,0,.15);"></div>
+    </div>
+    <span class="mono" style="font-size:18px; font-weight:700; color:var(--g500);">4</span>
+    <span class="mono" style="font-size:22px; font-weight:700; color:var(--cobra-darker); margin-left:10px;">CBI = 1.2</span>
+  </div>
+
+  <div style="text-align:center; margin-top:14px;"><div style="padding:10px 18px; display:inline-block;">
+    <p class="mono" style="font-size:26px; color:var(--cobra-darker);">CBI = Σ weight<sub>i</sub> × P(choice<sub>i</sub>)</p>
+  </div></div>
+
+  <p style="font-size:20px; color:var(--cobra-darker); margin-top:16px; text-align:center; font-style:italic;">
+    Like turning a dial — researchers can precisely specify how biased an agent should be
+  </p>
+</div>
+
 <!-- ============ 10. REGULATION ENGINE OVERVIEW ============ -->
-<div class="slide" data-slide="10">
-  <h2>Behavioral Regulation Engine</h2>
-  <p>Three ways to steer agent behavior &mdash; from lightweight to deep, covering different trade-offs</p>
+<div class="slide" data-slide="10" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;">Behavioral Regulation Engine</h2>
+  <p>Cover all intervention spaces</p>
   <div class="three-col" style="margin-top:20px;">
     <div class="bre-card" style="padding:22px;">
-      <h4 style="font-size:24px;">Prompt Engineering</h4>
-      <p style="font-size:22px; color:var(--g600); margin-top:10px; line-height:1.6;">
-        <strong>Change what we say</strong> to the model &mdash; add numerical instructions to the prompt
+      <h4 style="font-size:20px;">Prompt Engineering</h4>
+      <p style="font-size:18px; color:var(--g600); margin-top:10px; line-height:1.6;">
+        <strong>Change what we say</strong><br>Use numerical instruction
       </p>
     </div>
     <div class="bre-card" style="padding:22px;">
-      <h4 style="font-size:24px;">Representation Engineering</h4>
-      <p style="font-size:22px; color:var(--g600); margin-top:10px; line-height:1.6;">
-        <strong>Change how the model thinks</strong> &mdash; steer its internal representations at runtime
+      <h4 style="font-size:20px;">Representation Engineering</h4>
+      <p style="font-size:18px; color:var(--g600); margin-top:10px; line-height:1.6;">
+        <strong>Change how the model "thinks"</strong><br>Steer its internal representations
       </p>
     </div>
     <div class="bre-card" style="padding:22px;">
-      <h4 style="font-size:24px;">Fine-Tuning</h4>
-      <p style="font-size:22px; color:var(--g600); margin-top:10px; line-height:1.6;">
-        <strong>Change the model itself</strong> &mdash; train it to internalize the desired bias level
+      <h4 style="font-size:20px;">Fine-Tuning</h4>
+      <p style="font-size:18px; color:var(--g600); margin-top:10px; line-height:1.6;">
+        <strong>Change the model itself</strong><br>Train it to internalize the desired bias level
       </p>
     </div>
   </div>
 </div>
 
 <!-- ============ 11. METHOD 1: PROMPT ============ -->
-<div class="slide" data-slide="11">
-  <h2><span class="cobra">Input Space</span> &mdash; Prompt Numerical Control</h2>
+<div class="slide" data-slide="11" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;"><span class="cobra">Input Space</span> — Prompt Numerical Control</h2>
   <p style="font-size:26px;">Replace vague descriptions with a direct numerical instruction.</p>
 
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:32px; align-items:center;">
     <div style="background:var(--cobra-lighter); border-radius:12px; padding:28px;">
       <p style="font-size:22px; font-weight:700; color:var(--g400); margin-bottom:10px;">BEFORE</p>
-      <p style="font-size:26px; font-style:italic; color:var(--g500); line-height:1.6;">"You are someone who respects authority"</p>
+      <p style="font-size:20px; font-style:italic; color:var(--g500); line-height:1.6;">"You are someone who respects authority"</p>
     </div>
     <div style="background:var(--cobra-lighter); border:2px solid var(--cobra); border-radius:12px; padding:28px;">
       <p style="font-size:22px; font-weight:700; color:var(--cobra-dark); margin-bottom:10px;">CoBRA</p>
-      <p style="font-size:26px; color:var(--g700); line-height:1.6;">"Your tendency to comply with authority figures is <strong style="color:var(--cobra-dark);">65 out of 100</strong>"</p>
+      <p style="font-size:20px; color:var(--g700); line-height:1.6;">"Your tendency to comply with authority figures is <strong style="color:var(--cobra-dark);">65 out of 100</strong>"</p>
     </div>
   </div>
 </div>
 
 <!-- ============ 12. METHOD 2: REPE ============ -->
-<div class="slide" data-slide="12">
-  <h2><span class="cobra">Activation Space</span> &mdash; Representation Engineering</h2>
+<div class="slide" data-slide="12" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;"><span class="cobra">Activation Space</span> — Representation Engineering</h2>
   <p style="font-size:26px;">Find the "direction" inside the model that corresponds to a bias, then nudge its thinking along that direction.</p>
 
   <!-- Formula with arrow annotations -->
@@ -560,31 +949,31 @@
       <text x="570" y="50" text-anchor="middle" font-size="34" font-weight="700" fill="#4A8E7E">v</text>
       <text x="590" y="60" font-size="18" font-weight="700" fill="#4A8E7E">bias</text>
 
-      <line x1="405" y1="60" x2="405" y2="95" stroke="#9ca3af" stroke-width="1.5"/>
-      <line x1="405" y1="95" x2="250" y2="95" stroke="#9ca3af" stroke-width="1.5"/>
-      <polygon points="250,92 243,95 250,98" fill="#9ca3af"/>
+      <line x1="405" y1="60" x2="405" y2="95" stroke="#9ca3af" stroke-width="1.5"></line>
+      <line x1="405" y1="95" x2="250" y2="95" stroke="#9ca3af" stroke-width="1.5"></line>
+      <polygon points="250,92 243,95 250,98" fill="#9ca3af"></polygon>
       <text x="238" y="100" text-anchor="end" font-size="22" fill="#6b7280">hidden state at layer l</text>
 
-      <line x1="500" y1="62" x2="500" y2="112" stroke="#9ca3af" stroke-width="1.5"/>
-      <polygon points="497,112 500,119 503,112" fill="#9ca3af"/>
+      <line x1="500" y1="62" x2="500" y2="112" stroke="#9ca3af" stroke-width="1.5"></line>
+      <polygon points="497,112 500,119 503,112" fill="#9ca3af"></polygon>
       <text x="500" y="145" text-anchor="middle" font-size="22" fill="#6b7280">control coefficient</text>
 
-      <line x1="570" y1="60" x2="570" y2="95" stroke="#9ca3af" stroke-width="1.5"/>
-      <line x1="570" y1="95" x2="660" y2="95" stroke="#9ca3af" stroke-width="1.5"/>
-      <polygon points="660,92 667,95 660,98" fill="#9ca3af"/>
+      <line x1="570" y1="60" x2="570" y2="95" stroke="#9ca3af" stroke-width="1.5"></line>
+      <line x1="570" y1="95" x2="660" y2="95" stroke="#9ca3af" stroke-width="1.5"></line>
+      <polygon points="660,92 667,95 660,98" fill="#9ca3af"></polygon>
       <text x="672" y="92" text-anchor="start" font-size="22" fill="#6b7280">bias direction from</text>
       <text x="672" y="114" text-anchor="start" font-size="22" fill="#6b7280">contrasting examples</text>
     </svg>
   </div>
 
   <p style="font-size:26px; color:var(--g600); margin-top:8px; text-align:center;">
-    At runtime, add or subtract the bias direction to steer behavior &mdash; like turning a knob.
+    At runtime, add or subtract the bias direction to steer behavior — like turning a knob.
   </p>
 </div>
 
 <!-- ============ 13. METHOD 3: FINETUNING ============ -->
-<div class="slide" data-slide="13">
-  <h2><span class="cobra">Parameter Space</span> &mdash; Fine-Tuning with Task Vectors</h2>
+<div class="slide" data-slide="13" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;"><span class="cobra">Parameter Space</span> — Fine-Tuning with Task Vectors</h2>
   <p style="font-size:26px;">Train the model to permanently internalize a target bias level.</p>
 
   <!-- Formula with arrow annotations -->
@@ -606,128 +995,932 @@
       <text x="645" y="70" font-size="18" font-weight="700" fill="#4A8E7E">unbiased</text>
       <text x="720" y="60" text-anchor="middle" font-size="34" font-weight="700" fill="#4A8E7E">)</text>
 
-      <line x1="310" y1="70" x2="310" y2="100" stroke="#9ca3af" stroke-width="1.5"/>
-      <line x1="310" y1="100" x2="190" y2="100" stroke="#9ca3af" stroke-width="1.5"/>
-      <polygon points="190,97 183,100 190,103" fill="#9ca3af"/>
+      <line x1="310" y1="70" x2="310" y2="100" stroke="#9ca3af" stroke-width="1.5"></line>
+      <line x1="310" y1="100" x2="190" y2="100" stroke="#9ca3af" stroke-width="1.5"></line>
+      <polygon points="190,97 183,100 190,103" fill="#9ca3af"></polygon>
       <text x="178" y="106" text-anchor="end" font-size="22" fill="#6b7280">base model parameter</text>
 
-      <line x1="420" y1="72" x2="420" y2="115" stroke="#9ca3af" stroke-width="1.5"/>
-      <polygon points="417,115 420,122 423,115" fill="#9ca3af"/>
+      <line x1="420" y1="72" x2="420" y2="115" stroke="#9ca3af" stroke-width="1.5"></line>
+      <polygon points="417,115 420,122 423,115" fill="#9ca3af"></polygon>
       <text x="420" y="148" text-anchor="middle" font-size="22" fill="#6b7280">control ratio</text>
 
-      <line x1="590" y1="70" x2="590" y2="100" stroke="#9ca3af" stroke-width="1.5"/>
-      <line x1="590" y1="100" x2="730" y2="100" stroke="#9ca3af" stroke-width="1.5"/>
-      <polygon points="730,97 737,100 730,103" fill="#9ca3af"/>
+      <line x1="590" y1="70" x2="590" y2="100" stroke="#9ca3af" stroke-width="1.5"></line>
+      <line x1="590" y1="100" x2="730" y2="100" stroke="#9ca3af" stroke-width="1.5"></line>
+      <polygon points="730,97 737,100 730,103" fill="#9ca3af"></polygon>
       <text x="742" y="98" text-anchor="start" font-size="22" fill="#6b7280">task vector</text>
       <text x="742" y="120" text-anchor="start" font-size="22" fill="#6b7280">(bias knowledge)</text>
     </svg>
   </div>
 
   <p style="font-size:26px; color:var(--g600); margin-top:8px; text-align:center;">
-    Train one LoRA to be highly biased, another unbiased. Blend at any ratio with &lambda; &mdash; like mixing two paint colors.
+    Train one LoRA to be highly biased, another unbiased. Blend at any ratio with λ — like mixing two paint colors.
   </p>
 </div>
 
-<!-- ============ 18. WALKTHROUGH: SET TARGET & REGULATE ============ -->
-<div class="slide" data-slide="18">
-  <h2>Set desired level, sweep control coefficient</h2>
+<!-- ============ EVALUATION SECTION DIVIDER ============ -->
+<div class="slide slide-section" data-slide="eval-overview" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:46px; margin-bottom:24px; text-align:center;">How well does CoBRA work?</h2>
 
-  <div class="card-light" style="margin-top:14px; padding:18px 24px;">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <span class="mono" style="font-size:18px; font-weight:700; color:var(--g500);">0</span>
-      <div class="slider-track" style="height:10px;">
-        <div class="slider-fill" style="width:80%;background:linear-gradient(to right,var(--cobra-light),var(--cobra),var(--cobra-darker));height:10px;border-radius:9999px;"></div>
-        <div style="position:absolute;top:50%;left:25%;transform:translate(-50%,-50%);width:20px;height:20px;background:white;border:3px solid var(--cobra);border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,.15);"></div>
-        <div style="position:absolute;top:50%;left:80%;transform:translate(-50%,-50%);width:20px;height:20px;background:white;border:3px solid var(--g500);border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,.15);"></div>
+  <div style="display:flex; gap:40px; justify-content:center; margin-top:20px;">
+    <!-- Technical Benchmark -->
+    <div style="flex:0 0 420px; background:white; border-radius:14px; padding:28px 32px; box-shadow:0 2px 12px rgba(0,0,0,.06);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:var(--cobra-light);display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cobra-darker)" stroke-width="2.2" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        </div>
+        <h3 style="font-size:24px; color:var(--cobra-darker); margin:0;">Technical Benchmark</h3>
       </div>
-      <span class="mono" style="font-size:18px; font-weight:700; color:var(--g500);">4</span>
+      <p style="font-size:18px; color:var(--g500); line-height:1.6; margin-bottom:14px;">
+        Evaluated on classic social-science testbeds:
+      </p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:19px; color:var(--g700); display:flex; align-items:center; gap:8px;">
+          <span style="color:var(--cobra); font-size:14px;">&#9654;</span> <strong>Reproducibility</strong>
+        </div>
+        <div style="font-size:19px; color:var(--g700); display:flex; align-items:center; gap:8px;">
+          <span style="color:var(--cobra); font-size:14px;">&#9654;</span> <strong>Controllability</strong>
+        </div>
+        <div style="font-size:19px; color:var(--g700); display:flex; align-items:center; gap:8px;">
+          <span style="color:var(--cobra); font-size:14px;">&#9654;</span> <strong>Generalization</strong>
+        </div>
+      </div>
     </div>
-    <div style="display:flex; justify-content:center; gap:32px; margin-top:12px;">
-      <div style="display:flex; align-items:center; gap:5px;">
-        <div style="width:12px;height:12px;border-radius:50%;border:3px solid var(--cobra);background:white;"></div>
-        <span style="font-size:18px; color:var(--g600);">Target: <strong class="mono" style="color:var(--cobra-dark);">CBI = 1.0</strong></span>
-      </div>
-      <div style="display:flex; align-items:center; gap:5px;">
-        <div style="width:12px;height:12px;border-radius:50%;border:3px solid var(--g500);background:white;"></div>
-        <span style="font-size:18px; color:var(--g600);">Current: <strong class="mono" style="color:var(--g700);">CBI = 3.2</strong></span>
-      </div>
-    </div>
-  </div>
 
-  <div class="flow" style="margin-top:16px;">
-    <div class="flow-box"><div class="fl">Choose Method</div><div class="fv" style="font-size:18px;">RepE Linear</div></div>
-    <svg width="20" height="10" viewBox="0 0 20 10"><line x1="0" y1="5" x2="12" y2="5" stroke="#9ca3af" stroke-width="2"/><polygon points="12,1 20,5 12,9" fill="#9ca3af"/></svg>
-    <div class="flow-box"><div class="fl">Sweep &alpha;</div><div class="fv mono" style="font-size:18px;">&alpha; = 0.1, 0.2, ...</div></div>
-    <svg width="20" height="10" viewBox="0 0 20 10"><line x1="0" y1="5" x2="12" y2="5" stroke="#9ca3af" stroke-width="2"/><polygon points="12,1 20,5 12,9" fill="#9ca3af"/></svg>
-    <div class="flow-box active"><div class="fl">Measure CBI</div><div class="fv" style="font-size:18px;">at each &alpha;</div></div>
-    <svg width="20" height="10" viewBox="0 0 20 10"><line x1="0" y1="5" x2="12" y2="5" stroke="#9ca3af" stroke-width="2"/><polygon points="12,1 20,5 12,9" fill="#9ca3af"/></svg>
-    <div class="flow-box"><div class="fl">Select best &alpha;</div><div class="fv" style="font-size:18px;">CBI &asymp; target</div></div>
+    <!-- Demonstration -->
+    <div style="flex:0 0 420px; background:white; border-radius:14px; padding:28px 32px; box-shadow:0 2px 12px rgba(0,0,0,.06);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:var(--cobra-light);display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cobra-darker)" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg>
+        </div>
+        <h3 style="font-size:24px; color:var(--cobra-darker); margin:0;">Demonstration</h3>
+      </div>
+      <p style="font-size:18px; color:var(--g500); line-height:1.6; margin-bottom:14px;">
+        Validated on Emotional Contagion — free-text generation
+      </p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:19px; color:var(--g700); display:flex; align-items:center; gap:8px;">
+          <span style="color:var(--cobra); font-size:14px;">&#9654;</span> <strong>Open-Ended Scenario</strong>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ============ 19. WALKTHROUGH: RESULT ============ -->
-<div class="slide" data-slide="19">
-  <h2>Before &amp; After</h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:18px;">
-    <div style="padding:20px 24px; border:2px solid var(--g200); border-radius:12px;">
-      <p style="font-size:18px; font-weight:700; color:var(--g500); margin-bottom:10px;">Before CoBRA <span class="mono" style="color:var(--g400); font-size:18px;">CBI = 3.2</span></p>
-      <p style="font-size:22px; color:var(--g700); line-height:1.6;">
-        Agent <strong>defers to authority</strong> &mdash; agrees with the professor's false claim despite clear evidence to the contrary.
+<!-- ============ REPRODUCIBILITY ============ -->
+<div class="slide" data-slide="reproducibility" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span></h2>
+  <p style="font-size:22px; color:var(--g600);">
+    CoBRA-specified agents exhibit consistent behavioral tendencies.
+  </p>
+
+  <div class="three-col" style="margin-top:24px; gap:20px;">
+    <div class="card" style="padding:20px;">
+      <h3 style="font-size:20px; margin-bottom:10px;">Across Models</h3>
+      <p style="font-size:17px; color:var(--g600); line-height:1.55;">
+        Same CBI specification yields consistent tendencies across Llama, Mistral, DeepSeek, and Qwen.
+      </p>
+      <div style="margin-top:12px; text-align:center;">
+        <span class="mono" style="font-size:16px; font-weight:700; color:var(--cobra-darker);">all p &lt; 0.001</span>
+        <p style="font-size:14px; color:var(--g400); margin-top:4px;">Cohen's d = &minus;2.41 vs No Control</p>
+      </div>
+    </div>
+    <div class="card" style="padding:20px;">
+      <h3 style="font-size:20px; margin-bottom:10px;">Across Temperatures</h3>
+      <p style="font-size:17px; color:var(--g600); line-height:1.55;">
+        Behavioral patterns remain stable from deterministic (T=0.1) to random (T=1.0) settings.
+      </p>
+      <div style="margin-top:12px; text-align:center;">
+        <span class="mono" style="font-size:16px; font-weight:700; color:var(--cobra-darker);">45/45 pairs equivalent</span>
+        <p style="font-size:14px; color:var(--g400); margin-top:4px;">Temperature contributes only 0.5-1.2% variance</p>
+      </div>
+    </div>
+    <div class="card" style="padding:20px;">
+      <h3 style="font-size:20px; margin-bottom:10px;">Across Reasoning Modes</h3>
+      <p style="font-size:17px; color:var(--g600); line-height:1.55;">
+        Direct answer and chain-of-thought reasoning produce nearly identical behavior for RepE methods.
+      </p>
+      <div style="margin-top:12px; text-align:center;">
+        <span class="mono" style="font-size:16px; font-weight:700; color:var(--cobra-darker);">all p &lt; 0.001</span>
+        <p style="font-size:14px; color:var(--g400); margin-top:4px;">Control Coefficients transfer across modes</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 20. GENERALIZATION: CROSS-PARADIGM & CROSS-PERSONA ============ -->
+<div class="slide" data-slide="generalization" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;"><span class="cobra">Generalization</span> — Cross-Paradigm &amp; Cross-Persona</h2>
+  <p style="font-size:22px; color:var(--g600);">
+    Control Coefficients calibrated on <strong>Investment/Insurance</strong> paradigm transfer directly to <strong>Asian Disease</strong> paradigm — across 10 diverse personas.
+  </p>
+
+  <div style="display:flex; justify-content:center; margin-top:18px;">
+    <img src="figures/eval_fig/persona_cbi_consistency.png"
+         alt="Cross-paradigm CBI consistency: RepE Linear and RepE Projection"
+         style="max-height:340px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+  </div>
+
+</div>
+
+<!-- ============ 21. DEMONSTRATION: EMOTIONAL CONTAGION ============ -->
+<div class="slide" data-slide="demo" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:38px;"><span class="cobra">Demonstration</span> — Open-Ended Scenario</h2>
+  <p style="font-size:22px; color:var(--g600);">
+    Beyond multiple-choice testbeds: agents generate <strong>free-text posts</strong> in an Emotional Contagion scenario.
+  </p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:16px; align-items:start;">
+    <div style="border:2px solid var(--g200); border-radius:12px; padding:16px; background:white;">
+      <p style="font-size:18px; font-weight:700; color:var(--g500); margin-bottom:8px;">Baseline — Implicit NL Specification</p>
+      <img src="figures/eval_fig/demo_baseline.png"
+           alt="Baseline emotional contagion — curves collapse"
+           style="width:85%; display:block; margin:0 auto; border-radius:6px;">
+      <p style="font-size:19px; color:var(--g500); margin-top:8px; text-align:center;">
+        Curves collapse — no effective separation across bias levels
       </p>
     </div>
-    <div style="padding:20px 24px; border:2px solid var(--cobra); border-radius:12px; background:var(--cobra-lighter);">
-      <p style="font-size:18px; font-weight:700; color:var(--cobra-dark); margin-bottom:10px;">After CoBRA <span class="mono" style="color:var(--cobra-darker); font-size:18px;">CBI = 1.0</span></p>
-      <p style="font-size:22px; color:var(--g700); line-height:1.6;">
-        Agent <strong style="color:var(--cobra-dark);">reasons independently</strong> &mdash; politely disagrees and cites scientific evidence against the claim.
+    <div style="border:2px solid var(--cobra); border-radius:12px; padding:16px; background:var(--cobra-lighter);">
+      <p style="font-size:18px; font-weight:700; color:var(--cobra-dark); margin-bottom:8px;">CoBRA Control</p>
+      <img src="figures/eval_fig/demo_cobra.png"
+           alt="CoBRA emotional contagion — clear dose-response separation"
+           style="width:85%; display:block; margin:0 auto; border-radius:6px;">
+      <p style="font-size:19px; color:var(--cobra-darker); margin-top:8px; text-align:center;">
+        Clear separation — higher CBI &rarr; stronger emotional contagion
       </p>
     </div>
   </div>
-  <p style="font-size:20px; color:var(--cobra-darker); margin-top:18px; font-style:italic; text-align:center;">
-    Same result across Llama, Mistral, DeepSeek, Qwen &mdash; <strong>cross-model reproducible</strong>
-  </p>
+
 </div>
 
 <!-- ============ 25. KEY TAKEAWAYS ============ -->
-<div class="slide" data-slide="25">
-  <h2>From "Looks About Right" to <span class="cobra">Reproducible Science</span></h2>
-  <div style="margin-top:28px; max-width:920px;">
-    <p style="font-size:22px; color:var(--g600); line-height:1.8;">
-      Natural language personas lack stable control structure &mdash; the same description yields inconsistent behavior across models, failing to capture nuanced behavioral differences.
-    </p>
-    <p style="font-size:22px; color:var(--g600); line-height:1.8; margin-top:16px;">
-      <strong style="color:var(--cobra-dark);">CoBRA</strong> repurposes classic social science experiments as reusable calibration environments, enabling agent behavior to be continuously measured and adjusted &mdash; establishing the kind of variable control that experimental science demands.
-    </p>
-    <p style="font-size:22px; color:var(--cobra-darker); line-height:1.8; margin-top:16px; font-weight:700;">
-      When agent behavior can be calibrated and converged, social simulation enters the era of reproducible engineering.
-    </p>
+<div class="slide" data-slide="25" style="" data-rw="1127" data-rh="634">
+  <h2 style="font-size:46px;">Toward <span class="cobra">Reproducible</span> Agent Specification</h2>
+
+  <div style="display:flex; flex-direction:column; gap:24px; margin-top:28px; max-width:880px; margin-left:auto; margin-right:auto;">
+    <div style="display:flex; align-items:flex-start; gap:22px;">
+      <span style="font-size:52px; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:46px; text-align:right;">1</span>
+      <div>
+        <h3 style="font-size:26px; margin-bottom:6px; color:var(--g800);">Generalizable Behavioral Control Layer</h3>
+        <p style="font-size:22px; color:var(--g500); line-height:1.5;">Classic experiments as reusable "gym" environments — extensible beyond bias to richer social phenomena.</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:22px;">
+      <span style="font-size:52px; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:46px; text-align:right;">2</span>
+      <div>
+        <h3 style="font-size:26px; margin-bottom:6px; color:var(--g800);">Agent Specification Compiler</h3>
+        <p style="font-size:22px; color:var(--g500); line-height:1.5;">Natural-language intent → structured, reproducible behavioral specs via CoBRA.</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:22px;">
+      <span style="font-size:52px; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:46px; text-align:right;">3</span>
+      <div>
+        <h3 style="font-size:26px; margin-bottom:6px; color:var(--g800);">Predictable User Interface</h3>
+        <p style="font-size:22px; color:var(--g500); line-height:1.5;">A calibrated control proxy — small index adjustments yield smooth, monotonic behavior shifts, like turning a dial.</p>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- ============ 26. THANK YOU ============ -->
-<div class="slide slide-end" data-slide="26">
-  <h2><img src="co_website/public/snake.svg" alt="" style="width:30px;height:30px;vertical-align:-0.12em;"> Thank You</h2>
-  <p style="margin-top:10px; font-size:22px; color:var(--g500);">Questions?</p>
-  <div class="links">
+<div class="slide slide-end" data-slide="26" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;" data-rw="1127" data-rh="634">
+  <h2><img src="co_website/public/snake.svg" alt="" style="width:30px;height:30px;vertical-align:-0.12em;"> Questions?</h2>
+  <p style="margin-top:28px; font-size:26px; color:var(--g700); font-weight:700;">Xuan Liu · Haoyang Shang · Haojian Jin</p>
+  <p style="margin-top:6px; font-size:24px; color:var(--g500);">UC San Diego</p>
+  <p style="margin-top:10px; font-size:20px; color:var(--g400);">Contact: <a href="mailto:xul049@ucsd.edu" style="color:var(--cobra-darker); text-decoration:none; font-weight:700;">xul049@ucsd.edu</a></p>
+  <div class="links" style="margin-top:24px;">
     <a href="https://arxiv.org/abs/2509.13588">arxiv.org/abs/2509.13588</a>
     <a href="https://github.com/AISmithLab/CoBRA">github.com/AISmithLab/CoBRA</a>
     <a href="https://cobra.clawder.ai">cobra.clawder.ai</a>
   </div>
-  <p style="margin-top:28px; font-size:18px; color:var(--g500);">Xuan Liu &middot; Haoyang Shang &middot; Haojian Jin &middot; UC San Diego</p>
 </div>
 
 </div>
 
-<div class="progress" id="progress"></div>
-<div class="slide-num" id="slideNum"></div>
+<div class="progress" id="progress" style="width: 17.647059%;"></div>
+<div class="slide-num" id="slideNum">3 / 17</div>
 
 <script>
+  /* --- Per-slide canvas ratio + per-slide content zoom --- */
+  const deck=document.querySelector('.deck');
+  const DEFAULT_W=1920, DEFAULT_H=1080;
+  let canvasLocked=true;
+
+  function getCurRatio(){
+    const s=document.querySelector('.slide.active');
+    if(!s) return{w:DEFAULT_W,h:DEFAULT_H};
+    return{w:parseInt(s.dataset.rw)||DEFAULT_W, h:parseInt(s.dataset.rh)||DEFAULT_H};
+  }
+  function getSlideSize(){ return getCurRatio(); }
+
+  function scaleDeck(){
+    const r=getCurRatio();
+    if(!canvasLocked){
+      const w=window.innerWidth, h=window.innerHeight;
+      deck.style.width=w+'px'; deck.style.height=h+'px';
+      deck.style.transform='none';
+      deck.style.marginLeft='0'; deck.style.marginTop='0';
+      const cur=document.querySelector('.slide.active');
+      if(cur){cur.style.width=w+'px';cur.style.height=h+'px';}
+      updateRatioBanner();
+    } else {
+      deck.style.width=r.w+'px'; deck.style.height=r.h+'px';
+      const cur=document.querySelector('.slide.active');
+      if(cur){cur.style.width=r.w+'px';cur.style.height=r.h+'px';}
+      const s=Math.min(window.innerWidth/r.w, window.innerHeight/r.h);
+      deck.style.transform='scale('+s+')';
+      deck.style.marginLeft=((window.innerWidth-r.w*s)/2)+'px';
+      deck.style.marginTop=((window.innerHeight-r.h*s)/2)+'px';
+    }
+  }
+  window.addEventListener('resize',scaleDeck); scaleDeck();
+
+  /* --- Ratio banner --- */
+  const ratioBanner=document.createElement('div');
+  ratioBanner.id='ratio-banner';
+  ratioBanner.style.cssText='position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:99999;background:#0f172a;color:#f8fafc;padding:8px 20px;border-radius:99px;font:600 14px/1 system-ui,sans-serif;display:none;box-shadow:0 4px 20px rgba(0,0,0,.4);gap:12px;align-items:center;';
+  ratioBanner.innerHTML='<span id="ratio-text"></span><button id="ratio-lock" style="background:#22c55e;color:white;border:none;padding:5px 14px;border-radius:6px;font:600 12px system-ui;cursor:pointer;margin-left:12px;">Lock this ratio for this slide</button>';
+  document.body.appendChild(ratioBanner);
+  function updateRatioBanner(){
+    const w=window.innerWidth, h=window.innerHeight, g=gcd(w,h);
+    document.getElementById('ratio-text').textContent=w+'×'+h+' ('+w/g+':'+h/g+') — resize, then lock';
+    ratioBanner.style.display='flex';
+  }
+  function gcd(a,b){return b?gcd(b,a%b):a;}
+  document.getElementById('ratio-lock').addEventListener('click',()=>{
+    // Save ratio to current slide
+    const s=document.querySelector('.slide.active');
+    if(s){s.dataset.rw=window.innerWidth; s.dataset.rh=window.innerHeight;}
+    canvasLocked=true; ratioBanner.style.display='none'; scaleDeck();
+    updateRatioUI();
+  });
+  function toggleLock(){
+    canvasLocked=!canvasLocked;
+    ratioBanner.style.display=canvasLocked?'none':'flex';
+    if(canvasLocked) updateRatioUI();
+    scaleDeck();
+  }
+  function updateRatioUI(){
+    const r=getCurRatio();
+    const rw=document.getElementById('ed-rw'), rh=document.getElementById('ed-rh');
+    if(rw) rw.value=r.w;
+    if(rh) rh.value=r.h;
+  }
+
+  /* Per-slide zoom: scales all content inside the slide while keeping the slide frame fixed */
+  function applySlideZoom(slide){
+    const z=parseFloat(slide.dataset.zoom)||1;
+    // Find or create the zoom wrapper inside the slide
+    let wrapper=slide.querySelector('.slide-zoom-wrap');
+    if(!wrapper){
+      // Wrap all children (except page-num) in a zoom container
+      wrapper=document.createElement('div');
+      wrapper.className='slide-zoom-wrap';
+      wrapper.style.cssText='width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;transform-origin:center center;';
+      while(slide.firstChild){
+        if(slide.firstChild.classList&&slide.firstChild.classList.contains('page-num')){
+          break; // leave page-num outside wrapper
+        }
+        wrapper.appendChild(slide.firstChild);
+      }
+      slide.insertBefore(wrapper,slide.firstChild);
+    }
+    wrapper.style.transform='scale('+z+')';
+  }
+
+  function setSlideZoom(val){
+    const s=slides[current];
+    s.dataset.zoom=val;
+    applySlideZoom(s);
+    const zi=document.getElementById('ed-zoom'); if(zi) zi.value=val;
+    const zv=document.getElementById('ed-zoom-val'); if(zv) zv.textContent=Math.round(val*100)+'%';
+  }
+
+  function getSlideSize(){ return{w:DESIGN_W,h:DESIGN_H}; }
+
+  /* --- Slide navigation --- */
   const slides=document.querySelectorAll('.slide'),total=slides.length;let current=0;
   slides.forEach((s,i)=>{const pn=document.createElement('span');pn.className='page-num';pn.textContent=(i+1)+' / '+total;s.appendChild(pn);});
-  function showSlide(n){slides[current].classList.remove('active');current=Math.max(0,Math.min(n,total-1));slides[current].classList.add('active');document.getElementById('progress').style.width=((current+1)/total*100)+'%';document.getElementById('slideNum').textContent=(current+1)+' / '+total;}
-  document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();showSlide(current+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();showSlide(current-1);}else if(e.key==='Home'){showSlide(0);}else if(e.key==='End'){showSlide(total-1);}else if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.();}});
+  function showSlide(n){
+    slides[current].classList.remove('active');
+    current=Math.max(0,Math.min(n,total-1));
+    slides[current].classList.add('active');
+    document.getElementById('progress').style.width=((current+1)/total*100)+'%';
+    document.getElementById('slideNum').textContent=(current+1)+' / '+total;
+    // Scale deck to this slide's ratio
+    scaleDeck();
+    // Apply per-slide zoom
+    applySlideZoom(slides[current]);
+    // Update toolbar: zoom
+    const z=parseFloat(slides[current].dataset.zoom)||1;
+    const zi=document.getElementById('ed-zoom'); if(zi) zi.value=z;
+    const zv=document.getElementById('ed-zoom-val'); if(zv) zv.textContent=Math.round(z*100)+'%';
+    // Update toolbar: ratio
+    updateRatioUI();
+    const sn=document.getElementById('ed-slide-num'); if(sn) sn.textContent=current+1;
+    if(selectedEl) deselectEl();
+  }
+  /* ====== VISUAL EDITOR STATE (declared early so nav handlers can see it) ====== */
+  let editMode=false, selectedEl=null, isDragging=false, dragOX=0, dragOY=0;
+  let isResizing=false, resizeStartX=0, resizeStartY=0, resizeStartW=0, resizeStartH=0;
+
+  document.addEventListener('keydown',(e)=>{if(editMode)return;if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();showSlide(current+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();showSlide(current-1);}else if(e.key==='Home'){showSlide(0);}else if(e.key==='End'){showSlide(total-1);}else if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.();}});
   let tx=0;document.addEventListener('touchstart',(e)=>{tx=e.touches[0].clientX;});document.addEventListener('touchend',(e)=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>50){d>0?showSlide(current+1):showSlide(current-1);}});
-  document.addEventListener('click',(e)=>{if(e.target.tagName!=='VIDEO'&&e.target.tagName!=='A'){showSlide(current+1);}});
+  document.addEventListener('click',(e)=>{if(!editMode && e.target.tagName!=='VIDEO'&&e.target.tagName!=='A'&&!e.target.closest('.cbi-auto-track')){showSlide(current+1);}});
   showSlide(0);
-</script>
-</body>
-</html>
+
+  /* --- Undo system (Cmd+Z / Ctrl+Z) --- */
+  const undoStack=[], UNDO_MAX=80;
+  function pushUndo(el,desc){
+    undoStack.push({el,attrs:el.getAttribute('style')||'',text:el.innerHTML,desc});
+    if(undoStack.length>UNDO_MAX) undoStack.shift();
+    updateUndoCount();
+  }
+  function doUndo(){
+    if(!undoStack.length)return;
+    const u=undoStack.pop();
+    u.el.setAttribute('style',u.attrs);
+    u.el.innerHTML=u.text;
+    updateUndoCount();
+    if(selectedEl===u.el) selectEl(u.el);
+  }
+  function updateUndoCount(){
+    const c=document.getElementById('ed-undo-count');
+    if(c) c.textContent=undoStack.length?undoStack.length+'':'—';
+  }
+
+  /* --- Grid & Snap settings --- */
+  let gridOn=false, gridSize=20, snapMag=true, snapThreshold=8;
+
+  function snapToGrid(v){ return gridOn ? Math.round(v/gridSize)*gridSize : v; }
+
+  /* --- Magnetic snap: find nearest edges of siblings --- */
+  function getSiblingEdges(el){
+    const slide=el.closest('.slide'); if(!slide)return{xs:[],ys:[]};
+    const xs=[0,DESIGN_W/2,DESIGN_W], ys=[0,DESIGN_H/2,DESIGN_H]; // slide edges + center
+    slide.querySelectorAll('*').forEach(sib=>{
+      if(sib===el||sib.contains(el)||el.contains(sib))return;
+      const r=sib.getBoundingClientRect(), sc=Math.min(window.innerWidth/DESIGN_W,window.innerHeight/DESIGN_H);
+      const dl=deck.getBoundingClientRect();
+      const l=(r.left-dl.left)/sc, t=(r.top-dl.top)/sc, ri=(r.right-dl.left)/sc, b=(r.bottom-dl.top)/sc;
+      xs.push(l,ri,(l+ri)/2); ys.push(t,b,(t+b)/2);
+    });
+    return{xs,ys};
+  }
+  function magnetSnap(el,x,y){
+    if(!snapMag)return{x,y,guides:[]};
+    const edges=getSiblingEdges(el);
+    const r=el.getBoundingClientRect(), sc=Math.min(window.innerWidth/DESIGN_W,window.innerHeight/DESIGN_H);
+    const dl=deck.getBoundingClientRect();
+    const elL=(r.left-dl.left)/sc, elT=(r.top-dl.top)/sc, elW=r.width/sc, elH=r.height/sc;
+    // Current element edges at proposed position
+    const offX=x-(parseInt(el.style.left)||0), offY=y-(parseInt(el.style.top)||0);
+    const myEdgesX=[elL+offX-elL, elL+offX-elL+elW/2, elL+offX-elL+elW];
+    const myEdgesY=[elT+offY-elT, elT+offY-elT+elH/2, elT+offY-elT+elH];
+    // Actually we need absolute positions
+    const cx=elL+(x-(parseInt(el.style.left)||0)-(elL));
+    let snapX=x, snapY=y, guides=[];
+    // Check X
+    const myXs=[elL,elL+elW/2,elL+elW];
+    for(const mx of myXs){
+      for(const ex of edges.xs){
+        if(Math.abs(mx-ex)<snapThreshold){
+          snapX=x+(ex-mx);
+          guides.push({type:'v',pos:ex});
+          break;
+        }
+      }
+    }
+    const myYs=[elT,elT+elH/2,elT+elH];
+    for(const my of myYs){
+      for(const ey of edges.ys){
+        if(Math.abs(my-ey)<snapThreshold){
+          snapY=y+(ey-my);
+          guides.push({type:'h',pos:ey});
+          break;
+        }
+      }
+    }
+    return{x:snapX,y:snapY,guides};
+  }
+
+  /* --- Guide lines canvas --- */
+  const guideCanvas=document.createElement('canvas');
+  guideCanvas.id='guide-canvas';
+  guideCanvas.style.cssText='position:absolute;top:0;left:0;pointer-events:none;z-index:9998;display:none;';
+  function drawGuides(guides){
+    if(!guides.length){guideCanvas.style.display='none';return;}
+    const sc=Math.min(window.innerWidth/DESIGN_W,window.innerHeight/DESIGN_H);
+    guideCanvas.width=DESIGN_W; guideCanvas.height=DESIGN_H;
+    guideCanvas.style.display='block';
+    guideCanvas.style.width=DESIGN_W+'px'; guideCanvas.style.height=DESIGN_H+'px';
+    const ctx=guideCanvas.getContext('2d');
+    ctx.clearRect(0,0,DESIGN_W,DESIGN_H);
+    ctx.strokeStyle='#f43f5e'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+    guides.forEach(g=>{
+      ctx.beginPath();
+      if(g.type==='v'){ctx.moveTo(g.pos,0);ctx.lineTo(g.pos,DESIGN_H);}
+      else{ctx.moveTo(0,g.pos);ctx.lineTo(DESIGN_W,g.pos);}
+      ctx.stroke();
+    });
+  }
+
+  // Editor UI
+  const editorCSS=document.createElement('style');
+  editorCSS.textContent=`
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  `;
+  document.head.appendChild(editorCSS);
+
+  // Banner
+  const banner=document.createElement('div'); banner.id='edit-banner';
+  banner.innerHTML='EDIT MODE — click to select · drag to move · Cmd+Z undo · E to exit';
+  document.body.appendChild(banner);
+
+  // Toolbar
+  const toolbar=document.createElement('div'); toolbar.id='edit-toolbar';
+  toolbar.innerHTML=`
+    <div id="ed-drag-handle" style="font-weight:700;font-size:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;cursor:grab;user-select:none;">
+      <span>⠿ Slide <span id="ed-slide-num">1</span> Editor</span>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <button onclick="doUndo()" style="background:#334155;color:#f8fafc;" title="Undo (Cmd+Z)">↩ <span id="ed-undo-count">—</span></button>
+        <button onclick="deselectEl()" style="background:#334155;color:#94a3b8;">✕</button>
+      </div>
+    </div>
+
+    <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #334155;">
+      <label>Slide Content Zoom — <span id="ed-zoom-val">100%</span></label>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <input type="range" id="ed-zoom" min="0.5" max="2" step="0.05" value="1" oninput="setSlideZoom(+this.value)" style="flex:1;accent-color:#3b82f6;">
+        <button onclick="setSlideZoom(1)" style="background:#334155;color:#94a3b8;font-size:10px;white-space:nowrap;">Reset</button>
+      </div>
+      <div class="ed-btn-row" style="margin-top:4px;">
+        <button onclick="applyZoomToAll()" style="background:#1e40af;color:white;font-size:10px;">Apply zoom to all slides</button>
+      </div>
+    </div>
+
+    <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #334155;">
+      <label>This Slide Ratio</label>
+      <div class="edit-row">
+        <div><label>W</label><input type="number" id="ed-rw" min="800" max="3840" value="1920" oninput="setSlideRatio(+this.value,null)"></div>
+        <div><label>H</label><input type="number" id="ed-rh" min="400" max="2160" value="1080" oninput="setSlideRatio(null,+this.value)"></div>
+        <div style="flex:0 0 auto;">
+          <label>Preset</label>
+          <select id="ed-rpreset" onchange="applyRatioPreset(this.value)" style="padding:4px;border:1px solid #334155;border-radius:6px;background:#0f172a;color:white;font-size:11px;margin-top:2px;">
+            <option value="">Custom</option>
+            <option value="1920,1080">16:9</option>
+            <option value="1920,1200">16:10</option>
+            <option value="1600,1200">4:3</option>
+            <option value="2560,1080">Ultra-wide</option>
+          </select>
+        </div>
+      </div>
+      <div class="ed-btn-row" style="margin-top:4px;">
+        <button onclick="applyRatioToAll()" style="background:#1e40af;color:white;font-size:10px;">Apply to all slides</button>
+      </div>
+    </div>
+
+    <label>Text Content</label>
+    <input type="text" id="ed-text" placeholder="Select an element..." oninput="recordAndApply('text',this.value)">
+    <div class="edit-row" style="margin-top:8px;">
+      <div><label>Font Size</label><input type="number" id="ed-fs" min="8" max="200" oninput="recordAndApply('fs',this.value)"></div>
+      <div><label>Font Weight</label>
+        <select id="ed-fw" onchange="recordAndApply('fw',this.value)" style="width:100%;padding:5px;border:1px solid #334155;border-radius:6px;background:#0f172a;color:white;font-size:13px;margin-top:2px;">
+          <option value="300">Light</option><option value="400">Normal</option><option value="700">Bold</option>
+        </select>
+      </div>
+    </div>
+    <div class="edit-row">
+      <div><label>Text Color</label><input type="color" id="ed-color" oninput="recordAndApply('color',this.value)"></div>
+      <div><label>BG Color</label><input type="color" id="ed-bg" oninput="recordAndApply('bg',this.value)"></div>
+    </div>
+    <div class="edit-row">
+      <div><label>Width (px)</label><input type="number" id="ed-w" min="10" oninput="recordAndApply('w',this.value)"></div>
+      <div><label>Height (px)</label><input type="number" id="ed-h" min="10" oninput="recordAndApply('h',this.value)"></div>
+    </div>
+    <div class="edit-row">
+      <div><label>Padding (px)</label><input type="number" id="ed-pad" min="0" oninput="recordAndApply('pad',this.value)"></div>
+      <div><label>Border Radius</label><input type="number" id="ed-br" min="0" oninput="recordAndApply('br',this.value)"></div>
+    </div>
+
+    <div class="ed-section">
+      <label>Align Selected Element</label>
+      <div class="ed-btn-row">
+        <button onclick="alignEl('left')" title="Align Left">⇤ L</button>
+        <button onclick="alignEl('centerH')" title="Center Horizontally">⊶ CH</button>
+        <button onclick="alignEl('right')" title="Align Right">⇥ R</button>
+        <button onclick="alignEl('top')" title="Align Top">⤒ T</button>
+        <button onclick="alignEl('centerV')" title="Center Vertically">⊷ CV</button>
+        <button onclick="alignEl('bottom')" title="Align Bottom">⤓ B</button>
+      </div>
+    </div>
+
+    <div class="ed-section">
+      <label>Grid & Snap</label>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <label class="ed-toggle" style="margin:0;"><input type="checkbox" id="ed-grid-toggle" onchange="toggleGrid(this.checked)"> Grid</label>
+        <label class="ed-toggle" style="margin:0;"><input type="checkbox" id="ed-snap-toggle" checked onchange="snapMag=this.checked"> Magnet</label>
+      </div>
+      <div class="edit-row" style="margin-top:6px;">
+        <div><label>Grid Size</label><input type="number" id="ed-grid-size" value="20" min="5" max="100" oninput="gridSize=+this.value;updateGridOverlay()"></div>
+        <div><label>Snap Dist</label><input type="number" id="ed-snap-dist" value="8" min="2" max="40" oninput="snapThreshold=+this.value"></div>
+      </div>
+    </div>
+
+    <div class="ed-section" style="display:flex;gap:6px;">
+      <button onclick="nudge(-1,0)" style="background:#334155;color:white;">←</button>
+      <button onclick="nudge(1,0)" style="background:#334155;color:white;">→</button>
+      <button onclick="nudge(0,-1)" style="background:#334155;color:white;">↑</button>
+      <button onclick="nudge(0,1)" style="background:#334155;color:white;">↓</button>
+      <span style="color:#64748b;font-size:11px;line-height:28px;margin-left:4px;">Nudge ${gridOn?'grid':'5px'}</span>
+    </div>
+
+    <div class="ed-section">
+      <button id="ed-save" onclick="saveEdits()" style="background:#22c55e;color:white;width:100%;padding:8px;">💾 Save HTML File</button>
+      <p style="color:#64748b;font-size:10px;margin-top:4px;text-align:center;">Downloads updated presentation.html</p>
+    </div>
+  `;
+  document.body.appendChild(toolbar);
+
+  // Grid overlay (inside deck so it scales with slides)
+  const gridOverlay=document.createElement('div'); gridOverlay.className='edit-grid-overlay';
+  deck.appendChild(gridOverlay); deck.appendChild(guideCanvas);
+  function updateGridOverlay(){
+    if(!gridOn){gridOverlay.style.display='none';return;}
+    gridOverlay.style.display='block';
+    const g=gridSize;
+    gridOverlay.style.backgroundImage=`linear-gradient(to right,rgba(59,130,246,.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(59,130,246,.12) 1px,transparent 1px)`;
+    gridOverlay.style.backgroundSize=g+'px '+g+'px';
+  }
+  function toggleGrid(on){gridOn=on;updateGridOverlay();}
+
+  // Resize handle
+  const resizeHandle=document.createElement('div'); resizeHandle.className='edit-resize-handle'; resizeHandle.style.display='none';
+  document.body.appendChild(resizeHandle);
+
+  function toggleEdit(){
+    editMode=!editMode;
+    document.body.classList.toggle('edit-active',editMode);
+    banner.classList.toggle('visible',editMode);
+    toolbar.classList.toggle('visible',editMode);
+    if(!editMode){deselectEl();gridOverlay.style.display='none';guideCanvas.style.display='none';}
+    else if(gridOn) updateGridOverlay();
+  }
+
+  /* --- Multi-select: Shift+click adds to selection --- */
+  const multiSel=new Set();
+
+  function selectEl(el,addToMulti){
+    if(addToMulti){
+      // Toggle in multi-selection
+      if(multiSel.has(el)){multiSel.delete(el);el.classList.remove('edit-selected');}
+      else{multiSel.add(el);el.classList.add('edit-selected');}
+      // Primary = last added
+      if(multiSel.size) selectedEl=[...multiSel].pop(); else selectedEl=null;
+    } else {
+      // Single select: clear others
+      multiSel.forEach(e=>e.classList.remove('edit-selected'));
+      multiSel.clear();
+      selectedEl=el; el.classList.add('edit-selected');
+      multiSel.add(el);
+    }
+    if(selectedEl) updateToolbarForEl(selectedEl);
+    positionResizeHandle();
+  }
+
+  function updateToolbarForEl(el){
+    const cs=getComputedStyle(el);
+    document.getElementById('ed-text').value=el.innerText.substring(0,200);
+    document.getElementById('ed-fs').value=parseInt(cs.fontSize)||'';
+    document.getElementById('ed-fw').value=cs.fontWeight>=600?'700':cs.fontWeight<=350?'300':'400';
+    document.getElementById('ed-color').value=rgbToHex(cs.color);
+    document.getElementById('ed-bg').value=rgbToHex(cs.backgroundColor);
+    document.getElementById('ed-w').value=Math.round(el.offsetWidth);
+    document.getElementById('ed-h').value=Math.round(el.offsetHeight);
+    document.getElementById('ed-pad').value=parseInt(cs.padding)||0;
+    document.getElementById('ed-br').value=parseInt(cs.borderRadius)||0;
+  }
+
+  function deselectEl(){
+    multiSel.forEach(e=>e.classList.remove('edit-selected'));
+    multiSel.clear(); selectedEl=null;
+    resizeHandle.style.display='none'; drawGuides([]);
+  }
+
+  function positionResizeHandle(){
+    if(!selectedEl){resizeHandle.style.display='none';return;}
+    const r=selectedEl.getBoundingClientRect();
+    resizeHandle.style.display='block';
+    resizeHandle.style.left=(r.right-5)+'px'; resizeHandle.style.top=(r.bottom-5)+'px';
+  }
+
+  /* --- Apply with undo recording — applies to ALL selected elements --- */
+  let lastRecordTime=0;
+  function applyToEl(el,prop,v){
+    switch(prop){
+      case'text': if(el.children.length===0)el.textContent=v;else el.childNodes[0].textContent=v; break;
+      case'fs': el.style.fontSize=v+'px'; break;
+      case'fw': el.style.fontWeight=v; break;
+      case'color': el.style.color=v; break;
+      case'bg': el.style.backgroundColor=v; break;
+      case'w': el.style.width=v+'px'; break;
+      case'h': el.style.height=v+'px'; break;
+      case'pad': el.style.padding=v+'px'; break;
+      case'br': el.style.borderRadius=v+'px'; break;
+    }
+  }
+  function recordAndApply(prop,v){
+    if(!multiSel.size)return;
+    const now=Date.now();
+    if(now-lastRecordTime>500){
+      multiSel.forEach(el=>pushUndo(el,'change '+prop));
+    }
+    lastRecordTime=now;
+    if(prop==='text'){
+      if(selectedEl) applyToEl(selectedEl,prop,v);
+    } else {
+      multiSel.forEach(el=>applyToEl(el,prop,v));
+    }
+    positionResizeHandle();
+  }
+
+  /* --- Alignment — applies to all selected --- */
+  function alignEl(dir){
+    if(!multiSel.size)return;
+    multiSel.forEach(el=>{
+      pushUndo(el,'align '+dir);
+      const slide=el.closest('.slide'); if(!slide)return;
+      const sr=slide.getBoundingClientRect(), er=el.getBoundingClientRect();
+      const sc=Math.min(window.innerWidth/getSlideSize(slides[current]).w, window.innerHeight/getSlideSize(slides[current]).h);
+      if(!el.style.position||el.style.position==='static') el.style.position='relative';
+      const curL=parseInt(el.style.left)||0, curT=parseInt(el.style.top)||0;
+      switch(dir){
+        case'left': el.style.left=curL+((sr.left+64*sc)-er.left)/sc+'px'; break;
+        case'right': el.style.left=curL+((sr.right-64*sc)-er.right)/sc+'px'; break;
+        case'centerH': el.style.left=curL+((sr.left+sr.width/2)-(er.left+er.width/2))/sc+'px'; break;
+        case'top': el.style.top=curT+((sr.top+48*sc)-er.top)/sc+'px'; break;
+        case'bottom': el.style.top=curT+((sr.bottom-48*sc)-er.bottom)/sc+'px'; break;
+        case'centerV': el.style.top=curT+((sr.top+sr.height/2)-(er.top+er.height/2))/sc+'px'; break;
+      }
+    });
+    positionResizeHandle();
+  }
+
+  function nudge(dx,dy){
+    if(!multiSel.size)return;
+    const step=gridOn?gridSize:5;
+    multiSel.forEach(el=>{
+      pushUndo(el,'nudge');
+      if(!el.style.position||el.style.position==='static') el.style.position='relative';
+      el.style.left=(parseInt(el.style.left)||0)+dx*step+'px';
+      el.style.top=(parseInt(el.style.top)||0)+dy*step+'px';
+    });
+    positionResizeHandle();
+  }
+
+  function rgbToHex(rgb){
+    if(!rgb||rgb==='rgba(0, 0, 0, 0)'||rgb==='transparent') return '#ffffff';
+    const m=rgb.match(/\d+/g); if(!m)return'#000000';
+    return '#'+m.slice(0,3).map(x=>(+x).toString(16).padStart(2,'0')).join('');
+  }
+
+  // Click handler: first click = select, drag only if already selected
+  let wasAlreadySelected=false;
+
+  document.addEventListener('mousedown',(e)=>{
+    if(!editMode)return;
+    if(e.target===resizeHandle){
+      isResizing=true; resizeStartX=e.clientX; resizeStartY=e.clientY;
+      if(selectedEl) pushUndo(selectedEl,'resize');
+      resizeStartW=selectedEl.offsetWidth; resizeStartH=selectedEl.offsetHeight;
+      e.preventDefault(); e.stopPropagation(); return;
+    }
+    if(e.target.closest('#edit-toolbar')||e.target.closest('#edit-banner')||e.target.closest('#ratio-banner'))return;
+    e.preventDefault(); e.stopPropagation();
+    const el=e.target.closest('p,h1,h2,h3,h4,span,div:not(.slide):not(.deck),li,td,th,img,video,svg,a,strong,em,line,polygon,rect,circle,text,path,table,label,section,figure');
+    if(el){
+      wasAlreadySelected=multiSel.has(el);
+      selectEl(el, e.shiftKey);
+      // Only allow drag if element was already selected (prevents accidental drag on first click)
+      if(wasAlreadySelected && !e.shiftKey){
+        multiSel.forEach(me=>pushUndo(me,'move'));
+        isDragging=true;
+        const sc=Math.min(window.innerWidth/getSlideSize(slides[current]).w, window.innerHeight/getSlideSize(slides[current]).h);
+        dragOX=e.clientX/sc-(parseInt(selectedEl.style.left)||0);
+        dragOY=e.clientY/sc-(parseInt(selectedEl.style.top)||0);
+        // Store offsets for all multi-selected elements
+        multiSel.forEach(me=>{
+          me._dragOffX=(parseInt(me.style.left)||0)-(parseInt(selectedEl.style.left)||0);
+          me._dragOffY=(parseInt(me.style.top)||0)-(parseInt(selectedEl.style.top)||0);
+        });
+        selectedEl.classList.add('edit-dragging');
+      }
+    } else {
+      // Click on empty area: deselect all
+      deselectEl();
+    }
+  },true);
+
+  document.addEventListener('mousemove',(e)=>{
+    const sz=getSlideSize(slides[current]);
+    if(isResizing&&selectedEl){
+      const sc=Math.min(window.innerWidth/sz.w, window.innerHeight/sz.h);
+      let dw=(e.clientX-resizeStartX)/sc, dh=(e.clientY-resizeStartY)/sc;
+      let nw=Math.max(20,resizeStartW+dw), nh=Math.max(20,resizeStartH+dh);
+      if(gridOn){nw=snapToGrid(nw);nh=snapToGrid(nh);}
+      selectedEl.style.width=nw+'px'; selectedEl.style.height=nh+'px';
+      document.getElementById('ed-w').value=Math.round(nw);
+      document.getElementById('ed-h').value=Math.round(nh);
+      positionResizeHandle(); e.preventDefault();
+    }
+    if(isDragging&&selectedEl){
+      const sc=Math.min(window.innerWidth/sz.w, window.innerHeight/sz.h);
+      if(!selectedEl.style.position||selectedEl.style.position==='static') selectedEl.style.position='relative';
+      let nx=Math.round(e.clientX/sc-dragOX), ny=Math.round(e.clientY/sc-dragOY);
+      if(gridOn){nx=snapToGrid(nx);ny=snapToGrid(ny);}
+      const snapped=magnetSnap(selectedEl,nx,ny);
+      // Move primary element
+      selectedEl.style.left=snapped.x+'px'; selectedEl.style.top=snapped.y+'px';
+      // Move all multi-selected elements together
+      multiSel.forEach(me=>{
+        if(me===selectedEl)return;
+        if(!me.style.position||me.style.position==='static') me.style.position='relative';
+        me.style.left=(snapped.x+(me._dragOffX||0))+'px';
+        me.style.top=(snapped.y+(me._dragOffY||0))+'px';
+      });
+      drawGuides(snapped.guides);
+      positionResizeHandle(); e.preventDefault();
+    }
+  });
+
+  document.addEventListener('mouseup',(e)=>{
+    if(isDragging&&selectedEl) selectedEl.classList.remove('edit-dragging');
+    isDragging=false; isResizing=false;
+    drawGuides([]);
+  });
+
+  // Key bindings
+  document.addEventListener('keydown',(e)=>{
+    if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA'){
+      // Allow Cmd+Z even in inputs
+      if((e.metaKey||e.ctrlKey)&&e.key==='z'){e.preventDefault();doUndo();}
+      return;
+    }
+    if(e.key==='e'||e.key==='E'){e.preventDefault();e.stopPropagation();toggleEdit();}
+    if(e.key==='u'||e.key==='U'){e.preventDefault();e.stopPropagation();toggleLock();}
+    if((e.metaKey||e.ctrlKey)&&e.key==='z'){e.preventDefault();doUndo();}
+    if(editMode&&e.key==='Escape') deselectEl();
+    if(editMode&&selectedEl&&e.key==='Delete'){pushUndo(selectedEl,'delete');selectedEl.style.display='none';deselectEl();}
+    if(editMode&&e.key==='g'){e.preventDefault();gridOn=!gridOn;document.getElementById('ed-grid-toggle').checked=gridOn;updateGridOverlay();}
+    if(editMode&&e.key==='m'){e.preventDefault();snapMag=!snapMag;document.getElementById('ed-snap-toggle').checked=snapMag;}
+  },true);
+
+  /* --- Draggable toolbar panel --- */
+  (function(){
+    const handle=document.getElementById('ed-drag-handle');
+    let dx=0,dy=0,mx=0,my=0,dragging=false;
+    handle.addEventListener('mousedown',(e)=>{
+      dragging=true; mx=e.clientX; my=e.clientY;
+      handle.style.cursor='grabbing';
+      e.preventDefault(); e.stopPropagation();
+    });
+    document.addEventListener('mousemove',(e)=>{
+      if(!dragging)return;
+      dx=mx-e.clientX; dy=my-e.clientY; mx=e.clientX; my=e.clientY;
+      toolbar.style.top=(toolbar.offsetTop-dy)+'px';
+      toolbar.style.right='auto';
+      toolbar.style.left=(toolbar.offsetLeft-dx)+'px';
+    });
+    document.addEventListener('mouseup',()=>{dragging=false;handle.style.cursor='grab';});
+  })();
+
+  /* --- Per-slide zoom helpers --- */
+  function applyZoomToAll(){
+    const z=parseFloat(slides[current].dataset.zoom)||1;
+    slides.forEach(sl=>{sl.dataset.zoom=z; applySlideZoom(sl);});
+  }
+  function setSlideRatio(w,h){
+    const s=slides[current];
+    if(w) s.dataset.rw=w;
+    if(h) s.dataset.rh=h;
+    scaleDeck();
+    updateRatioUI();
+  }
+  function applyRatioPreset(v){
+    if(!v)return;
+    const[w,h]=v.split(',').map(Number);
+    document.getElementById('ed-rw').value=w;
+    document.getElementById('ed-rh').value=h;
+    setSlideRatio(w,h);
+  }
+  function applyRatioToAll(){
+    const r=getCurRatio();
+    slides.forEach(sl=>{sl.dataset.rw=r.w; sl.dataset.rh=r.h;});
+  }
+
+  /* --- Save system: Cmd+S saves in place --- */
+  let fileHandle=null; // remembers file for subsequent saves
+
+  function getCleanHTML(){
+    const wasEdit=editMode;
+    if(selectedEl) selectedEl.classList.remove('edit-selected');
+    // Remove multi-select outlines
+    multiSel.forEach(el=>el.classList.remove('edit-selected'));
+    const edEls=[toolbar,banner,ratioBanner,resizeHandle,gridOverlay,guideCanvas];
+    edEls.forEach(el=>el.remove());
+    document.querySelectorAll('.page-num').forEach(pn=>pn.remove());
+    // Remove slide-zoom-wrap (unwrap children back) so saved HTML is clean
+    document.querySelectorAll('.slide-zoom-wrap').forEach(w=>{
+      const slide=w.parentElement;
+      while(w.firstChild) slide.insertBefore(w.firstChild,w);
+      w.remove();
+    });
+    document.body.classList.remove('edit-active');
+    // Clean deck inline style (recalculated on load), keep data attributes
+    const deckStyle=deck.getAttribute('style');
+    deck.removeAttribute('style');
+    // Clean slide inline width/height (recalculated on load)
+    const slideStyles=[];
+    slides.forEach(s=>{slideStyles.push(s.style.width+','+s.style.height);s.style.width='';s.style.height='';});
+    // Remove .active class (showSlide sets it on load)
+    slides.forEach(s=>s.classList.remove('active'));
+    const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    // Restore everything
+    if(deckStyle) deck.setAttribute('style',deckStyle);
+    slides.forEach((s,i)=>{const[w,h]=slideStyles[i].split(',');s.style.width=w;s.style.height=h;});
+    slides[current].classList.add('active');
+    document.body.appendChild(toolbar); document.body.appendChild(banner);
+    document.body.appendChild(ratioBanner); document.body.appendChild(resizeHandle);
+    deck.appendChild(gridOverlay); deck.appendChild(guideCanvas);
+    slides.forEach((s,i)=>{const pn=document.createElement('span');pn.className='page-num';pn.textContent=(i+1)+' / '+total;s.appendChild(pn);applySlideZoom(s);});
+    if(wasEdit) document.body.classList.add('edit-active');
+    if(selectedEl) selectedEl.classList.add('edit-selected');
+    multiSel.forEach(el=>el.classList.add('edit-selected'));
+    return html;
+  }
+
+  async function saveEdits(){
+    const html=getCleanHTML();
+    // Try File System Access API (save in place)
+    if(window.showSaveFilePicker){
+      try{
+        if(!fileHandle){
+          fileHandle=await window.showSaveFilePicker({
+            suggestedName:'presentation.html',
+            types:[{description:'HTML',accept:{'text/html':['.html']}}]
+          });
+        }
+        const w=await fileHandle.createWritable();
+        await w.write(html); await w.close();
+        showSaveToast('Saved to '+fileHandle.name);
+        return;
+      }catch(e){
+        if(e.name==='AbortError')return; // user cancelled
+        console.warn('File System API failed, falling back to download',e);
+      }
+    }
+    // Fallback: download
+    const blob=new Blob([html],{type:'text/html'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='presentation.html'; a.click(); URL.revokeObjectURL(a.href);
+    showSaveToast('Downloaded presentation.html');
+  }
+
+  // Save toast notification
+  const saveToast=document.createElement('div');
+  saveToast.style.cssText='position:fixed;bottom:60px;left:50%;transform:translateX(-50%);z-index:999999;background:#22c55e;color:white;padding:8px 24px;border-radius:99px;font:600 14px/1 system-ui,sans-serif;box-shadow:0 4px 15px rgba(34,197,94,.4);opacity:0;transition:opacity .3s;pointer-events:none;';
+  document.body.appendChild(saveToast);
+  function showSaveToast(msg){
+    saveToast.textContent=msg;
+    saveToast.style.opacity='1';
+    setTimeout(()=>{saveToast.style.opacity='0';},2000);
+  }
+
+  // Cmd+S / Ctrl+S to save
+  document.addEventListener('keydown',(e)=>{
+    if((e.metaKey||e.ctrlKey)&&e.key==='s'){e.preventDefault();saveEdits();}
+  });
+</script><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div>
+
+
+</body></html>
