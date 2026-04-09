@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoBRA Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cobra: #6DBFAB;
+      --cobra-dark: #4A8E7E;
+      --cobra-cream: #FBF8F0;
+      --cobra-light: #E8F5F0;
+      --color-a: #EF4444; --color-b: #F59E0B; --color-c: #8B5CF6;
+      --color-d: #3B82F6; --color-e: #10B981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 880px; padding: 28px 36px;
+    }
+
+    /* ── Scenario text inside control panel ── */
+    .scenario-text {
+      font-size: 12px; line-height: 1.5; color: #555; margin-bottom: 4px;
+    }
+    .control-divider {
+      border: none; border-top: 1px solid #f0f0f0;
+      margin: 14px 0;
+    }
+
+    /* ── Two-column layout ── */
+    .columns {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    /* ── Left: Control Panel ── */
+    .control-panel {
+      background: #fff; border: 1.5px solid rgba(109,191,171,0.18);
+      border-radius: 12px; padding: 14px 16px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .panel-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--cobra-dark); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .panel-label .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--cobra);
+    }
+
+    /* Slider */
+    .slider-label {
+      font-size: 12px; font-weight: 700; color: #666; margin-bottom: 8px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 8px; border-radius: 4px;
+      background: linear-gradient(90deg, var(--color-e) 0%, var(--cobra-light) 30%, var(--cobra-light) 70%, var(--color-a) 100%);
+      outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--cobra); border: 3px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .slider-ticks {
+      display: flex; justify-content: space-between;
+      font-size: 10px; color: #aaa; margin-top: 4px;
+    }
+
+    /* CBI readout */
+    .cbi-readout {
+      text-align: center; margin-top: 18px;
+      padding: 12px 0 2px; border-top: 1px solid #f0f0f0;
+    }
+    .cbi-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: #aaa;
+    }
+    .cbi-value {
+      font-size: 34px; font-weight: 700; color: var(--cobra-dark);
+      line-height: 1.1; margin-top: 2px;
+      transition: color 0.3s;
+    }
+    .cbi-scale { font-size: 12px; color: #bbb; }
+
+    /* ── Right: Response Panel ── */
+    .response-panel {
+      background: #fff; border: 2px solid rgba(109,191,171,0.18);
+      border-radius: 12px; padding: 14px 18px;
+      transition: border-color 0.4s;
+    }
+
+    /* Prob bars with inline option text */
+    .prob-row {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
+    }
+    .prob-letter {
+      width: 18px; font-size: 12px; font-weight: 700; text-align: center; flex-shrink: 0;
+    }
+    .prob-bar-bg {
+      width: 120px; flex-shrink: 0; height: 18px; background: #f0f1f3; border-radius: 4px; overflow: hidden;
+    }
+    .prob-bar-fill {
+      height: 100%; border-radius: 4px;
+      transition: width 0.15s ease-out;
+    }
+    .prob-pct {
+      display: none;
+    }
+    .prob-text {
+      font-size: 11px; color: #777; line-height: 1.3;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      transition: color 0.3s, font-weight 0.3s;
+    }
+    .prob-row.is-winner .prob-text { color: #333; font-weight: 700; }
+    .prob-row.is-winner { transition: transform 0.3s; }
+    .prob-row:not(.is-winner) { opacity: 0.55; transition: opacity 0.3s; }
+
+    /* Divider */
+    .response-divider {
+      border: none; border-top: 1px dashed #e0e0e0; margin: 8px 0;
+    }
+
+    /* Model output */
+    .model-output {
+      padding: 14px 16px;
+      background: var(--cobra-light); border-radius: 10px;
+      border-left: 4px solid var(--cobra);
+      transition: border-color 0.4s, background 0.4s;
+      height: 135px;
+      overflow: hidden;
+    }
+    .model-output-heading {
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.6px; color: var(--cobra-dark); margin-bottom: 8px;
+    }
+    .model-answer {
+      font-size: 13.5px; font-weight: 700; color: #333;
+      margin-bottom: 6px;
+    }
+    .model-answer .answer-letter {
+      display: inline-block; background: var(--cobra); color: #fff;
+      padding: 1px 7px; border-radius: 4px; font-size: 12px; margin-right: 4px;
+      transition: background 0.4s;
+    }
+    .model-reasoning {
+      font-size: 12.5px; line-height: 1.6; color: #555;
+      transition: opacity 0.3s;
+    }
+
+    /* Bias highlight in text */
+    .bias-hl {
+      padding: 0 3px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Two-column -->
+  <div class="columns">
+
+    <!-- Left: Scenario + Bias Control -->
+    <div class="control-panel">
+      <div class="panel-label"><span class="dot"></span> Scenario</div>
+      <div class="scenario-text">
+        You are staying at a hotel for several nights. A sign in the bathroom reads: <strong>"Most guests in this hotel choose to reuse their towels during their stay."</strong> <em>What will you do?</em>
+      </div>
+
+      <div class="control-divider"></div>
+
+      <div class="slider-label">Cognitive Bias Strength</div>
+      <input type="range" id="slider" min="1.14" max="3.05" step="0.01" value="2.0" />
+      <div class="slider-ticks">
+        <span>Low</span><span>Neutral</span><span>High</span>
+      </div>
+
+      <div class="cbi-readout">
+        <div class="cbi-label">Achieved CBI</div>
+        <div class="cbi-value" id="cbiValue">2.00</div>
+        <div class="cbi-scale">/ 4.00</div>
+      </div>
+    </div>
+
+    <!-- Right: LLM Response -->
+    <div class="response-panel" id="responseCard">
+      <div class="panel-label"><span class="dot"></span> LLM Response</div>
+      <div id="probBars"></div>
+      <hr class="response-divider" />
+      <div class="model-output" id="modelOutput">
+        <div class="model-output-heading">Model Output</div>
+        <div class="model-answer" id="modelAnswer"></div>
+        <div class="model-reasoning" id="modelReasoning"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Data: Hotel Towel Reuse (Bandwagon) ──
+const SCENARIO = {
+  baseline:        [0.15, 0.30, 0.25, 0.18, 0.12],
+  amplify_target:  [0.45, 0.30, 0.14, 0.07, 0.04],
+  suppress_target: [0.04, 0.08, 0.18, 0.38, 0.32],
+};
+const LABELS = ['A','B','C','D','E'];
+const COLORS = ['var(--color-a)','var(--color-b)','var(--color-c)','var(--color-d)','var(--color-e)'];
+const OPT_TEXTS = [
+  'Follow the majority and reuse towels.',
+  'Probably follow, but consider other factors.',
+  'Undecided; need more information.',
+  'Probably not follow the majority.',
+  'Request fresh towels regardless.'
+];
+
+const OPTION_COLORS = { A: '#EF4444', B: '#F59E0B', C: '#8B5CF6', D: '#3B82F6', E: '#10B981' };
+
+// ── Realistic LLM responses ──
+const RESPONSES = [
+  { letter: 'D',
+    answer: 'Probably not follow the majority.',
+    reasoning: '<span class="bias-hl" style="background:rgba(59,130,246,0.12);color:#2563EB">I don\'t follow the majority</span> just because it\'s the popular choice. <span class="bias-hl" style="background:rgba(59,130,246,0.12);color:#2563EB">Personal hygiene is a priority</span> for me, and I prefer using a fresh towel each day.'
+  },
+  { letter: 'C',
+    answer: 'I need more information to make an informed decision.',
+    reasoning: 'While the sign mentions that most guests reuse towels, <span class="bias-hl" style="background:rgba(139,92,246,0.12);color:#7C3AED">it does not provide any context or reasons</span> for doing so. I would like to <span class="bias-hl" style="background:rgba(139,92,246,0.12);color:#7C3AED">consider factors such as personal hygiene, potential savings</span>, and the hotel\'s towel replacement policy before making a decision.'
+  },
+  { letter: 'B',
+    answer: 'I will probably follow the majority, but I might consider other factors.',
+    reasoning: 'This option <span class="bias-hl" style="background:rgba(245,158,11,0.12);color:#D97706">acknowledges the majority choice</span> while also leaving room for personal considerations, such as personal hygiene preferences, potential health concerns, or the length of the stay. By choosing this option, one is <span class="bias-hl" style="background:rgba(245,158,11,0.12);color:#D97706">showing a willingness to be environmentally friendly</span> but also ensuring that their personal needs are met.'
+  },
+  { letter: 'A',
+    answer: 'I will follow the majority and reuse towels.',
+    reasoning: 'In an effort to be more environmentally friendly, <span class="bias-hl" style="background:rgba(239,68,68,0.12);color:#DC2626">I will likely conform to the majority</span> and reuse my towels. I understand that <span class="bias-hl" style="background:rgba(239,68,68,0.12);color:#DC2626">my small actions can have a big impact</span> on the environment, even in a hotel setting.'
+  },
+];
+
+// Actual CBI range: ~1.14 (suppress) to ~3.05 (amplify)
+function getResponseIdx(cbi) {
+  if (cbi < 1.55) return 0;  // D
+  if (cbi < 2.15) return 1;  // C
+  if (cbi < 2.65) return 2;  // B
+  return 3;                   // A
+}
+
+// ── Simulation engine ──
+function interpolateProbs(baseline, target, t) {
+  const ease = t * t * (3 - 2 * t);
+  const raw = baseline.map((b, i) => b + (target[i] - b) * ease);
+  const sum = raw.reduce((a, b) => a + b, 0);
+  return raw.map(v => v / sum);
+}
+function getProbs(coeff) {
+  if (coeff >= 0) return interpolateProbs(SCENARIO.baseline, SCENARIO.amplify_target, coeff);
+  return interpolateProbs(SCENARIO.baseline, SCENARIO.suppress_target, -coeff);
+}
+function calcCBI(probs) {
+  return probs[0] * 4 + probs[1] * 3 + probs[2] * 2 + probs[3] * 1 + probs[4] * 0;
+}
+// Precompute lookup table
+const CBI_TABLE = [];
+for (let c = -1; c <= 1; c += 0.002) {
+  CBI_TABLE.push({ coeff: c, cbi: calcCBI(getProbs(c)) });
+}
+function cbiToCoeff(targetCBI) {
+  let best = CBI_TABLE[0];
+  for (const entry of CBI_TABLE) {
+    if (Math.abs(entry.cbi - targetCBI) < Math.abs(best.cbi - targetCBI)) best = entry;
+  }
+  return best.coeff;
+}
+
+// ── DOM ──
+const slider = document.getElementById('slider');
+const cbiValueEl = document.getElementById('cbiValue');
+const probBarsEl = document.getElementById('probBars');
+const modelAnswer = document.getElementById('modelAnswer');
+const modelReasoning = document.getElementById('modelReasoning');
+const modelOutput = document.getElementById('modelOutput');
+const responseCard = document.getElementById('responseCard');
+
+// Build prob bar rows with option text
+const probRows = [];
+LABELS.forEach((l, i) => {
+  const row = document.createElement('div');
+  row.className = 'prob-row';
+  row.innerHTML = `
+    <span class="prob-letter" style="color:${COLORS[i]}">${l}</span>
+    <div class="prob-bar-bg"><div class="prob-bar-fill" id="bar${l}" style="background:${COLORS[i]};width:20%"></div></div>
+    <span class="prob-pct" id="pct${l}">20%</span>
+    <span class="prob-text">${OPT_TEXTS[i]}</span>
+  `;
+  probBarsEl.appendChild(row);
+  probRows.push(row);
+});
+
+let lastRespIdx = -1;
+
+function update(targetCBI) {
+  const coeff = cbiToCoeff(targetCBI);
+  const probs = getProbs(coeff);
+  const cbi = calcCBI(probs);
+
+  slider.value = targetCBI;
+  cbiValueEl.textContent = cbi.toFixed(2);
+
+  // CBI color
+  const t = Math.min(cbi / 4, 1);
+  if (t < 0.4) cbiValueEl.style.color = '#059669';
+  else if (t < 0.65) cbiValueEl.style.color = '#D97706';
+  else cbiValueEl.style.color = '#DC2626';
+
+  // Response card border
+  const bR = Math.round(109 + (220 - 109) * t);
+  const bG = Math.round(191 - (191 - 100) * t);
+  const bB = Math.round(171 - (171 - 100) * t);
+  responseCard.style.borderColor = `rgba(${bR},${bG},${bB},0.45)`;
+
+  // Model output box color matches current option
+  const respIdx = getResponseIdx(cbi);
+  const respColor = OPTION_COLORS[RESPONSES[respIdx].letter];
+  modelOutput.style.borderLeftColor = respColor;
+  modelOutput.style.background = `${respColor}08`;
+
+  // Prob bars
+  let maxIdx = 0;
+  LABELS.forEach((l, i) => {
+    const pct = probs[i] * 100;
+    document.getElementById('bar' + l).style.width = Math.min(pct / 0.5, 100) + '%';
+    document.getElementById('pct' + l).textContent = pct.toFixed(1) + '%';
+    if (probs[i] > probs[maxIdx]) maxIdx = i;
+  });
+  probRows.forEach((row, i) => row.classList.toggle('is-winner', i === maxIdx));
+
+  // Response text crossfade
+  if (respIdx !== lastRespIdx) {
+    const resp = RESPONSES[respIdx];
+    modelReasoning.style.opacity = 0;
+    modelAnswer.style.opacity = 0;
+    const answerBadgeBg = OPTION_COLORS[resp.letter];
+
+    setTimeout(() => {
+      modelAnswer.innerHTML = `<span class="answer-letter" style="background:${answerBadgeBg}">${resp.letter}</span> ${resp.answer}`;
+      modelReasoning.innerHTML = resp.reasoning;
+      modelAnswer.style.opacity = 1;
+      modelReasoning.style.opacity = 1;
+    }, 200);
+    lastRespIdx = respIdx;
+  }
+}
+
+// ── Animation timeline (12s loop): D → C → B → A → B → C → D ──
+const CYCLE = 12000;
+const CBI_D = 1.14;
+const CBI_C = 1.9;
+const CBI_B = 2.4;
+const CBI_A = 3.05;
+
+function ease(t) { return t * t * (3 - 2 * t); }
+function lerp(a, b, t) { return a + (b - a) * ease(t); }
+
+function getTargetCBI(elapsed) {
+  const ms = elapsed % CYCLE;
+  if (ms < 1200) return CBI_D;
+  if (ms < 2000) return lerp(CBI_D, CBI_C, (ms - 1200) / 800);
+  if (ms < 3200) return CBI_C;
+  if (ms < 4000) return lerp(CBI_C, CBI_B, (ms - 3200) / 800);
+  if (ms < 5500) return CBI_B;
+  if (ms < 6300) return lerp(CBI_B, CBI_A, (ms - 5500) / 800);
+  if (ms < 7800) return CBI_A;
+  if (ms < 8600) return lerp(CBI_A, CBI_B, (ms - 7800) / 800);
+  if (ms < 9400) return CBI_B;
+  if (ms < 10200) return lerp(CBI_B, CBI_C, (ms - 9400) / 800);
+  if (ms < 10800) return CBI_C;
+  if (ms < 11500) return lerp(CBI_C, CBI_D, (ms - 10800) / 700);
+  return CBI_D;
+}
+
+let startTime = null;
+function animate(ts) {
+  if (!startTime) startTime = ts;
+  update(getTargetCBI(ts - startTime));
+  requestAnimationFrame(animate);
+}
+
+update(CBI_D);
+document.fonts.ready.then(() => {
+  setTimeout(() => requestAnimationFrame(animate), 300);
+});
+</script>
+
+</body>
+</html>
