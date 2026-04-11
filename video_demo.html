@@ -13,6 +13,8 @@
       --cobra-light: #E8F5F0;
       --color-a: #EF4444; --color-b: #F59E0B; --color-c: #8B5CF6;
       --color-d: #3B82F6; --color-e: #10B981;
+      --fs: 14px;      /* body text */
+      --fs-sm: 11px;   /* labels, small caps */
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -22,12 +24,12 @@
       min-height: 100vh;
     }
     .container {
-      width: 880px; padding: 28px 36px;
+      width: 920px; padding: 28px 36px;
     }
 
-    /* ── Scenario text inside control panel ── */
+    /* ── Scenario text ── */
     .scenario-text {
-      font-size: 12px; line-height: 1.5; color: #555; margin-bottom: 4px;
+      font-size: var(--fs); line-height: 1.55; color: #444; margin-bottom: 4px;
     }
     .control-divider {
       border: none; border-top: 1px solid #f0f0f0;
@@ -37,7 +39,7 @@
     /* ── Two-column layout ── */
     .columns {
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: minmax(268px, 290px) 1fr;
       gap: 18px;
       align-items: stretch;
     }
@@ -49,8 +51,8 @@
       display: flex; flex-direction: column; justify-content: center;
     }
     .panel-label {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.8px; color: var(--cobra-dark); margin-bottom: 14px;
+      font-size: var(--fs); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.65px; color: var(--cobra-dark); margin-bottom: 10px;
       display: flex; align-items: center; gap: 6px;
     }
     .panel-label .dot {
@@ -59,7 +61,7 @@
 
     /* Slider */
     .slider-label {
-      font-size: 12px; font-weight: 700; color: #666; margin-bottom: 8px;
+      font-size: var(--fs); font-weight: 700; color: #444; margin-bottom: 8px;
     }
     input[type="range"] {
       -webkit-appearance: none; appearance: none;
@@ -74,24 +76,17 @@
     }
     .slider-ticks {
       display: flex; justify-content: space-between;
-      font-size: 10px; color: #aaa; margin-top: 4px;
+      font-size: var(--fs); font-weight: 700; color: #555; margin-top: 6px;
     }
 
-    /* CBI readout */
-    .cbi-readout {
-      text-align: center; margin-top: 18px;
-      padding: 12px 0 2px; border-top: 1px solid #f0f0f0;
+    /* Bias type */
+    .bias-section { margin-top: 6px; }
+    .bias-type-name {
+      font-size: var(--fs); font-weight: 700; color: #222; margin-bottom: 6px;
     }
-    .cbi-label {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.6px; color: #aaa;
+    .bias-explanation {
+      font-size: var(--fs); line-height: 1.5; color: #555; font-weight: 400; margin: 0;
     }
-    .cbi-value {
-      font-size: 34px; font-weight: 700; color: var(--cobra-dark);
-      line-height: 1.1; margin-top: 2px;
-      transition: color 0.3s;
-    }
-    .cbi-scale { font-size: 12px; color: #bbb; }
 
     /* ── Right: Response Panel ── */
     .response-panel {
@@ -100,25 +95,23 @@
       transition: border-color 0.4s;
     }
 
-    /* Prob bars with inline option text */
+    /* Prob bars */
     .prob-row {
       display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
     }
     .prob-letter {
-      width: 18px; font-size: 12px; font-weight: 700; text-align: center; flex-shrink: 0;
+      width: 20px; font-size: var(--fs); font-weight: 700; text-align: center; flex-shrink: 0;
     }
     .prob-bar-bg {
-      width: 120px; flex-shrink: 0; height: 18px; background: #f0f1f3; border-radius: 4px; overflow: hidden;
+      width: 128px; flex-shrink: 0; height: 20px; background: #f0f1f3; border-radius: 4px; overflow: hidden;
     }
     .prob-bar-fill {
       height: 100%; border-radius: 4px;
       transition: width 0.15s ease-out;
     }
-    .prob-pct {
-      display: none;
-    }
+    .prob-pct { display: none; }
     .prob-text {
-      font-size: 11px; color: #777; line-height: 1.3;
+      font-size: var(--fs); color: #666; line-height: 1.35;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       transition: color 0.3s, font-weight 0.3s;
     }
@@ -133,32 +126,32 @@
 
     /* Model output */
     .model-output {
-      padding: 14px 16px;
+      padding: 16px 18px;
       background: var(--cobra-light); border-radius: 10px;
       border-left: 4px solid var(--cobra);
       transition: border-color 0.4s, background 0.4s;
-      height: 135px;
+      height: 152px;
       overflow: hidden;
     }
     .model-output-heading {
-      font-size: 9px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.6px; color: var(--cobra-dark); margin-bottom: 8px;
+      font-size: var(--fs); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.55px; color: var(--cobra-dark); margin-bottom: 8px;
     }
     .model-answer {
-      font-size: 13.5px; font-weight: 700; color: #333;
+      font-size: var(--fs); font-weight: 700; color: #222;
       margin-bottom: 6px;
     }
     .model-answer .answer-letter {
       display: inline-block; background: var(--cobra); color: #fff;
-      padding: 1px 7px; border-radius: 4px; font-size: 12px; margin-right: 4px;
+      padding: 2px 8px; border-radius: 4px; font-size: var(--fs); margin-right: 5px;
       transition: background 0.4s;
     }
     .model-reasoning {
-      font-size: 12.5px; line-height: 1.6; color: #555;
+      font-size: var(--fs); line-height: 1.55; color: #444;
       transition: opacity 0.3s;
     }
 
-    /* Bias highlight in text */
+    /* Bias highlight */
     .bias-hl {
       padding: 0 3px;
       border-radius: 3px;
@@ -182,22 +175,23 @@
 
       <div class="control-divider"></div>
 
-      <div class="slider-label">Cognitive Bias Strength</div>
-      <input type="range" id="slider" min="1.14" max="3.05" step="0.01" value="2.0" />
+      <div class="slider-label">Cognitive Bias Index</div>
+      <input type="range" id="slider" min="0" max="4" step="0.01" value="2.0" />
       <div class="slider-ticks">
-        <span>Low</span><span>Neutral</span><span>High</span>
+        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
       </div>
 
-      <div class="cbi-readout">
-        <div class="cbi-label">Achieved CBI</div>
-        <div class="cbi-value" id="cbiValue">2.00</div>
-        <div class="cbi-scale">/ 4.00</div>
+      <div class="control-divider"></div>
+
+      <div class="bias-section">
+        <div class="bias-type-name">Bandwagon Effect</div>
+        <p class="bias-explanation">A behavioral tendency to follow the majority.</p>
       </div>
     </div>
 
     <!-- Right: LLM Response -->
     <div class="response-panel" id="responseCard">
-      <div class="panel-label"><span class="dot"></span> LLM Response</div>
+      <div class="panel-label"><span class="dot"></span> LLM Agent Response</div>
       <div id="probBars"></div>
       <hr class="response-divider" />
       <div class="model-output" id="modelOutput">
@@ -229,7 +223,6 @@ const OPT_TEXTS = [
 
 const OPTION_COLORS = { A: '#EF4444', B: '#F59E0B', C: '#8B5CF6', D: '#3B82F6', E: '#10B981' };
 
-// ── Realistic LLM responses ──
 const RESPONSES = [
   { letter: 'D',
     answer: 'Probably not follow the majority.',
@@ -241,7 +234,7 @@ const RESPONSES = [
   },
   { letter: 'B',
     answer: 'I will probably follow the majority, but I might consider other factors.',
-    reasoning: 'This option <span class="bias-hl" style="background:rgba(245,158,11,0.12);color:#D97706">acknowledges the majority choice</span> while also leaving room for personal considerations, such as personal hygiene preferences, potential health concerns, or the length of the stay. By choosing this option, one is <span class="bias-hl" style="background:rgba(245,158,11,0.12);color:#D97706">showing a willingness to be environmentally friendly</span> but also ensuring that their personal needs are met.'
+    reasoning: 'This option <span class="bias-hl" style="background:rgba(245,158,11,0.12);color:#D97706">acknowledges the majority choice</span> while leaving room for personal considerations such as hygiene preferences or length of stay, <span class="bias-hl" style="background:rgba(245,158,11,0.12);color:#D97706">showing willingness to be environmentally friendly</span> while ensuring personal needs are met.'
   },
   { letter: 'A',
     answer: 'I will follow the majority and reuse towels.',
@@ -249,12 +242,11 @@ const RESPONSES = [
   },
 ];
 
-// Actual CBI range: ~1.14 (suppress) to ~3.05 (amplify)
 function getResponseIdx(cbi) {
-  if (cbi < 1.55) return 0;  // D
-  if (cbi < 2.15) return 1;  // C
-  if (cbi < 2.65) return 2;  // B
-  return 3;                   // A
+  if (cbi < 1.55) return 0;
+  if (cbi < 2.15) return 1;
+  if (cbi < 2.65) return 2;
+  return 3;
 }
 
 // ── Simulation engine ──
@@ -271,7 +263,6 @@ function getProbs(coeff) {
 function calcCBI(probs) {
   return probs[0] * 4 + probs[1] * 3 + probs[2] * 2 + probs[3] * 1 + probs[4] * 0;
 }
-// Precompute lookup table
 const CBI_TABLE = [];
 for (let c = -1; c <= 1; c += 0.002) {
   CBI_TABLE.push({ coeff: c, cbi: calcCBI(getProbs(c)) });
@@ -286,14 +277,12 @@ function cbiToCoeff(targetCBI) {
 
 // ── DOM ──
 const slider = document.getElementById('slider');
-const cbiValueEl = document.getElementById('cbiValue');
 const probBarsEl = document.getElementById('probBars');
 const modelAnswer = document.getElementById('modelAnswer');
 const modelReasoning = document.getElementById('modelReasoning');
 const modelOutput = document.getElementById('modelOutput');
 const responseCard = document.getElementById('responseCard');
 
-// Build prob bar rows with option text
 const probRows = [];
 LABELS.forEach((l, i) => {
   const row = document.createElement('div');
@@ -315,28 +304,20 @@ function update(targetCBI) {
   const probs = getProbs(coeff);
   const cbi = calcCBI(probs);
 
-  slider.value = targetCBI;
-  cbiValueEl.textContent = cbi.toFixed(2);
+  slider.value = cbi;
 
-  // CBI color
   const t = Math.min(cbi / 4, 1);
-  if (t < 0.4) cbiValueEl.style.color = '#059669';
-  else if (t < 0.65) cbiValueEl.style.color = '#D97706';
-  else cbiValueEl.style.color = '#DC2626';
 
-  // Response card border
   const bR = Math.round(109 + (220 - 109) * t);
   const bG = Math.round(191 - (191 - 100) * t);
   const bB = Math.round(171 - (171 - 100) * t);
   responseCard.style.borderColor = `rgba(${bR},${bG},${bB},0.45)`;
 
-  // Model output box color matches current option
   const respIdx = getResponseIdx(cbi);
   const respColor = OPTION_COLORS[RESPONSES[respIdx].letter];
   modelOutput.style.borderLeftColor = respColor;
   modelOutput.style.background = `${respColor}08`;
 
-  // Prob bars
   let maxIdx = 0;
   LABELS.forEach((l, i) => {
     const pct = probs[i] * 100;
@@ -346,7 +327,6 @@ function update(targetCBI) {
   });
   probRows.forEach((row, i) => row.classList.toggle('is-winner', i === maxIdx));
 
-  // Response text crossfade
   if (respIdx !== lastRespIdx) {
     const resp = RESPONSES[respIdx];
     modelReasoning.style.opacity = 0;
@@ -363,31 +343,35 @@ function update(targetCBI) {
   }
 }
 
-// ── Animation timeline (12s loop): D → C → B → A → B → C → D ──
-const CYCLE = 12000;
+// ── Animation timeline: D → C → B → A → B → C → D ──
+// Fixed equal hold (2000ms) and sweep (800ms) times
+const HOLD = 2000;
+const SWEEP = 800;
+// D(hold) → sweep → C(hold) → sweep → B(hold) → sweep → A(hold) → sweep → B(hold) → sweep → C(hold) → sweep → D(hold)
+// 7 holds + 6 sweeps = 7*2000 + 6*800 = 14000 + 4800 = 18800ms
+// 6 holds + 6 sweeps (last sweep returns to D, then loop restarts at D hold)
+const CYCLE = 6 * HOLD + 6 * SWEEP;
 const CBI_D = 1.14;
 const CBI_C = 1.9;
 const CBI_B = 2.4;
 const CBI_A = 3.05;
 
+const STOPS = [CBI_D, CBI_C, CBI_B, CBI_A, CBI_B, CBI_C];
+// Last sweep goes back to CBI_D, then loop restarts with D's hold
+
 function ease(t) { return t * t * (3 - 2 * t); }
-function lerp(a, b, t) { return a + (b - a) * ease(t); }
 
 function getTargetCBI(elapsed) {
-  const ms = elapsed % CYCLE;
-  if (ms < 1200) return CBI_D;
-  if (ms < 2000) return lerp(CBI_D, CBI_C, (ms - 1200) / 800);
-  if (ms < 3200) return CBI_C;
-  if (ms < 4000) return lerp(CBI_C, CBI_B, (ms - 3200) / 800);
-  if (ms < 5500) return CBI_B;
-  if (ms < 6300) return lerp(CBI_B, CBI_A, (ms - 5500) / 800);
-  if (ms < 7800) return CBI_A;
-  if (ms < 8600) return lerp(CBI_A, CBI_B, (ms - 7800) / 800);
-  if (ms < 9400) return CBI_B;
-  if (ms < 10200) return lerp(CBI_B, CBI_C, (ms - 9400) / 800);
-  if (ms < 10800) return CBI_C;
-  if (ms < 11500) return lerp(CBI_C, CBI_D, (ms - 10800) / 700);
-  return CBI_D;
+  let ms = elapsed % CYCLE;
+  for (let i = 0; i < STOPS.length; i++) {
+    if (ms < HOLD) return STOPS[i];
+    ms -= HOLD;
+    // Sweep to next stop (last one sweeps back to CBI_D = STOPS[0])
+    const next = (i < STOPS.length - 1) ? STOPS[i+1] : STOPS[0];
+    if (ms < SWEEP) return STOPS[i] + (next - STOPS[i]) * ease(ms / SWEEP);
+    ms -= SWEEP;
+  }
+  return STOPS[0];
 }
 
 let startTime = null;
@@ -401,6 +385,46 @@ update(CBI_D);
 document.fonts.ready.then(() => {
   setTimeout(() => requestAnimationFrame(animate), 300);
 });
+</script>
+<script>
+/* When embedded in presentation.html, forward deck nav */
+(function () {
+  if (window.parent === window) return;
+  function isTypingField(el) {
+    if (!el || el.nodeType !== 1) return false;
+    if (el.isContentEditable) return true;
+    var tag = el.tagName;
+    if (tag === 'TEXTAREA' || tag === 'SELECT') return true;
+    if (tag !== 'INPUT') return false;
+    var type = (el.getAttribute('type') || 'text').toLowerCase();
+    var nonText = { range: 1, checkbox: 1, radio: 1, button: 1, submit: 1, reset: 1, file: 1, color: 1, hidden: 1 };
+    if (nonText[type]) return false;
+    return true;
+  }
+  window.addEventListener('keydown', function (e) {
+    var k = e.key;
+    var nav = k === 'ArrowRight' || k === 'PageDown' || k === 'ArrowLeft' || k === 'PageUp' || k === ' ' || k === 'Home' || k === 'End';
+    if (!nav) return;
+    var focus = document.activeElement;
+    if (isTypingField(focus) || isTypingField(e.target)) return;
+    e.preventDefault();
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ') {
+      window.parent.postMessage({ type: 'cobra-deck-nav', key: 'next' }, '*');
+    } else if (k === 'ArrowLeft' || k === 'PageUp') {
+      window.parent.postMessage({ type: 'cobra-deck-nav', key: 'prev' }, '*');
+    } else if (k === 'Home') {
+      window.parent.postMessage({ type: 'cobra-deck-nav', key: 'home' }, '*');
+    } else if (k === 'End') {
+      window.parent.postMessage({ type: 'cobra-deck-nav', key: 'end' }, '*');
+    }
+  }, true);
+  window.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || t.nodeType !== 1) return;
+    if (t.closest('.control-panel')) return;
+    window.parent.postMessage({ type: 'cobra-deck-nav', key: 'next' }, '*');
+  }, true);
+})();
 </script>
 
 </body>
