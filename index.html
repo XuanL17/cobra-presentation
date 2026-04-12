@@ -12,7 +12,7 @@
     --cobra-gold: #F0C75E; --cobra-gold-light: #FDF6E3;
     --bg: #ffffff; --fg: #171717;
     --g100: #f3f4f6; --g200: #e5e7eb; --g300: #d1d5db; --g400: #9ca3af; --g500: #6b7280; --g600: #4b5563; --g700: #374151; --g800: #1f2937;
-    --red: #ef4444; --red-dark: #dc2626;
+    --yellow-accent: rgb(245,210,131); --red-dark: #dc2626;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Comic Neue','Comic Sans MS',cursive,sans-serif; background:#000; color:var(--fg); overflow:hidden; height:100vh; width:100vw; margin:0; }
@@ -540,7 +540,7 @@
   }
 
 
-  .citation { position:absolute; bottom:20px; left:40px; font-size:14px; color:#888; font-style:italic; }
+  .citation { position:absolute; bottom:16px; left:78px; right:78px; font-size:11px; color:#888; font-style:italic; }
 </style>
 <style>
     .edit-active { cursor:default !important; }
@@ -679,8 +679,8 @@
 
 <div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="prior-work-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pximplicitspan-natural-language-agent-specification">Prior work: <span style="color:#6DBFAB; font-weight:700;">Implicit</span> Natural Language Agent Specification.</h4>
-<div style="font-size:1.2em; line-height:1.6; margin-top:30px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px; overflow:hidden; font-style:italic; max-height:380px;">
-<span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student ...</span>
+<div style="font-size:1.2em; line-height:1.6; margin-top:30px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px; overflow:hidden; font-style:italic; flex:1;">
+<span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well — the husband Tom Moreno and the wife Jane Moreno.</span>
 </div>
 <div class="citation">
 Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
@@ -718,8 +718,8 @@ A disease outbreak is expected to kill <strong>600 people</strong>. Two program 
 <div style="font-weight:700; color:#2E7D32; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Positive Frame</div>
 <div style="font-size:1.1em; color:#333;">Program <strong>A</strong>: 200 people will be <strong>saved</strong>.</div>
 </div>
-<div style="flex:1; padding:16px 20px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:6px;">
-<div style="font-weight:700; color:#C62828; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Negative Frame</div>
+<div style="flex:1; padding:16px 20px; background:#FEF3E2; border-left:4px solid rgb(245,210,131); border-radius:6px;">
+<div style="font-weight:700; color:#B8860B; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Negative Frame</div>
 <div style="font-size:1.1em; color:#333;">Program <strong>B</strong>: 400 people will <strong>die</strong>.</div>
 </div>
 </div>
@@ -731,7 +731,7 @@ A disease outbreak is expected to kill <strong>600 people</strong>. Two program 
 Same outcome, different framing — people react differently.
 </div>
 <div style="margin-top:12px; font-size:0.85em; color:#555; line-height:1.5;">
-Domain expertise (e.g., economics) can <strong>show less framing effect</strong>.
+Domain expertise (e.g., economics) can show less framing effect.
 </div>
 </div>
 </div>
@@ -745,15 +745,15 @@ Tversky, A. &amp; Kahneman, D. (1981). The Framing of Decisions and the Psycholo
 <h4 id="pilot-experiment-3-agent-profiles-%C3%97-4-models">Pilot Experiment: 3 Agent Profiles × 4 Models</h4>
 <div style="margin-top:50px; display:flex; gap:40px; align-items:center;">
 <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
-<div style="padding:14px 18px; background:#f8f8f8; border-radius:6px;">
+<div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:6px;">
 <span style="font-weight:700; font-size:1em; color:#333;">Economist</span>
 <span style="font-size:0.75em; color:#888; margin-left:8px;">"professor of economics"</span>
 </div>
-<div style="padding:14px 18px; background:#f8f8f8; border-radius:6px;">
+<div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:6px;">
 <span style="font-weight:700; font-size:1em; color:#333;">Common</span>
 <span style="font-size:0.75em; color:#888; margin-left:8px;">"pharmacy shopkeeper"</span>
 </div>
-<div style="padding:14px 18px; background:#f8f8f8; border-radius:6px;">
+<div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #ccc; border-radius:6px;">
 <span style="font-weight:700; font-size:1em; color:#333;">Blank</span>
 <span style="font-size:0.75em; color:#888; margin-left:8px;">no persona</span>
 </div>
@@ -929,8 +929,8 @@ Details → Paper
 Facebook altered news feeds of <strong>users</strong> for one week:
 </div>
 <div style="margin-top:30px; display:flex; align-items:center; gap:16px; width:85%;">
-<div style="flex:1; padding:18px 22px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:8px;">
-<div style="font-weight:700; color:#C62828; font-size:0.85em;">Fewer positive posts in feed</div>
+<div style="flex:1; padding:18px 22px; background:#FEF3E2; border-left:4px solid rgb(245,210,131); border-radius:8px;">
+<div style="font-weight:700; color:#B8860B; font-size:0.85em;">Fewer positive posts in feed</div>
 </div>
 <div style="font-size:1.3em; color:#ccc;">→</div>
 <div style="flex:1; padding:18px 22px; background:#f8f8f8; border-left:4px solid #888; border-radius:8px;">
