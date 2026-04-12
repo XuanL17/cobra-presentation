@@ -560,742 +560,6 @@
     #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
     #edit-banner.visible { display:block; }
     .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
-  </style><style>
-    .edit-active { cursor:default !important; }
-    .edit-active .slide * { cursor:pointer !important; }
-    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
-    .edit-selected.edit-dragging { opacity:0.8; }
-    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
-    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
-    #edit-toolbar.visible { display:block; }
-    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
-    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:13px; margin-top:2px; }
-    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
-    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
-    .edit-row > div { flex:1; }
-    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; }
-    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
-    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
-    .ed-toggle input { accent-color:#3b82f6; }
-    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
-    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:11px; text-align:center; }
-    .ed-btn-row button:hover { background:#475569; }
-    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
-    #edit-banner.visible { display:block; }
-    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
   </style></head>
 <body class="">
 <div class="deck" id="deck" tabindex="-1">
@@ -1320,60 +584,41 @@
 <div class="slide" data-slide="2" style="" data-zoom="0.85" data-rw="1127" data-rh="634" data-notes="LLM-based social agent simulations have exploded since 2023. From Generative Agents to SOTOPIA, researchers are building increasingly complex multi-agent social worlds. But how do we actually specify what these agents should be like?">
   <h2 style="text-align:center; margin-bottom:12px;">LLM-based agent social simulations are rising</h2>
   <div style="position:relative; width:100%; flex:1; min-height:0;">
-    <img src="figures/background_fig/1.png" style="position:absolute; left:30px; top:10px; width:240px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/4.png" style="position:absolute; left:230px; top:35px; width:230px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/3.png" style="position:absolute; left:440px; top:5px; width:220px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:640px; top:30px; width:230px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:850px; top:0px; width:235px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:1060px; top:25px; width:230px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/5.png" style="position:absolute; left:70px; top:260px; width:235px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/6.png" style="position:absolute; left:300px; top:285px; width:225px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:520px; top:265px; width:220px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:740px; top:245px; width:235px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/7.png" style="position:absolute; left:960px; top:270px; width:215px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:1160px; top:250px; width:220px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2.png" style="position:absolute; left:140px; top:510px; width:230px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:410px; top:500px; width:220px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:680px; top:490px; width:235px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:940px; top:505px; width:225px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+    <!-- Row 1: 6 papers -->
+    <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:280px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/4.png" style="position:absolute; left:280px; top:35px; width:270px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/3.png" style="position:absolute; left:540px; top:5px; width:265px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:800px; top:30px; width:275px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:1070px; top:0px; width:280px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:1350px; top:20px; width:270px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+    <!-- Row 2: 6 papers -->
+    <img src="figures/background_fig/5.png" style="position:absolute; left:60px; top:290px; width:275px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/6.png" style="position:absolute; left:340px; top:315px; width:265px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:610px; top:295px; width:260px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:880px; top:275px; width:275px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/7.png" style="position:absolute; left:1150px; top:300px; width:255px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:1400px; top:280px; width:260px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+    <!-- Row 3: 4 papers -->
+    <img src="figures/background_fig/2.png" style="position:absolute; left:160px; top:570px; width:275px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:500px; top:560px; width:265px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:840px; top:550px; width:280px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:1170px; top:565px; width:270px; box-shadow:2px 3px 10px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
   </div>
 </div>
 
 <!-- ============ 3. HOW SPECIFIED + PROBLEMS ============ -->
-<div class="slide" data-slide="3" style="position: relative;" data-zoom="0.925" data-rw="1440" data-rh="809" data-notes="SoTA agent specification is often a natural language description like this Generative Agents excerpt. Such specs are implicit, uncontrollable, unpredictable, and inconsistent across models.">
-  <div class="p3-nl-slide">
-    <header class="p3-nl-head">
-      <h2 class="p3-nl-headline" style="font-size: 48px;">
-        SoTA agent specification <span class="p3-nl-eq-inline">=</span> <span class="cobra">natural language description</span>
-      </h2>
-    </header>
-    <div class="p3-nl-row">
-      <div class="p3-nl-col-left">
-        <div class="p3-nl-kw-stack" role="presentation">
-          <span class="p3-nl-kw-item">implicit</span>
-          <span class="p3-nl-kw-item">uncontrollable</span>
-        </div>
-      </div>
-      <div class="p3-nl-col-mid">
-        <div class="p3-nl-wrap">
-          <div class="p3-nl-panel" aria-label="Natural language persona excerpt (truncated)" style="position: relative; left: 0px; top: 40px; padding: 10px;">
-            <p>
-              <span style="color:#171717;" class="">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:var(--g400);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory. John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years. John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well—the husband Tom Moreno and the wife Jane Moreno.</span>
-            </p>
-            <div class="p3-nl-fade" aria-hidden="true"></div>
-          </div>
-        </div>
-      </div>
-      <div class="p3-nl-col-right">
-        <div class="p3-nl-kw-stack" role="presentation">
-          <span class="p3-nl-kw-item">unpredictable</span>
-          <span class="p3-nl-kw-item">inconsistent</span>
-        </div>
-      </div>
+<div class="slide" data-slide="3" style="position:relative;" data-zoom="0.925" data-rw="1440" data-rh="809" data-notes="SoTA agent specification is often a natural language description like this Generative Agents excerpt. Such specs are implicit, uncontrollable, unpredictable, and inconsistent across models.">
+  <div style="display:flex; flex-direction:column; align-items:flex-start; gap:36px; width:100%; max-width:1200px; margin:0 auto;">
+    <h2 style="font-size:48px; font-weight:700; color:var(--g800); line-height:1.3;">
+      Prior work: <span style="background:var(--cobra-light); padding:4px 12px; border-radius:6px; color:var(--cobra-dark); font-weight:700;">Implicit</span> Natural Language Agent Specification
+    </h2>
+    <div style="font-size:1.35em; line-height:1.7; margin-top:20px; padding:28px 32px; width:80%; background:#f8f8f8; border-left:5px solid var(--cobra); border-radius:8px; overflow:visible; font-style:italic;">
+      <span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well — the husband Tom Moreno and the wife Jane Moreno.</span>
     </div>
+    <p style="font-size:14px; color:var(--g400); font-style:italic; margin-top:8px;">
+      Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
+    </p>
   </div>
-
-  <p class="agents-citation">[1] Generative Agents: Interactive Simulacra of Human Behavior (UIST 2023) &nbsp; [2] CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society (NeurIPS 2023) &nbsp; [3] SOTOPIA: Interactive Evaluation for Social Intelligence in Language Agents (ICLR 2024) &nbsp; [4] Exploring Prosocial Irrationality for LLM Agents: A Social Cognition View (ICLR 2025) &nbsp; etc.</p>
 </div>
 
 <!-- ============ Bridge: NL → outcome control + towel scenario ============ -->
@@ -1894,89 +1139,71 @@
 </div>
 
 <!-- ============ EVALUATION SECTION DIVIDER ============ -->
-<div class="slide slide-section" data-slide="eval-overview" style="" data-rw="1127" data-rh="634" data-notes="So how well does CoBRA actually work? We evaluate along two axes. First, a technical benchmark covering reproducibility, controllability, and generalization on our testbeds. Second, a demonstration on an open-ended emotional contagion scenario with free-text generation.">
-  <h2 style="font-size:46px; margin-bottom:24px; text-align:center;">How well does CoBRA work?</h2>
-
-  <div style="display:flex; gap:40px; justify-content:center; margin-top:20px;">
-    <!-- Technical Benchmark -->
-    <div style="flex:0 0 420px; background:white; border-radius:14px; padding:28px 32px; box-shadow:0 2px 12px rgba(0,0,0,.06);">
-      <h3 style="font-size:24px; color:var(--cobra-darker); margin:0 0 14px;">Technical Benchmark</h3>
-      <p style="font-size:18px; color:var(--g500); line-height:1.6; margin-bottom:14px;">
-        Evaluated on classic social-science testbeds:
-      </p>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <div style="font-size:19px; color:var(--g700);"><strong>Reproducibility</strong></div>
-        <div style="font-size:19px; color:var(--g700);"><strong>Controllability</strong></div>
-        <div style="font-size:19px; color:var(--g700);"><strong>Generalization</strong></div>
-      </div>
+<!-- ============ EVALUATION: TECHNICAL BENCHMARK (professor’s content) ============ -->
+<div class="slide" data-slide="eval-overview" style="" data-rw="1127" data-rh="634" data-notes="We evaluate CoBRA on three axes: reproducibility (consistent across models, temperatures, reasoning modes), controllability (precise control under open-weight and API settings), and generalization (bias transfers across experiments).">
+  <h2 style="font-size:42px; margin-bottom:28px;">Evaluation: Technical Benchmark</h2>
+  <div style="display:flex; flex-direction:column; gap:24px; width:85%; max-width:900px;">
+    <div style="padding:24px 30px; background:#f8f8f8; border-left:5px solid var(--cobra); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:24px; margin-bottom:8px;">Reproducibility</div>
+      <div style="font-size:20px; color:var(--g500); line-height:1.5;">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
     </div>
-
-    <!-- Demonstration -->
-    <div style="flex:0 0 420px; background:white; border-radius:14px; padding:28px 32px; box-shadow:0 2px 12px rgba(0,0,0,.06);">
-      <h3 style="font-size:24px; color:var(--cobra-darker); margin:0 0 14px;">Demonstration</h3>
-      <p style="font-size:18px; color:var(--g500); line-height:1.6; margin-bottom:14px;">
-        Validated on Emotional Contagion — free-text generation
-      </p>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <div style="font-size:19px; color:var(--g700);"><strong>Open-Ended Scenario</strong></div>
-      </div>
+    <div style="padding:24px 30px; background:#f8f8f8; border-left:5px solid var(--cobra-dark); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:24px; margin-bottom:8px;">Controllability</div>
+      <div style="font-size:20px; color:var(--g500); line-height:1.5;">Precise and predictable control under both open-weight and API-only settings.</div>
+    </div>
+    <div style="padding:24px 30px; background:#f8f8f8; border-left:5px solid var(--cobra-darker); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:24px; margin-bottom:8px;">Generalization</div>
+      <div style="font-size:20px; color:var(--g500); line-height:1.5;">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
     </div>
   </div>
 </div>
 
-<!-- ============ REPRODUCIBILITY ============ -->
-<!-- ============ REPRO: ACROSS MODELS ============ -->
-<div class="slide" data-slide="repro-models" data-rw="1127" data-rh="634" data-notes="CoBRA dramatically reduces cross-model variance. The black line is CoBRA — far below the baselines. This works across different bias types and control methods.">
-  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span>: Across Models</h2>
-  <p style="font-size:24px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA (black line) stays near the target with little spread across base models</strong>, while colored baselines jump around.</p>
-  <div style="display:flex; justify-content:center; align-items:center; gap:24px; flex:1; min-height:0;">
-    <img src="figures/eval_fig/cross_model_bandwagon.png" style="max-height:72%; object-fit:contain; border-radius:6px;">
-    <img src="figures/eval_fig/cross_model_authority.png" style="max-height:72%; object-fit:contain; border-radius:6px;">
-  </div>
-  <div style="display:flex; justify-content:center; margin-top:0; transform:translateY(-30px);">
-    <img src="figures/eval_fig/cross_model_legend.png" style="max-width:440px; object-fit:contain;">
-  </div>
-</div>
-
-<!-- ============ REPRO: ACROSS TEMPERATURES ============ -->
-<div class="slide" data-slide="repro-temp" data-rw="1127" data-rh="634" data-notes="All temperature lines cluster tightly. 45 out of 45 pairwise equivalence tests pass. Temperature contributes less than 1.2 percent of variance.">
-  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span>: Across Temperatures</h2>
-  <p style="font-size:24px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA’s trajectories stack on top of each other across temperatures</strong> (45/45 pairwise equivalence tests pass).</p>
-  <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
-    <img src="figures/eval_fig/temperature.png" style="max-width:95%; max-height:85%; object-fit:contain;">
-  </div>
-</div>
-
-<!-- ============ REPRO: ACROSS REASONING MODES ============ -->
-<div class="slide" data-slide="repro-reasoning" data-rw="1127" data-rh="634" data-notes="Direct and reasoning modes overlap almost perfectly for RepE methods. Control coefficients transfer across modes with all p less than 0.001.">
-  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span>: Across Reasoning Modes</h2>
-  <p style="font-size:24px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>The two curves overlap</strong>, so the same control coefficient steers both modes.</p>
-  <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
-    <img src="figures/eval_fig/reasoning.png" style="max-width:95%; max-height:85%; object-fit:contain;">
-  </div>
-</div>
-
-<!-- ============ 20. GENERALIZATION: CROSS-PARADIGM & CROSS-PERSONA ============ -->
-<!-- ============ 21. DEMONSTRATION: EMOTIONAL CONTAGION ============ -->
-<div class="slide" data-slide="demo" style="" data-rw="1127" data-rh="634" data-notes="Beyond multiple-choice testbeds, we tested CoBRA on emotional contagion with free-text generation. The baseline with implicit NL specification shows no separation across bias levels. With CoBRA, higher CBI yields progressively stronger emotional contagion -- a clear dose-response.">
-  <h2 style="font-size:38px;"><span class="cobra">Demonstration</span> — Open-Ended Scenario</h2>
-  <p style="font-size:22px; color:var(--g600);">
-    Beyond multiple-choice testbeds: agents generate <strong>free-text posts</strong> in an Emotional Contagion scenario.
+<!-- ============ DEMONSTRATION: EMOTIONAL CONTAGION (professor’s content) ============ -->
+<div class="slide" data-slide="demo-intro" style="" data-rw="1127" data-rh="634" data-notes="We validated CoBRA on the Facebook emotional contagion study — 689,003 users had their news feeds altered for one week. Fewer positive posts led users to write more negative content. We expect higher follow-the-crowd bias to produce stronger emotional contagion.">
+  <h2 style="font-size:42px; margin-bottom:20px;">Demonstration: Emotional Contagion Simulation</h2>
+  <p style="font-size:22px; color:var(--g600); line-height:1.6; width:80%; margin-top:20px;">
+    Facebook altered news feeds of <strong>689,003 users</strong> for one week:
   </p>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto minmax(200px,280px) auto; column-gap:32px; row-gap:10px; margin-top:16px; align-items:start;">
-    <p style="font-size:18px; font-weight:700; color:var(--g500); margin:0; text-align:center; align-self:start;">Baseline — Implicit NL Specification</p>
-    <p style="font-size:18px; font-weight:700; color:var(--cobra-dark); margin:0; text-align:center; align-self:start;">CoBRA Control</p>
-    <div style="display:flex; align-items:flex-end; justify-content:center; width:100%; min-height:0;">
-      <img src="figures/eval_fig/demo_baseline_hd.png" alt="Baseline emotional contagion — limited separation across bias levels" style="max-width:85%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.06);">
+  <div style="margin-top:28px; display:flex; align-items:center; gap:20px; width:85%;">
+    <div style="flex:1; padding:22px 28px; background:#FFF0F0; border-left:5px solid #EF4444; border-radius:8px;">
+      <div style="font-weight:700; color:#C62828; font-size:22px;">Fewer positive posts in feed</div>
     </div>
-    <div style="display:flex; align-items:flex-end; justify-content:center; width:100%; min-height:0;">
-      <img src="figures/eval_fig/demo_cobra_hd.png" alt="CoBRA emotional contagion — dose-response by CBI" style="max-width:85%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.06);">
+    <svg width="40" height="20" viewBox="0 0 40 20"><line x1="0" y1="10" x2="28" y2="10" stroke="var(--g400)" stroke-width="2.5"></line><polygon points="28,4 40,10 28,16" fill="var(--g400)"></polygon></svg>
+    <div style="flex:1; padding:22px 28px; background:#f8f8f8; border-left:5px solid var(--g500); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:22px;">Users wrote <strong>more negative</strong> content</div>
     </div>
-    <p style="font-size:19px; color:var(--g500); margin:0; text-align:center; align-self:start; line-height:1.35;">No effective separation across bias levels</p>
-    <p style="font-size:19px; color:var(--cobra-darker); margin:0; text-align:center; align-self:start; line-height:1.35;">Higher CBI → stronger emotional contagion</p>
   </div>
+  <div style="margin-top:32px; padding:22px 28px; background:var(--cobra-lighter); border-left:5px solid var(--cobra); border-radius:8px; width:80%;">
+    <div style="font-size:21px; color:var(--g700); line-height:1.5;">
+      <strong style="color:var(--cobra-darker);">Expected:</strong> Higher <strong>follow-the-crowd bias</strong> → stronger emotional contagion
+    </div>
+  </div>
+  <p style="font-size:14px; color:var(--g400); font-style:italic; margin-top:16px;">
+    Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788–8790.
+  </p>
+</div>
 
+<!-- ============ BASELINE: IMPLICIT NL SPECIFICATION ============ -->
+<div class="slide" data-slide="demo-baseline" style="" data-rw="1127" data-rh="634" data-notes="The baseline with implicit natural language specification shows no meaningful separation across bias levels.">
+  <h2 style="font-size:38px; margin-bottom:16px;">Baseline: Implicit Natural Language Specification</h2>
+  <p style="font-size:22px; color:var(--g500); margin-bottom:20px; font-style:italic;">"You are a user with (no/little/some/much) follow-the-crowd bias."</p>
+  <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
+    <img src="figures/baseline_emotional_contagion.png" style="max-width:75%; max-height:90%; object-fit:contain; border-radius:6px;">
+  </div>
+</div>
+
+<!-- ============ BASELINE vs COBRA COMPARISON ============ -->
+<div class="slide" data-slide="demo-compare" style="" data-rw="1127" data-rh="634" data-notes="Side-by-side comparison: the baseline with implicit NL specification shows no separation across bias levels. With CoBRA, higher CBI yields progressively stronger emotional contagion — a clear dose-response.">
+  <div style="display:flex; gap:32px; width:100%; flex:1; min-height:0; align-items:center;">
+    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="font-weight:700; color:var(--g500); font-size:20px;">Baseline (Implicit Specification)</div>
+      <img src="figures/baseline_emotional_contagion.png" style="max-width:95%; max-height:80%; object-fit:contain; border-radius:6px;">
+    </div>
+    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="font-weight:700; color:var(--cobra-dark); font-size:20px;">CoBRA</div>
+      <img src="figures/cobra_emotional_contagion.png" style="max-width:95%; max-height:80%; object-fit:contain; border-radius:6px;">
+    </div>
+  </div>
 </div>
 
 <!-- ============ 25. KEY TAKEAWAYS ============ -->
@@ -2019,6 +1246,51 @@
   <div style="position:absolute; top:18px; right:32px; z-index:2; display:flex; flex-direction:row; align-items:center; gap:14px;">
     <img src="cute-me.png" alt="" width="52" height="60" style="flex-shrink:0;width:52px;height:60px;object-fit:cover;border-radius:8px;">
     <a href="mailto:xul049@ucsd.edu" style="font-size:clamp(20px,2vw,26px); font-weight:700; color:var(--cobra-darker); text-decoration:none; letter-spacing:0.02em;">xul049@ucsd.edu</a>
+  </div>
+</div>
+
+<!-- ============ ARCHIVED EVAL SLIDES (moved from main deck) ============ -->
+<div class="slide" data-slide="archive-repro-models" data-rw="1127" data-rh="634" data-notes="[ARCHIVED] CoBRA dramatically reduces cross-model variance.">
+  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span>: Across Models</h2>
+  <p style="font-size:24px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA (black line) stays near the target with little spread across base models</strong>, while colored baselines jump around.</p>
+  <div style="display:flex; justify-content:center; align-items:center; gap:24px; flex:1; min-height:0;">
+    <img src="figures/eval_fig/cross_model_bandwagon.png" style="max-height:72%; object-fit:contain; border-radius:6px;">
+    <img src="figures/eval_fig/cross_model_authority.png" style="max-height:72%; object-fit:contain; border-radius:6px;">
+  </div>
+  <div style="display:flex; justify-content:center; margin-top:0; transform:translateY(-30px);">
+    <img src="figures/eval_fig/cross_model_legend.png" style="max-width:440px; object-fit:contain;">
+  </div>
+</div>
+
+<div class="slide" data-slide="archive-repro-temp" data-rw="1127" data-rh="634" data-notes="[ARCHIVED] Temperature robustness.">
+  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span>: Across Temperatures</h2>
+  <p style="font-size:24px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA's trajectories stack on top of each other across temperatures</strong> (45/45 pairwise equivalence tests pass).</p>
+  <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
+    <img src="figures/eval_fig/temperature.png" style="max-width:95%; max-height:85%; object-fit:contain;">
+  </div>
+</div>
+
+<div class="slide" data-slide="archive-repro-reasoning" data-rw="1127" data-rh="634" data-notes="[ARCHIVED] Reasoning mode robustness.">
+  <h2 style="font-size:38px;"><span class="cobra">Reproducibility</span>: Across Reasoning Modes</h2>
+  <p style="font-size:24px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>The two curves overlap</strong>, so the same control coefficient steers both modes.</p>
+  <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
+    <img src="figures/eval_fig/reasoning.png" style="max-width:95%; max-height:85%; object-fit:contain;">
+  </div>
+</div>
+
+<div class="slide" data-slide="archive-demo-old" style="" data-rw="1127" data-rh="634" data-notes="[ARCHIVED] Original side-by-side emotional contagion comparison.">
+  <h2 style="font-size:38px;"><span class="cobra">Demonstration</span> — Open-Ended Scenario</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto minmax(200px,280px) auto; column-gap:32px; row-gap:10px; margin-top:16px; align-items:start;">
+    <p style="font-size:18px; font-weight:700; color:var(--g500); margin:0; text-align:center;">Baseline — Implicit NL Specification</p>
+    <p style="font-size:18px; font-weight:700; color:var(--cobra-dark); margin:0; text-align:center;">CoBRA Control</p>
+    <div style="display:flex; align-items:flex-end; justify-content:center; width:100%; min-height:0;">
+      <img src="figures/eval_fig/demo_baseline_hd.png" style="max-width:85%; max-height:100%; object-fit:contain; border-radius:6px;">
+    </div>
+    <div style="display:flex; align-items:flex-end; justify-content:center; width:100%; min-height:0;">
+      <img src="figures/eval_fig/demo_cobra_hd.png" style="max-width:85%; max-height:100%; object-fit:contain; border-radius:6px;">
+    </div>
+    <p style="font-size:19px; color:var(--g500); margin:0; text-align:center;">No effective separation across bias levels</p>
+    <p style="font-size:19px; color:var(--cobra-darker); margin:0; text-align:center;">Higher CBI → stronger emotional contagion</p>
   </div>
 </div>
 
@@ -2874,7 +2146,6 @@
     if((e.metaKey||e.ctrlKey)&&e.key==='s'){e.preventDefault();saveEdits();}
   });
 </script><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div>
-
 
 <script>
 /* --- Presenter Mode (press S to toggle) --- */
