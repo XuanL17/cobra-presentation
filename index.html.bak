@@ -536,8 +536,6 @@
     animation-delay: 2.82s;
   }
 
-
-  .citation { position:absolute; bottom:20px; left:40px; font-size:14px; color:#888; font-style:italic; }
 </style>
 <style>
     .edit-active { cursor:default !important; }
@@ -563,351 +561,676 @@
     #edit-banner.visible { display:block; }
     .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
   </style></head>
-</head>
 <body class="">
 <div class="deck" id="deck" tabindex="-1">
 
 <!-- ============ 1. TITLE ============ -->
-<div class="slide slide-title" data-slide="1" data-rw="1280" data-rh="720" data-notes="Welcome everyone. Today I am presenting CoBRA, a framework for programming cognitive bias into social agents using classic social science experiments. Let me start with a quick demo.">
-  <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-start; height:100%; gap:8px; padding-top:0;">
-    <!-- Title (compact - more room for demo) -->
+<div class="slide slide-title" data-slide="1" style="" data-rw="1280" data-rh="720" data-notes="Welcome everyone. Today I am presenting CoBRA, a framework for programming cognitive bias into social agents using classic social science experiments. Let me start with a quick demo.">
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-start; height:100%; gap:8px; padding-top:0;" class="">
+    <!-- Title (compact — more room for demo) -->
     <div style="text-align:center; flex-shrink:0; margin-top:-6px;">
-      <h1 style="font-size: 26px; line-height: 1.28; margin-bottom: 0;">
-        <img src="co_website/public/snake.svg" alt="" style="width: 50px; height: 50px; vertical-align: -0.1em; margin-right: 6px; font-size: 26px; padding: 0px; border-radius: 0px; position: relative; left: 10px; top: 10px;"><span style="font-size: 34px; color: var(--cobra-dark);">CoBRA:</span> <span style="color: var(--g800); font-size: 29px;">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
+      <h1 style="font-size: 26px; line-height: 1.28; margin-bottom: 0;" class="">
+        <img src="co_website/public/snake.svg" alt="" style="width: 50px; height: 50px; vertical-align: -0.1em; margin-right: 6px; font-size: 26px; padding: 0px; border-radius: 0px; position: relative; left: 10px; top: 10px;" class=""><span style="font-size: 34px; color: var(--cobra-dark);" class="">CoBRA:</span> <span style="color: var(--g800); font-size: 29px;" class="">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
       </h1>
     </div>
-    <!-- Live Demo - grows into remaining vertical space -->
+    <!-- Live Demo — grows into remaining vertical space -->
     <div style="flex:1; min-height:0; width:100%; margin-top:0; overflow:hidden; position:relative;">
-      <iframe src="video_demo.html" width="85%" height="850px" style="border:none; margin-top:-30px; margin-left:-50px; transform:scale(1.3); transform-origin:top left;" title="CoBRA demo"></iframe>
+      <iframe src="video_demo.html" style="width:85%; height:850px; border:none; transform:scale(1.3); transform-origin:top left; margin-top:-30px; margin-left:-50px;" title="CoBRA demo"></iframe>
     </div>
   </div>
 </div>
 
-<!-- ============ 2. PAPERS RISING ============ -->
-<div class="slide" data-slide="2" data-rw="1280" data-rh="720" data-notes="LLM-based social agent simulations have exploded since 2023.">
-  <h2 style="font-size:32px; margin-bottom:12px;">LLM-based Agent Social Simulations are Rising.</h2>
-  <div style="position:relative; width:100%; height:500px; margin-top:-10px;">
-    <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:180px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/4.png" style="position:absolute; left:160px; top:30px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/3.png" style="position:absolute; left:310px; top:5px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:450px; top:25px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:600px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:750px; top:20px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/5.png" style="position:absolute; left:50px; top:190px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/6.png" style="position:absolute; left:210px; top:210px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:370px; top:195px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:520px; top:180px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/7.png" style="position:absolute; left:680px; top:200px; width:160px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:820px; top:185px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2.png" style="position:absolute; left:100px; top:380px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:290px; top:370px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:480px; top:360px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:660px; top:375px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+<!-- ============ 2. BACKGROUND ============ -->
+<div class="slide" data-slide="2" style="" data-rw="1280" data-rh="720" data-notes="LLM-based social agent simulations have exploded since 2023. From Generative Agents to SOTOPIA, researchers are building increasingly complex multi-agent social worlds. But how do we actually specify what these agents should be like?">
+  <h2 style="text-align:center; margin-bottom:0px; margin-top:-30px;">LLM-based agent social simulations are rising</h2>
+  <div style="position:relative; width:100%; flex:1; min-height:0;">
+    <!-- Row 1: 6 papers -->
+    <img src="figures/background_fig/1.png" style="position:absolute; left:5px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/4.png" style="position:absolute; left:170px; top:15px; width:168px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/3.png" style="position:absolute; left:330px; top:0px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:490px; top:12px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:655px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:825px; top:10px; width:168px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+    <!-- Row 2: 6 papers -->
+    <img src="figures/background_fig/5.png" style="position:absolute; left:30px; top:175px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/6.png" style="position:absolute; left:200px; top:192px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:370px; top:178px; width:162px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:535px; top:168px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/7.png" style="position:absolute; left:705px; top:185px; width:160px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:862px; top:172px; width:162px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+    <!-- Row 3: 4 papers -->
+    <img src="figures/background_fig/2.png" style="position:absolute; left:100px; top:350px; width:168px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:310px; top:342px; width:162px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:520px; top:335px; width:172px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
+    <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:730px; top:348px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
   </div>
 </div>
 
-<!-- ============ 3. PRIOR WORK IMPLICIT ============ -->
-<div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="Prior work uses implicit natural language agent specification.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Prior work: <span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Implicit</span> Natural Language Agent Specification.</h2>
-  <div style="font-size:34px; line-height:1.6; margin-top:60px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:8px; overflow:visible; font-style:italic;">
-    <span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well&mdash;the husband Tom Moreno and the wife Jane Moreno.</span>
-  </div>
-  <div class="citation">
-    Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
-  </div>
-</div>
-
-<!-- ============ 4. EXPLICIT QUANTITATIVE ============ -->
-<div class="slide" data-slide="4" data-rw="1280" data-rh="720" data-notes="CoBRA provides explicit, quantitative control through demonstrated cognitive bias.">
-  <h2 style="font-size:32px; margin-bottom:12px;"><span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Explicit</span>, <span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Quantitative</span> control through Demonstrated Cognitive Bias</h2>
-  <div style="flex:1; min-height:0; width:100%; overflow:hidden; position:relative;">
-    <iframe src="video_demo.html" width="85%" height="850px" style="border:none; margin-top:-30px; margin-left:-50px; transform:scale(1.3); transform-origin:top left;"></iframe>
-  </div>
-</div>
-
-<!-- ============ 5. UNDERLYING PREMISES ============ -->
-<div class="slide" data-slide="5" data-rw="1280" data-rh="720" data-notes="Two underlying premises of implicit specification.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Underlying Premises of Implicit Specification</h2>
-  <div style="margin-top:80px; display:flex; flex-direction:column; gap:40px; padding-left:20px;">
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">1</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">LLMs can detect <strong>subtle</strong> cues in <strong>implicit</strong> language.</span>
+<!-- ============ 3. HOW SPECIFIED + PROBLEMS ============ -->
+<div class="slide" data-slide="3" style="position:relative;" data-rw="1280" data-rh="720" data-notes="SoTA agent specification is often a natural language description like this Generative Agents excerpt. Such specs are implicit, uncontrollable, unpredictable, and inconsistent across models.">
+  <div style="display:flex; flex-direction:column; align-items:flex-start; gap:36px; width:100%; max-width:1200px; margin:0 auto;">
+    <h2 style="font-size:41px; font-weight:700; color:var(--g800); line-height:1.3;">
+      Prior work: <span style="background:var(--cobra-light); padding:4px 12px; border-radius:6px; color:var(--cobra-dark); font-weight:700;">Implicit</span> Natural Language Agent Specification
+    </h2>
+    <div style="font-size:1.35em; line-height:1.7; margin-top:20px; padding:28px 32px; width:80%; background:#f8f8f8; border-left:5px solid var(--cobra); border-radius:8px; overflow:visible; font-style:italic;">
+      <span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well — the husband Tom Moreno and the wife Jane Moreno.</span>
     </div>
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">2</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">Once detected, LLMs can <strong>role-play</strong> the specification.</span>
+    <p style="font-size:11px; color:var(--g400); font-style:italic; margin-top:8px;">
+      Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
+    </p>
+  </div>
+</div>
+
+<!-- ============ Bridge: NL → outcome control + towel scenario ============ -->
+<div class="slide" data-slide="nl-towel-bridge" style="text-align: center;" data-rw="1280" data-rh="720" data-notes="CoBRA complements natural language with explicit, quantitative agent specification. Example scenario: hotel towel nudge.">
+  <p style="font-size: clamp(21px,2.9vw,32px); line-height: 1.4; color: var(--g800); max-width: 52em; margin: 0px auto; flex-shrink: 0; padding: 8px 28px 4px; text-align: center; font-weight: 400; position: relative; left: 0px; top: 0px;" class="">
+    <strong style="color:var(--cobra-dark);font-weight:700;">CoBRA</strong> <strong style="color:#171717;font-weight:700;">complements</strong> natural-language descriptions<br>
+    with <strong style="color:var(--cobra-dark);font-weight:700;">explicit</strong>, <strong style="color:var(--cobra-dark);font-weight:700;">quantitative</strong> <strong style="color: var(--cobra-dark); font-weight: 700; position: relative; left: 0px; top: 0px;" class="">agent specification</strong>.
+  </p>
+  <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:clamp(19px,5vw,37px);width:100%;padding:40px 20px 48px;margin-top:14px;flex-wrap:wrap;" class="">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; flex-shrink: 0; position: relative; left: 30px; top: 0px;" class="">
+      <img src="co_website/public/agent.png" alt="AI Agent" style="width: min(200px, 26vw); height: auto; object-fit: contain; position: relative; left: 20px; top: 0px;" class="">
+      <span style="font-size: clamp(12px,1.8vw,16px); color: var(--g500); font-weight: 700; position: relative; left: 20px; top: 0px;" class="">AI Agent</span>
+    </div>
+    <svg width="72" height="28" viewBox="0 0 72 28" aria-hidden="true" style="flex-shrink: 0; position: relative; left: 30px; top: 0px;" class=""><line x1="4" y1="14" x2="52" y2="14" stroke="var(--cobra)" stroke-width="3.5" stroke-linecap="round" class="" style="position: relative; left: 115px; top: 0px;"></line><polygon points="52,7 72,14 52,21" fill="var(--cobra)" class="" style="position: relative; left: 110px; top: 0px;"></polygon></svg>
+    <div style="flex-shrink:0;max-width:min(820px,58vw);background:transparent;">
+      <img src="Hotel%20Towel.png" alt="Hotel towel reuse scenario" style="width:100%;height:auto;max-height:min(520px,58vh);object-fit:contain;display:block;margin:0 auto;border-radius:10px;mix-blend-mode:multiply;box-shadow:none;">
     </div>
   </div>
 </div>
 
-<!-- ============ 6. FRAMING EFFECT EXPERIMENT ============ -->
-<div class="slide" data-slide="6" data-rw="1280" data-rh="720" data-notes="The framing effect experiment demonstrates how framing changes decisions.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Framing Effect Experiment</h2>
-  <div style="margin-top:50px; display:flex; gap:30px; align-items:stretch;">
-    <div style="flex:2; padding:24px 28px; background:#f8f8f8; border-radius:10px; border:1px solid #e0e0e0;">
-      <div style="font-size:27px; color:#555; line-height:1.6; margin-bottom:20px;">
-        A disease outbreak is expected to kill <strong>600 people</strong>. Two programs are proposed:
-      </div>
-      <div style="display:flex; gap:20px;">
-        <div style="flex:1; padding:16px 20px; background:#E8F5E9; border-left:4px solid #4CAF50; border-radius:6px;">
-          <div style="font-weight:700; color:#2E7D32; margin-bottom:8px; font-size:22px; text-transform:uppercase; letter-spacing:0.5px;">Positive Frame</div>
-          <div style="font-size:31px; color:#333;">Program <strong>A</strong>: 200 people will be <strong>saved</strong>.</div>
+<!-- ============ CoBRA INTRO (P5) ============ -->
+<div class="slide" data-slide="cobra-intro" data-rw="1280" data-rh="720" style="" data-notes="This is where CoBRA comes in. Instead of vague natural language, CoBRA gives you explicit, quantitative agent specification. You set a number on a scale, and the agent behaves accordingly, reproducibly.">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 16px;width:100%;flex-shrink:0;padding:4px 24px 10px;box-sizing:border-box;">
+    <svg width="30" height="17" viewBox="0 0 28 16" style="flex-shrink:0;" aria-hidden="true"><line x1="0" y1="8" x2="18" y2="8" stroke="var(--cobra)" stroke-width="2.5"></line><polygon points="18,3 28,8 18,13" fill="var(--cobra)"></polygon></svg>
+    <span style="font-size: 31px; font-weight: 700; color: var(--cobra-dark); display: inline-flex; align-items: center; gap: 8px; line-height: 1; white-space: nowrap;" class=""><img src="co_website/public/snake.svg" alt="" style="width:36px;height:36px;"> CoBRA</span>
+    <span style="font-size:clamp(15px,1.85vw,20px);font-weight:700;color:var(--g400);line-height:1.2;" aria-hidden="true">·</span>
+    <span style="font-size: 31px; font-weight: 700; color: var(--g800); line-height: 1.25; text-align: center;" class=""><strong class="" style="font-size: 31px; width: 100px;">explicit</strong>, <strong class="" style="font-size: 29px;">quantitative</strong> agent specification</span>
+  </div>
+  <div style="flex:1;min-height:0;width:100%;overflow:hidden;position:relative;">
+    <iframe src="video_demo.html" title="Demo" style="width:85%;height:850px;border:none;transform:scale(1.3);transform-origin:top left;margin-top:-30px;margin-left:-50px;"></iframe>
+  </div>
+</div>
+
+<!-- ============ Pilot study (slide 1) ============ -->
+<div class="slide pilot-study-slide" data-slide="pilot-study" style="position: relative;" data-rw="1280" data-rh="720" data-notes="We ran a pilot on a validated framing paradigm—the classic Asian disease vignette. Agents choose between two formally equivalent programs under different natural-language specifications: blank, a common persona, and an economist persona.">
+  <h2 class="" style="font-size: 33px; position: relative; left: 47.939957px; top: 0px; width: 897px;">Understanding agent specification in a validated social science experiment</h2>
+  <div class="pilot-study-body">
+    <div class="card pilot-asian-card">
+      <p class="pilot-scenario-paradigm" style="font-size: 22px; position: relative; left: 0px; top: -30px;">Classic framing effect experiment — Asian disease problem</p>
+      <p class="" style="font-size: 22px; position: relative; left: 0px; top: -5px;">600 lives are at risk unless a program is adopted. Two programs are proposed:</p>
+      <p style="margin-top: 12px; font-size: 22px; position: relative; left: 0px; top: -10px;" class=""><strong>A:</strong> 200 people saved.<br><strong>B:</strong> 400 people die.</p>
+    </div>
+    <div style="width:100%; max-width:1100px;">
+      <div class="pilot-study-cond-grid">
+        <div class="pilot-merged-cond">
+          <div class="pilot-cond-head">
+            <span class="pilot-cond-fig" aria-hidden="true"><span class="pilot-cond-blank" title="No persona" style="height: 58px;"></span></span>
+            <div class="pilot-cond-copy"><strong class="" style="font-size: 17px;">Blank</strong><span class="pilot-cond-desc" style="font-size: 17px;">No persona — minimal instruction only.</span></div>
+          </div>
         </div>
-        <div style="flex:1; padding:16px 20px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:6px;">
-          <div style="font-weight:700; color:#C62828; margin-bottom:8px; font-size:22px; text-transform:uppercase; letter-spacing:0.5px;">Negative Frame</div>
-          <div style="font-size:31px; color:#333;">Program <strong>B</strong>: 400 people will <strong>die</strong>.</div>
+        <div class="pilot-merged-cond">
+          <div class="pilot-cond-head">
+            <span class="pilot-cond-fig pilot-cond-fig--char"><img src="lin.png" alt="John Lin, pharmacy shopkeeper" class="" style="font-size: 14px; width: 100px; height: 200px; padding: 0px; position: relative; left: -4px; top: 2.053165px;"></span>
+            <div class="pilot-cond-copy"><strong class="" style="font-size: 17px;">Common</strong><span class="pilot-cond-desc" style="font-size: 17px;">Pharmacy shopkeeper at the Willow Market.</span></div>
+          </div>
+        </div>
+        <div class="pilot-merged-cond">
+          <div class="pilot-cond-head">
+            <span class="pilot-cond-fig pilot-cond-fig--char"><img src="econ-lin.png" alt="Economist persona" class="" style="height: 100px; width: 100px;"></span>
+            <div class="pilot-cond-copy"><strong class="" style="font-size: 17px;">Economist</strong><span class="pilot-cond-desc" style="font-size: 17px;">Professor of economics at a nearby college.</span></div>
+          </div>
         </div>
       </div>
     </div>
-    <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-      <div style="padding:20px 24px; background:#FEF9E7; border:2px solid rgb(245,210,131); border-radius:10px; text-align:left;">
-        <div style="font-size:21px; text-transform:uppercase; letter-spacing:0.5px; color:#B8860B; font-weight:700; margin-bottom:8px;">Key finding</div>
-        <div style="font-size:25px; color:#555; line-height:1.6;">
-          Same outcome, different framing &mdash; people react differently.
+  </div>
+  <p class="agents-citation">[5] Amos Tversky and Daniel Kahneman. 1981. The framing of decisions and the psychology of choice. <em>Science</em> 211, 4481 (1981), 453–458.</p>
+</div>
+
+<!-- ============ Pilot study results (slide 2) ============ -->
+<div class="slide pilot-results-slide" data-slide="pilot-results" data-rw="1280" data-rh="720" data-notes="The results show two problems. First, behavior is inconsistent across models — Mistral, Gemma, GPT-4o mini, and DeepSeek respond differently under the same persona. Second, natural-language specification does not reliably produce the expected framing tendency." style="">
+  <div style="display:flex; flex-direction:column; width:100%; flex:1; min-height:0;">
+    <div class="pilot-results-takeaways">
+      <div class="pilot-merged-tw"><div class="tw-num" style="position: relative; left: 0px; top: 20px;">1</div><p class="" style="position: relative; left: 0px; top: 20px; font-size: 20px;">same specification yield inconsistent behavior across models</p></div>
+      <div class="pilot-merged-tw"><div class="tw-num" style="position: relative; left: 0px; top: 20px;">2</div><p class="" style="position: relative; left: 0px; top: 20px; font-size: 20px;">implicit specification does not reliably yield expected tendencies.</p></div>
+    </div>
+    <div class="pilot-results-chart-wrap" style="position: relative; left: 0px; top: 65px;">
+      <style>
+        .ps-row{display:flex;align-items:center;margin-bottom:2px;height:22px}
+        .ps-plabel{width:100px;font-size:14px;font-weight:700;color:var(--g500);text-align:right;padding-right:10px;flex-shrink:0}
+        .ps-bars{flex:1;height:20px;position:relative;overflow:visible}
+        .ps-seg{height:100%;position:absolute;top:0}
+        .ps-seg.ps-h{background-image:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(255,255,255,.4) 3px,rgba(255,255,255,.4) 5px)}
+        .ps-cline{position:absolute;left:38%;top:-2px;bottom:-2px;width:1.5px;background:#999;z-index:2}
+        .ps-mname-r{font-size:14px;font-weight:700;color:var(--g500);white-space:nowrap;font-style:italic;position:absolute;right:60px;top:50%;transform:translateY(-50%)}
+        .ps-divider{width:100%;height:1px;background:#bbb;margin:3px 0}
+        .ps-legend{display:flex;flex-wrap:wrap;gap:14px 18px;justify-content:center;margin-top:10px;font-size:14px;color:var(--g500)}
+        .ps-legend-item{display:flex;align-items:center;gap:5px}
+        .ps-sw{width:16px;height:11px;border-radius:2px}
+        .ps-sw.ps-h{background-image:repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(255,255,255,.4) 2px,rgba(255,255,255,.4) 4px)}
+        .ps-axis{font-size:14px;color:#aaa;margin-top:4px}
+        .ps-axis-label{text-align:center;font-size:14px;color:#aaa;margin-top:2px}
+      </style>
+      <div id="psChart" style="position: relative; overflow: visible;"><div class="ps-row"><div class="ps-plabel">Economist</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 19.634615%; width: 11.089744%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 30.724359%; width: 4.294872%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 35.019231%; width: 5.961538%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 40.980769%; width: 18.397436%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 59.378205%; width: 24.358974%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-row"><div class="ps-plabel">Common</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 17.487179%; width: 8.525641%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 26.012821%; width: 9.423077%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 35.435897%; width: 5.128205%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 40.564103%; width: 17.5%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 58.064103%; width: 23.525641%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div><div class="ps-mname-r">Mistral 7B</div></div></div><div class="ps-row"><div class="ps-plabel">Blank</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 20.275641%; width: 10.705128%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 30.980769%; width: 3.397436%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 34.378205%; width: 7.24359%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 41.621795%; width: 17.115385%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 58.737179%; width: 25.641026%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-divider"></div><div class="ps-row"><div class="ps-plabel">Economist</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 10.275641%; width: 9.807692%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 20.083333%; width: 12.371795%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 32.455128%; width: 11.089744%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 43.544872%; width: 11.987179%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 55.532051%; width: 18.782051%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-row"><div class="ps-plabel">Common</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 12.326923%; width: 9.423077%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 21.75%; width: 11.538462%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 33.288462%; width: 9.423077%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 42.711538%; width: 10.705128%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 53.416667%; width: 23.076923%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div><div class="ps-mname-r">Gemma2 9B</div></div></div><div class="ps-row"><div class="ps-plabel">Blank</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 9.346154%; width: 11.987179%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 21.333333%; width: 14.102564%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 35.435897%; width: 5.128205%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 40.564103%; width: 15.384615%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 55.948718%; width: 17.5%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-divider"></div><div class="ps-row"><div class="ps-plabel">Economist</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 9.570513%; width: 10.705128%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 20.275641%; width: 13.653846%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 33.929487%; width: 8.141026%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 42.070513%; width: 9.807692%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 51.878205%; width: 21.794872%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-row"><div class="ps-plabel">Common</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 15.980769%; width: 9.423077%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 25.403846%; width: 8.974359%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 34.378205%; width: 7.24359%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 41.621795%; width: 9.423077%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 51.044872%; width: 29.038462%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div><div class="ps-mname-r">GPT-4o mini</div></div></div><div class="ps-row"><div class="ps-plabel">Blank</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 16.044872%; width: 11.089744%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 27.134615%; width: 7.24359%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 34.378205%; width: 7.24359%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 41.621795%; width: 8.974359%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 50.596154%; width: 29.487179%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-divider"></div><div class="ps-row"><div class="ps-plabel">Economist</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 11.49359%; width: 9.423077%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 20.916667%; width: 11.538462%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 32.455128%; width: 11.089744%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 43.544872%; width: 8.141026%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 51.685897%; width: 23.910256%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><div class="ps-row"><div class="ps-plabel">Common</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 11.269231%; width: 10.705128%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 21.974359%; width: 8.974359%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 30.948718%; width: 14.102564%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 45.051282%; width: 8.525641%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 53.576923%; width: 21.794872%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div><div class="ps-mname-r">DeepSeek</div></div></div><div class="ps-row"><div class="ps-plabel">Blank</div><div class="ps-bars"><div class="ps-seg ps-h" style="left: 14.50641%; width: 6.410256%; background: rgb(90, 126, 168);"></div><div class="ps-seg ps-h" style="left: 20.916667%; width: 11.538462%; background: rgb(140, 170, 212);"></div><div class="ps-seg" style="left: 32.455128%; width: 11.089744%; background: rgb(232, 228, 160);"></div><div class="ps-seg" style="left: 43.544872%; width: 9.423077%; background: rgb(168, 220, 230);"></div><div class="ps-seg" style="left: 52.967949%; width: 25.641026%; background: rgb(124, 201, 168);"></div><div class="ps-cline"></div></div></div><svg style="position: absolute; top: 0px; left: 0px; width: 999px; height: 303px; overflow: visible; pointer-events: none; z-index: 10;"><g data-part="L-ticks"><line x1="-30" y1="11.000012324594845" x2="-8" y2="11.000012324594845" stroke="#6DBFAB" stroke-width="2" opacity="0.7"></line><circle cx="-8" cy="11.000012324594845" r="2.5" fill="#6DBFAB" opacity="0.8"></circle><line x1="-30" y1="88.0000172678534" x2="-8" y2="88.0000172678534" stroke="#6DBFAB" stroke-width="2" opacity="0.7"></line><circle cx="-8" cy="88.0000172678534" r="2.5" fill="#6DBFAB" opacity="0.8"></circle><line x1="-30" y1="165.00002898852074" x2="-8" y2="165.00002898852074" stroke="#6DBFAB" stroke-width="2" opacity="0.7"></line><circle cx="-8" cy="165.00002898852074" r="2.5" fill="#6DBFAB" opacity="0.8"></circle><line x1="-30" y1="242.00004070918806" x2="-8" y2="242.00004070918806" stroke="#6DBFAB" stroke-width="2" opacity="0.7"></line><circle cx="-8" cy="242.00004070918806" r="2.5" fill="#6DBFAB" opacity="0.8"></circle></g><g data-part="L-vline"><line x1="-30" y1="11.000012324594845" x2="-30" y2="242.00004070918806" stroke="#6DBFAB" stroke-width="2" opacity="0.6"></line></g><g data-part="L-badge"><circle cx="-48" cy="126.50002312818707" r="12" fill="#6DBFAB" opacity="0.9"></circle><text x="-48" y="131.50002312818708" text-anchor="middle" font-size="16" fill="white" font-weight="700" font-family="Comic Neue,cursive">1</text></g><g data-part="L-label"><text x="-64" y="126.50002312818707" text-anchor="middle" font-size="16" fill="#4A8E7E" font-weight="700" font-family="Comic Neue,cursive" transform="rotate(-90,-64,126.50002312818707)">same persona → different behavior</text></g><g data-part="R-dots"><circle cx="989.5937154854231" cy="242.00004070918806" r="3" fill="#6DBFAB" opacity="0.7"></circle><circle cx="989.5937154854231" cy="266.0000244702482" r="3" fill="#6DBFAB" opacity="0.7"></circle></g><g data-part="R-fold"><polyline points="989.5937154854231,242.00004070918806 1007.5937154854231,242.00004070918806 1007.5937154854231,266.0000244702482 989.5937154854231,266.0000244702482" fill="none" stroke="#6DBFAB" stroke-width="2" opacity="0.65"></polyline></g><g data-part="R-badge"><circle cx="1025.5937154854232" cy="254.00003258971813" r="12" fill="#6DBFAB" opacity="0.85"></circle><text x="1025.5937154854232" y="259.0000325897181" text-anchor="middle" font-size="16" fill="white" font-weight="700" font-family="Comic Neue,cursive">2</text></g><g data-part="R-label"><text x="1051.5937154854232" y="254.00003258971813" text-anchor="middle" font-size="16" fill="#4A8E7E" font-weight="700" font-family="Comic Neue,cursive" opacity="0.85" transform="rotate(-90,1051.5937154854232,254.00003258971813)">Economist ≈ Common</text></g></svg></div>
+      <!-- Annotation SVG will be injected by JS after chart renders -->
+      <div class="ps-axis" style="position:relative;height:20px;margin-left:100px;">
+        <span style="position:absolute;left:12.4%;transform:translateX(-50%)">40</span>
+        <span style="position:absolute;left:25.2%;transform:translateX(-50%)">20</span>
+        <span style="position:absolute;left:38%;transform:translateX(-50%)">0</span>
+        <span style="position:absolute;left:50.8%;transform:translateX(-50%)">20</span>
+        <span style="position:absolute;left:63.6%;transform:translateX(-50%)">40</span>
+        <span style="position:absolute;left:76.5%;transform:translateX(-50%)">60</span>
+      </div>
+      <div class="ps-axis-label">Percentage</div>
+      <div class="ps-legend">
+        <div class="ps-legend-item"><div class="ps-sw ps-h" style="background:#5a7ea8;"></div> Strongly Negative</div>
+        <div class="ps-legend-item"><div class="ps-sw ps-h" style="background:#8caad4;"></div> Negative</div>
+        <div class="ps-legend-item"><div class="ps-sw" style="background:#e8e4a0;"></div> Neutral</div>
+        <div class="ps-legend-item"><div class="ps-sw" style="background:#a8dce6;"></div> Positive</div>
+        <div class="ps-legend-item"><div class="ps-sw" style="background:#7cc9a8;"></div> Strongly Positive</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const D={'Mistral 7B':{Economist:[38,28.7,9.3,6.7,17.3],Common:[36.7,27.3,8,14.7,13.3],Blank:[40,26.7,11.3,5.3,16.7]},'Gemma2 9B':{Economist:[29.3,18.7,17.3,19.3,15.3],Common:[36,16.7,14.7,18,14.7],Blank:[27.3,24,8,22,18.7]},'GPT-4o mini':{Economist:[34,15.3,12.7,21.3,16.7],Common:[45.3,14.7,11.3,14,14.7],Blank:[46,14,11.3,11.3,17.3]},'DeepSeek':{Economist:[37.3,12.7,17.3,18,14.7],Common:[34,13.3,22,14,16.7],Blank:[40,14.7,17.3,18,10]}};
+  const C=['#7cc9a8','#a8dce6','#e8e4a0','#8caad4','#5a7ea8'];
+  const P=['Economist','Common','Blank'];
+  const el=document.getElementById('psChart');
+  if(!el) return;
+  el.innerHTML='';
+  const mx=78;
+  const models=Object.entries(D);
+  models.forEach(([m,ps],mi)=>{
+    P.forEach((p,pi)=>{
+      const d=ps[p],r=document.createElement('div');r.className='ps-row';
+      const pl=document.createElement('div');pl.className='ps-plabel';pl.textContent=p;r.appendChild(pl);
+      // d = [SP, P, N, Ng, SN]
+      // Like the Python script: start at -(P + SP + N/2), draw all 5 segments left to right
+      // d = [SP, P, N, Ng, SN]
+      // Mirror: left=negative, right=positive. Draw SN,Ng,N,P,SP left-to-right
+      const halfN = d[2] / 2;
+      const startPct = -(d[3] + d[4] + halfN); // start from negative side
+      const bc=document.createElement('div');bc.className='ps-bars';
+      const scale = 50.0 / mx;
+      let xPos = 38 + startPct * scale;
+      const segs = [
+        {w:d[4], c:C[4], h:true},   // Strongly Negative (leftmost)
+        {w:d[3], c:C[3], h:true},   // Negative
+        {w:d[2], c:C[2], h:false},  // Neutral (straddles center)
+        {w:d[1], c:C[1], h:false},  // Positive
+        {w:d[0], c:C[0], h:false},  // Strongly Positive (rightmost)
+      ];
+      segs.forEach(s=>{
+        const seg=document.createElement('div');
+        seg.className='ps-seg'+(s.h?' ps-h':'');
+        seg.style.left=xPos+'%';
+        seg.style.width=(s.w*scale)+'%';
+        seg.style.background=s.c;
+        bc.appendChild(seg);
+        xPos+=s.w*scale;
+      });
+      const cl=document.createElement('div');cl.className='ps-cline';
+      bc.appendChild(cl);
+      // Model name on middle row's right
+      if(pi===1){
+        const mn=document.createElement('div');mn.className='ps-mname-r';
+        mn.textContent=m;bc.appendChild(mn);
+      }
+      r.appendChild(bc);el.appendChild(r);
+    });
+    // Divider between models (not after last)
+    if(mi<models.length-1){
+      const div=document.createElement('div');div.className='ps-divider';el.appendChild(div);
+    }
+  });
+
+  // ── Annotations: measure DOM positions when slide becomes visible ──
+  var chart = document.getElementById('psChart');
+  if(chart){
+    chart.style.position = 'relative';
+    chart.style.overflow = 'visible';
+    var drawn = false;
+
+    function drawAnnot(){
+      if(drawn) return;
+      var rows = chart.querySelectorAll('.ps-row');
+      if(rows.length < 12) return;
+      var cr = chart.getBoundingClientRect();
+      if(cr.height < 10) return;
+
+      // Fix: convert screen-space positions to SVG (internal) coordinates
+      // getBoundingClientRect returns scaled pixels; SVG needs unscaled
+      var iw=chart.offsetWidth, ih=chart.offsetHeight;
+      var sx=iw/cr.width, sy=ih/cr.height;
+
+      function myEl(el){ var r=el.getBoundingClientRect(); return (r.top+r.height/2-cr.top)*sy; }
+      function pleft(){ return (rows[0].querySelector('.ps-plabel').getBoundingClientRect().left-cr.left)*sx; }
+
+      // Find Economist rows by label text, not by index
+      var econRows=[], dsEconRow=null, dsCommonRow=null;
+      for(var ri=0;ri<rows.length;ri++){
+        var lbl=rows[ri].querySelector('.ps-plabel');
+        if(lbl && lbl.textContent.trim()==='Economist') econRows.push(rows[ri]);
+      }
+      // DeepSeek is the last model group — find its Economist and Common
+      dsEconRow=econRows[econRows.length-1];
+      // Common row is the next sibling .ps-row after DeepSeek's Economist
+      var next=dsEconRow.nextElementSibling;
+      while(next && !next.classList.contains('ps-row')) next=next.nextElementSibling;
+      dsCommonRow=next;
+
+      var ey=econRows.map(function(r){return myEl(r);});
+      var dey=myEl(dsEconRow), dcy=myEl(dsCommonRow);
+      var lx=pleft()-8; // dots 8px left of persona label text
+      var fx=lx-22;     // fold lines 22px further left
+
+      // Right: measure from actual bar segments of DeepSeek Econ+Common
+      var dsEconSegs=dsEconRow.querySelectorAll('.ps-seg');
+      var dsCommonSegs=dsCommonRow.querySelectorAll('.ps-seg');
+      var seg9r=(dsEconSegs[dsEconSegs.length-1].getBoundingClientRect().right-cr.left)*sx;
+      var seg10r=(dsCommonSegs[dsCommonSegs.length-1].getBoundingClientRect().right-cr.left)*sx;
+      var rx=Math.max(seg9r,seg10r)+10;
+
+      var ns='http://www.w3.org/2000/svg';
+      var svg=document.createElementNS(ns,'svg');
+      svg.style.cssText='position:absolute;top:0;left:0;width:'+iw+'px;height:'+ih+'px;overflow:visible;pointer-events:none;z-index:10;';
+
+      // Each sub-component gets its own <g> for independent nudging
+      // Left: ticks — short horizontal lines pointing at each Economist row
+      var gLD=document.createElementNS(ns,'g'); gLD.setAttribute('data-part','L-ticks');
+      ey.forEach(function(y){
+        var ln=document.createElementNS(ns,'line');
+        ln.setAttribute('x1',fx);ln.setAttribute('y1',y);
+        ln.setAttribute('x2',lx);ln.setAttribute('y2',y);
+        ln.setAttribute('stroke','#6DBFAB');ln.setAttribute('stroke-width','2');
+        ln.setAttribute('opacity','0.7');gLD.appendChild(ln);
+        // small dot at the end pointing toward the row
+        var c=document.createElementNS(ns,'circle');
+        c.setAttribute('cx',lx);c.setAttribute('cy',y);c.setAttribute('r','2.5');
+        c.setAttribute('fill','#6DBFAB');c.setAttribute('opacity','0.8');gLD.appendChild(c);
+      });
+      svg.appendChild(gLD);
+      // Left: vertical line connecting all ticks
+      var gLF=document.createElementNS(ns,'g'); gLF.setAttribute('data-part','L-vline');
+      var vl=document.createElementNS(ns,'line');
+      vl.setAttribute('x1',fx);vl.setAttribute('y1',ey[0]);
+      vl.setAttribute('x2',fx);vl.setAttribute('y2',ey[3]);
+      vl.setAttribute('stroke','#6DBFAB');vl.setAttribute('stroke-width','2');
+      vl.setAttribute('opacity','0.6');gLF.appendChild(vl);
+      svg.appendChild(gLF);
+      // Left: badge ①
+      var by1=(ey[1]+ey[2])/2, bx1=fx-18;
+      var gLB=document.createElementNS(ns,'g'); gLB.setAttribute('data-part','L-badge');
+      var bc1=document.createElementNS(ns,'circle');
+      bc1.setAttribute('cx',bx1);bc1.setAttribute('cy',by1);bc1.setAttribute('r','12');
+      bc1.setAttribute('fill','#6DBFAB');bc1.setAttribute('opacity','0.9');gLB.appendChild(bc1);
+      var bt1=document.createElementNS(ns,'text');
+      bt1.setAttribute('x',bx1);bt1.setAttribute('y',by1+5);bt1.setAttribute('text-anchor','middle');
+      bt1.setAttribute('font-size','16');bt1.setAttribute('fill','white');bt1.setAttribute('font-weight','700');
+      bt1.setAttribute('font-family','Comic Neue,cursive');bt1.textContent='1';gLB.appendChild(bt1);
+      svg.appendChild(gLB);
+      // Left: label
+      var lbx1=bx1-16;
+      var gLL=document.createElementNS(ns,'g'); gLL.setAttribute('data-part','L-label');
+      var lb1=document.createElementNS(ns,'text');
+      lb1.setAttribute('x',lbx1);lb1.setAttribute('y',by1);lb1.setAttribute('text-anchor','middle');
+      lb1.setAttribute('font-size','16');lb1.setAttribute('fill','#4A8E7E');lb1.setAttribute('font-weight','700');
+      lb1.setAttribute('font-family','Comic Neue,cursive');
+      lb1.setAttribute('transform','rotate(-90,'+lbx1+','+by1+')');
+      lb1.textContent='same persona → different behavior';gLL.appendChild(lb1);
+      svg.appendChild(gLL);
+
+      // Right: dots (green, shifted 50px right)
+      rx+=200;
+      var gRD=document.createElementNS(ns,'g'); gRD.setAttribute('data-part','R-dots');
+      [dey,dcy].forEach(function(y){
+        var c=document.createElementNS(ns,'circle');
+        c.setAttribute('cx',rx);c.setAttribute('cy',y);c.setAttribute('r','3');
+        c.setAttribute('fill','#6DBFAB');c.setAttribute('opacity','0.7');gRD.appendChild(c);
+      });
+      svg.appendChild(gRD);
+      // Right: fold line
+      var frx=rx+18;
+      var gRF=document.createElementNS(ns,'g'); gRF.setAttribute('data-part','R-fold');
+      var p2=document.createElementNS(ns,'polyline');
+      p2.setAttribute('points',rx+','+dey+' '+frx+','+dey+' '+frx+','+dcy+' '+rx+','+dcy);
+      p2.setAttribute('fill','none');p2.setAttribute('stroke','#6DBFAB');
+      p2.setAttribute('stroke-width','2');p2.setAttribute('opacity','0.65');gRF.appendChild(p2);
+      svg.appendChild(gRF);
+      // Right: badge ②
+      var by2=(dey+dcy)/2, bx2=frx+18;
+      var gRB=document.createElementNS(ns,'g'); gRB.setAttribute('data-part','R-badge');
+      var bc2=document.createElementNS(ns,'circle');
+      bc2.setAttribute('cx',bx2);bc2.setAttribute('cy',by2);bc2.setAttribute('r','12');
+      bc2.setAttribute('fill','#6DBFAB');bc2.setAttribute('opacity','0.85');gRB.appendChild(bc2);
+      var bt2=document.createElementNS(ns,'text');
+      bt2.setAttribute('x',bx2);bt2.setAttribute('y',by2+5);bt2.setAttribute('text-anchor','middle');
+      bt2.setAttribute('font-size','16');bt2.setAttribute('fill','white');bt2.setAttribute('font-weight','700');
+      bt2.setAttribute('font-family','Comic Neue,cursive');bt2.textContent='2';gRB.appendChild(bt2);
+      svg.appendChild(gRB);
+      // Right: label (right-shifted 5px)
+      var lbx2=bx2+26;
+      var gRL=document.createElementNS(ns,'g'); gRL.setAttribute('data-part','R-label');
+      var lb2=document.createElementNS(ns,'text');
+      lb2.setAttribute('x',lbx2);lb2.setAttribute('y',by2);lb2.setAttribute('text-anchor','middle');
+      lb2.setAttribute('font-size','16');lb2.setAttribute('fill','#4A8E7E');lb2.setAttribute('font-weight','700');
+      lb2.setAttribute('font-family','Comic Neue,cursive');lb2.setAttribute('opacity','0.85');
+      lb2.setAttribute('transform','rotate(-90,'+lbx2+','+by2+')');
+      lb2.textContent='Economist ≈ Common';gRL.appendChild(lb2);
+      svg.appendChild(gRL);
+
+      chart.appendChild(svg);
+      drawn=true;
+      console.log('[Annot] drawn OK, ey=',ey,'rx=',rx);
+    }
+
+    // Draw when slide becomes active (visible)
+    var sl=chart.closest('.slide');
+    if(sl){
+      new MutationObserver(function(){ if(sl.classList.contains('active')) setTimeout(drawAnnot,120); })
+        .observe(sl,{attributes:true,attributeFilter:['class']});
+    }
+    setTimeout(drawAnnot,600);
+
+    // Clean up any stale panel from previous code
+    var old=document.getElementById('annot-panel'); if(old) old.remove();
+  }
+})();
+</script>
+
+<!-- ============ CoBRA IDEA ============ -->
+<div class="slide slide-section" data-slide="cobra-idea" style="" data-rw="1280" data-rh="720" data-notes="The key idea: operationalize validated social science knowledge as reusable gym environments for AI agents — so bias and behavior can be measured and controlled in a standardized way.">
+  <div style="width:100%; max-width:1000px; margin:0 auto; display:flex; flex-direction:column; align-items:stretch; gap:24px;">
+    <div style="display:flex; align-items:center; justify-content:flex-start; gap:12px; flex-shrink:0; width:100%;">
+      <svg width="28" height="16" viewBox="0 0 28 16" style="flex-shrink:0;"><line x1="0" y1="8" x2="18" y2="8" stroke="var(--cobra)" stroke-width="2.5"></line><polygon points="18,3 28,8 18,13" fill="var(--cobra)"></polygon></svg>
+      <span style="font-size:31px; font-weight:700; color:var(--cobra-dark); display:inline-flex; align-items:center; gap:8px; line-height:1;"><img src="co_website/public/snake.svg" alt="" style="width:38px; height:38px;"> CoBRA</span><span style="font-size:24px; font-weight:700; color:var(--g600); margin-left:14px; letter-spacing:.02em;">Key idea</span>
+    </div>
+    <div style="text-align:center;">
+      <p style="font-size:29px; color:var(--g700); line-height:1.45; max-width:960px; margin:0 auto;">
+      Operationalize <span style="color:var(--cobra-dark); font-weight:700;">validated social science knowledge</span> as reusable <span style="color:var(--cobra-dark); font-weight:700;">“gym” environments</span> for AI Agents.
+    </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 7. CoBRA INTERNAL STRUCTURE (CBI focus, no step animation) ============ -->
+<div class="slide" data-slide="7" style="" data-rw="1280" data-rh="720" data-notes="The agent is evaluated on a classic social experiment testbed; we measure a Cognitive Bias Index from choice probabilities. The Cognitive Bias Index quantifies demonstrated bias by aggregating reactions across validated classic experiments.">
+  <div style="padding:16px 20px; display:flex; flex-direction:column; align-items:center; flex:1; min-height:0;" class="">
+    <header class="p10-cbi-head">
+      <p class="p10-cbi-title-line" style="font-size: 32px;">Cognitive Bias Index (CBI)</p>
+      <p class="p10-cbi-measure-line" style="font-size: 20px; position: relative; left: 0px; top: 35px;">measures the demonstrated cognitive bias of a social agent, by <strong>quantifying the agent's reactions</strong> in a set of <strong class="p10-green">validated classic social science experiments</strong>.</p>
+    </header>
+    <!-- Row: Agent → Experiment → Measure → Cognitive Bias Index table -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; flex: 1 1 0%; min-height: 0px; font-size: 14px;" class="">
+      <div style="text-align: center; width: 100px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 14px;" class="">
+        <img src="co_website/public/agent.png" alt="Agent" style="width: 50px; height: 50px; object-fit: contain; font-size: 14px;" class="">
+        <span style="font-size: 14px; color: var(--g500); font-weight: 700;" class="">AI Agent</span>
+      </div>
+      <svg width="20" height="12" viewBox="0 0 20 12" style="flex-shrink:0;"><line x1="0" y1="6" x2="12" y2="6" stroke="#9ca3af" stroke-width="2"></line><polygon points="12,2 20,6 12,11" fill="#9ca3af"></polygon></svg>
+
+      <div style="flex-shrink:0;">
+      <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:420px; flex-shrink:0;">
+        <div class="step-badge">2</div>
+        <p style="font-size:17px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;">Classic Social Experiment Testbed</p>
+        <p style="font-size:14px; font-weight:700; color:var(--g700); margin-bottom:4px;">Milgram Obedience Experiment</p>
+        <div class="card-accent" style="padding:5px 8px;">
+          <p style="font-size: 14px; color: var(--g600); line-height: 1.45;" class="">Prof. Lee claims: <strong>"The Earth is flat."</strong><br>Defer to authority or reason independently?</p>
         </div>
-        <div style="margin-top:12px; font-size:24px; color:#555; line-height:1.5;">
-          Domain expertise (e.g., economics) can <strong>attenuate</strong> susceptibility to framing.
+      </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+      <div class="measure-pill" style="font-size: 18px; padding: 6px 12px;">Measure <svg width="14" height="8" viewBox="0 0 14 8"><line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.5"></line><polygon points="8,1 14,4 8,7" fill="currentColor"></polygon></svg></div>
+
+      <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:260px; flex-shrink:0;">
+        <div class="step-badge">3</div>
+        <p style="font-size:17px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;" class="">Cognitive Bias Index (CBI)</p>
+        <table style="width:100%; margin-top:2px;">
+          <thead><tr><th style="font-size: 14px; padding: 2px 4px;" class="">Choice</th><th style="font-size: 14px; padding: 2px 4px; text-align: center;" class="">Wt</th><th style="font-size: 14px; padding: 2px 4px; text-align: right;" class="">Prob</th></tr></thead>
+          <tbody style="font-size:14px;">
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Agree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">4</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(A)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Mostly agree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">3</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(B)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Neutral</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">2</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(C)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Mostly disagree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">1</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(D)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Disagree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">0</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(E)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 7b. Behavioral Regulation Engine (step 4 only) ============ -->
+<div class="slide" data-slide="7b" style="position: relative;" data-rw="1280" data-rh="720" data-notes="The Behavioral Regulation Engine aligns the agent's behavior to exhibit controlled cognitive bias, by intervening in prompt, activation, or parameter space. Think of the forward pass as y equals f of theta of h of x: prompt engineering edits x before the stack builds h; representation engineering perturbs h inside the forward pass; fine-tuning changes theta so all prompts inherit the shift. Details in the paper.">
+  <div style="padding: 16px 20px; display: flex; flex-direction: column; align-items: center; flex: 1 1 0%; min-height: 0px; font-size: 15px;" class="">
+    <header class="p11-bre-head">
+      <p class="p11-bre-title-line" style="position: relative; left: 0px; top: 55px;">Behavioral Regulation Engine</p>
+      <p class="p11-bre-sub-line" style="font-size: 22px; position: relative; left: 0px; top: 60px; font-weight: 400;">aligns the agent's behavior to exhibit controlled cognitive bias.</p>
+    </header>
+    <p class="p11-bre-fwd mono" style="font-size: 22px; position: relative; left: 0px; top: 80px;">y = f<sub>θ</sub>( h( <span style="color:var(--cobra);" class="">x</span> ) )</p>
+    <div class="card" style="position: relative; padding: 14px 20px 16px; width: 100%; max-width: 980px; margin-top: 4px; flex: 0 1 auto; left: 0px; top: 110px;">
+      <div class="step-badge">4</div>
+      <div class="three-col" style="gap:12px; margin-top:4px;">
+        <div class="bre-card">
+          <h4 style="font-size: 17px;" class="">Prompt Engineering</h4>
+          <p class="bre-desc" style="font-size: 15px;">Input Space <span class="mono">(x)</span></p>
+          <p class="p11-bre-formula mono" style="font-size: 14px;">X′ = X + ΔX</p>
+        </div>
+        <div class="bre-card">
+          <h4 style="font-size: 17px;" class="">Representation Engineering</h4>
+          <p class="bre-desc" style="font-size: 15px;">Activation Space <span class="mono">(h)</span></p>
+          <p class="p11-bre-formula mono" style="font-size: 14px; font-weight: 700;">ĥ<sub>l</sub> = h<sub>l</sub> + α·<span style="color:var(--cobra);">v</span></p>
+        </div>
+        <div class="bre-card">
+          <h4 style="font-size: 17px;" class="">Fine-Tuning</h4>
+          <p class="bre-desc" style="font-size: 15px;">Parameter Space <span class="mono">(θ)</span></p>
+          <p class="p11-bre-formula mono" style="font-size: 14px;">θ′ = θ + λ(θ<sub>b</sub> − θ<sub>u</sub>)</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="citation">
-    Tversky, A. &amp; Kahneman, D. (1981). The Framing of Decisions and the Psychology of Choice. <em>Science</em>, 211(4481), 453&ndash;458.
+  <div style="position:absolute; bottom:10px; right:40px; display:flex; align-items:center; gap:6px;">
+    <span style="font-size:15px; color:#111;">Details</span>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cobra)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+    <span style="font-size:15px; font-weight:700; color:var(--cobra-darker);">Paper</span>
   </div>
 </div>
 
-<!-- ============ 7. PILOT EXPERIMENT ============ -->
-<div class="slide" data-slide="7" data-rw="1280" data-rh="720" data-notes="Pilot experiment with 3 agent profiles and 4 models.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Pilot Experiment: 3 Agent Profiles &times; 4 Models</h2>
-  <div style="margin-top:50px; display:flex; gap:40px; align-items:center;">
-    <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
-      <div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #3B82F6; border-radius:6px;">
-        <span style="font-weight:700; font-size:28px; color:#333;">Economist</span>
-        <span style="font-size:21px; color:#888; margin-left:8px;">"professor of economics"</span>
+<!-- ============ 7c. CoBRA INTERNAL — full closed loop (duplicate of former P11, static) ============ -->
+<div class="slide" data-slide="7c" style="" data-rw="1280" data-rh="720" data-notes="Full internal loop: experiment testbed, CBI measurement, loop until target, Behavioral Regulation Engine across input, activation, and parameter spaces — static, no animation.">
+  <div style="padding:16px 20px;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%;">
+      <div style="text-align:center; width:100px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <img src="co_website/public/agent.png" alt="Agent" style="width:44px;height:44px;object-fit:contain;">
+        <span style="font-size:14px;color:var(--g500);font-weight:700;" class="">AI Agent</span>
       </div>
-      <div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #F59E0B; border-radius:6px;">
-        <span style="font-weight:700; font-size:28px; color:#333;">Common</span>
-        <span style="font-size:21px; color:#888; margin-left:8px;">"pharmacy shopkeeper"</span>
+      <svg width="20" height="12" viewBox="0 0 20 12" style="flex-shrink:0;"><line x1="0" y1="6" x2="12" y2="6" stroke="#9ca3af" stroke-width="2"></line><polygon points="12,2 20,6 12,11" fill="#9ca3af"></polygon></svg>
+
+      <div style="flex-shrink:0;">
+      <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:420px; flex-shrink:0;">
+        <div class="step-badge">2</div>
+        <p style="font-size:17px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;">Classic Social Experiment Testbed</p>
+        <p style="font-size:14px; font-weight:700; color:var(--g700); margin-bottom:4px;">Milgram Obedience Experiment</p>
+        <div class="card-accent" style="padding:5px 8px;">
+          <p style="font-size:14px; color:var(--g600); line-height:1.45;" class="">Prof. Lee claims: <strong>"The Earth is flat."</strong><br>Defer to authority or reason independently?</p>
+        </div>
       </div>
-      <div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #888; border-radius:6px;">
-        <span style="font-weight:700; font-size:28px; color:#333;">Blank</span>
-        <span style="font-size:21px; color:#888; margin-left:8px;">no persona</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+      <div class="measure-pill" style="font-size: 14px;">Measure <svg width="14" height="8" viewBox="0 0 14 8"><line x1="0" y1="4" x2="8" y2="4" stroke="currentColor" stroke-width="1.5"></line><polygon points="8,1 14,4 8,7" fill="currentColor"></polygon></svg></div>
+
+      <div class="card" style="padding:12px 14px; text-align:center; position:relative; width:260px; flex-shrink:0;">
+        <div class="step-badge">3</div>
+        <p style="font-size:17px; font-weight:700; color:var(--cobra-darker); margin-bottom:4px;" class="">Cognitive Bias Index (CBI)</p>
+        <table style="width:100%; margin-top:2px;">
+          <thead><tr><th style="font-size: 14px; padding: 2px 4px;" class="">Choice</th><th style="font-size: 14px; padding: 2px 4px; text-align: center;" class="">Wt</th><th style="font-size: 14px; padding: 2px 4px; text-align: right;" class="">Prob</th></tr></thead>
+          <tbody style="font-size:14px;">
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Agree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">4</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(A)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Mostly agree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">3</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(B)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Neutral</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">2</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(C)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Mostly disagree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">1</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(D)</td></tr>
+            <tr><td style="padding: 2px 4px; font-size: 14px;" class="">Disagree</td><td style="padding: 2px 4px; text-align: center; font-weight: 700; color: var(--cobra-darker); font-size: 14px;" class="">0</td><td style="padding: 2px 4px; text-align: right; font-size: 14px;" class="mono">P(E)</td></tr>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
-    <div style="font-size:56px; color:#ccc; font-weight:700;">&times;</div>
-    <div style="flex:1; display:flex; flex-wrap:wrap; gap:12px;">
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">Mistral 7B</div>
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">Gemma2 9B</div>
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">GPT-4o Mini</div>
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">DeepSeek-v3</div>
-    </div>
-  </div>
-  <div style="margin-top:40px; font-size:25px; color:#555; line-height:1.6;">
-    150 responses per agent per model (15 scenarios &times; 10 queries each)
-  </div>
-</div>
 
-<!-- ============ 8. TWO FINDINGS ============ -->
-<div class="slide" data-slide="8" data-rw="1280" data-rh="720" data-notes="Two key findings from the pilot experiment.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Two Findings</h2>
-  <div style="margin-top:70px; display:flex; flex-direction:column; gap:30px; padding-left:20px; width:65%;">
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">1</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">The same specification produced <strong>inconsistent behavior</strong> across models.</span>
+    <div style="width:100%;">
+    <div style="display:flex; align-items:center; margin:6px 0;">
+      <div style="width:130px; flex-shrink:0; display:flex; justify-content:center;">
+        <svg width="18" height="24" viewBox="0 0 18 24" class=""><line x1="9" y1="4" x2="9" y2="24" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,4 9,0 15,4" fill="#6DBFAB"></polygon></svg>
+      </div>
+      <div style="flex:1; display:flex; justify-content:center;">
+        <div class="loop-pill" style="font-size:11px; line-height:1.3; text-align:center; max-width:min(520px,92vw);">↻ Loop until Cognitive Bias Index matches target</div>
+      </div>
+      <div style="width:270px; flex-shrink:0; display:flex; justify-content:center;">
+        <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="0" x2="9" y2="20" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,20 9,24 15,20" fill="#6DBFAB"></polygon></svg>
+      </div>
     </div>
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">2</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">Implicit specification did not reliably yield <strong>expected behaviors</strong>.</span>
-    </div>
-  </div>
-</div>
 
-<!-- ============ 9. COBRA KEY IDEA ============ -->
-<div class="slide" data-slide="9" data-rw="1280" data-rh="720" data-notes="CoBRA key idea: operationalize classical experiments as gym environments.">
-  <h2 style="font-size:40px; margin-bottom:12px;">CoBRA Key Idea</h2>
-  <div style="margin-top:50px; font-size:34px; color:#333; line-height:1.8; width:82%;">
-    Operationalize <strong style="color:rgb(245,210,131);">classical social science experiments</strong> as reusable <strong style="color:#6DBFAB;">"gym" environments</strong> for AI agents
-  </div>
-  <div style="margin-top:30px; font-size:31px; color:#555; width:80%;">
-    &rarr; so bias and behavior can be <strong>measured</strong> and <strong>controlled</strong> in a standardized way.
-  </div>
-</div>
-
-<!-- ============ 10. HARNESS KNOWLEDGE ============ -->
-<div class="slide" data-slide="10" data-rw="1280" data-rh="720" data-notes="Classic experiments provide three key resources.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Harness the Knowledge in Classic Experiments</h2>
-  <div style="margin-top:100px; display:flex; gap:20px; width:85%;">
-    <div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #FEF9E7, #fff); border-left:4px solid rgb(245,210,131); border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-      <div style="font-weight:700; color:#333; font-size:27px;">Detailed scenario description</div>
+    <div class="card" style="position:relative; padding:10px 16px;">
+      <div class="step-badge">4</div>
+      <p style="font-size:17px; font-weight:700; color:var(--cobra-darker); text-align:center; margin-bottom:4px;" class="">Behavioral Regulation Engine</p>
+      <div class="three-col" style="gap:10px;">
+        <div class="bre-card">
+          <h4 style="font-size:14px;" class="">Prompt Engineering</h4>
+          <p class="bre-desc" style="font-size:14px;">Input Space <span class="mono">(x)</span></p>
+        </div>
+        <div class="bre-card">
+          <h4 style="font-size:14px;" class="">Representation Engineering</h4>
+          <p class="bre-desc" style="font-size:14px;">Activation Space <span class="mono">(h)</span></p>
+        </div>
+        <div class="bre-card">
+          <h4 style="font-size:14px;">Fine-Tuning</h4>
+          <p class="bre-desc" style="font-size:14px;">Parameter Space <span class="mono">(θ)</span></p>
+        </div>
+      </div>
     </div>
-    <div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #f0f0f8, #fff); border-left:4px solid #8B5CF6; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-      <div style="font-weight:700; color:#333; font-size:27px;">Documented bias effects</div>
-    </div>
-    <div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #E8F5F0, #fff); border-left:4px solid #6DBFAB; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-      <div style="font-weight:700; color:#333; font-size:27px;">Validated Insights about Human Behavior</div>
     </div>
   </div>
 </div>
 
-<!-- ============ 11. COBRA CLOSED-LOOP ============ -->
-<div class="slide" data-slide="11" data-rw="1280" data-rh="720" data-notes="CoBRA closed-loop: calibration tasks plus behavioral regulation engine.">
-  <h2 style="font-size:32px; margin-bottom:12px;">CoBRA: Closed-loop</h2>
-  <div style="margin-top:60px; display:flex; gap:30px;">
-    <div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid rgb(245,210,131);">
-      <div style="font-weight:700; color:#333; font-size:29px; margin-bottom:10px;">Classical Experiments as Calibration Tasks</div>
-      <div style="font-size:24px; color:#888;">How biased is this agent?</div>
+<!-- ============ 9. CLASSIC SOCIAL EXPERIMENT TESTBED ============ -->
+<div class="slide" data-slide="9" style="" data-rw="1280" data-rh="720" data-notes="Our experiment testbed covers four cognitive biases, each with two paradigms drawn from classic social psychology. Authority, bandwagon, confirmation bias, and framing effect. The table is illustrative: welcome operationalized paradigms for all kinds of social behavior as reusable agent gyms.">
+  <h2 style="font-size:32px;">Classic Social Experiment Testbed</h2>
+  <div style="position:relative; margin-top:6px;">
+    <table>
+      <thead><tr><th>Cognitive Bias</th><th>Paradigm A</th><th>Paradigm B</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Authority Effect</strong></td><td>Milgram Obedience Experiment</td><td>Stanford Prison Experiment</td></tr>
+        <tr><td><strong>Bandwagon Effect</strong></td><td>Asch's Line Experiment</td><td>Hotel Towel Reuse Study</td></tr>
+        <tr><td><strong>Confirmation Bias</strong></td><td>Wason Selection Task</td><td>Biased Information Search</td></tr>
+        <tr><td><strong>Framing Effect</strong></td><td>Asian Disease Problem</td><td>Investment &amp; Insurance Framing</td></tr>
+      </tbody>
+    </table>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-top:16px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+      <svg width="24" height="14" viewBox="0 0 24 14" style="flex-shrink:0;"><line x1="0" y1="7" x2="16" y2="7" stroke="var(--cobra)" stroke-width="2"></line><polygon points="16,3 24,7 16,11" fill="var(--cobra)"></polygon></svg>
+      <p style="font-size:19px; color:var(--cobra-darker); font-style:italic;">Open for contribution &amp; collaboration</p>
+      </div>
+      <p style="font-size:14px; color:var(--g600); line-height:1.5; max-width:52em; margin:0; padding-left:32px;">Welcome operationalized paradigms for all kinds of social behavior, as reusable “gym” environments for AI agents.</p>
     </div>
-    <div style="display:flex; align-items:center; font-size:42px; color:#ccc;">&rarr;</div>
-    <div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
-      <div style="font-weight:700; color:#333; font-size:29px; margin-bottom:10px;">Behavioral Regulation Engine</div>
-      <div style="font-size:24px; color:#888;">Set bias to a target level.</div>
-    </div>
-  </div>
-  <div style="margin-top:50px; text-align:center; font-size:27px; color:#555;">
-    <strong>measure</strong> &rarr; <strong>adjust</strong> &rarr; <strong>re-measure</strong> &rarr; ... &rarr; <strong>converge</strong>
   </div>
 </div>
 
-<!-- ============ 12. CALIBRATION TASKS TABLE ============ -->
-<div class="slide" data-slide="12" data-rw="1280" data-rh="720" data-notes="Classic experiments serve as calibration tasks for four cognitive biases.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Classic Experiments as Calibration Tasks</h2>
-  <table style="margin-top:40px; width:90%; border-collapse:collapse; font-size:22px;">
-    <tr style="border-bottom:2px solid #e0e0e0;">
-      <th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:19px; text-transform:uppercase; letter-spacing:0.5px;">Cognitive Bias</th>
-      <th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:19px; text-transform:uppercase; letter-spacing:0.5px;">Paradigm A</th>
-      <th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:19px; text-transform:uppercase; letter-spacing:0.5px;">Paradigm B</th>
-    </tr>
-    <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Authority Effect</td>
-      <td style="padding:12px 16px; color:#555;">Milgram Obedience Experiment</td>
-      <td style="padding:12px 16px; color:#555;">Stanford Prison Experiment</td>
-    </tr>
-    <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Bandwagon Effect</td>
-      <td style="padding:12px 16px; color:#555;">Asch's Line Experiment</td>
-      <td style="padding:12px 16px; color:#555;">Hotel Towel Reuse Study</td>
-    </tr>
-    <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Confirmation Bias</td>
-      <td style="padding:12px 16px; color:#555;">Wason Selection Task</td>
-      <td style="padding:12px 16px; color:#555;">Biased Information Search</td>
-    </tr>
-    <tr>
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Framing Effect</td>
-      <td style="padding:12px 16px; color:#555;">Asian Disease Problem</td>
-      <td style="padding:12px 16px; color:#555;">Investment &amp; Insurance Framing</td>
-    </tr>
-  </table>
-  <div style="margin-top:30px; font-size:24px; color:#4A8E7E; font-style:italic;">
-    &rarr; Open for contribution &amp; collaboration
-  </div>
-  <div style="margin-top:6px; font-size:20px; color:#888;">
-    Welcome operationalized paradigms for all kinds of social behavior, as reusable "gym" environments for AI agents.
-  </div>
-  <div style="position:absolute; bottom:30px; right:60px; font-size:20px; color:#888;">
-    Details &rarr; Paper
+<!-- ============ EVALUATION SECTION DIVIDER ============ -->
+<!-- ============ EVALUATION: TECHNICAL BENCHMARK (professor’s content) ============ -->
+<div class="slide" data-slide="eval-overview" style="" data-rw="1280" data-rh="720" data-notes="We evaluate CoBRA on three axes: reproducibility (consistent across models, temperatures, reasoning modes), controllability (precise control under open-weight and API settings), and generalization (bias transfers across experiments).">
+  <h2 style="font-size:36px; margin-bottom:28px;">Evaluation: Technical Benchmark</h2>
+  <div style="display:flex; flex-direction:column; gap:24px; width:85%; max-width:900px;">
+    <div style="padding:24px 30px; background:#f8f8f8; border-left:5px solid var(--cobra); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:20px; margin-bottom:8px;">Reproducibility</div>
+      <div style="font-size:17px; color:var(--g500); line-height:1.5;">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
+    </div>
+    <div style="padding:24px 30px; background:#f8f8f8; border-left:5px solid var(--cobra-dark); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:20px; margin-bottom:8px;">Controllability</div>
+      <div style="font-size:17px; color:var(--g500); line-height:1.5;">Precise and predictable control under both open-weight and API-only settings.</div>
+    </div>
+    <div style="padding:24px 30px; background:#f8f8f8; border-left:5px solid var(--cobra-darker); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:20px; margin-bottom:8px;">Generalization</div>
+      <div style="font-size:17px; color:var(--g500); line-height:1.5;">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
+    </div>
   </div>
 </div>
 
-<!-- ============ 13. BEHAVIORAL REGULATION ENGINE ============ -->
-<div class="slide" data-slide="13" data-rw="1280" data-rh="720" data-notes="The Behavioral Regulation Engine aligns agent behavior to exhibit controlled cognitive bias.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Behavioral Regulation Engine</h2>
-  <div style="margin-top:20px; font-size:25px; color:#555; text-align:center;">
-    Aligns the agent's behavior to exhibit controlled cognitive bias.
-  </div>
-  <div style="margin-top:20px; text-align:center; font-size:31px; font-style:italic; color:#4A8E7E; font-weight:700;">
-    y = f<sub>&theta;</sub>( h( x ) )
-  </div>
-  <div style="margin-top:30px; display:flex; gap:16px; padding:20px; background:#f8faf9; border:1.5px solid rgba(109,191,171,0.25); border-radius:12px;">
-    <div style="flex:1; text-align:center; padding:16px 12px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:25px; margin-bottom:8px;">Prompt Engineering</div>
-      <div style="font-size:21px; color:#888; margin-bottom:10px;">Input Space (x)</div>
-      <div style="font-size:24px; color:#4A8E7E; font-style:italic;">x' = x + &Delta;x</div>
+<!-- ============ DEMONSTRATION: EMOTIONAL CONTAGION (professor’s content) ============ -->
+<div class="slide" data-slide="demo-intro" style="" data-rw="1280" data-rh="720" data-notes="We validated CoBRA on the Facebook emotional contagion study — 689,003 users had their news feeds altered for one week. Fewer positive posts led users to write more negative content. We expect higher follow-the-crowd bias to produce stronger emotional contagion.">
+  <h2 style="font-size:36px; margin-bottom:20px;">Demonstration: Emotional Contagion Simulation</h2>
+  <p style="font-size:19px; color:var(--g600); line-height:1.6; width:80%; margin-top:20px;">
+    Facebook altered news feeds of <strong>689,003 users</strong> for one week:
+  </p>
+  <div style="margin-top:28px; display:flex; align-items:center; gap:20px; width:85%;">
+    <div style="flex:1; padding:22px 28px; background:#FFF0F0; border-left:5px solid #EF4444; border-radius:8px;">
+      <div style="font-weight:700; color:#C62828; font-size:19px;">Fewer positive posts in feed</div>
     </div>
-    <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
-    <div style="flex:1; text-align:center; padding:16px 12px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:25px; margin-bottom:8px;">Representation Engineering</div>
-      <div style="font-size:21px; color:#888; margin-bottom:10px;">Activation Space (h)</div>
-      <div style="font-size:24px; color:#4A8E7E; font-style:italic;">&#x0125;<sub>i</sub> = h<sub>i</sub> + &alpha;v</div>
-    </div>
-    <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
-    <div style="flex:1; text-align:center; padding:16px 12px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:25px; margin-bottom:8px;">Fine-Tuning</div>
-      <div style="font-size:21px; color:#888; margin-bottom:10px;">Parameter Space (&theta;)</div>
-      <div style="font-size:24px; color:#4A8E7E; font-style:italic;">&theta;' = &theta; + &lambda;(&theta;<sub>b</sub> - &theta;<sub>u</sub>)</div>
+    <svg width="40" height="20" viewBox="0 0 40 20"><line x1="0" y1="10" x2="28" y2="10" stroke="var(--g400)" stroke-width="2.5"></line><polygon points="28,4 40,10 28,16" fill="var(--g400)"></polygon></svg>
+    <div style="flex:1; padding:22px 28px; background:#f8f8f8; border-left:5px solid var(--g500); border-radius:8px;">
+      <div style="font-weight:700; color:var(--g800); font-size:19px;">Users wrote <strong>more negative</strong> content</div>
     </div>
   </div>
-  <div style="position:absolute; bottom:30px; right:60px; font-size:20px; color:#888;">
-    Details &rarr; Paper
+  <div style="margin-top:32px; padding:22px 28px; background:var(--cobra-lighter); border-left:5px solid var(--cobra); border-radius:8px; width:80%;">
+    <div style="font-size:18px; color:var(--g700); line-height:1.5;">
+      <strong style="color:var(--cobra-darker);">Expected:</strong> Higher <strong>follow-the-crowd bias</strong> → stronger emotional contagion
+    </div>
   </div>
+  <p style="font-size:11px; color:var(--g400); font-style:italic; margin-top:16px;">
+    Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788–8790.
+  </p>
 </div>
 
-<!-- ============ 14. EVALUATION TECHNICAL BENCHMARK ============ -->
-<div class="slide" data-slide="14" data-rw="1280" data-rh="720" data-notes="We evaluate CoBRA on reproducibility, controllability, and generalization.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Evaluation: Technical Benchmark</h2>
-  <div style="margin-top:50px; display:flex; flex-direction:column; gap:20px; width:85%;">
-    <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:27px; margin-bottom:6px;">Reproducibility</div>
-      <div style="font-size:22px; color:#666;">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
-    </div>
-    <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:27px; margin-bottom:6px;">Controllability</div>
-      <div style="font-size:22px; color:#666;">Precise and predictable control under both open-weight and API-only settings.</div>
-    </div>
-    <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #8B5CF6; border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:27px; margin-bottom:6px;">Generalization</div>
-      <div style="font-size:22px; color:#666;">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
-    </div>
-  </div>
-  <div style="position:absolute; bottom:30px; right:60px; font-size:20px; color:#888;">
-    Details &rarr; Paper
-  </div>
-</div>
-
-<!-- ============ 15. EMOTIONAL CONTAGION ============ -->
-<div class="slide" data-slide="15" data-rw="1280" data-rh="720" data-notes="Demonstration based on the Facebook emotional contagion study.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Demonstration: Emotional Contagion Simulation</h2>
-  <div style="margin-top:40px; font-size:27px; color:#555; line-height:1.6; width:80%;">
-    Facebook altered news feeds of users for one week:
-  </div>
-  <div style="margin-top:30px; display:flex; align-items:center; gap:16px; width:85%;">
-    <div style="flex:1; padding:18px 22px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:8px;">
-      <div style="font-weight:700; color:#C62828; font-size:24px;">Fewer positive posts in feed</div>
-    </div>
-    <div style="font-size:36px; color:#ccc;">&rarr;</div>
-    <div style="flex:1; padding:18px 22px; background:#f8f8f8; border-left:4px solid #888; border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:24px;">Users wrote <strong>more negative</strong> content</div>
-    </div>
-  </div>
-  <div style="margin-top:30px; padding:16px 22px; background:#FEF9E7; border-left:4px solid rgb(245,210,131); border-radius:8px; width:80%;">
-    <div style="font-size:25px; color:#555; line-height:1.5;">
-      <strong style="color:#B8860B;">Expected:</strong><br /> Higher <strong>follow-the-crowd bias</strong> &rarr; stronger emotional contagion
-    </div>
-  </div>
-  <div class="citation">
-    Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788&ndash;8790.
-  </div>
-</div>
-
-<!-- ============ 16. BASELINE ============ -->
-<div class="slide" data-slide="16" data-rw="1280" data-rh="720" data-notes="Baseline with implicit natural language specification shows no meaningful separation.">
-  <h2 style="font-size:40px; margin-bottom:12px;">Baseline: Implicit Natural Language Specification</h2>
-  <p style="font-size:28px; color:var(--g600); margin-bottom:16px;">"You are a user with (no/little/some/much) follow-the-crowd bias."</p>
+<!-- ============ BASELINE: IMPLICIT NL SPECIFICATION ============ -->
+<div class="slide" data-slide="demo-baseline" style="" data-rw="1280" data-rh="720" data-notes="The baseline with implicit natural language specification shows no meaningful separation across bias levels.">
+  <h2 style="font-size:32px; margin-bottom:16px;">Baseline: Implicit Natural Language Specification</h2>
+  <p style="font-size:19px; color:var(--g500); margin-bottom:20px; font-style:italic;">"You are a user with (no/little/some/much) follow-the-crowd bias."</p>
   <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
-    <img src="figures/baseline_emotional_contagion.png" style="max-width:700px; max-height:90%; object-fit:contain;" />
+    <img src="figures/baseline_emotional_contagion.png" style="max-width:75%; max-height:90%; object-fit:contain; border-radius:6px;">
   </div>
 </div>
 
-<!-- ============ 17. BASELINE vs COBRA ============ -->
-<div class="slide" data-slide="17" data-rw="1280" data-rh="720" data-notes="Side-by-side: baseline shows no separation, CoBRA shows clear dose-response.">
-  <div style="display:flex; gap:20px; width:100%; flex:1; min-height:0; align-items:center;">
-    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px;">
-      <div style="font-weight:700; color:#888; font-size:24px; margin-bottom:8px;">Baseline (Implicit Specification)</div>
-      <img src="figures/baseline_emotional_contagion.png" style="max-width:580px; max-height:85%; object-fit:contain;" />
+<!-- ============ BASELINE vs COBRA COMPARISON ============ -->
+<div class="slide" data-slide="demo-compare" style="" data-rw="1280" data-rh="720" data-notes="Side-by-side comparison: the baseline with implicit NL specification shows no separation across bias levels. With CoBRA, higher CBI yields progressively stronger emotional contagion — a clear dose-response.">
+  <div style="display:flex; gap:32px; width:100%; flex:1; min-height:0; align-items:center;">
+    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="font-weight:700; color:var(--g500); font-size:17px;">Baseline (Implicit Specification)</div>
+      <img src="figures/baseline_emotional_contagion.png" style="max-width:95%; max-height:80%; object-fit:contain; border-radius:6px;">
     </div>
-    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:24px; margin-bottom:8px;">CoBRA</div>
-      <img src="figures/cobra_emotional_contagion.png" style="max-width:580px; max-height:85%; object-fit:contain;" />
+    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="font-weight:700; color:var(--cobra-dark); font-size:17px;">CoBRA</div>
+      <img src="figures/cobra_emotional_contagion.png" style="max-width:95%; max-height:80%; object-fit:contain; border-radius:6px;">
+    </div>
+  </div>
+</div>
+
+<!-- ============ 25. KEY TAKEAWAYS ============ -->
+<div class="slide" data-slide="25" style="" data-rw="1280" data-rh="720" data-notes="Three key takeaways. First, classic experiments serve as a generalizable behavioral control layer. Second, CoBRA acts as a specification compiler from natural language intent to reproducible specs. Third, the CBI gives researchers a predictable dial-like interface for tuning agent behavior.">
+  <h2 style="font-size:40px;">Toward <span class="cobra">Reproducible</span> Agent Specification</h2>
+
+  <div style="display:flex; flex-direction:column; gap:24px; margin-top:28px; max-width:880px; margin-left:auto; margin-right:auto;">
+    <div style="display:flex; align-items:flex-start; gap:22px;">
+      <span style="font-size:45px; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:46px; text-align:right;">1</span>
+      <div>
+        <h3 style="font-size:22px; margin-bottom:6px; color:var(--g800);">Generalizable Behavioral Control Layer</h3>
+        <p style="font-size:19px; color:var(--g500); line-height:1.5;">Classic experiments as reusable "gym" environments — extensible beyond bias to richer social phenomena.</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:22px;">
+      <span style="font-size:45px; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:46px; text-align:right;">2</span>
+      <div>
+        <h3 style="font-size:22px; margin-bottom:6px; color:var(--g800);">Agent Specification Compiler</h3>
+        <p style="font-size:19px; color:var(--g500); line-height:1.5;">Natural-language intent → structured, reproducible behavioral specs via CoBRA.</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:22px;">
+      <span style="font-size:45px; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:46px; text-align:right;">3</span>
+      <div>
+        <h3 style="font-size:22px; margin-bottom:6px; color:var(--g800);">Predictable User Interface</h3>
+        <p style="font-size:19px; color:var(--g500); line-height:1.5;">A calibrated control proxy — small index adjustments yield smooth, monotonic behavior shifts, like turning a dial.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -916,7 +1239,7 @@
 <div class="slide slide-end" data-slide="26" style="flex-direction:column; align-items:center; justify-content:center; padding:24px 64px; position:relative;" data-rw="1280" data-rh="720" data-notes="Thank you for your attention. The code, data, and interactive demo are all available online. I am happy to take questions.">
   <!-- Video: iframe ignores clicks; transparent layer receives clicks so document click handler can showSlide(current+1) -->
   <div style="width:100%; flex:1; min-height:0; overflow:hidden; position:relative; padding-top:12px; box-sizing:border-box;">
-    <iframe src="video_demo.html" title="Demo (decorative)" style="width:85%; height:500px; border:none; transform:scale(0.9); transform-origin:top left; pointer-events:none;"></iframe>
+    <iframe src="video_demo.html" title="Demo (decorative)" style="width:85%; height:850px; border:none; transform:scale(1.3); transform-origin:top left; margin-top:-30px; margin-left:-50px; pointer-events:none;"></iframe>
     <div style="position:absolute; inset:0; z-index:1; cursor:pointer;" aria-hidden="true"></div>
   </div>
   <!-- Contact top-right (above hit layer) -->
