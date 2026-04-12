@@ -540,7 +540,7 @@
   }
 
 
-  .citation { position:absolute; bottom:16px; left:78px; right:78px; font-size:11px; color:#888; font-style:italic; }
+  .citation { position:absolute; bottom:16px; left:78px; font-size:11px; color:#888; font-style:italic; z-index:2; }
 </style>
 <style>
     .edit-active { cursor:default !important; }
@@ -1289,9 +1289,11 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
       let stuck=null;
       for(let i=0;i<wrapper.children.length;i++){
         const c=wrapper.children[i];
-        if(c.classList&&c.classList.contains('agents-citation')){ stuck=c; break; }
+        if(c.classList&&(c.classList.contains('agents-citation')||c.classList.contains('citation'))){ stuck=c; break; }
       }
       if(stuck) slide.insertBefore(stuck,wrapper.nextSibling);
+      // Also extract any remaining .citation elements
+      wrapper.querySelectorAll('.citation').forEach(c=>slide.insertBefore(c,wrapper.nextSibling));
     }
     if(!wrapper){
       // Wrap all children (except page-num) in a zoom container
@@ -1301,7 +1303,7 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
       while(slide.firstChild){
         const fc=slide.firstChild;
         if(fc.classList&&fc.classList.contains('page-num')) break;
-        if(fc.classList&&fc.classList.contains('agents-citation')) break; // pin to slide bottom (transform on wrapper breaks absolute)
+        if(fc.classList&&(fc.classList.contains('agents-citation')||fc.classList.contains('citation'))) break; // pin to slide bottom
         wrapper.appendChild(fc);
       }
       slide.insertBefore(wrapper,slide.firstChild);
