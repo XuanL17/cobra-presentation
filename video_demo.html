@@ -20,8 +20,7 @@
     body {
       font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
       background: transparent;
-      display: flex; align-items: center; justify-content: center;
-      min-height: 100vh;
+      display: flex; align-items: flex-start; justify-content: center;
     }
     .container {
       width: 920px; padding: 28px 36px;
@@ -175,18 +174,20 @@
 
       <div class="control-divider"></div>
 
-      <div class="slider-label">Cognitive Bias Index</div>
+      <div class="bias-section">
+        <div class="bias-type-name">Agent Specification</div>
+        <p class="bias-explanation">You are John Lin, who works at Willow Market who loves to help people ....</p>
+      </div>
+
+      <div class="control-divider"></div>
+
+      <div class="slider-label">Follow-the-crowd Bias Slider</div>
       <input type="range" id="slider" min="0" max="4" step="0.01" value="2.0" />
       <div class="slider-ticks">
         <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
       </div>
 
-      <div class="control-divider"></div>
 
-      <div class="bias-section">
-        <div class="bias-type-name">Bandwagon Effect</div>
-        <p class="bias-explanation">A behavioral tendency to follow the majority.</p>
-      </div>
     </div>
 
     <!-- Right: LLM Response -->
@@ -194,11 +195,8 @@
       <div class="panel-label"><span class="dot"></span> LLM Agent Response</div>
       <div id="probBars"></div>
       <hr class="response-divider" />
-      <div class="model-output" id="modelOutput">
-        <div class="model-output-heading">Model Output</div>
-        <div class="model-answer" id="modelAnswer"></div>
-        <div class="model-reasoning" id="modelReasoning"></div>
-      </div>
+      <div class="model-answer" id="modelAnswer"></div>
+      <div class="model-reasoning" id="modelReasoning"></div>
     </div>
 
   </div>
@@ -214,11 +212,11 @@ const SCENARIO = {
 const LABELS = ['A','B','C','D','E'];
 const COLORS = ['var(--color-a)','var(--color-b)','var(--color-c)','var(--color-d)','var(--color-e)'];
 const OPT_TEXTS = [
-  'Follow the majority and reuse towels.',
-  'Probably follow, but consider other factors.',
-  'Undecided; need more information.',
-  'Probably not follow the majority.',
-  'Request fresh towels regardless.'
+  'Strongly follow majority',
+  'Lean toward majority',
+  'Neutral / undecided',
+  'Lean against majority',
+  'Ignore majority entirely'
 ];
 
 const OPTION_COLORS = { A: '#EF4444', B: '#F59E0B', C: '#8B5CF6', D: '#3B82F6', E: '#10B981' };
@@ -280,7 +278,6 @@ const slider = document.getElementById('slider');
 const probBarsEl = document.getElementById('probBars');
 const modelAnswer = document.getElementById('modelAnswer');
 const modelReasoning = document.getElementById('modelReasoning');
-const modelOutput = document.getElementById('modelOutput');
 const responseCard = document.getElementById('responseCard');
 
 const probRows = [];
@@ -314,9 +311,6 @@ function update(targetCBI) {
   responseCard.style.borderColor = `rgba(${bR},${bG},${bB},0.45)`;
 
   const respIdx = getResponseIdx(cbi);
-  const respColor = OPTION_COLORS[RESPONSES[respIdx].letter];
-  modelOutput.style.borderLeftColor = respColor;
-  modelOutput.style.background = `${respColor}08`;
 
   let maxIdx = 0;
   LABELS.forEach((l, i) => {
