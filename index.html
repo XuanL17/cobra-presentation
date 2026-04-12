@@ -565,13 +565,82 @@
     #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
     #edit-banner.visible { display:block; }
     .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
   </style></head>
-</head>
+
 <body class="">
 <div class="deck" id="deck" tabindex="-1">
 
 <!-- ============ 1. TITLE ============ -->
-<div class="slide slide-title" data-slide="1" data-rw="1280" data-rh="720" data-notes="Welcome everyone. Today I am presenting CoBRA, a framework for programming cognitive bias into social agents using classic social science experiments. Let me start with a quick demo.">
+<div class="slide slide-title" data-slide="1" data-rw="1280" data-rh="720" data-notes="Welcome everyone. Today I am presenting CoBRA, a framework for programming cognitive bias into social agents using classic social science experiments. Let me start with a quick demo." style="">
   <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-start; height:100%; gap:8px; padding-top:0;">
     <!-- Title (compact - more room for demo) -->
     <div style="text-align:center; flex-shrink:0; margin-top:-6px;">
@@ -586,44 +655,44 @@
   </div>
 </div>
 
-<div class="slide" data-slide="2" data-rw="1280" data-rh="720" data-notes="">
-<h4 id="llm-based-agent-social-simulations-are-rising" style="margin-top:-20px;">LLM-based Agent Social Simulations are Rising.</h4>
-<div style="position:relative; width:100%; height:500px; margin-top:-20px;">
-  <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:180px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/4.png" style="position:absolute; left:160px; top:30px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/3.png" style="position:absolute; left:310px; top:5px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:450px; top:25px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:600px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:750px; top:20px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/5.png" style="position:absolute; left:50px; top:190px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/6.png" style="position:absolute; left:210px; top:210px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:370px; top:195px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:520px; top:180px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/7.png" style="position:absolute; left:680px; top:200px; width:160px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:820px; top:185px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2.png" style="position:absolute; left:100px; top:380px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:290px; top:370px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:480px; top:360px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
-  <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:660px; top:375px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+<div class="slide" data-slide="2" data-rw="1280" data-rh="720" data-notes="" style="">
+<h4 id="llm-based-agent-social-simulations-are-rising" style="margin-top: -20px; position: relative; left: 80px; top: -60px;" class="">LLM-based Agent Social Simulations are Rising.</h4>
+<div style="position: relative; width: 100%; height: 500px; margin-top: -20px; left: 70px; top: -35px;" class="">
+  <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:180px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/4.png" style="position:absolute; left:160px; top:30px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/3.png" style="position:absolute; left:310px; top:5px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:450px; top:25px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:600px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:750px; top:20px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/5.png" style="position:absolute; left:50px; top:190px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/6.png" style="position:absolute; left:210px; top:210px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:370px; top:195px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:520px; top:180px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/7.png" style="position:absolute; left:680px; top:200px; width:160px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:820px; top:185px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" class="">
+  <img src="figures/background_fig/2.png" style="position:absolute; left:100px; top:380px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:290px; top:370px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:480px; top:360px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;">
+  <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:660px; top:375px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;">
 </div>
 </div>
 
-<div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="prior-work-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pximplicitspan-natural-language-agent-specification">Prior work: <span style="color:#6DBFAB; font-weight:700;">Implicit</span> Natural Language Agent Specification.</h4>
 <div style="font-size:1.2em; line-height:1.6; margin-top:30px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px; overflow:hidden; font-style:italic; max-height:380px;">
 <span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student ...</span>
 </div>
 <div class="citation">
-Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., & Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
+Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
 </div>
 </div>
 
-<div class="slide" data-slide="4" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="4" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="span-stylebackgroundfbbf24-padding2px-6px-border-radius4pxexplicitspan-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pxquantitativespan-control-through-demonstrated-cognitive-bias"><strong style="color:#6DBFAB;">CoBRA</strong> <strong>complements</strong> natural-language descriptions with <strong style="color:#6DBFAB;">explicit, quantitative agent specification</strong>.</h4>
 <iframe src="video_demo.html" width="85%" height="850px" style="border:none; margin-top:-20px; transform:scale(1.35); transform-origin:top left; margin-left:-70px;"></iframe>
 </div>
 
-<div class="slide" data-slide="5" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="5" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="underlying-premises-of-implicit-specification">Underlying Premises of Implicit Specification</h4>
 <div style="margin-top:80px; display:flex; flex-direction:column; gap:40px; padding-left:20px;">
 <div style="display:flex; align-items:flex-start; gap:20px;">
@@ -637,7 +706,7 @@ Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., & Bernstein, M.S.
 </div>
 </div>
 
-<div class="slide" data-slide="6" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="6" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="framing-effect-experiment">Framing Effect Experiment</h4>
 <div style="margin-top:50px; display:flex; gap:30px; align-items:stretch;">
 <div style="flex:2; padding:24px 28px; background:#f8f8f8; border-radius:10px; border:1px solid #e0e0e0;">
@@ -659,7 +728,7 @@ A disease outbreak is expected to kill <strong>600 people</strong>. Two program 
 <div style="padding:20px 24px; background:#E8F5F0; border:2px solid #6DBFAB; border-radius:10px; text-align:left;">
 <div style="font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; color:#4A8E7E; font-weight:700; margin-bottom:8px;">Key finding</div>
 <div style="font-size:0.9em; color:#555; line-height:1.6;">
-Same outcome, different framing &mdash; people react differently.
+Same outcome, different framing — people react differently.
 </div>
 <div style="margin-top:12px; font-size:0.85em; color:#555; line-height:1.5;">
 Domain expertise (e.g., economics) can <strong>show less framing effect</strong>.
@@ -668,11 +737,11 @@ Domain expertise (e.g., economics) can <strong>show less framing effect</strong>
 </div>
 </div>
 <div class="citation">
-Tversky, A. & Kahneman, D. (1981). The Framing of Decisions and the Psychology of Choice. <em>Science</em>, 211(4481), 453&ndash;458.
+Tversky, A. &amp; Kahneman, D. (1981). The Framing of Decisions and the Psychology of Choice. <em>Science</em>, 211(4481), 453–458.
 </div>
 </div>
 
-<div class="slide" data-slide="7" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="7" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="pilot-experiment-3-agent-profiles-%C3%97-4-models">Pilot Experiment: 3 Agent Profiles × 4 Models</h4>
 <div style="margin-top:50px; display:flex; gap:40px; align-items:center;">
 <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
@@ -689,7 +758,7 @@ Tversky, A. & Kahneman, D. (1981). The Framing of Decisions and the Psychology o
 <span style="font-size:0.75em; color:#888; margin-left:8px;">no persona</span>
 </div>
 </div>
-<div style="font-size:2em; color:#ccc; font-weight:700;">&times;</div>
+<div style="font-size:2em; color:#ccc; font-weight:700;">×</div>
 <div style="flex:1; display:flex; flex-wrap:wrap; gap:12px;">
 <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">Mistral 7B</div>
 <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">Gemma2 9B</div>
@@ -698,11 +767,11 @@ Tversky, A. & Kahneman, D. (1981). The Framing of Decisions and the Psychology o
 </div>
 </div>
 <div style="margin-top:40px; font-size:0.9em; color:#555; line-height:1.6;">
-150 responses per agent per model (15 scenarios &times; 10 queries each)
+150 responses per agent per model (15 scenarios × 10 queries each)
 </div>
 </div>
 
-<div class="slide" data-slide="8" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="8" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="two-findings">Two Findings</h4>
 <div style="margin-top:70px; display:flex; flex-direction:column; gap:30px; padding-left:20px; width:65%;">
 <div style="display:flex; align-items:flex-start; gap:20px;">
@@ -716,19 +785,19 @@ Tversky, A. & Kahneman, D. (1981). The Framing of Decisions and the Psychology o
 </div>
 </div>
 
-<div class="slide" data-slide="9" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="9" data-rw="1280" data-rh="720" data-notes="" style="">
 <h2 id="cobra-key-idea">CoBRA Key Idea</h2>
 <div style="margin-top:50px; font-size:1.2em; color:#333; line-height:1.8; width:82%;">
 Operationalize <strong style="color:rgb(245,210,131);">classical social science experiments</strong> as reusable <strong style="color:#6DBFAB;">"gym" environments</strong> for AI agents
 </div>
 <div class="cobra-fragment">
 <div style="margin-top:30px; font-size:1.1em; color:#555; width:80%;">
-&rarr; so bias and behavior can be <strong>measured</strong> and <strong>controlled</strong> in a standardized way.
+→ so bias and behavior can be <strong>measured</strong> and <strong>controlled</strong> in a standardized way.
 </div>
 </div>
 </div>
 
-<div class="slide" data-slide="10" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="10" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="harness-the-knowledge-in-classic-experiments">Harness the Knowledge in Classic Experiments</h4>
 <div style="margin-top:100px; display:flex; gap:20px; width:85%;">
 <div style="flex:1; padding:18px 22px; background:#E8F5F0; border-left:4px solid #6DBFAB; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
@@ -743,97 +812,97 @@ Operationalize <strong style="color:rgb(245,210,131);">classical social science 
 </div>
 </div>
 
-<div class="slide" data-slide="11" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="11" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="cobra-closed-loop">CoBRA: Closed-loop</h4>
 <div style="margin-top:60px; display:flex; gap:30px;">
 <div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
 <div style="font-weight:700; color:#333; font-size:1.05em; margin-bottom:10px;">Classical Experiments as Calibration Tasks</div>
 <div style="font-size:0.85em; color:#888;">How biased is this agent?</div>
 </div>
-<div style="display:flex; align-items:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6DBFAB" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+<div style="display:flex; align-items:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6DBFAB" stroke-width="2"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 014-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 01-4 4H3"></path></svg></div>
 <div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
 <div style="font-weight:700; color:#333; font-size:1.05em; margin-bottom:10px;">Behavioral Regulation Engine</div>
 <div style="font-size:0.85em; color:#888;">Set bias to a target level.</div>
 </div>
 </div>
 <div style="margin-top:50px; text-align:center; font-size:0.95em; color:#555;">
-<strong>measure</strong> &rarr; <strong>adjust</strong> &rarr; <strong>re-measure</strong> &rarr; ... &rarr; <strong>converge</strong>
+<strong>measure</strong> → <strong>adjust</strong> → <strong>re-measure</strong> → ... → <strong>converge</strong>
 </div>
 </div>
 
-<div class="slide" data-slide="12" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="12" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="classic-experiments-as-calibration-tasks">Classic Experiments as Calibration Tasks</h4>
-<table style="margin-top:40px; width:90%; border-collapse:collapse; font-size:29px;">
-<tr style="border-bottom:2px solid #e0e0e0;">
-<th style="text-align:left; padding:10px 16px; color:#4A8E7E; text-transform:uppercase; letter-spacing:0.5px;">Cognitive Bias</th>
-<th style="text-align:left; padding:10px 16px; color:#4A8E7E; text-transform:uppercase; letter-spacing:0.5px;">Paradigm A</th>
-<th style="text-align:left; padding:10px 16px; color:#4A8E7E; text-transform:uppercase; letter-spacing:0.5px;">Paradigm B</th>
+<table style="margin-top:40px; width:90%; border-collapse:collapse; font-size:25px;">
+<tbody><tr style="border-bottom:2px solid #e0e0e0;">
+<th style="text-align: left; padding: 10px 16px; color: rgb(74, 142, 126); text-transform: uppercase; letter-spacing: 0.5px; font-size: 22px;" class="">Cognitive Bias</th>
+<th style="text-align: left; padding: 10px 16px; color: rgb(74, 142, 126); text-transform: uppercase; letter-spacing: 0.5px; font-size: 22px;" class="">Paradigm A</th>
+<th style="text-align: left; padding: 10px 16px; color: rgb(74, 142, 126); text-transform: uppercase; letter-spacing: 0.5px; font-size: 22px;" class="">Paradigm B</th>
 </tr>
 <tr style="border-bottom:1px solid #f0f0f0;">
-<td style="padding:12px 16px; font-weight:700; color:#333;">Authority Effect</td>
-<td style="padding:12px 16px; color:#555;">Milgram Obedience Experiment</td>
-<td style="padding:12px 16px; color:#555;">Stanford Prison Experiment</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Authority Effect</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Milgram Obedience Experiment</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Stanford Prison Experiment</td>
 </tr>
 <tr style="border-bottom:1px solid #f0f0f0;">
-<td style="padding:12px 16px; font-weight:700; color:#333;">Bandwagon Effect</td>
-<td style="padding:12px 16px; color:#555;">Asch's Line Experiment</td>
-<td style="padding:12px 16px; color:#555;">Hotel Towel Reuse Study</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Bandwagon Effect</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Asch's Line Experiment</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Hotel Towel Reuse Study</td>
 </tr>
 <tr style="border-bottom:1px solid #f0f0f0;">
-<td style="padding:12px 16px; font-weight:700; color:#333;">Confirmation Bias</td>
-<td style="padding:12px 16px; color:#555;">Wason Selection Task</td>
-<td style="padding:12px 16px; color:#555;">Biased Information Search</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Confirmation Bias</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Wason Selection Task</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Biased Information Search</td>
 </tr>
 <tr>
-<td style="padding:12px 16px; font-weight:700; color:#333;">Framing Effect</td>
-<td style="padding:12px 16px; color:#555;">Asian Disease Problem</td>
-<td style="padding:12px 16px; color:#555;">Investment &amp; Insurance Framing</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Framing Effect</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Asian Disease Problem</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Investment &amp; Insurance Framing</td>
 </tr>
-</table>
-<div style="margin-top:30px; font-size:25px; color:#4A8E7E; font-style:italic;">
-&rarr; Open for contribution &amp; collaboration
+</tbody></table>
+<div style="margin-top: 30px; font-size: 27px; color: rgb(74, 142, 126); font-style: italic;" class="">
+→ Open for contribution &amp; collaboration
 </div>
-<div style="margin-top:6px; font-size:20px; color:#888;">
+<div style="margin-top: 6px; font-size: 22px; color: rgb(136, 136, 136);" class="">
 Welcome operationalized paradigms for all kinds of social behavior, as reusable "gym" environments for AI agents.
 </div>
-<div style="position:absolute; bottom:30px; right:60px; font-size:0.7em; color:#888;">
-Details &rarr; Paper
+<div style="position: absolute; bottom: 30px; right: 60px; font-size: 22px; color: rgb(136, 136, 136);" class="">
+Details → Paper
 </div>
 </div>
 
-<div class="slide" data-slide="13" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="13" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="behavioral-regulation-engine">Behavioral Regulation Engine</h4>
 <div style="margin-top:20px; font-size:0.9em; color:#555; text-align:center;">
 Aligns the agent's behavior to exhibit controlled cognitive bias.
 </div>
 <div style="margin-top:20px; text-align:center; font-size:1.1em; font-style:italic; color:#4A8E7E; font-weight:700;">
-y = f<sub>&theta;</sub>( h( x ) )
+y = f<sub>θ</sub>( h( x ) )
 </div>
 <div style="margin-top:30px; display:flex; gap:16px; padding:20px; background:#f8faf9; border:1.5px solid rgba(109,191,171,0.25); border-radius:12px;">
 <div style="flex:1; text-align:center; padding:16px 12px;">
 <div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Prompt Engineering</div>
 <div style="font-size:0.75em; color:#888; margin-bottom:10px;">Input Space (x)</div>
-<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">x' = x + &Delta;x</div>
+<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">x' = x + Δx</div>
 </div>
 <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
 <div style="flex:1; text-align:center; padding:16px 12px;">
 <div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Representation Engineering</div>
 <div style="font-size:0.75em; color:#888; margin-bottom:10px;">Activation Space (h)</div>
-<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">ĥ<sub>i</sub> = h<sub>i</sub> + &alpha;v</div>
+<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">ĥ<sub>i</sub> = h<sub>i</sub> + αv</div>
 </div>
 <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
 <div style="flex:1; text-align:center; padding:16px 12px;">
 <div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Fine-Tuning</div>
-<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Parameter Space (&theta;)</div>
-<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">&theta;' = &theta; + &lambda;(&theta;<sub>b</sub> - &theta;<sub>u</sub>)</div>
+<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Parameter Space (θ)</div>
+<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">θ' = θ + λ(θ<sub>b</sub> - θ<sub>u</sub>)</div>
 </div>
 </div>
 <div style="position:absolute; bottom:30px; right:60px; font-size:0.7em; color:#888;">
-Details &rarr; Paper
+Details → Paper
 </div>
 </div>
 
-<div class="slide" data-slide="14" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="14" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="evaluation-technical-benchmark">Evaluation: Technical Benchmark</h4>
 <div style="margin-top:50px; display:flex; flex-direction:column; gap:20px; width:85%;">
 <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px;">
@@ -850,11 +919,11 @@ Details &rarr; Paper
 </div>
 </div>
 <div style="position:absolute; bottom:30px; right:60px; font-size:0.7em; color:#888;">
-Details &rarr; Paper
+Details → Paper
 </div>
 </div>
 
-<div class="slide" data-slide="15" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="15" data-rw="1280" data-rh="720" data-notes="" style="">
 <h4 id="demonstration-emotional-contagion-simulation">Demonstration: Emotional Contagion Simulation</h4>
 <div style="margin-top:40px; font-size:0.95em; color:#555; line-height:1.6; width:80%;">
 Facebook altered news feeds of <strong>users</strong> for one week:
@@ -863,36 +932,36 @@ Facebook altered news feeds of <strong>users</strong> for one week:
 <div style="flex:1; padding:18px 22px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:8px;">
 <div style="font-weight:700; color:#C62828; font-size:0.85em;">Fewer positive posts in feed</div>
 </div>
-<div style="font-size:1.3em; color:#ccc;">&rarr;</div>
+<div style="font-size:1.3em; color:#ccc;">→</div>
 <div style="flex:1; padding:18px 22px; background:#f8f8f8; border-left:4px solid #888; border-radius:8px;">
 <div style="font-weight:700; color:#333; font-size:0.85em;">Users wrote <strong>more negative</strong> content</div>
 </div>
 </div>
 <div style="margin-top:30px; padding:16px 22px; background:#E8F5F0; border-left:4px solid #6DBFAB; border-radius:8px; width:80%;">
 <div style="font-size:0.9em; color:#555; line-height:1.5;">
-<strong style="color:#4A8E7E;">Expected:</strong><br /> Higher <strong>follow-the-crowd bias</strong> &rarr; stronger emotional contagion
+<strong style="color:#4A8E7E;">Expected:</strong><br> Higher <strong>follow-the-crowd bias</strong> → stronger emotional contagion
 </div>
 </div>
 <div class="citation">
-Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788&ndash;8790.
+Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788–8790.
 </div>
 </div>
 
-<div class="slide" data-slide="16" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="16" data-rw="1280" data-rh="720" data-notes="" style="">
 <h2 id="baseline-implicit-natural-language-specification">Baseline: Implicit Natural Language Specification</h2>
 <p>“You are a user with (no/little/some/much) follow-the-crowd bias.”</p>
-<img src="figures/baseline_emotional_contagion.png" width="700" />
+<img src="figures/baseline_emotional_contagion.png" width="700">
 </div>
 
 <div class="slide" data-slide="17" data-rw="1280" data-rh="720" data-notes="">
 <div style="display:flex; gap:20px;">
 <div style="text-align:center;">
 <div style="font-weight:700; color:#888; font-size:0.85em; margin-bottom:8px;">Baseline (Implicit Specification)</div>
-<img src="figures/baseline_emotional_contagion.png" width="580" />
+<img src="figures/baseline_emotional_contagion.png" width="580">
 </div>
 <div style="text-align:center;">
 <div style="font-weight:700; color:#4A8E7E; font-size:0.85em; margin-bottom:8px;">CoBRA</div>
-<img src="figures/cobra_emotional_contagion.png" width="580" />
+<img src="figures/cobra_emotional_contagion.png" width="580">
 </div>
 </div>
 </div>
@@ -1140,8 +1209,8 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
 
 </div>
 
-<div class="progress" id="progress" style="width: 41.666667%;"></div>
-<div class="slide-num" id="slideNum">10 / 24</div>
+<div class="progress" id="progress" style="width: 6.896552%;"></div>
+<div class="slide-num" id="slideNum">2 / 29</div>
 
 <script>
   /* --- Per-slide canvas ratio + per-slide content zoom --- */
@@ -2100,4 +2169,4 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
   });
 })();
 </script>
-</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div></body></html>
+</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div></body></html>
