@@ -7,12 +7,12 @@
   @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
 
   :root {
-    --cobra: #6DBFAB; --cobra-dark: #5BA898; --cobra-darker: #4A8E7E;
+    --cobra: #5BA898; --cobra-dark: #5BA898; --cobra-darker: #4A8E7E; --cobra-mint: #6DBFAB;
     --cobra-light: #E8F5F0; --cobra-lighter: #F0FAF6; --cobra-cream: #FBF8F0;
     --cobra-gold: #F0C75E; --cobra-gold-light: #FDF6E3;
     --bg: #ffffff; --fg: #171717;
     --g100: #f3f4f6; --g200: #e5e7eb; --g300: #d1d5db; --g400: #9ca3af; --g500: #6b7280; --g600: #4b5563; --g700: #374151; --g800: #1f2937;
-    --yellow-accent: #FBBF24; --red-dark: #dc2626;
+    --green-accent: #5BA898; --red-dark: #dc2626;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Comic Neue','Comic Sans MS',cursive,sans-serif; background:#000; color:var(--fg); overflow:hidden; height:100vh; width:100vw; margin:0; }
@@ -41,21 +41,21 @@
   .label{font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cobra-darker);margin-bottom:6px}
   .small{font-size:19px;color:var(--g500)}
 
-  .badge{display:inline-flex;align-items:center;gap:6px;border-radius:9999px;padding:5px 14px;font-size:19px;font-weight:700;border:1px solid rgba(109,191,171,.3);background:white;color:var(--g600)}
+  .badge{display:inline-flex;align-items:center;gap:6px;border-radius:9999px;padding:5px 14px;font-size:19px;font-weight:700;border:1px solid rgba(91,168,152,.3);background:white;color:var(--g600)}
   .badge .gold{color:var(--cobra-gold);font-weight:700}
 
-  .card{background:white;border:2px solid rgba(109,191,171,.3);border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
-  .card-light{background:var(--cobra-lighter);border:2px solid rgba(109,191,171,.3);border-radius:12px;padding:18px}
-  .card-accent{background:var(--cobra-lighter);border:1px solid rgba(109,191,171,.15);border-radius:8px;padding:12px 16px}
-  .cobra-panel{background:rgba(240,250,246,.4);border:1px solid rgba(109,191,171,.15);border-radius:16px;padding:20px}
+  .card{background:white;border:2px solid rgba(91,168,152,.3);border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .card-light{background:var(--cobra-lighter);border:2px solid rgba(91,168,152,.3);border-radius:12px;padding:18px}
+  .card-accent{background:var(--cobra-lighter);border:1px solid rgba(91,168,152,.15);border-radius:8px;padding:12px 16px}
+  .cobra-panel{background:rgba(240,250,246,.4);border:1px solid rgba(91,168,152,.15);border-radius:16px;padding:20px}
 
   .step-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--cobra);color:white;font-size:15px;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.1);position:absolute;top:-8px;left:-8px;z-index:2}
-  .measure-pill{display:inline-flex;align-items:center;gap:5px;background:var(--cobra-lighter);border:1px solid rgba(109,191,171,.25);border-radius:9999px;padding:4px 10px;font-size:15px;font-weight:700;color:var(--cobra-darker)}
-  .loop-pill{display:inline-flex;align-items:center;font-size:15px;font-weight:700;font-style:italic;color:var(--cobra);background:rgba(240,250,246,.8);padding:4px 10px;border-radius:9999px;border:1px dashed rgba(109,191,171,.3)}
+  .measure-pill{display:inline-flex;align-items:center;gap:5px;background:var(--cobra-lighter);border:1px solid rgba(91,168,152,.25);border-radius:9999px;padding:4px 10px;font-size:15px;font-weight:700;color:var(--cobra-darker)}
+  .loop-pill{display:inline-flex;align-items:center;font-size:15px;font-weight:700;font-style:italic;color:var(--cobra);background:rgba(240,250,246,.8);padding:4px 10px;border-radius:9999px;border:1px dashed rgba(91,168,152,.3)}
 
   .bre-card{background:var(--cobra-lighter);border:none;border-radius:8px;padding:10px 12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
   .bre-card h4{font-size:15px;font-weight:700;color:var(--cobra-darker);margin-bottom:3px}
-  .bre-card .formula{background:var(--cobra-lighter);border:1px solid rgba(109,191,171,.2);border-radius:5px;padding:2px 7px;font-size:15px;font-weight:700;color:var(--cobra-darker);margin-top:4px;display:inline-block}
+  .bre-card .formula{background:var(--cobra-lighter);border:1px solid rgba(91,168,152,.2);border-radius:5px;padding:2px 7px;font-size:15px;font-weight:700;color:var(--cobra-darker);margin-top:4px;display:inline-block}
   .bre-card .bre-desc{font-size:15px;color:var(--g500);margin-top:2px}
 
   .slider-track{flex:1;height:8px;background:var(--g200);border-radius:9999px;position:relative}
@@ -78,8 +78,14 @@
   .slide-end{background:white;align-items:center;text-align:center;justify-content:center}
   .slide-end h2{color:var(--cobra-dark);font-size:42px}
   .slide-end .links{display:flex;gap:24px;margin-top:24px;justify-content:center}
-  .slide-end .links a{color:var(--cobra-darker);font-size:15px;text-decoration:none;font-weight:700;padding:8px 16px;border:1px solid rgba(109,191,171,.3);border-radius:8px;background:white;transition:background .2s}
+  .slide-end .links a{color:var(--cobra-darker);font-size:15px;text-decoration:none;font-weight:700;padding:8px 16px;border:1px solid rgba(91,168,152,.3);border-radius:8px;background:white;transition:background .2s}
   .slide-end .links a:hover{background:var(--cobra-light)}
+  .slide-end .slide-end-title{position:absolute;top:-12px;left:0;right:0;text-align:center;z-index:2;pointer-events:none;padding:0 40px;box-sizing:border-box;}
+  .slide-end .slide-end-title h1{font-size:28px;line-height:1.28;margin:0;}
+  .slide-end .slide-end-contact{position:absolute;bottom:4px;left:36px;z-index:2;display:flex;align-items:center;gap:14px;}
+  .slide-end .slide-end-contact img{flex-shrink:0;width:48px;height:55px;object-fit:cover;border-radius:4px;}
+  .slide-end .slide-end-contact a{font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--cobra-darker);text-decoration:none;}
+  .slide-end .slide-end-contact a:hover{text-decoration:underline;}
 
   table{width:100%;border-collapse:collapse}
   th,td{text-align:left;padding:8px 12px;font-size:17px}
@@ -102,12 +108,12 @@
   .big-num{font-size:27px;font-weight:700}
 
   .flow{display:flex;align-items:center;gap:8px;justify-content:center}
-  .flow-box{background:white;border:2px solid rgba(109,191,171,.3);border-radius:10px;padding:10px 14px;text-align:center;min-width:110px}
+  .flow-box{background:white;border:2px solid rgba(91,168,152,.3);border-radius:10px;padding:10px 14px;text-align:center;min-width:110px}
   .flow-box.active{border-color:var(--cobra);background:var(--cobra-lighter)}
   .flow-box .fl{font-size:15px;color:var(--g500);font-weight:700;margin-bottom:1px}
   .flow-box .fv{font-size:15px;font-weight:700;color:var(--g800)}
 
-  .video-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1);border:1px solid rgba(109,191,171,.2);aspect-ratio:16/9;background:#000}
+  .video-wrap{border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.1);border:1px solid rgba(91,168,152,.2);aspect-ratio:16/9;background:#000}
   .video-wrap video{width:100%;height:100%;object-fit:cover}
 
   .bubble{position:relative;background:white;border:2px solid var(--g300);border-radius:16px;padding:10px 14px}
@@ -214,6 +220,17 @@
     font-size:10px;line-height:1.25;font-weight:400;color:var(--g500);
     text-align:center;opacity:.72;z-index:1;
   }
+  /* P1–P3: bolder headlines (Comic Neue 700 can read light on projectors) */
+  .slide.slide-title h1,
+  .slide[data-slide="2"] > h4:first-of-type,
+  .slide[data-slide="3"] > h4:first-of-type {
+    font-weight: 800;
+  }
+  /* P2–P3: title +2px over default h4 (1.05em of slide base) */
+  .slide[data-slide="2"] > h4:first-of-type,
+  .slide[data-slide="3"] > h4:first-of-type {
+    font-size: calc(1.05em + 2px);
+  }
   /* P2 canvas 1127×634 vs P3 1440×809 → deck scale differs; smaller px on P2 matches on-screen size with P3 */
   .slide[data-slide="2"] .agents-citation { font-size: 10px; }
   .slide[data-slide="3"] .agents-citation { font-size: 10px; }
@@ -222,6 +239,27 @@
   .slide[data-slide="3"] {
     justify-content: flex-start;
     padding-top: 36px;
+    align-items: center;
+  }
+  .slide[data-slide="3"] > h4:first-of-type {
+    text-align: center;
+    align-self: stretch;
+    box-sizing: border-box;
+    padding: 0 40px;
+  }
+  .slide[data-slide="3"] .citation {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(92%, 1040px);
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 24px;
+  }
+  /* P3 John Lin: bottom edge dissolves (mask + stepped rgba in markup) */
+  .slide[data-slide="3"] .p3-johnlin-fade {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 74%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 74%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%);
   }
   .slide[data-slide="3"] .p3-nl-slide {
     display: flex;
@@ -341,7 +379,7 @@
     position: relative;
     width: 100%;
     max-width: 100%;
-    border: 2px solid rgba(109, 191, 171, 0.35);
+    border: 2px solid rgba(91, 168, 152, 0.35);
     border-bottom: none;
     border-radius: 12px 12px 0 0;
     background: white;
@@ -541,8 +579,343 @@
 
 
   .citation { position:absolute; bottom:16px; left:78px; font-size:11px; color:#888; font-style:italic; z-index:2; }
+  /* P12–P14: unified “Details → Paper” (lower + same font) */
+  .slide[data-slide="12"] .slide-details-paper,
+  .slide[data-slide="13"] .slide-details-paper,
+  .slide[data-slide="14"] .slide-details-paper {
+    position: absolute;
+    bottom: -22px;
+    right: 60px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--g600);
+    line-height: 1.2;
+    z-index: 3;
+  }
 </style>
 <style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
+    .edit-active { cursor:default !important; }
+    .edit-active .slide * { cursor:pointer !important; }
+    .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
+    .edit-selected.edit-dragging { opacity:0.8; }
+    .edit-resize-handle { position:absolute; width:10px; height:10px; background:#3b82f6; border:1px solid white; border-radius:2px; z-index:9999; cursor:nwse-resize; pointer-events:auto; }
+    #edit-toolbar { position:fixed; top:10px; right:10px; z-index:99999; background:#1e293b; color:white; border-radius:12px; padding:14px 18px; font-family:system-ui,sans-serif; font-size:11px; box-shadow:0 8px 30px rgba(0,0,0,.3); display:none; width:280px; max-height:95vh; overflow-y:auto; }
+    #edit-toolbar.visible { display:block; }
+    #edit-toolbar label { display:block; margin-bottom:8px; color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+    #edit-toolbar input[type=number], #edit-toolbar input[type=text] { width:100%; padding:5px 8px; border:1px solid #334155; border-radius:6px; background:#0f172a; color:white; font-size:11px; margin-top:2px; }
+    #edit-toolbar input[type=color] { width:36px; height:28px; border:none; border-radius:4px; cursor:pointer; background:none; margin-top:2px; }
+    .edit-row { display:flex; gap:8px; margin-bottom:6px; }
+    .edit-row > div { flex:1; }
+    #edit-toolbar button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; font-size:10px; font-weight:600; }
+    .ed-section { border-top:1px solid #334155; padding-top:8px; margin-top:8px; }
+    .ed-toggle { display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; }
+    .ed-toggle input { accent-color:#3b82f6; }
+    .ed-btn-row { display:flex; gap:4px; flex-wrap:wrap; }
+    .ed-btn-row button { flex:1; min-width:0; padding:6px 2px; background:#334155; color:white; font-size:10px; text-align:center; }
+    .ed-btn-row button:hover { background:#475569; }
+    #edit-banner { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:99999; background:#3b82f6; color:white; padding:6px 18px; border-radius:99px; font:600 13px/1 system-ui,sans-serif; display:none; box-shadow:0 2px 10px rgba(59,130,246,.4); }
+    #edit-banner.visible { display:block; }
+    .edit-grid-overlay { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9997; background-repeat:repeat; display:none; }
+  </style><style>
     .edit-active { cursor:default !important; }
     .edit-active .slide * { cursor:pointer !important; }
     .edit-selected { outline:2px solid #3b82f6 !important; outline-offset:2px; position:relative; }
@@ -644,8 +1017,8 @@
   <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-start; height:100%; gap:8px; padding-top:0;">
     <!-- Title (compact - more room for demo) -->
     <div style="text-align:center; flex-shrink:0; margin-top:-6px;">
-      <h1 style="font-size: 26px; line-height: 1.28; margin-bottom: 0;">
-        <img src="co_website/public/snake.svg" alt="" style="width: 50px; height: 50px; vertical-align: -0.1em; margin-right: 6px; font-size: 26px; padding: 0px; border-radius: 0px; position: relative; left: 10px; top: 10px;"><span style="font-size: 38px; color: var(--cobra-dark);">CoBRA:</span> <span style="color: var(--g800); font-size: 32px;">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
+      <h1 style="font-size: 28px; line-height: 1.28; margin-bottom: 0;">
+        <img src="co_website/public/snake.svg" alt="" style="width: 56px; height: 56px; vertical-align: -0.1em; margin-right: 6px; font-size: 28px; padding: 0px; border-radius: 0px; position: relative; left: 10px; top: 10px;" class=""><span style="font-size: 44px; color: var(--cobra-dark);" class="">CoBRA:</span> <span style="color: var(--g800); font-size: 38px;" class="">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
       </h1>
     </div>
     <!-- Live Demo - grows into remaining vertical space -->
@@ -656,7 +1029,7 @@
 </div>
 
 <div class="slide" data-slide="2" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="llm-based-agent-social-simulations-are-rising" style="margin-top: -20px; position: relative; left: 80px; top: -60px;" class="">LLM-based Agent Social Simulations are Rising.</h4>
+<h4 id="llm-based-agent-social-simulations-are-rising" style="margin-top: -20px; position: relative; top: -60px; text-align: center; width: 100%; box-sizing: border-box; padding: 0px 40px; font-size: 38px;" class="">LLM-based Agent Social Simulations are Rising</h4>
 <div style="position: relative; width: 100%; height: 500px; margin-top: -20px; left: 70px; top: -35px;" class="">
   <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:180px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;">
   <img src="figures/background_fig/4.png" style="position:absolute; left:160px; top:30px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;">
@@ -678,9 +1051,9 @@
 </div>
 
 <div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="prior-work-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pximplicitspan-natural-language-agent-specification">Prior work: <span style="color:#6DBFAB; font-weight:700;">Implicit</span> Natural Language Agent Specification.</h4>
-<div style="font-size:1.2em; line-height:1.6; margin-top:30px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px; overflow:hidden; font-style:italic; flex:1;">
-<span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well — the husband Tom Moreno and the wife Jane Moreno.</span>
+<h4 id="prior-work-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pximplicitspan-natural-language-agent-specification" class="" style="font-size: 38px;">Prior work: <span style="color:var(--cobra);" class="">Implicit</span> Natural Language Agent Specification</h4>
+<div class="p3-johnlin-fade" style="font-size:1.2em; line-height:1.6; margin-top:30px; margin-left:auto; margin-right:auto; padding:20px 24px; width:75%; max-width:920px; background:#f8f8f8; border-left:4px solid var(--cobra); border-radius:8px; overflow:hidden; font-style:italic; text-align:left;">
+<span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.9);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.78);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.64);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well.</span><span style="color:rgba(23,23,23,0.52);"> John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together.</span><span style="color:rgba(23,23,23,0.4);"> John Lin knows the Moreno family somewhat well—the husband Tom Moreno and the wife Jane Moreno.</span><span style="color:rgba(23,23,23,0.3);"> On quieter mornings he straightens shelf tags before opening, even when no one would notice they were crooked.</span><span style="color:rgba(23,23,23,0.22);"> A laminated sheet behind the counter lists emergency contacts, including Mei Lin's campus extension.</span><span style="color:rgba(23,23,23,0.14);"> He hums softly while counting tablets into amber vials when the store is empty.</span><span style="color:rgba(23,23,23,0.08);"> The refrigerator cases hum; the doorbell blends with the radio turned low…</span><span style="color:rgba(23,23,23,0.035);"> dust in the afternoon light over the register…</span>
 </div>
 <div class="citation">
 Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
@@ -688,49 +1061,55 @@ Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, 
 </div>
 
 <div class="slide" data-slide="4" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="span-stylebackgroundfbbf24-padding2px-6px-border-radius4pxexplicitspan-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pxquantitativespan-control-through-demonstrated-cognitive-bias"><strong style="color:#6DBFAB;">CoBRA</strong> <strong>complements</strong> natural-language descriptions with <strong style="color:#6DBFAB;">explicit, quantitative agent specification</strong>.</h4>
+<div style="display:flex; align-items:center; flex-wrap:wrap; gap:10px 14px; margin:0 0 6px;">
+  <img src="co_website/public/snake.svg" alt="" width="44" height="44" style="flex-shrink:0;width:44px;height:44px;object-fit:contain;">
+  <span style="font-size:38px;font-weight:800;color:var(--cobra);line-height:1;letter-spacing:0.02em;">CoBRA</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true" style="flex-shrink:0;"><path d="M0 7h20" stroke="var(--cobra)" stroke-width="2.5" stroke-linecap="round"></path><path d="M22 3.5l5.5 3.5-5.5 3.5" fill="none" stroke="var(--cobra)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  <h4 id="explicit-quantitative-agent-specification" style="font-size:38px;margin:0;"><strong style="color:var(--cobra);">Explicit</strong>, <strong style="color:var(--cobra);">Quantitative</strong> Agent Specification</h4>
+</div>
 <iframe src="video_demo.html" width="85%" height="850px" style="border:none; margin-top:-20px; transform:scale(1.35); transform-origin:top left; margin-left:-70px;"></iframe>
 </div>
 
 <div class="slide" data-slide="5" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="underlying-premises-of-implicit-specification">Underlying Premises of Implicit Specification</h4>
+<h4 id="underlying-premises-of-implicit-specification" class="" style="font-size: 38px;">Underlying Premises of Implicit Specification</h4>
 <div style="margin-top:80px; display:flex; flex-direction:column; gap:40px; padding-left:20px;">
-<div style="display:flex; align-items:flex-start; gap:20px;">
-  <span style="font-size:2em; font-weight:700; color:#6DBFAB; line-height:1;">1</span>
-  <span style="font-size:1.1em; color:#333; line-height:1.5;">LLMs can detect <strong>subtle</strong> cues in <strong>implicit</strong> language?</span>
+<div style="display:flex; align-items:flex-start; gap:20px;" class="">
+  <span style="font-size: 64px; font-weight: 700; color: var(--cobra); line-height: 1;" class="">1</span>
+  <span style="font-size: 38px; color: rgb(51, 51, 51); line-height: 1.5;" class="">LLMs can detect <strong class="">subtle</strong> cues in <strong>implicit</strong> language?</span>
 </div>
 <div style="display:flex; align-items:flex-start; gap:20px;">
-  <span style="font-size:2em; font-weight:700; color:#6DBFAB; line-height:1;">2</span>
-  <span style="font-size:1.1em; color:#333; line-height:1.5;">Once detected, LLMs can <strong>role-play</strong> the specification?</span>
+  <span style="font-size: 64px; font-weight: 700; color: var(--cobra); line-height: 1;" class="">2</span>
+  <span style="font-size: 38px; color: rgb(51, 51, 51); line-height: 1.5;" class="">Once detected, LLMs can <strong>role-play</strong> the specification?</span>
 </div>
 </div>
 </div>
 
 <div class="slide" data-slide="6" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="framing-effect-experiment">Framing Effect Experiment</h4>
+<h4 id="framing-effect-experiment" class="" style="font-size: 38px;">Framing Effect Experiment</h4>
+<div style="margin-top:8px; font-size:24px; color:var(--g600); line-height:1.4; max-width:92%;">A classical social science experiment — the Asian disease problem (Tversky &amp; Kahneman, 1981).</div>
 <div style="margin-top:50px; display:flex; gap:30px; align-items:stretch;">
 <div style="flex:2; padding:24px 28px; background:#f8f8f8; border-radius:10px; border:1px solid #e0e0e0;">
-<div style="font-size:0.95em; color:#555; line-height:1.6; margin-bottom:20px;">
+<div style="font-size: 32px; color: rgb(85, 85, 85); line-height: 1.6; margin-bottom: 20px;" class="">
 A disease outbreak is expected to kill <strong>600 people</strong>. Two program are proposed:
 </div>
 <div style="display:flex; gap:20px;">
 <div style="flex:1; padding:16px 20px; background:#E8F5E9; border-left:4px solid #4CAF50; border-radius:6px;">
-<div style="font-weight:700; color:#2E7D32; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Positive Frame</div>
-<div style="font-size:1.1em; color:#333;">Program <strong>A</strong>: 200 people will be <strong>saved</strong>.</div>
+<div style="font-weight: 700; color: rgb(46, 125, 50); margin-bottom: 8px; font-size: 28px; text-transform: uppercase; letter-spacing: 0.5px;" class="">Positive Frame</div>
+<div style="font-size: 32px; color: rgb(51, 51, 51);" class="">Program <strong class="" style="font-weight: 400;">A</strong>: 200 people will be <strong class="">saved</strong>.</div>
 </div>
-<div style="flex:1; padding:16px 20px; background:#FEF9E7; border-left:4px solid #FBBF24; border-radius:6px;">
-<div style="font-weight:700; color:#B8860B; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Negative Frame</div>
-<div style="font-size:1.1em; color:#333;">Program <strong>B</strong>: 400 people will <strong>die</strong>.</div>
+<div style="flex:1; padding:16px 20px; background:#E8F5F0; border-left:4px solid var(--cobra-darker); border-radius:6px;" class="">
+<div style="font-weight: 700; color: var(--cobra-darker); margin-bottom: 8px; font-size: 28px; text-transform: uppercase; letter-spacing: 0.5px;" class="">Negative Frame</div>
+<div style="font-size: 32px; color: rgb(51, 51, 51);" class="">Program <strong class="" style="font-weight: 400;">B</strong>: 400 people will <strong>die</strong>.</div>
 </div>
 </div>
 </div>
 <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-<div style="padding:20px 24px; background:#E8F5F0; border:2px solid #6DBFAB; border-radius:10px; text-align:left;">
-<div style="font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; color:#4A8E7E; font-weight:700; margin-bottom:8px;">Key finding</div>
-<div style="font-size:0.9em; color:#555; line-height:1.6;">
+<div style="padding:20px 24px; background:#E8F5F0; border:2px solid var(--cobra); border-radius:10px; text-align:left;" class="">
+<div style="font-size: 26px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--cobra); font-weight: 700; margin-bottom: 8px;" class="">Key finding</div>
+<div style="font-size:0.9em; color:#555; line-height:1.6;" class="">
 Same outcome, different framing — people react differently. <sup style="color:#4A8E7E;">[1]</sup>
 </div>
-<div style="margin-top:12px; font-size:0.85em; color:#555; line-height:1.5;">
+<div style="margin-top: 12px; font-size: 26px; color: rgb(85, 85, 85); line-height: 1.5;" class="">
 Domain expertise (e.g., economics) can show less framing effect. <sup style="color:#4A8E7E;">[2]</sup>
 </div>
 </div>
@@ -743,137 +1122,135 @@ Domain expertise (e.g., economics) can show less framing effect. <sup style="col
 </div>
 
 <div class="slide" data-slide="7" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="pilot-experiment-3-agent-profiles-%C3%97-4-models">Pilot Experiment: 3 Agent Profiles × 4 Models</h4>
+<h4 id="pilot-experiment-3-agent-profiles-%C3%97-4-models" class="" style="font-size: 38px;">Pilot Experiment: 3 Agent Profiles × 4 Models</h4>
 <div style="margin-top:50px; display:flex; gap:40px; align-items:center;">
 <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
 <div style="padding:14px 18px; background:#E8F5F0; border-radius:6px;">
-<span style="font-weight:700; font-size:1em; color:#333;">Economist</span>
-<span style="font-size:0.75em; color:#888; margin-left:8px;">"professor of economics"</span>
+<span style="font-weight: 700; font-size: 33px; color: rgb(51, 51, 51);" class="">Economist</span>
+<span style="font-size: 28px; color: rgb(136, 136, 136); margin-left: 8px;" class="">"professor of economics"</span>
 </div>
-<div style="padding:14px 18px; background:#FEF9E7; border-radius:6px;">
-<span style="font-weight:700; font-size:1em; color:#333;">Common</span>
-<span style="font-size:0.75em; color:#888; margin-left:8px;">"pharmacy shopkeeper"</span>
+<div style="padding:14px 18px; background:#D6EBE3; border-radius:6px;">
+<span style="font-weight: 700; font-size: 33px; color: rgb(51, 51, 51);" class="">Common</span>
+<span style="font-size: 28px; color: rgb(136, 136, 136); margin-left: 8px;" class="">"pharmacy shopkeeper"</span>
 </div>
 <div style="padding:14px 18px; background:#f0f0f0; border-radius:6px;">
-<span style="font-weight:700; font-size:1em; color:#333;">Blank</span>
-<span style="font-size:0.75em; color:#888; margin-left:8px;">no persona</span>
+<span style="font-weight: 700; font-size: 33px; color: rgb(51, 51, 51);" class="">Blank</span>
+<span style="font-size: 28px; color: rgb(136, 136, 136); margin-left: 8px;" class="">no persona</span>
 </div>
 </div>
-<div style="font-size:2em; color:#ccc; font-weight:700;">×</div>
+<div style="font-size: 72px; color: rgb(204, 204, 204); font-weight: 700;" class="">×</div>
 <div style="flex:1; display:flex; flex-wrap:wrap; gap:12px;">
-<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">Mistral 7B</div>
-<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">Gemma2 9B</div>
-<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">GPT-4o Mini</div>
-<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">DeepSeek-v3</div>
+<div style="padding: 14px 22px; background: rgb(240, 240, 240); border-radius: 8px; font-weight: 700; font-size: 26px; color: rgb(51, 51, 51);" class="">Mistral 7B</div>
+<div style="padding: 14px 22px; background: rgb(240, 240, 240); border-radius: 8px; font-weight: 700; font-size: 26px; color: rgb(51, 51, 51);" class="">Gemma2 9B</div>
+<div style="padding: 14px 22px; background: rgb(240, 240, 240); border-radius: 8px; font-weight: 700; font-size: 26px; color: rgb(51, 51, 51);" class="">GPT-4o Mini</div>
+<div style="padding: 14px 22px; background: rgb(240, 240, 240); border-radius: 8px; font-weight: 700; font-size: 26px; color: rgb(51, 51, 51);" class="">DeepSeek-v3</div>
 </div>
 </div>
-<div style="margin-top:40px; font-size:0.9em; color:#555; line-height:1.6;">
+<div style="margin-top: 40px; font-size: 28px; color: rgb(85, 85, 85); line-height: 1.6;" class="">
 150 responses per agent per model (15 scenarios × 10 queries each)
 </div>
 </div>
 
 <div class="slide" data-slide="8" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="two-findings">Two Findings</h4>
-<div style="margin-top:70px; display:flex; flex-direction:column; gap:30px; padding-left:20px; width:65%;">
-<div style="display:flex; align-items:flex-start; gap:20px;">
-  <span style="font-size:2em; font-weight:700; color:#6DBFAB; line-height:1;">1</span>
-  <span style="font-size:1.1em; color:#333; line-height:1.5;">The same specification produced <strong>inconsistent behavior</strong> across models.</span>
+<h4 id="two-findings" class="" style="font-size: 38px;">Two Findings</h4>
+<div style="margin-top:70px; display:flex; flex-direction:column; align-items:center; gap:30px; width:100%;">
+<div style="display:flex; align-items:center; gap:20px; width:min(880px, 88%);">
+  <span style="font-size: 66px; font-weight: 700; color: var(--cobra); line-height: 1; flex-shrink: 0; width: 36px; text-align: center;" class="">1</span>
+  <span style="font-size: 38px; color: rgb(51, 51, 51); line-height: 1.5;" class="">The same specification produced <strong>inconsistent behavior</strong> across models.</span>
 </div>
-<div style="display:flex; align-items:flex-start; gap:20px;">
-  <span style="font-size:2em; font-weight:700; color:#6DBFAB; line-height:1;">2</span>
-  <span style="font-size:1.1em; color:#333; line-height:1.5;">Implicit specification did not reliably yield <strong>expected behaviors</strong>.</span>
+<div style="display:flex; align-items:center; gap:20px; width:min(880px, 88%);">
+  <span style="font-size: 66px; font-weight: 700; color: var(--cobra); line-height: 1; flex-shrink: 0; width: 36px; text-align: center;" class="">2</span>
+  <span style="font-size: 38px; color: rgb(51, 51, 51); line-height: 1.5;" class="">Implicit specification did <strong>not</strong> reliably yield <strong>expected behaviors</strong>.</span>
 </div>
 </div>
 </div>
 
 <div class="slide" data-slide="9" data-rw="1280" data-rh="720" data-notes="" style="">
-<h2 id="cobra-key-idea">CoBRA Key Idea</h2>
-<div style="margin-top:50px; font-size:1.2em; color:#333; line-height:1.8; width:82%;">
-Operationalize <strong style="color:#FBBF24;">classical social science experiments</strong> as reusable <strong style="color:#6DBFAB;">"gym" environments</strong> for AI agents
+<h2 id="cobra-key-idea" class="" style="font-size: 38px;">CoBRA Key Idea</h2>
+<div style="margin-top: 50px; font-size: 38px; color: rgb(51, 51, 51); line-height: 1.8; width: 82%;" class="">
+Operationalize <strong style="color:var(--cobra);">classical social science experiments</strong> as reusable <strong style="color:var(--cobra);">"gym" environments</strong> for AI agents
 </div>
 <div class="cobra-fragment">
-<div style="margin-top:30px; font-size:1.1em; color:#555; width:80%;">
+<div style="margin-top: 30px; font-size: 38px; color: rgb(85, 85, 85); width: 80%;" class="">
 → so bias and behavior can be <strong>measured</strong> and <strong>controlled</strong> in a standardized way.
 </div>
 </div>
 </div>
 
 <div class="slide" data-slide="10" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="harness-the-knowledge-in-classic-experiments">Harness the Knowledge in Classic Experiments</h4>
-<div style="margin-top:100px; display:flex; gap:20px; width:85%;">
-<div style="flex:1; padding:18px 22px; background:#E8F5F0; border-left:4px solid #6DBFAB; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-<div style="font-weight:700; color:#333; font-size:0.95em;">Detailed scenario description</div>
+<h4 id="harness-the-knowledge-in-classic-experiments" class="" style="font-size: 38px;">Harness the Knowledge in Classic Experiments</h4>
+<div style="margin-top:48px; display:flex; flex-direction:column; gap:22px; width:88%;">
+<div style="padding:18px 22px; background:#E8F5F0; border-left:4px solid var(--cobra-mint); border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+  <div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px;" class="">Detailed scenario description</div>
 </div>
-<div style="flex:1; padding:18px 22px; background:#E0F0EA; border-left:4px solid #4A8E7E; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-<div style="font-weight:700; color:#333; font-size:0.95em;">Documented bias effects</div>
+<div style="padding:18px 22px; background:#E0F0EA; border-left:4px solid #4A8E7E; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+  <div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px;" class="">Documented bias effects</div>
 </div>
-<div style="flex:1; padding:18px 22px; background:#D6EBE3; border-left:4px solid #3A7565; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-<div style="font-weight:700; color:#333; font-size:0.95em;">Validated Insights about Human Behavior</div>
+<div style="padding:18px 22px; background:#D6EBE3; border-left:4px solid #3A7565; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+  <div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px;" class="">Validated Insights about Human Behavior</div>
 </div>
 </div>
 </div>
 
 <div class="slide" data-slide="11" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="cobra-closed-loop">CoBRA: Closed-loop</h4>
+<h4 id="cobra-closed-loop" class="" style="font-size: 38px;">CoBRA: Closed-loop</h4>
 <div style="margin-top:60px; display:flex; gap:30px;">
-<div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
-<div style="font-weight:700; color:#333; font-size:1.05em; margin-bottom:10px;">Classical Experiments as Calibration Tasks</div>
-<div style="font-size:0.85em; color:#888;">How biased is this agent?</div>
+<div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid var(--cobra);">
+<div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px; margin-bottom: 10px;" class="">Classical Experiments as Calibration Tasks</div>
+<div style="font-size: 32px; color: rgb(136, 136, 136);" class="">How biased is this agent?</div>
 </div>
-<div style="display:flex; align-items:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6DBFAB" stroke-width="2"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 014-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 01-4 4H3"></path></svg></div>
-<div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
-<div style="font-weight:700; color:#333; font-size:1.05em; margin-bottom:10px;">Behavioral Regulation Engine</div>
-<div style="font-size:0.85em; color:#888;">Set bias to a target level.</div>
+<div style="display:flex; align-items:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--cobra)" stroke-width="2"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 014-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 01-4 4H3"></path></svg></div>
+<div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid var(--cobra);">
+<div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px; margin-bottom: 10px;" class="">Behavioral Regulation Engine</div>
+<div style="font-size: 32px; color: rgb(136, 136, 136);" class="">Set bias to a target level.</div>
 </div>
 </div>
-<div style="margin-top:50px; text-align:center; font-size:0.95em; color:#555;">
-<strong>measure</strong> → <strong>adjust</strong> → <strong>re-measure</strong> → ... → <strong>converge</strong>
+<div style="margin-top: 50px; text-align: center; font-size: 36px; color: rgb(85, 85, 85);" class="">
+<strong class="">measure</strong> → <strong class="">adjust</strong> → <strong>re-measure</strong> → ... → <strong>converge</strong>
 </div>
 </div>
 
 <div class="slide" data-slide="12" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="classic-experiments-as-calibration-tasks">Classic Experiments as Calibration Tasks</h4>
+<h4 id="classic-experiments-as-calibration-tasks" class="" style="font-size: 38px;">Classic Experiments as Calibration Tasks</h4>
 <table style="margin-top:40px; width:90%; border-collapse:collapse; font-size:25px;">
 <tbody><tr style="border-bottom:2px solid #e0e0e0;">
-<th style="text-align: left; padding: 10px 16px; color: rgb(74, 142, 126); text-transform: uppercase; letter-spacing: 0.5px; font-size: 22px;" class="">Cognitive Bias</th>
-<th style="text-align: left; padding: 10px 16px; color: rgb(74, 142, 126); text-transform: uppercase; letter-spacing: 0.5px; font-size: 22px;" class="">Paradigm A</th>
-<th style="text-align: left; padding: 10px 16px; color: rgb(74, 142, 126); text-transform: uppercase; letter-spacing: 0.5px; font-size: 22px;" class="">Paradigm B</th>
+<th style="text-align: left; padding: 10px 16px; color: var(--cobra); text-transform: uppercase; letter-spacing: 0.5px; font-size: 25px;" class="">Cognitive Bias</th>
+<th style="text-align: left; padding: 10px 16px; color: var(--cobra); text-transform: uppercase; letter-spacing: 0.5px; font-size: 25px;" class="">Paradigm A</th>
+<th style="text-align: left; padding: 10px 16px; color: var(--cobra); text-transform: uppercase; letter-spacing: 0.5px; font-size: 25px;" class="">Paradigm B</th>
 </tr>
 <tr style="border-bottom:1px solid #f0f0f0;">
-<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Authority Effect</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Milgram Obedience Experiment</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Stanford Prison Experiment</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 25px;" class="">Authority Effect</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Milgram Obedience Experiment</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Stanford Prison Experiment</td>
 </tr>
 <tr style="border-bottom:1px solid #f0f0f0;">
-<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Bandwagon Effect</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Asch's Line Experiment</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Hotel Towel Reuse Study</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 25px;" class="">Bandwagon Effect</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Asch's Line Experiment</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Hotel Towel Reuse Study</td>
 </tr>
 <tr style="border-bottom:1px solid #f0f0f0;">
-<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Confirmation Bias</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Wason Selection Task</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Biased Information Search</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 25px;" class="">Confirmation Bias</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Wason Selection Task</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Biased Information Search</td>
 </tr>
 <tr>
-<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 22px;" class="">Framing Effect</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Asian Disease Problem</td>
-<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 22px;" class="">Investment &amp; Insurance Framing</td>
+<td style="padding: 12px 16px; font-weight: 700; color: rgb(51, 51, 51); font-size: 25px;" class="">Framing Effect</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Asian Disease Problem</td>
+<td style="padding: 12px 16px; color: rgb(85, 85, 85); font-size: 25px;" class="">Investment &amp; Insurance Framing</td>
 </tr>
 </tbody></table>
-<div style="margin-top: 30px; font-size: 27px; color: rgb(74, 142, 126); font-style: italic;" class="">
+<div style="margin-top: 30px; font-size: 27px; color: var(--cobra); font-style: italic;" class="">
 → Open for contribution &amp; collaboration
 </div>
-<div style="margin-top: 6px; font-size: 22px; color: rgb(136, 136, 136);" class="">
+<div style="margin-top: 6px; font-size: 23px; color: rgb(136, 136, 136);" class="">
 Welcome operationalized paradigms for all kinds of social behavior, as reusable "gym" environments for AI agents.
 </div>
-<div style="position: absolute; bottom: 15px; right: 60px; font-size: 22px; color: rgb(136, 136, 136);" class="">
-Details → Paper
-</div>
+<div class="slide-details-paper">Details → Paper</div>
 </div>
 
 <div class="slide" data-slide="13" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="behavioral-regulation-engine">Behavioral Regulation Engine</h4>
-<div style="margin-top:20px; font-size:0.9em; color:#555; text-align:center;">
+<h4 id="behavioral-regulation-engine" class="" style="font-size: 38px;">Behavioral Regulation Engine</h4>
+<div style="margin-top: 20px; font-size: 30px; color: var(--fg); text-align: center;" class="">
 Aligns the agent's behavior to exhibit controlled cognitive bias.
 </div>
 <div style="margin-top:20px; text-align:center; font-size:1.1em; font-style:italic; color:#4A8E7E; font-weight:700;">
@@ -881,66 +1258,62 @@ y = f<sub>θ</sub>( h( x ) )
 </div>
 <div style="margin-top:30px; display:flex; gap:16px; padding:20px; background:#f8faf9; border:1.5px solid rgba(109,191,171,0.25); border-radius:12px;">
 <div style="flex:1; text-align:center; padding:16px 12px;">
-<div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Prompt Engineering</div>
-<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Input Space (x)</div>
-<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">x' = x + Δx</div>
+<div style="font-weight: 700; color: rgb(74, 142, 126); font-size: 26px; margin-bottom: 8px;" class="">Prompt Engineering</div>
+<div style="font-size: 26px; color: var(--fg); margin-bottom: 10px;" class="">Input Space (x)</div>
+<div style="font-size: 0.85em; color: rgb(74, 142, 126); font-style: italic; font-weight: 700;" class="">x' = x | c</div>
+</div>
+<div style="width:1px; background:rgba(109,191,171,0.25);"></div>
+<div style="flex:1; text-align:center; padding:16px 12px;" class="">
+<div style="font-weight: 700; color: rgb(74, 142, 126); font-size: 26px; margin-bottom: 8px;" class="">Representation Engineering</div>
+<div style="font-size: 26px; color: var(--fg); margin-bottom: 10px;" class="">Activation Space (h)</div>
+<div style="font-size: 0.85em; color: rgb(74, 142, 126); font-style: italic; font-weight: 700;" class="">ĥ<sub>i</sub> = h<sub>i</sub> + αv</div>
 </div>
 <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
 <div style="flex:1; text-align:center; padding:16px 12px;">
-<div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Representation Engineering</div>
-<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Activation Space (h)</div>
-<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">ĥ<sub>i</sub> = h<sub>i</sub> + αv</div>
-</div>
-<div style="width:1px; background:rgba(109,191,171,0.25);"></div>
-<div style="flex:1; text-align:center; padding:16px 12px;">
-<div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Fine-Tuning</div>
-<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Parameter Space (θ)</div>
-<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">θ' = θ + λ(θ<sub>b</sub> - θ<sub>u</sub>)</div>
+<div style="font-weight: 700; color: rgb(74, 142, 126); font-size: 26px; margin-bottom: 8px;" class="">Fine-Tuning</div>
+<div style="font-size: 26px; color: var(--fg); margin-bottom: 10px;" class="">Parameter Space (θ)</div>
+<div style="font-size: 0.85em; color: rgb(74, 142, 126); font-style: italic; font-weight: 700;" class="">θ' = θ + λ(θ<sub>b</sub> - θ<sub>u</sub>)</div>
 </div>
 </div>
-<div style="position:absolute; bottom:15px; right:60px; font-size:0.7em; color:#888;">
-Details → Paper
-</div>
+<div class="slide-details-paper">Details → Paper</div>
 </div>
 
 <div class="slide" data-slide="14" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="evaluation-technical-benchmark">Evaluation: Technical Benchmark</h4>
+<h4 id="evaluation-technical-benchmark" class="" style="font-size: 38px;">Evaluation: Technical Benchmark</h4>
 <div style="margin-top:50px; display:flex; flex-direction:column; gap:20px; width:85%;">
-<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px;">
-<div style="font-weight:700; color:#333; font-size:0.95em; margin-bottom:6px;">Reproducibility</div>
-<div style="font-size:0.8em; color:#666;">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
+<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid var(--cobra); border-radius:8px;">
+<div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 34px; margin-bottom: 6px;" class="">Reproducibility</div>
+<div style="font-size: 26px; color: rgb(102, 102, 102);" class="">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
 </div>
-<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px;">
-<div style="font-weight:700; color:#333; font-size:0.95em; margin-bottom:6px;">Controllability</div>
-<div style="font-size:0.8em; color:#666;">Precise and predictable control under both open-weight and API-only settings.</div>
+<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid var(--cobra); border-radius:8px;">
+<div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 34px; margin-bottom: 6px;" class="">Controllability</div>
+<div style="font-size: 26px; color: rgb(102, 102, 102);" class="">Precise and predictable control under both open-weight and API-only settings.</div>
 </div>
 <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #3A7565; border-radius:8px;">
-<div style="font-weight:700; color:#333; font-size:0.95em; margin-bottom:6px;">Generalization</div>
-<div style="font-size:0.8em; color:#666;">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
+<div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 34px; margin-bottom: 6px;" class="">Generalization</div>
+<div style="font-size: 26px; color: rgb(102, 102, 102);" class="">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
 </div>
 </div>
-<div style="position:absolute; bottom:15px; right:60px; font-size:0.7em; color:#888;">
-Details → Paper
-</div>
+<div class="slide-details-paper">Details → Paper</div>
 </div>
 
 <div class="slide" data-slide="15" data-rw="1280" data-rh="720" data-notes="" style="">
-<h4 id="demonstration-emotional-contagion-simulation">Demonstration: Emotional Contagion Simulation</h4>
-<div style="margin-top:40px; font-size:0.95em; color:#555; line-height:1.6; width:80%;">
+<h4 id="demonstration-emotional-contagion-simulation" class="" style="font-size: 38px;">Demonstration: Emotional Contagion Simulation</h4>
+<div style="margin-top: 40px; font-size: 26px; color: rgb(85, 85, 85); line-height: 1.6; width: 80%;" class="">
 Facebook altered news feeds of <strong>users</strong> for one week:
 </div>
 <div style="margin-top:30px; display:flex; align-items:center; gap:16px; width:85%;">
-<div style="flex:1; padding:18px 22px; background:#FEF9E7; border-radius:8px;">
-<div style="font-weight:700; color:#B8860B; font-size:0.85em;">Fewer positive posts in feed</div>
+<div style="flex:1; padding:18px 22px; background:#E8F5F0; border-radius:8px;">
+<div style="font-weight: 700; color: rgb(74, 142, 126); font-size: 26px;" class="">Fewer positive posts in feed</div>
 </div>
 <div style="font-size:1.3em; color:#ccc;">→</div>
 <div style="flex:1; padding:18px 22px; background:#f0f0f0; border-radius:8px;">
-<div style="font-weight:700; color:#333; font-size:0.85em;">Users wrote <strong>more negative</strong> content</div>
+<div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 26px;" class="">Users wrote <strong>more negative</strong> content</div>
 </div>
 </div>
 <div style="margin-top:30px; padding:16px 22px; background:#E8F5F0; border-radius:8px; width:80%;">
-<div style="font-size:0.9em; color:#555; line-height:1.5;">
-<strong style="color:#4A8E7E;">Expected:</strong><br> Higher <strong>follow-the-crowd bias</strong> → stronger emotional contagion
+<div style="font-size: 26px; color: rgb(85, 85, 85); line-height: 1.5;" class="">
+<strong style="color:#4A8E7E;" class="">Expected:</strong><br> Higher <strong class="">follow-the-crowd bias</strong> → stronger emotional contagion
 </div>
 </div>
 <div class="citation">
@@ -949,45 +1322,39 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
 </div>
 
 <div class="slide" data-slide="16" data-rw="1280" data-rh="720" data-notes="" style="">
-<h2 id="baseline-implicit-natural-language-specification">Baseline: Implicit Natural Language Specification</h2>
-<p>“You are a user with (no/little/some/much) follow-the-crowd bias.”</p>
-<img src="figures/baseline_emotional_contagion.png" width="700">
+<h2 id="baseline-implicit-natural-language-specification" class="" style="font-size: 38px;">Baseline: Implicit Natural Language Specification</h2>
+<p class="" style="font-size: 26px; position: relative; left: 0.00005px;">“You are a user with (no/little/some/much) follow-the-crowd bias.”</p>
+<img src="figures/baseline_emotional_contagion.png" width="700" class="" style="position: relative; left: 211.999997px;">
 </div>
 
-<div class="slide" data-slide="17" data-rw="1280" data-rh="720" data-notes="">
+<div class="slide" data-slide="17" data-rw="1280" data-rh="720" data-notes="" style="">
 <div style="display:flex; gap:20px;">
 <div style="text-align:center;">
-<div style="font-weight:700; color:#888; font-size:0.85em; margin-bottom:8px;">Baseline (Implicit Specification)</div>
-<img src="figures/baseline_emotional_contagion.png" width="580">
+<div style="font-weight: 700; color: rgb(136, 136, 136); font-size: 30px; margin-bottom: 8px; position: relative; left: -15px; top: 0px;" class="">Baseline (Implicit Specification)</div>
+<img src="figures/baseline_emotional_contagion.png" width="580" class="" style="position: relative; left: -15px; top: 0px;">
 </div>
 <div style="text-align:center;">
-<div style="font-weight:700; color:#4A8E7E; font-size:0.85em; margin-bottom:8px;">CoBRA</div>
-<img src="figures/cobra_emotional_contagion.png" width="580">
+<div style="font-weight: 700; color: rgb(74, 142, 126); font-size: 30px; margin-bottom: 8px; position: relative; left: -15px; top: 0px;" class="">CoBRA</div>
+<img src="figures/cobra_emotional_contagion.png" width="580" class="" style="position: relative; left: -15px; top: 0px;">
 </div>
 </div>
 </div>
 
 <!-- ============ P18: KEY TAKEAWAYS (from our old P19) ============ -->
-<div class="slide slide-end" data-slide="26" style="flex-direction:column; align-items:center; justify-content:center; padding:24px 64px; position:relative;" data-rw="1280" data-rh="720" data-notes="Thank you for your attention. The code, data, and interactive demo are all available online. I am happy to take questions.">
+<div class="slide slide-end" data-slide="26" style="flex-direction: column; align-items: center; justify-content: center; padding: 24px 64px; position: relative;" data-rw="1280" data-rh="720" data-notes="Thank you for your attention. The code, data, and interactive demo are all available online. I am happy to take questions.">
   <!-- Video: iframe ignores clicks; transparent layer receives clicks so document click handler can showSlide(current+1) -->
   <div style="width:calc(100% + 128px); margin-left:-64px; height:100%; overflow:hidden; position:relative; padding-top:56px; box-sizing:border-box;">
     <iframe src="video_demo.html" title="Demo" style="width:85%; height:850px; border:none; transform:scale(1.35); transform-origin:top left; margin-top:20px; margin-left:-360px; pointer-events:none;"></iframe>
     <div style="position:absolute; inset:0; z-index:1; cursor:pointer;" aria-hidden="true"></div>
   </div>
-  <!-- QR codes top-right (above hit layer) -->
-  <div style="position:absolute; top:20px; right:36px; z-index:2; display:flex; flex-direction:row; gap:22px; align-items:center;">
-    <!-- Personal website: photo + arrow + QR -->
-    <div style="display:flex; flex-direction:row; align-items:center; gap:6px;">
-      <img src="cute-me.png" alt="" width="40" height="46" style="flex-shrink:0;width:40px;height:46px;object-fit:cover;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="14" viewBox="0 0 26 14" aria-hidden="true" style="flex-shrink:0;"><path d="M0 7h18" stroke="#4A8E7E" stroke-width="2" stroke-linecap="round"></path><path d="M20 3.5l5.5 3.5-5.5 3.5" fill="none" stroke="#4A8E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="50" height="50" shape-rendering="crispEdges"><rect width="25" height="25" fill="#fff"></rect><g fill="#4A8E7E"><rect x="0" y="0" width="1" height="1"></rect><rect x="1" y="0" width="1" height="1"></rect><rect x="2" y="0" width="1" height="1"></rect><rect x="3" y="0" width="1" height="1"></rect><rect x="4" y="0" width="1" height="1"></rect><rect x="5" y="0" width="1" height="1"></rect><rect x="6" y="0" width="1" height="1"></rect><rect x="9" y="0" width="1" height="1"></rect><rect x="10" y="0" width="1" height="1"></rect><rect x="14" y="0" width="1" height="1"></rect><rect x="18" y="0" width="1" height="1"></rect><rect x="19" y="0" width="1" height="1"></rect><rect x="20" y="0" width="1" height="1"></rect><rect x="21" y="0" width="1" height="1"></rect><rect x="22" y="0" width="1" height="1"></rect><rect x="23" y="0" width="1" height="1"></rect><rect x="24" y="0" width="1" height="1"></rect><rect x="0" y="1" width="1" height="1"></rect><rect x="6" y="1" width="1" height="1"></rect><rect x="8" y="1" width="1" height="1"></rect><rect x="16" y="1" width="1" height="1"></rect><rect x="18" y="1" width="1" height="1"></rect><rect x="24" y="1" width="1" height="1"></rect><rect x="0" y="2" width="1" height="1"></rect><rect x="2" y="2" width="1" height="1"></rect><rect x="3" y="2" width="1" height="1"></rect><rect x="4" y="2" width="1" height="1"></rect><rect x="6" y="2" width="1" height="1"></rect><rect x="8" y="2" width="1" height="1"></rect><rect x="9" y="2" width="1" height="1"></rect><rect x="11" y="2" width="1" height="1"></rect><rect x="12" y="2" width="1" height="1"></rect><rect x="14" y="2" width="1" height="1"></rect><rect x="16" y="2" width="1" height="1"></rect><rect x="18" y="2" width="1" height="1"></rect><rect x="20" y="2" width="1" height="1"></rect><rect x="21" y="2" width="1" height="1"></rect><rect x="22" y="2" width="1" height="1"></rect><rect x="24" y="2" width="1" height="1"></rect><rect x="0" y="3" width="1" height="1"></rect><rect x="2" y="3" width="1" height="1"></rect><rect x="3" y="3" width="1" height="1"></rect><rect x="4" y="3" width="1" height="1"></rect><rect x="6" y="3" width="1" height="1"></rect><rect x="8" y="3" width="1" height="1"></rect><rect x="9" y="3" width="1" height="1"></rect><rect x="10" y="3" width="1" height="1"></rect><rect x="13" y="3" width="1" height="1"></rect><rect x="16" y="3" width="1" height="1"></rect><rect x="18" y="3" width="1" height="1"></rect><rect x="20" y="3" width="1" height="1"></rect><rect x="21" y="3" width="1" height="1"></rect><rect x="22" y="3" width="1" height="1"></rect><rect x="24" y="3" width="1" height="1"></rect><rect x="0" y="4" width="1" height="1"></rect><rect x="2" y="4" width="1" height="1"></rect><rect x="3" y="4" width="1" height="1"></rect><rect x="4" y="4" width="1" height="1"></rect><rect x="6" y="4" width="1" height="1"></rect><rect x="9" y="4" width="1" height="1"></rect><rect x="10" y="4" width="1" height="1"></rect><rect x="14" y="4" width="1" height="1"></rect><rect x="16" y="4" width="1" height="1"></rect><rect x="18" y="4" width="1" height="1"></rect><rect x="20" y="4" width="1" height="1"></rect><rect x="21" y="4" width="1" height="1"></rect><rect x="22" y="4" width="1" height="1"></rect><rect x="24" y="4" width="1" height="1"></rect><rect x="0" y="5" width="1" height="1"></rect><rect x="6" y="5" width="1" height="1"></rect><rect x="10" y="5" width="1" height="1"></rect><rect x="11" y="5" width="1" height="1"></rect><rect x="12" y="5" width="1" height="1"></rect><rect x="14" y="5" width="1" height="1"></rect><rect x="18" y="5" width="1" height="1"></rect><rect x="24" y="5" width="1" height="1"></rect><rect x="0" y="6" width="1" height="1"></rect><rect x="1" y="6" width="1" height="1"></rect><rect x="2" y="6" width="1" height="1"></rect><rect x="3" y="6" width="1" height="1"></rect><rect x="4" y="6" width="1" height="1"></rect><rect x="5" y="6" width="1" height="1"></rect><rect x="6" y="6" width="1" height="1"></rect><rect x="8" y="6" width="1" height="1"></rect><rect x="10" y="6" width="1" height="1"></rect><rect x="12" y="6" width="1" height="1"></rect><rect x="14" y="6" width="1" height="1"></rect><rect x="16" y="6" width="1" height="1"></rect><rect x="18" y="6" width="1" height="1"></rect><rect x="19" y="6" width="1" height="1"></rect><rect x="20" y="6" width="1" height="1"></rect><rect x="21" y="6" width="1" height="1"></rect><rect x="22" y="6" width="1" height="1"></rect><rect x="23" y="6" width="1" height="1"></rect><rect x="24" y="6" width="1" height="1"></rect><rect x="8" y="7" width="1" height="1"></rect><rect x="10" y="7" width="1" height="1"></rect><rect x="11" y="7" width="1" height="1"></rect><rect x="15" y="7" width="1" height="1"></rect><rect x="16" y="7" width="1" height="1"></rect><rect x="0" y="8" width="1" height="1"></rect><rect x="6" y="8" width="1" height="1"></rect><rect x="8" y="8" width="1" height="1"></rect><rect x="9" y="8" width="1" height="1"></rect><rect x="10" y="8" width="1" height="1"></rect><rect x="13" y="8" width="1" height="1"></rect><rect x="14" y="8" width="1" height="1"></rect><rect x="17" y="8" width="1" height="1"></rect><rect x="18" y="8" width="1" height="1"></rect><rect x="21" y="8" width="1" height="1"></rect><rect x="22" y="8" width="1" height="1"></rect><rect x="23" y="8" width="1" height="1"></rect><rect x="1" y="9" width="1" height="1"></rect><rect x="7" y="9" width="1" height="1"></rect><rect x="10" y="9" width="1" height="1"></rect><rect x="11" y="9" width="1" height="1"></rect><rect x="13" y="9" width="1" height="1"></rect><rect x="14" y="9" width="1" height="1"></rect><rect x="15" y="9" width="1" height="1"></rect><rect x="16" y="9" width="1" height="1"></rect><rect x="17" y="9" width="1" height="1"></rect><rect x="19" y="9" width="1" height="1"></rect><rect x="20" y="9" width="1" height="1"></rect><rect x="21" y="9" width="1" height="1"></rect><rect x="22" y="9" width="1" height="1"></rect><rect x="23" y="9" width="1" height="1"></rect><rect x="2" y="10" width="1" height="1"></rect><rect x="3" y="10" width="1" height="1"></rect><rect x="4" y="10" width="1" height="1"></rect><rect x="6" y="10" width="1" height="1"></rect><rect x="7" y="10" width="1" height="1"></rect><rect x="9" y="10" width="1" height="1"></rect><rect x="10" y="10" width="1" height="1"></rect><rect x="11" y="10" width="1" height="1"></rect><rect x="12" y="10" width="1" height="1"></rect><rect x="15" y="10" width="1" height="1"></rect><rect x="16" y="10" width="1" height="1"></rect><rect x="17" y="10" width="1" height="1"></rect><rect x="18" y="10" width="1" height="1"></rect><rect x="21" y="10" width="1" height="1"></rect><rect x="23" y="10" width="1" height="1"></rect><rect x="24" y="10" width="1" height="1"></rect><rect x="2" y="11" width="1" height="1"></rect><rect x="4" y="11" width="1" height="1"></rect><rect x="7" y="11" width="1" height="1"></rect><rect x="9" y="11" width="1" height="1"></rect><rect x="10" y="11" width="1" height="1"></rect><rect x="12" y="11" width="1" height="1"></rect><rect x="15" y="11" width="1" height="1"></rect><rect x="16" y="11" width="1" height="1"></rect><rect x="17" y="11" width="1" height="1"></rect><rect x="18" y="11" width="1" height="1"></rect><rect x="20" y="11" width="1" height="1"></rect><rect x="21" y="11" width="1" height="1"></rect><rect x="24" y="11" width="1" height="1"></rect><rect x="2" y="12" width="1" height="1"></rect><rect x="3" y="12" width="1" height="1"></rect><rect x="4" y="12" width="1" height="1"></rect><rect x="6" y="12" width="1" height="1"></rect><rect x="11" y="12" width="1" height="1"></rect><rect x="12" y="12" width="1" height="1"></rect><rect x="15" y="12" width="1" height="1"></rect><rect x="18" y="12" width="1" height="1"></rect><rect x="24" y="12" width="1" height="1"></rect><rect x="0" y="13" width="1" height="1"></rect><rect x="2" y="13" width="1" height="1"></rect><rect x="3" y="13" width="1" height="1"></rect><rect x="4" y="13" width="1" height="1"></rect><rect x="5" y="13" width="1" height="1"></rect><rect x="7" y="13" width="1" height="1"></rect><rect x="8" y="13" width="1" height="1"></rect><rect x="9" y="13" width="1" height="1"></rect><rect x="12" y="13" width="1" height="1"></rect><rect x="14" y="13" width="1" height="1"></rect><rect x="15" y="13" width="1" height="1"></rect><rect x="19" y="13" width="1" height="1"></rect><rect x="23" y="13" width="1" height="1"></rect><rect x="0" y="14" width="1" height="1"></rect><rect x="2" y="14" width="1" height="1"></rect><rect x="3" y="14" width="1" height="1"></rect><rect x="6" y="14" width="1" height="1"></rect><rect x="10" y="14" width="1" height="1"></rect><rect x="14" y="14" width="1" height="1"></rect><rect x="15" y="14" width="1" height="1"></rect><rect x="16" y="14" width="1" height="1"></rect><rect x="18" y="14" width="1" height="1"></rect><rect x="19" y="14" width="1" height="1"></rect><rect x="20" y="14" width="1" height="1"></rect><rect x="21" y="14" width="1" height="1"></rect><rect x="23" y="14" width="1" height="1"></rect><rect x="24" y="14" width="1" height="1"></rect><rect x="0" y="15" width="1" height="1"></rect><rect x="5" y="15" width="1" height="1"></rect><rect x="8" y="15" width="1" height="1"></rect><rect x="11" y="15" width="1" height="1"></rect><rect x="16" y="15" width="1" height="1"></rect><rect x="17" y="15" width="1" height="1"></rect><rect x="18" y="15" width="1" height="1"></rect><rect x="19" y="15" width="1" height="1"></rect><rect x="21" y="15" width="1" height="1"></rect><rect x="22" y="15" width="1" height="1"></rect><rect x="24" y="15" width="1" height="1"></rect><rect x="0" y="16" width="1" height="1"></rect><rect x="3" y="16" width="1" height="1"></rect><rect x="5" y="16" width="1" height="1"></rect><rect x="6" y="16" width="1" height="1"></rect><rect x="10" y="16" width="1" height="1"></rect><rect x="11" y="16" width="1" height="1"></rect><rect x="12" y="16" width="1" height="1"></rect><rect x="13" y="16" width="1" height="1"></rect><rect x="14" y="16" width="1" height="1"></rect><rect x="15" y="16" width="1" height="1"></rect><rect x="16" y="16" width="1" height="1"></rect><rect x="17" y="16" width="1" height="1"></rect><rect x="18" y="16" width="1" height="1"></rect><rect x="19" y="16" width="1" height="1"></rect><rect x="20" y="16" width="1" height="1"></rect><rect x="22" y="16" width="1" height="1"></rect><rect x="8" y="17" width="1" height="1"></rect><rect x="9" y="17" width="1" height="1"></rect><rect x="11" y="17" width="1" height="1"></rect><rect x="12" y="17" width="1" height="1"></rect><rect x="15" y="17" width="1" height="1"></rect><rect x="16" y="17" width="1" height="1"></rect><rect x="20" y="17" width="1" height="1"></rect><rect x="0" y="18" width="1" height="1"></rect><rect x="1" y="18" width="1" height="1"></rect><rect x="2" y="18" width="1" height="1"></rect><rect x="3" y="18" width="1" height="1"></rect><rect x="4" y="18" width="1" height="1"></rect><rect x="5" y="18" width="1" height="1"></rect><rect x="6" y="18" width="1" height="1"></rect><rect x="10" y="18" width="1" height="1"></rect><rect x="11" y="18" width="1" height="1"></rect><rect x="14" y="18" width="1" height="1"></rect><rect x="16" y="18" width="1" height="1"></rect><rect x="18" y="18" width="1" height="1"></rect><rect x="20" y="18" width="1" height="1"></rect><rect x="24" y="18" width="1" height="1"></rect><rect x="0" y="19" width="1" height="1"></rect><rect x="6" y="19" width="1" height="1"></rect><rect x="11" y="19" width="1" height="1"></rect><rect x="16" y="19" width="1" height="1"></rect><rect x="20" y="19" width="1" height="1"></rect><rect x="0" y="20" width="1" height="1"></rect><rect x="2" y="20" width="1" height="1"></rect><rect x="3" y="20" width="1" height="1"></rect><rect x="4" y="20" width="1" height="1"></rect><rect x="6" y="20" width="1" height="1"></rect><rect x="10" y="20" width="1" height="1"></rect><rect x="11" y="20" width="1" height="1"></rect><rect x="12" y="20" width="1" height="1"></rect><rect x="13" y="20" width="1" height="1"></rect><rect x="15" y="20" width="1" height="1"></rect><rect x="16" y="20" width="1" height="1"></rect><rect x="17" y="20" width="1" height="1"></rect><rect x="18" y="20" width="1" height="1"></rect><rect x="19" y="20" width="1" height="1"></rect><rect x="20" y="20" width="1" height="1"></rect><rect x="22" y="20" width="1" height="1"></rect><rect x="0" y="21" width="1" height="1"></rect><rect x="2" y="21" width="1" height="1"></rect><rect x="3" y="21" width="1" height="1"></rect><rect x="4" y="21" width="1" height="1"></rect><rect x="6" y="21" width="1" height="1"></rect><rect x="9" y="21" width="1" height="1"></rect><rect x="10" y="21" width="1" height="1"></rect><rect x="11" y="21" width="1" height="1"></rect><rect x="13" y="21" width="1" height="1"></rect><rect x="14" y="21" width="1" height="1"></rect><rect x="16" y="21" width="1" height="1"></rect><rect x="17" y="21" width="1" height="1"></rect><rect x="18" y="21" width="1" height="1"></rect><rect x="23" y="21" width="1" height="1"></rect><rect x="24" y="21" width="1" height="1"></rect><rect x="0" y="22" width="1" height="1"></rect><rect x="2" y="22" width="1" height="1"></rect><rect x="3" y="22" width="1" height="1"></rect><rect x="4" y="22" width="1" height="1"></rect><rect x="6" y="22" width="1" height="1"></rect><rect x="9" y="22" width="1" height="1"></rect><rect x="13" y="22" width="1" height="1"></rect><rect x="14" y="22" width="1" height="1"></rect><rect x="16" y="22" width="1" height="1"></rect><rect x="21" y="22" width="1" height="1"></rect><rect x="22" y="22" width="1" height="1"></rect><rect x="24" y="22" width="1" height="1"></rect><rect x="0" y="23" width="1" height="1"></rect><rect x="6" y="23" width="1" height="1"></rect><rect x="9" y="23" width="1" height="1"></rect><rect x="12" y="23" width="1" height="1"></rect><rect x="16" y="23" width="1" height="1"></rect><rect x="17" y="23" width="1" height="1"></rect><rect x="19" y="23" width="1" height="1"></rect><rect x="20" y="23" width="1" height="1"></rect><rect x="24" y="23" width="1" height="1"></rect><rect x="0" y="24" width="1" height="1"></rect><rect x="1" y="24" width="1" height="1"></rect><rect x="2" y="24" width="1" height="1"></rect><rect x="3" y="24" width="1" height="1"></rect><rect x="4" y="24" width="1" height="1"></rect><rect x="5" y="24" width="1" height="1"></rect><rect x="6" y="24" width="1" height="1"></rect><rect x="8" y="24" width="1" height="1"></rect><rect x="12" y="24" width="1" height="1"></rect><rect x="16" y="24" width="1" height="1"></rect><rect x="17" y="24" width="1" height="1"></rect><rect x="21" y="24" width="1" height="1"></rect><rect x="24" y="24" width="1" height="1"></rect></g></svg>
-    </div>
-    <!-- Project page: snake + arrow + QR -->
-    <div style="display:flex; flex-direction:row; align-items:center; gap:6px;">
-      <img src="co_website/public/snake.svg" alt="" width="46" height="46" style="flex-shrink:0;width:46px;height:46px;object-fit:contain;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="14" viewBox="0 0 26 14" aria-hidden="true" style="flex-shrink:0;"><path d="M0 7h18" stroke="#4A8E7E" stroke-width="2" stroke-linecap="round"></path><path d="M20 3.5l5.5 3.5-5.5 3.5" fill="none" stroke="#4A8E7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="50" height="50" shape-rendering="crispEdges"><rect width="25" height="25" fill="#fff"></rect><g fill="#4A8E7E"><rect x="0" y="0" width="1" height="1"></rect><rect x="1" y="0" width="1" height="1"></rect><rect x="2" y="0" width="1" height="1"></rect><rect x="3" y="0" width="1" height="1"></rect><rect x="4" y="0" width="1" height="1"></rect><rect x="5" y="0" width="1" height="1"></rect><rect x="6" y="0" width="1" height="1"></rect><rect x="9" y="0" width="1" height="1"></rect><rect x="10" y="0" width="1" height="1"></rect><rect x="13" y="0" width="1" height="1"></rect><rect x="18" y="0" width="1" height="1"></rect><rect x="19" y="0" width="1" height="1"></rect><rect x="20" y="0" width="1" height="1"></rect><rect x="21" y="0" width="1" height="1"></rect><rect x="22" y="0" width="1" height="1"></rect><rect x="23" y="0" width="1" height="1"></rect><rect x="24" y="0" width="1" height="1"></rect><rect x="0" y="1" width="1" height="1"></rect><rect x="6" y="1" width="1" height="1"></rect><rect x="8" y="1" width="1" height="1"></rect><rect x="9" y="1" width="1" height="1"></rect><rect x="10" y="1" width="1" height="1"></rect><rect x="11" y="1" width="1" height="1"></rect><rect x="13" y="1" width="1" height="1"></rect><rect x="14" y="1" width="1" height="1"></rect><rect x="16" y="1" width="1" height="1"></rect><rect x="18" y="1" width="1" height="1"></rect><rect x="24" y="1" width="1" height="1"></rect><rect x="0" y="2" width="1" height="1"></rect><rect x="2" y="2" width="1" height="1"></rect><rect x="3" y="2" width="1" height="1"></rect><rect x="4" y="2" width="1" height="1"></rect><rect x="6" y="2" width="1" height="1"></rect><rect x="8" y="2" width="1" height="1"></rect><rect x="9" y="2" width="1" height="1"></rect><rect x="10" y="2" width="1" height="1"></rect><rect x="12" y="2" width="1" height="1"></rect><rect x="14" y="2" width="1" height="1"></rect><rect x="15" y="2" width="1" height="1"></rect><rect x="18" y="2" width="1" height="1"></rect><rect x="20" y="2" width="1" height="1"></rect><rect x="21" y="2" width="1" height="1"></rect><rect x="22" y="2" width="1" height="1"></rect><rect x="24" y="2" width="1" height="1"></rect><rect x="0" y="3" width="1" height="1"></rect><rect x="2" y="3" width="1" height="1"></rect><rect x="3" y="3" width="1" height="1"></rect><rect x="4" y="3" width="1" height="1"></rect><rect x="6" y="3" width="1" height="1"></rect><rect x="8" y="3" width="1" height="1"></rect><rect x="9" y="3" width="1" height="1"></rect><rect x="11" y="3" width="1" height="1"></rect><rect x="13" y="3" width="1" height="1"></rect><rect x="16" y="3" width="1" height="1"></rect><rect x="18" y="3" width="1" height="1"></rect><rect x="20" y="3" width="1" height="1"></rect><rect x="21" y="3" width="1" height="1"></rect><rect x="22" y="3" width="1" height="1"></rect><rect x="24" y="3" width="1" height="1"></rect><rect x="0" y="4" width="1" height="1"></rect><rect x="2" y="4" width="1" height="1"></rect><rect x="3" y="4" width="1" height="1"></rect><rect x="4" y="4" width="1" height="1"></rect><rect x="6" y="4" width="1" height="1"></rect><rect x="9" y="4" width="1" height="1"></rect><rect x="12" y="4" width="1" height="1"></rect><rect x="16" y="4" width="1" height="1"></rect><rect x="18" y="4" width="1" height="1"></rect><rect x="20" y="4" width="1" height="1"></rect><rect x="21" y="4" width="1" height="1"></rect><rect x="22" y="4" width="1" height="1"></rect><rect x="24" y="4" width="1" height="1"></rect><rect x="0" y="5" width="1" height="1"></rect><rect x="6" y="5" width="1" height="1"></rect><rect x="10" y="5" width="1" height="1"></rect><rect x="12" y="5" width="1" height="1"></rect><rect x="14" y="5" width="1" height="1"></rect><rect x="18" y="5" width="1" height="1"></rect><rect x="24" y="5" width="1" height="1"></rect><rect x="0" y="6" width="1" height="1"></rect><rect x="1" y="6" width="1" height="1"></rect><rect x="2" y="6" width="1" height="1"></rect><rect x="3" y="6" width="1" height="1"></rect><rect x="4" y="6" width="1" height="1"></rect><rect x="5" y="6" width="1" height="1"></rect><rect x="6" y="6" width="1" height="1"></rect><rect x="8" y="6" width="1" height="1"></rect><rect x="10" y="6" width="1" height="1"></rect><rect x="12" y="6" width="1" height="1"></rect><rect x="14" y="6" width="1" height="1"></rect><rect x="16" y="6" width="1" height="1"></rect><rect x="18" y="6" width="1" height="1"></rect><rect x="19" y="6" width="1" height="1"></rect><rect x="20" y="6" width="1" height="1"></rect><rect x="21" y="6" width="1" height="1"></rect><rect x="22" y="6" width="1" height="1"></rect><rect x="23" y="6" width="1" height="1"></rect><rect x="24" y="6" width="1" height="1"></rect><rect x="8" y="7" width="1" height="1"></rect><rect x="11" y="7" width="1" height="1"></rect><rect x="12" y="7" width="1" height="1"></rect><rect x="16" y="7" width="1" height="1"></rect><rect x="0" y="8" width="1" height="1"></rect><rect x="6" y="8" width="1" height="1"></rect><rect x="8" y="8" width="1" height="1"></rect><rect x="11" y="8" width="1" height="1"></rect><rect x="13" y="8" width="1" height="1"></rect><rect x="14" y="8" width="1" height="1"></rect><rect x="17" y="8" width="1" height="1"></rect><rect x="18" y="8" width="1" height="1"></rect><rect x="21" y="8" width="1" height="1"></rect><rect x="22" y="8" width="1" height="1"></rect><rect x="23" y="8" width="1" height="1"></rect><rect x="3" y="9" width="1" height="1"></rect><rect x="4" y="9" width="1" height="1"></rect><rect x="5" y="9" width="1" height="1"></rect><rect x="7" y="9" width="1" height="1"></rect><rect x="8" y="9" width="1" height="1"></rect><rect x="9" y="9" width="1" height="1"></rect><rect x="10" y="9" width="1" height="1"></rect><rect x="11" y="9" width="1" height="1"></rect><rect x="12" y="9" width="1" height="1"></rect><rect x="14" y="9" width="1" height="1"></rect><rect x="15" y="9" width="1" height="1"></rect><rect x="19" y="9" width="1" height="1"></rect><rect x="20" y="9" width="1" height="1"></rect><rect x="21" y="9" width="1" height="1"></rect><rect x="22" y="9" width="1" height="1"></rect><rect x="23" y="9" width="1" height="1"></rect><rect x="2" y="10" width="1" height="1"></rect><rect x="4" y="10" width="1" height="1"></rect><rect x="6" y="10" width="1" height="1"></rect><rect x="7" y="10" width="1" height="1"></rect><rect x="8" y="10" width="1" height="1"></rect><rect x="9" y="10" width="1" height="1"></rect><rect x="14" y="10" width="1" height="1"></rect><rect x="15" y="10" width="1" height="1"></rect><rect x="16" y="10" width="1" height="1"></rect><rect x="17" y="10" width="1" height="1"></rect><rect x="19" y="10" width="1" height="1"></rect><rect x="20" y="10" width="1" height="1"></rect><rect x="21" y="10" width="1" height="1"></rect><rect x="23" y="10" width="1" height="1"></rect><rect x="24" y="10" width="1" height="1"></rect><rect x="2" y="11" width="1" height="1"></rect><rect x="7" y="11" width="1" height="1"></rect><rect x="9" y="11" width="1" height="1"></rect><rect x="11" y="11" width="1" height="1"></rect><rect x="14" y="11" width="1" height="1"></rect><rect x="15" y="11" width="1" height="1"></rect><rect x="17" y="11" width="1" height="1"></rect><rect x="21" y="11" width="1" height="1"></rect><rect x="24" y="11" width="1" height="1"></rect><rect x="1" y="12" width="1" height="1"></rect><rect x="3" y="12" width="1" height="1"></rect><rect x="4" y="12" width="1" height="1"></rect><rect x="6" y="12" width="1" height="1"></rect><rect x="7" y="12" width="1" height="1"></rect><rect x="8" y="12" width="1" height="1"></rect><rect x="11" y="12" width="1" height="1"></rect><rect x="12" y="12" width="1" height="1"></rect><rect x="15" y="12" width="1" height="1"></rect><rect x="16" y="12" width="1" height="1"></rect><rect x="18" y="12" width="1" height="1"></rect><rect x="19" y="12" width="1" height="1"></rect><rect x="24" y="12" width="1" height="1"></rect><rect x="0" y="13" width="1" height="1"></rect><rect x="1" y="13" width="1" height="1"></rect><rect x="2" y="13" width="1" height="1"></rect><rect x="4" y="13" width="1" height="1"></rect><rect x="5" y="13" width="1" height="1"></rect><rect x="8" y="13" width="1" height="1"></rect><rect x="10" y="13" width="1" height="1"></rect><rect x="14" y="13" width="1" height="1"></rect><rect x="15" y="13" width="1" height="1"></rect><rect x="16" y="13" width="1" height="1"></rect><rect x="19" y="13" width="1" height="1"></rect><rect x="23" y="13" width="1" height="1"></rect><rect x="0" y="14" width="1" height="1"></rect><rect x="2" y="14" width="1" height="1"></rect><rect x="3" y="14" width="1" height="1"></rect><rect x="4" y="14" width="1" height="1"></rect><rect x="6" y="14" width="1" height="1"></rect><rect x="8" y="14" width="1" height="1"></rect><rect x="9" y="14" width="1" height="1"></rect><rect x="10" y="14" width="1" height="1"></rect><rect x="11" y="14" width="1" height="1"></rect><rect x="12" y="14" width="1" height="1"></rect><rect x="13" y="14" width="1" height="1"></rect><rect x="15" y="14" width="1" height="1"></rect><rect x="18" y="14" width="1" height="1"></rect><rect x="19" y="14" width="1" height="1"></rect><rect x="20" y="14" width="1" height="1"></rect><rect x="21" y="14" width="1" height="1"></rect><rect x="23" y="14" width="1" height="1"></rect><rect x="24" y="14" width="1" height="1"></rect><rect x="0" y="15" width="1" height="1"></rect><rect x="3" y="15" width="1" height="1"></rect><rect x="8" y="15" width="1" height="1"></rect><rect x="10" y="15" width="1" height="1"></rect><rect x="11" y="15" width="1" height="1"></rect><rect x="14" y="15" width="1" height="1"></rect><rect x="15" y="15" width="1" height="1"></rect><rect x="19" y="15" width="1" height="1"></rect><rect x="21" y="15" width="1" height="1"></rect><rect x="22" y="15" width="1" height="1"></rect><rect x="24" y="15" width="1" height="1"></rect><rect x="0" y="16" width="1" height="1"></rect><rect x="3" y="16" width="1" height="1"></rect><rect x="5" y="16" width="1" height="1"></rect><rect x="6" y="16" width="1" height="1"></rect><rect x="7" y="16" width="1" height="1"></rect><rect x="8" y="16" width="1" height="1"></rect><rect x="11" y="16" width="1" height="1"></rect><rect x="12" y="16" width="1" height="1"></rect><rect x="13" y="16" width="1" height="1"></rect><rect x="16" y="16" width="1" height="1"></rect><rect x="17" y="16" width="1" height="1"></rect><rect x="18" y="16" width="1" height="1"></rect><rect x="19" y="16" width="1" height="1"></rect><rect x="20" y="16" width="1" height="1"></rect><rect x="22" y="16" width="1" height="1"></rect><rect x="8" y="17" width="1" height="1"></rect><rect x="10" y="17" width="1" height="1"></rect><rect x="12" y="17" width="1" height="1"></rect><rect x="13" y="17" width="1" height="1"></rect><rect x="16" y="17" width="1" height="1"></rect><rect x="20" y="17" width="1" height="1"></rect><rect x="0" y="18" width="1" height="1"></rect><rect x="1" y="18" width="1" height="1"></rect><rect x="2" y="18" width="1" height="1"></rect><rect x="3" y="18" width="1" height="1"></rect><rect x="4" y="18" width="1" height="1"></rect><rect x="5" y="18" width="1" height="1"></rect><rect x="6" y="18" width="1" height="1"></rect><rect x="11" y="18" width="1" height="1"></rect><rect x="16" y="18" width="1" height="1"></rect><rect x="18" y="18" width="1" height="1"></rect><rect x="20" y="18" width="1" height="1"></rect><rect x="24" y="18" width="1" height="1"></rect><rect x="0" y="19" width="1" height="1"></rect><rect x="6" y="19" width="1" height="1"></rect><rect x="11" y="19" width="1" height="1"></rect><rect x="16" y="19" width="1" height="1"></rect><rect x="20" y="19" width="1" height="1"></rect><rect x="23" y="19" width="1" height="1"></rect><rect x="24" y="19" width="1" height="1"></rect><rect x="0" y="20" width="1" height="1"></rect><rect x="2" y="20" width="1" height="1"></rect><rect x="3" y="20" width="1" height="1"></rect><rect x="4" y="20" width="1" height="1"></rect><rect x="6" y="20" width="1" height="1"></rect><rect x="11" y="20" width="1" height="1"></rect><rect x="12" y="20" width="1" height="1"></rect><rect x="13" y="20" width="1" height="1"></rect><rect x="14" y="20" width="1" height="1"></rect><rect x="15" y="20" width="1" height="1"></rect><rect x="16" y="20" width="1" height="1"></rect><rect x="17" y="20" width="1" height="1"></rect><rect x="18" y="20" width="1" height="1"></rect><rect x="19" y="20" width="1" height="1"></rect><rect x="20" y="20" width="1" height="1"></rect><rect x="22" y="20" width="1" height="1"></rect><rect x="0" y="21" width="1" height="1"></rect><rect x="2" y="21" width="1" height="1"></rect><rect x="3" y="21" width="1" height="1"></rect><rect x="4" y="21" width="1" height="1"></rect><rect x="6" y="21" width="1" height="1"></rect><rect x="9" y="21" width="1" height="1"></rect><rect x="11" y="21" width="1" height="1"></rect><rect x="12" y="21" width="1" height="1"></rect><rect x="14" y="21" width="1" height="1"></rect><rect x="15" y="21" width="1" height="1"></rect><rect x="16" y="21" width="1" height="1"></rect><rect x="17" y="21" width="1" height="1"></rect><rect x="18" y="21" width="1" height="1"></rect><rect x="23" y="21" width="1" height="1"></rect><rect x="24" y="21" width="1" height="1"></rect><rect x="0" y="22" width="1" height="1"></rect><rect x="2" y="22" width="1" height="1"></rect><rect x="3" y="22" width="1" height="1"></rect><rect x="4" y="22" width="1" height="1"></rect><rect x="6" y="22" width="1" height="1"></rect><rect x="15" y="22" width="1" height="1"></rect><rect x="17" y="22" width="1" height="1"></rect><rect x="21" y="22" width="1" height="1"></rect><rect x="22" y="22" width="1" height="1"></rect><rect x="24" y="22" width="1" height="1"></rect><rect x="0" y="23" width="1" height="1"></rect><rect x="6" y="23" width="1" height="1"></rect><rect x="12" y="23" width="1" height="1"></rect><rect x="14" y="23" width="1" height="1"></rect><rect x="16" y="23" width="1" height="1"></rect><rect x="18" y="23" width="1" height="1"></rect><rect x="19" y="23" width="1" height="1"></rect><rect x="20" y="23" width="1" height="1"></rect><rect x="24" y="23" width="1" height="1"></rect><rect x="0" y="24" width="1" height="1"></rect><rect x="1" y="24" width="1" height="1"></rect><rect x="2" y="24" width="1" height="1"></rect><rect x="3" y="24" width="1" height="1"></rect><rect x="4" y="24" width="1" height="1"></rect><rect x="5" y="24" width="1" height="1"></rect><rect x="6" y="24" width="1" height="1"></rect><rect x="8" y="24" width="1" height="1"></rect><rect x="9" y="24" width="1" height="1"></rect><rect x="12" y="24" width="1" height="1"></rect><rect x="16" y="24" width="1" height="1"></rect><rect x="17" y="24" width="1" height="1"></rect><rect x="21" y="24" width="1" height="1"></rect><rect x="24" y="24" width="1" height="1"></rect></g></svg>
-    </div>
+  <div class="slide-end-title">
+    <h1>
+      <img src="co_website/public/snake.svg" alt="" style="width: 56px; height: 56px; vertical-align: -0.1em; margin-right: 6px; font-size: 28px; padding: 0px; border-radius: 0px; position: relative; left: 10px; top: 10px;"><span style="font-size: 44px; color: var(--cobra-dark);">CoBRA:</span> <span style="color: var(--g800); font-size: 38px;">Programming Cognitive Bias in Social Agents<br>Using Classic Social Science Experiments</span>
+    </h1>
+  </div>
+  <div class="slide-end-contact">
+    <img src="cute-me.png" alt="">
+    <a href="mailto:xul049@ucsd.edu">xul049@ucsd.edu</a>
   </div>
 </div>
 
@@ -1028,19 +1395,20 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
         </div>
       </div>
     </div>
-    <div style="width:100%;">
+    <div style="width:100%; display:flex; flex-direction:column; align-items:center;">
+      <div style="max-width:900px; width:100%; box-sizing:border-box;">
       <div style="display:flex; align-items:center; margin:6px 0;">
-        <div style="width:130px; flex-shrink:0; display:flex; justify-content:center;">
-          <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="4" x2="9" y2="24" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,4 9,0 15,4" fill="#6DBFAB"></polygon></svg>
+        <div style="width:22px; flex-shrink:0; display:flex; justify-content:center;">
+          <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="4" x2="9" y2="24" stroke="var(--cobra-mint)" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,4 9,0 15,4" fill="var(--cobra-mint)"></polygon></svg>
         </div>
-        <div style="flex:1; display:flex; justify-content:center;">
+        <div style="flex:1; display:flex; justify-content:center; min-width:0;">
           <div class="loop-pill" style="font-size:14px; line-height:1.3; text-align:center;">↻ Loop until Cognitive Bias Index matches target</div>
         </div>
-        <div style="width:270px; flex-shrink:0; display:flex; justify-content:center;">
-          <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="0" x2="9" y2="20" stroke="#6DBFAB" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,20 9,24 15,20" fill="#6DBFAB"></polygon></svg>
+        <div style="width:22px; flex-shrink:0; display:flex; justify-content:center;">
+          <svg width="18" height="24" viewBox="0 0 18 24"><line x1="9" y1="0" x2="9" y2="20" stroke="var(--cobra-mint)" stroke-width="2.5" stroke-dasharray="4 3"></line><polygon points="3,20 9,24 15,20" fill="var(--cobra-mint)"></polygon></svg>
         </div>
       </div>
-      <div class="card" style="position:relative; padding:10px 16px;">
+      <div class="card" style="position:relative; padding:10px 16px; width:100%; box-sizing:border-box;">
         <div class="step-badge">4</div>
         <p style="font-size:19px; font-weight:700; color:var(--cobra-darker); text-align:center; margin-bottom:4px;">Behavioral Regulation Engine</p>
         <div class="three-col" style="gap:10px;">
@@ -1050,29 +1418,30 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
         </div>
       </div>
     </div>
+    </div>
   </div>
 </div>
 
 <!-- ============ ARCHIVED: KEY TAKEAWAYS ============ -->
 <div class="slide" data-slide="18" data-rw="1280" data-rh="720" data-notes="Three key takeaways.">
-  <h2 style="font-size:1.4em;">Toward <span style="color:#6DBFAB;">Reproducible</span> Agent Specification</h2>
+  <h2 style="font-size:1.4em;">Toward <span style="color:var(--cobra);">Reproducible</span> Agent Specification</h2>
   <div style="display:flex; flex-direction:column; gap:18px; margin-top:20px; max-width:700px;">
     <div style="display:flex; align-items:flex-start; gap:16px;">
-      <span style="font-size:1.6em; font-weight:800; color:#6DBFAB; line-height:1; flex-shrink:0; width:32px; text-align:right;">1</span>
+      <span style="font-size:1.6em; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:32px; text-align:right;">1</span>
       <div>
         <h3 style="font-size:0.9em; margin-bottom:4px; color:var(--g800);">Generalizable Behavioral Control Layer</h3>
         <p style="font-size:0.78em; color:#666; line-height:1.5;">Classic experiments as reusable "gym" environments — extensible beyond bias to richer social phenomena.</p>
       </div>
     </div>
     <div style="display:flex; align-items:flex-start; gap:16px;">
-      <span style="font-size:1.6em; font-weight:800; color:#6DBFAB; line-height:1; flex-shrink:0; width:32px; text-align:right;">2</span>
+      <span style="font-size:1.6em; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:32px; text-align:right;">2</span>
       <div>
         <h3 style="font-size:0.9em; margin-bottom:4px; color:var(--g800);">Agent Specification Compiler</h3>
         <p style="font-size:0.78em; color:#666; line-height:1.5;">Natural-language intent → structured, reproducible behavioral specs via CoBRA.</p>
       </div>
     </div>
     <div style="display:flex; align-items:flex-start; gap:16px;">
-      <span style="font-size:1.6em; font-weight:800; color:#6DBFAB; line-height:1; flex-shrink:0; width:32px; text-align:right;">3</span>
+      <span style="font-size:1.6em; font-weight:800; color:var(--cobra); line-height:1; flex-shrink:0; width:32px; text-align:right;">3</span>
       <div>
         <h3 style="font-size:0.9em; margin-bottom:4px; color:var(--g800);">Predictable User Interface</h3>
         <p style="font-size:0.78em; color:#666; line-height:1.5;">A calibrated control proxy — small index adjustments yield smooth, monotonic behavior shifts, like turning a dial.</p>
@@ -1084,7 +1453,7 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
 <!-- ============ ARCHIVED EVAL SLIDES (moved from main deck) ============ -->
 <div class="slide" data-slide="archive-repro-models" data-rw="1280" data-rh="720" data-notes="[ARCHIVED] CoBRA dramatically reduces cross-model variance.">
   <h2 style="font-size:32px;"><span class="cobra">Reproducibility</span>: Across Models</h2>
-  <p style="font-size:20px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA (black line) stays near the target with little spread across base models</strong>, while colored baselines jump around.</p>
+  <p style="font-size:20px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA</strong> keeps agents behaving consistently across different base models compared to colored baselines.</p>
   <div style="display:flex; justify-content:center; align-items:center; gap:24px; flex:1; min-height:0;">
     <img src="figures/eval_fig/cross_model_bandwagon.png" style="max-height:72%; object-fit:contain; border-radius:6px;">
     <img src="figures/eval_fig/cross_model_authority.png" style="max-height:72%; object-fit:contain; border-radius:6px;">
@@ -1096,7 +1465,7 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
 
 <div class="slide" data-slide="archive-repro-temp" data-rw="1280" data-rh="720" data-notes="[ARCHIVED] Temperature robustness.">
   <h2 style="font-size:32px;"><span class="cobra">Reproducibility</span>: Across Temperatures</h2>
-  <p style="font-size:20px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA's trajectories stack on top of each other across temperatures</strong> (45/45 pairwise equivalence tests pass).</p>
+  <p style="font-size:20px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA</strong> keeps agents behaving consistently across varied temperatures.</p>
   <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
     <img src="figures/eval_fig/temperature.png" style="max-width:95%; max-height:85%; object-fit:contain;">
   </div>
@@ -1104,26 +1473,22 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
 
 <div class="slide" data-slide="archive-repro-reasoning" data-rw="1280" data-rh="720" data-notes="[ARCHIVED] Reasoning mode robustness.">
   <h2 style="font-size:32px;"><span class="cobra">Reproducibility</span>: Across Reasoning Modes</h2>
-  <p style="font-size:20px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>The two curves overlap</strong>, so the same control coefficient steers both modes.</p>
+  <p style="font-size:20px; color:var(--g600); text-align:center; margin-bottom:8px;"><strong>CoBRA</strong> keeps agents behaving consistently whether they reason or answer directly.</p>
   <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
     <img src="figures/eval_fig/reasoning.png" style="max-width:95%; max-height:85%; object-fit:contain;">
   </div>
 </div>
 
-<div class="slide" data-slide="archive-demo-old" style="" data-rw="1280" data-rh="720" data-notes="[ARCHIVED] Original side-by-side emotional contagion comparison.">
-  <h2 style="font-size:32px;"><span class="cobra">Demonstration</span> — Open-Ended Scenario</h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto minmax(200px,280px) auto; column-gap:32px; row-gap:10px; margin-top:16px; align-items:start;">
-    <p style="font-size:15px; font-weight:700; color:var(--g500); margin:0; text-align:center;">Baseline — Implicit NL Specification</p>
-    <p style="font-size:15px; font-weight:700; color:var(--cobra-dark); margin:0; text-align:center;">CoBRA Control</p>
-    <div style="display:flex; align-items:flex-end; justify-content:center; width:100%; min-height:0;">
-      <img src="figures/eval_fig/demo_baseline_hd.png" style="max-width:85%; max-height:100%; object-fit:contain; border-radius:6px;">
-    </div>
-    <div style="display:flex; align-items:flex-end; justify-content:center; width:100%; min-height:0;">
-      <img src="figures/eval_fig/demo_cobra_hd.png" style="max-width:85%; max-height:100%; object-fit:contain; border-radius:6px;">
-    </div>
-    <p style="font-size:17px; color:var(--g500); margin:0; text-align:center;">No effective separation across bias levels</p>
-    <p style="font-size:17px; color:var(--cobra-darker); margin:0; text-align:center;">Higher CBI → stronger emotional contagion</p>
+<!-- ============ GENERALIZATION ============ -->
+<div class="slide" data-slide="generalization" style="" data-rw="1280" data-rh="720" data-notes="For generalization, control coefficients calibrated on one paradigm transfer directly to another. Here coefficients from the Investment and Insurance paradigm generalize to the Asian Disease Problem across ten diverse personas. This shows CoBRA captures genuine behavioral tendencies, not task-specific hacks.">
+  <h2 style="font-size:32px;"><span class="cobra">Generalization</span> — Cross-Paradigm &amp; Cross-Persona</h2>
+  <p style="font-size:19px; color:var(--g600);">
+    Control Coefficients calibrated on <strong>Investment/Insurance</strong> paradigm transfer directly to <strong>Asian Disease</strong> paradigm — across 10 diverse personas.
+  </p>
+  <div style="display:flex; justify-content:center; margin-top:18px;">
+    <img src="figures/eval_fig/persona_cbi_consistency.png" alt="Cross-paradigm CBI consistency" style="max-height:340px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.08);">
   </div>
+
 </div>
 
 <!-- ============ 8. CBI CONCEPT ============ -->
@@ -1198,20 +1563,8 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
   <p style="font-size:22px; color:var(--g600); margin-top:8px; text-align:center;">Blend biased and unbiased LoRAs at any ratio with λ.</p>
 </div>
 
-<!-- ============ GENERALIZATION (moved to end) ============ -->
-<div class="slide" data-slide="generalization" style="" data-rw="1280" data-rh="720" data-notes="For generalization, control coefficients calibrated on one paradigm transfer directly to another. Here coefficients from the Investment and Insurance paradigm generalize to the Asian Disease Problem across ten diverse personas. This shows CoBRA captures genuine behavioral tendencies, not task-specific hacks.">
-  <h2 style="font-size:32px;"><span class="cobra">Generalization</span> — Cross-Paradigm &amp; Cross-Persona</h2>
-  <p style="font-size:19px; color:var(--g600);">
-    Control Coefficients calibrated on <strong>Investment/Insurance</strong> paradigm transfer directly to <strong>Asian Disease</strong> paradigm — across 10 diverse personas.
-  </p>
-  <div style="display:flex; justify-content:center; margin-top:18px;">
-    <img src="figures/eval_fig/persona_cbi_consistency.png" alt="Cross-paradigm CBI consistency" style="max-height:340px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.08);">
-  </div>
-
-</div>
-
-<div class="progress" id="progress" style="width: 6.896552%;"></div>
-<div class="slide-num" id="slideNum">2 / 29</div>
+<div class="progress" id="progress" style="width: 58.62069%;"></div>
+<div class="slide-num" id="slideNum">17 / 28</div>
 
 <script>
   /* --- Per-slide canvas ratio + per-slide content zoom --- */
@@ -2008,7 +2361,7 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
 <title>CoBRA Presenter View</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
-  :root { --cobra:#6DBFAB; --cobra-dark:#5BA898; --cobra-darker:#4A8E7E; --cobra-light:#E8F5F0; }
+  :root { --cobra:#5BA898; --cobra-dark:#5BA898; --cobra-darker:#4A8E7E; --cobra-mint:#6DBFAB; --cobra-light:#E8F5F0; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Comic Neue','Comic Sans MS',cursive,sans-serif; background:#1a1a2e; color:#e0e0e0; height:100vh; display:flex; flex-direction:column; overflow:hidden; }
   .header { display:flex; align-items:center; justify-content:space-between; padding:12px 24px; background:#16213e; border-bottom:2px solid var(--cobra); flex-shrink:0; }
@@ -2017,9 +2370,9 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
   .main { flex:1; display:grid; grid-template-columns:1.4fr 1fr; grid-template-rows:1fr auto; gap:16px; padding:16px; min-height:0; }
   .preview-current { grid-row:1; grid-column:1; display:flex; flex-direction:column; min-height:0; }
   .preview-next { grid-row:1; grid-column:2; display:flex; flex-direction:column; min-height:0; }
-  .notes-panel { grid-row:2; grid-column:1 / -1; background:#16213e; border:1px solid rgba(109,191,171,.3); border-radius:10px; padding:16px 20px; max-height:200px; overflow-y:auto; }
+  .notes-panel { grid-row:2; grid-column:1 / -1; background:#16213e; border:1px solid rgba(91,168,152,.3); border-radius:10px; padding:16px 20px; max-height:200px; overflow-y:auto; }
   .preview-label { font-size:11px; font-weight:700; color:var(--cobra); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; flex-shrink:0; }
-  .preview-frame { flex:1; border:2px solid rgba(109,191,171,.3); border-radius:8px; overflow:hidden; background:#000; position:relative; min-height:0; }
+  .preview-frame { flex:1; border:2px solid rgba(91,168,152,.3); border-radius:8px; overflow:hidden; background:#000; position:relative; min-height:0; }
   .preview-frame iframe { position:absolute; top:0; left:0; width:1920px; height:1080px; transform-origin:top left; margin-left:-20px; border:none; pointer-events:none; }
   .notes-label { font-size:11px; font-weight:700; color:var(--cobra); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; }
   .notes-text { font-size:17px; line-height:1.6; color:#e0e0e0; }
@@ -2172,4 +2525,4 @@ Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidenc
   });
 })();
 </script>
-</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div></body></html>
+</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 14px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Downloaded presentation.html</div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div><div style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); z-index: 999999; background: rgb(34, 197, 94); color: white; padding: 8px 24px; border-radius: 99px; font-style: normal; font-variant-caps: normal; font-weight: 600; font-stretch: normal; font-size: 11px; line-height: 1; font-family: system-ui, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; box-shadow: rgba(34, 197, 94, 0.4) 0px 4px 15px; opacity: 0; transition: opacity 0.3s; pointer-events: none;"></div></body></html>
