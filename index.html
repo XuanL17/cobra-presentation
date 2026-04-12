@@ -19,12 +19,13 @@
 
   .deck { position:relative; width:1920px; height:1080px; transform-origin:top left; overflow:hidden; }
   #deck:focus { outline: none; }
-  .slide { position:absolute; left:0; top:0; width:1280px; height:720px; background:var(--bg); padding:32px 40px; display:none; flex-direction:column; justify-content:center; overflow:hidden; }
+  .slide { position:absolute; left:0; top:0; width:1280px; height:720px; background:var(--bg); padding:30px 40px; font-size:16px; display:none; flex-direction:column; justify-content:flex-start; overflow:hidden; }
   .slide.active { display:flex; animation:fadeIn .25s ease; z-index:2; }
   .slide:not(.active) { z-index:0; }
   @keyframes fadeIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
 
   h1{font-size:47px;font-weight:700;color:var(--cobra-dark);line-height:1.15}
+  h4{font-size:1.05em; font-weight:700; color:var(--g800); line-height:1.25; margin:0 0 14px;}
   h2{font-size:40px;font-weight:700;color:var(--g800);line-height:1.25;margin-bottom:14px}
   h2 .cobra{color:var(--cobra-dark)}
   h3{font-size:22px;font-weight:700;color:var(--cobra-darker);margin-bottom:6px}
@@ -583,336 +584,317 @@
   </div>
 </div>
 
-<!-- ============ 2. PAPERS RISING ============ -->
-<div class="slide" data-slide="2" data-rw="1280" data-rh="720" data-notes="LLM-based social agent simulations have exploded since 2023.">
-  <h2 style="font-size:32px; margin-bottom:12px;">LLM-based Agent Social Simulations are Rising.</h2>
-  <div style="position:relative; width:100%; height:500px; margin-top:-10px;">
-    <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:180px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/4.png" style="position:absolute; left:160px; top:30px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/3.png" style="position:absolute; left:310px; top:5px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:450px; top:25px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:600px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:750px; top:20px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/5.png" style="position:absolute; left:50px; top:190px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/6.png" style="position:absolute; left:210px; top:210px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:370px; top:195px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:520px; top:180px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/7.png" style="position:absolute; left:680px; top:200px; width:160px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:820px; top:185px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2.png" style="position:absolute; left:100px; top:380px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:290px; top:370px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:480px; top:360px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
-    <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:660px; top:375px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
-  </div>
+<div class="slide" data-slide="2" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="llm-based-agent-social-simulations-are-rising">LLM-based Agent Social Simulations are Rising.</h4>
+<div style="position:relative; width:100%; height:500px; margin-top:-10px;">
+  <img src="figures/background_fig/1.png" style="position:absolute; left:20px; top:10px; width:180px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/4.png" style="position:absolute; left:160px; top:30px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/3.png" style="position:absolute; left:310px; top:5px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-1deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2209.06899.png" style="position:absolute; left:450px; top:25px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2208.04024.png" style="position:absolute; left:600px; top:0px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2310.10436.png" style="position:absolute; left:750px; top:20px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/5.png" style="position:absolute; left:50px; top:190px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/6.png" style="position:absolute; left:210px; top:210px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2307.14984.png" style="position:absolute; left:370px; top:195px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(4deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2311.17227.png" style="position:absolute; left:520px; top:180px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-2deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/7.png" style="position:absolute; left:680px; top:200px; width:160px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(1deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2305.19118.png" style="position:absolute; left:820px; top:185px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2.png" style="position:absolute; left:100px; top:380px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-3deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2308.04026.png" style="position:absolute; left:290px; top:370px; width:165px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(2deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2310.02243.png" style="position:absolute; left:480px; top:360px; width:175px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(-4deg); border:1px solid #ddd;" />
+  <img src="figures/background_fig/2304.05335.png" style="position:absolute; left:660px; top:375px; width:170px; box-shadow:2px 3px 8px rgba(0,0,0,0.18); transform:rotate(3deg); border:1px solid #ddd;" />
+</div>
 </div>
 
-<!-- ============ 3. PRIOR WORK IMPLICIT ============ -->
-<div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="Prior work uses implicit natural language agent specification.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Prior work: <span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Implicit</span> Natural Language Agent Specification.</h2>
-  <div style="font-size:34px; line-height:1.6; margin-top:60px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:8px; overflow:visible; font-style:italic;">
-    <span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well&mdash;the husband Tom Moreno and the wife Jane Moreno.</span>
-  </div>
-  <div class="citation">
-    Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., &amp; Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
-  </div>
+<div class="slide" data-slide="3" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="prior-work-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pximplicitspan-natural-language-agent-specification">Prior work: <span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Implicit</span> Natural Language Agent Specification.</h4>
+<div style="font-size:1.2em; line-height:1.6; margin-top:60px; padding:20px 24px; width:75%; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:8px; overflow:visible; font-style:italic;">
+<span style="color:#171717;">John Lin is a pharmacy shopkeeper at the Willow Market who loves to help people. He is always looking for ways to make the process of getting medication easier for his customers.</span><span style="color:rgba(23,23,23,0.55);"> John Lin is living with his wife, Mei Lin, who is a college professor, and son, Eddy Lin, who is a student studying music theory.</span><span style="color:rgba(23,23,23,0.35);"> John Lin loves his family very much. John Lin has known the old couple next-door, Sam Moore and Jennifer Moore, for a few years.</span><span style="color:rgba(23,23,23,0.18);"> John Lin thinks Sam Moore is a kind and nice man. John Lin knows his neighbor, Yuriko Yamamoto, well. John Lin knows of his neighbors, Tamara Taylor and Carmen Ortiz, but has not met them before. John Lin and Tom Moreno are colleagues at The Willow Market and Pharmacy; they are friends and like to discuss local politics together. John Lin knows the Moreno family somewhat well—the husband Tom Moreno and the wife Jane Moreno.</span>
+</div>
+<div class="citation">
+Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., & Bernstein, M.S. (2023). Generative Agents: Interactive Simulacra of Human Behavior. <em>UIST '23</em>.
+</div>
 </div>
 
-<!-- ============ 4. EXPLICIT QUANTITATIVE ============ -->
-<div class="slide" data-slide="4" data-rw="1280" data-rh="720" data-notes="CoBRA provides explicit, quantitative control through demonstrated cognitive bias.">
-  <h2 style="font-size:32px; margin-bottom:12px;"><span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Explicit</span>, <span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Quantitative</span> control through Demonstrated Cognitive Bias</h2>
-  <div style="flex:1; min-height:0; width:100%; overflow:hidden; position:relative;">
-    <iframe src="video_demo.html" width="85%" height="850px" style="border:none; margin-top:-30px; margin-left:-50px; transform:scale(1.3); transform-origin:top left;"></iframe>
-  </div>
+<div class="slide" data-slide="4" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="span-stylebackgroundfbbf24-padding2px-6px-border-radius4pxexplicitspan-span-stylebackgroundfbbf24-padding2px-6px-border-radius4pxquantitativespan-control-through-demonstrated-cognitive-bias"><span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Explicit</span>, <span style="background:rgb(245,210,131); padding:2px 6px; border-radius:4px;">Quantitative</span> control through Demonstrated Cognitive Bias</h4>
+<iframe src="video_demo.html" width="85%" height="850px" style="border:none; margin-top:-30px; margin-left:-50px; transform:scale(1.3); transform-origin:top left;"></iframe>
 </div>
 
-<!-- ============ 5. UNDERLYING PREMISES ============ -->
-<div class="slide" data-slide="5" data-rw="1280" data-rh="720" data-notes="Two underlying premises of implicit specification.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Underlying Premises of Implicit Specification</h2>
-  <div style="margin-top:80px; display:flex; flex-direction:column; gap:40px; padding-left:20px;">
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">1</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">LLMs can detect <strong>subtle</strong> cues in <strong>implicit</strong> language.</span>
-    </div>
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">2</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">Once detected, LLMs can <strong>role-play</strong> the specification.</span>
-    </div>
-  </div>
+<div class="slide" data-slide="5" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="underlying-premises-of-implicit-specification">Underlying Premises of Implicit Specification</h4>
+<div style="margin-top:80px; display:flex; flex-direction:column; gap:40px; padding-left:20px;">
+<div style="display:flex; align-items:flex-start; gap:20px;">
+  <span style="font-size:2em; font-weight:700; color:rgb(245,210,131); line-height:1;">1</span>
+  <span style="font-size:1.1em; color:#333; line-height:1.5;">LLMs can detect <strong>subtle</strong> cues in <strong>implicit</strong> language.</span>
+</div>
+<div style="display:flex; align-items:flex-start; gap:20px;">
+  <span style="font-size:2em; font-weight:700; color:rgb(245,210,131); line-height:1;">2</span>
+  <span style="font-size:1.1em; color:#333; line-height:1.5;">Once detected, LLMs can <strong>role-play</strong> the specification.</span>
+</div>
+</div>
 </div>
 
-<!-- ============ 6. FRAMING EFFECT EXPERIMENT ============ -->
-<div class="slide" data-slide="6" data-rw="1280" data-rh="720" data-notes="The framing effect experiment demonstrates how framing changes decisions.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Framing Effect Experiment</h2>
-  <div style="margin-top:50px; display:flex; gap:30px; align-items:stretch;">
-    <div style="flex:2; padding:24px 28px; background:#f8f8f8; border-radius:10px; border:1px solid #e0e0e0;">
-      <div style="font-size:27px; color:#555; line-height:1.6; margin-bottom:20px;">
-        A disease outbreak is expected to kill <strong>600 people</strong>. Two programs are proposed:
-      </div>
-      <div style="display:flex; gap:20px;">
-        <div style="flex:1; padding:16px 20px; background:#E8F5E9; border-left:4px solid #4CAF50; border-radius:6px;">
-          <div style="font-weight:700; color:#2E7D32; margin-bottom:8px; font-size:22px; text-transform:uppercase; letter-spacing:0.5px;">Positive Frame</div>
-          <div style="font-size:31px; color:#333;">Program <strong>A</strong>: 200 people will be <strong>saved</strong>.</div>
-        </div>
-        <div style="flex:1; padding:16px 20px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:6px;">
-          <div style="font-weight:700; color:#C62828; margin-bottom:8px; font-size:22px; text-transform:uppercase; letter-spacing:0.5px;">Negative Frame</div>
-          <div style="font-size:31px; color:#333;">Program <strong>B</strong>: 400 people will <strong>die</strong>.</div>
-        </div>
-      </div>
-    </div>
-    <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-      <div style="padding:20px 24px; background:#FEF9E7; border:2px solid rgb(245,210,131); border-radius:10px; text-align:left;">
-        <div style="font-size:21px; text-transform:uppercase; letter-spacing:0.5px; color:#B8860B; font-weight:700; margin-bottom:8px;">Key finding</div>
-        <div style="font-size:25px; color:#555; line-height:1.6;">
-          Same outcome, different framing &mdash; people react differently.
-        </div>
-        <div style="margin-top:12px; font-size:24px; color:#555; line-height:1.5;">
-          Domain expertise (e.g., economics) can <strong>attenuate</strong> susceptibility to framing.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="citation">
-    Tversky, A. &amp; Kahneman, D. (1981). The Framing of Decisions and the Psychology of Choice. <em>Science</em>, 211(4481), 453&ndash;458.
-  </div>
+<div class="slide" data-slide="6" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="framing-effect-experiment">Framing Effect Experiment</h4>
+<div style="margin-top:50px; display:flex; gap:30px; align-items:stretch;">
+<div style="flex:2; padding:24px 28px; background:#f8f8f8; border-radius:10px; border:1px solid #e0e0e0;">
+<div style="font-size:0.95em; color:#555; line-height:1.6; margin-bottom:20px;">
+A disease outbreak is expected to kill <strong>600 people</strong>. Two program are proposed:
+</div>
+<div style="display:flex; gap:20px;">
+<div style="flex:1; padding:16px 20px; background:#E8F5E9; border-left:4px solid #4CAF50; border-radius:6px;">
+<div style="font-weight:700; color:#2E7D32; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Positive Frame</div>
+<div style="font-size:1.1em; color:#333;">Program <strong>A</strong>: 200 people will be <strong>saved</strong>.</div>
+</div>
+<div style="flex:1; padding:16px 20px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:6px;">
+<div style="font-weight:700; color:#C62828; margin-bottom:8px; font-size:0.8em; text-transform:uppercase; letter-spacing:0.5px;">Negative Frame</div>
+<div style="font-size:1.1em; color:#333;">Program <strong>B</strong>: 400 people will <strong>die</strong>.</div>
+</div>
+</div>
+</div>
+<div style="flex:1; display:flex; align-items:center; justify-content:center;">
+<div style="padding:20px 24px; background:#FEF9E7; border:2px solid rgb(245,210,131); border-radius:10px; text-align:left;">
+<div style="font-size:0.75em; text-transform:uppercase; letter-spacing:0.5px; color:#B8860B; font-weight:700; margin-bottom:8px;">Key finding</div>
+<div style="font-size:0.9em; color:#555; line-height:1.6;">
+Same outcome, different framing &mdash; people react differently.
+</div>
+<div style="margin-top:12px; font-size:0.85em; color:#555; line-height:1.5;">
+Domain expertise (e.g., economics) can <strong>attenuate</strong> susceptibility to framing.
+</div>
+</div>
+</div>
+</div>
+<div class="citation">
+Tversky, A. & Kahneman, D. (1981). The Framing of Decisions and the Psychology of Choice. <em>Science</em>, 211(4481), 453&ndash;458.
+</div>
 </div>
 
-<!-- ============ 7. PILOT EXPERIMENT ============ -->
-<div class="slide" data-slide="7" data-rw="1280" data-rh="720" data-notes="Pilot experiment with 3 agent profiles and 4 models.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Pilot Experiment: 3 Agent Profiles &times; 4 Models</h2>
-  <div style="margin-top:50px; display:flex; gap:40px; align-items:center;">
-    <div style="flex:1; display:flex; flex-direction:column; gap:14px;">
-      <div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #3B82F6; border-radius:6px;">
-        <span style="font-weight:700; font-size:28px; color:#333;">Economist</span>
-        <span style="font-size:21px; color:#888; margin-left:8px;">"professor of economics"</span>
-      </div>
-      <div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #F59E0B; border-radius:6px;">
-        <span style="font-weight:700; font-size:28px; color:#333;">Common</span>
-        <span style="font-size:21px; color:#888; margin-left:8px;">"pharmacy shopkeeper"</span>
-      </div>
-      <div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #888; border-radius:6px;">
-        <span style="font-weight:700; font-size:28px; color:#333;">Blank</span>
-        <span style="font-size:21px; color:#888; margin-left:8px;">no persona</span>
-      </div>
-    </div>
-    <div style="font-size:56px; color:#ccc; font-weight:700;">&times;</div>
-    <div style="flex:1; display:flex; flex-wrap:wrap; gap:12px;">
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">Mistral 7B</div>
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">Gemma2 9B</div>
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">GPT-4o Mini</div>
-      <div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:25px; color:#333;">DeepSeek-v3</div>
-    </div>
-  </div>
-  <div style="margin-top:40px; font-size:25px; color:#555; line-height:1.6;">
-    150 responses per agent per model (15 scenarios &times; 10 queries each)
-  </div>
+<div class="slide" data-slide="7" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="pilot-experiment-3-agent-profiles-%C3%97-4-models">Pilot Experiment: 3 Agent Profiles × 4 Models</h4>
+<div style="margin-top:50px; display:flex; gap:40px; align-items:center;">
+<div style="flex:1; display:flex; flex-direction:column; gap:14px;">
+<div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #3B82F6; border-radius:6px;">
+<span style="font-weight:700; font-size:1em; color:#333;">Economist</span>
+<span style="font-size:0.75em; color:#888; margin-left:8px;">"professor of economics"</span>
+</div>
+<div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #F59E0B; border-radius:6px;">
+<span style="font-weight:700; font-size:1em; color:#333;">Common</span>
+<span style="font-size:0.75em; color:#888; margin-left:8px;">"pharmacy shopkeeper"</span>
+</div>
+<div style="padding:14px 18px; background:#f8f8f8; border-left:4px solid #888; border-radius:6px;">
+<span style="font-weight:700; font-size:1em; color:#333;">Blank</span>
+<span style="font-size:0.75em; color:#888; margin-left:8px;">no persona</span>
+</div>
+</div>
+<div style="font-size:2em; color:#ccc; font-weight:700;">&times;</div>
+<div style="flex:1; display:flex; flex-wrap:wrap; gap:12px;">
+<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">Mistral 7B</div>
+<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">Gemma2 9B</div>
+<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">GPT-4o Mini</div>
+<div style="padding:14px 22px; background:#f0f0f0; border-radius:8px; font-weight:700; font-size:0.9em; color:#333;">DeepSeek-v3</div>
+</div>
+</div>
+<div style="margin-top:40px; font-size:0.9em; color:#555; line-height:1.6;">
+150 responses per agent per model (15 scenarios &times; 10 queries each)
+</div>
 </div>
 
-<!-- ============ 8. TWO FINDINGS ============ -->
-<div class="slide" data-slide="8" data-rw="1280" data-rh="720" data-notes="Two key findings from the pilot experiment.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Two Findings</h2>
-  <div style="margin-top:70px; display:flex; flex-direction:column; gap:30px; padding-left:20px; width:65%;">
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">1</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">The same specification produced <strong>inconsistent behavior</strong> across models.</span>
-    </div>
-    <div style="display:flex; align-items:flex-start; gap:20px;">
-      <span style="font-size:56px; font-weight:700; color:rgb(245,210,131); line-height:1;">2</span>
-      <span style="font-size:31px; color:#333; line-height:1.5;">Implicit specification did not reliably yield <strong>expected behaviors</strong>.</span>
-    </div>
-  </div>
+<div class="slide" data-slide="8" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="two-findings">Two Findings</h4>
+<div style="margin-top:70px; display:flex; flex-direction:column; gap:30px; padding-left:20px; width:65%;">
+<div style="display:flex; align-items:flex-start; gap:20px;">
+  <span style="font-size:2em; font-weight:700; color:rgb(245,210,131); line-height:1;">1</span>
+  <span style="font-size:1.1em; color:#333; line-height:1.5;">The same specification produced <strong>inconsistent behavior</strong> across models.</span>
+</div>
+<div style="display:flex; align-items:flex-start; gap:20px;">
+  <span style="font-size:2em; font-weight:700; color:rgb(245,210,131); line-height:1;">2</span>
+  <span style="font-size:1.1em; color:#333; line-height:1.5;">Implicit specification did not reliably yield <strong>expected behaviors</strong>.</span>
+</div>
+</div>
 </div>
 
-<!-- ============ 9. COBRA KEY IDEA ============ -->
-<div class="slide" data-slide="9" data-rw="1280" data-rh="720" data-notes="CoBRA key idea: operationalize classical experiments as gym environments.">
-  <h2 style="font-size:40px; margin-bottom:12px;">CoBRA Key Idea</h2>
-  <div style="margin-top:50px; font-size:34px; color:#333; line-height:1.8; width:82%;">
-    Operationalize <strong style="color:rgb(245,210,131);">classical social science experiments</strong> as reusable <strong style="color:#6DBFAB;">"gym" environments</strong> for AI agents
-  </div>
-  <div style="margin-top:30px; font-size:31px; color:#555; width:80%;">
-    &rarr; so bias and behavior can be <strong>measured</strong> and <strong>controlled</strong> in a standardized way.
-  </div>
+<div class="slide" data-slide="9" data-rw="1280" data-rh="720" data-notes="">
+<h2 id="cobra-key-idea">CoBRA Key Idea</h2>
+<div style="margin-top:50px; font-size:1.2em; color:#333; line-height:1.8; width:82%;">
+Operationalize <strong style="color:rgb(245,210,131);">classical social science experiments</strong> as reusable <strong style="color:#6DBFAB;">"gym" environments</strong> for AI agents
+</div>
+<div data-marpit-fragment>
+<div style="margin-top:30px; font-size:1.1em; color:#555; width:80%;">
+&rarr; so bias and behavior can be <strong>measured</strong> and <strong>controlled</strong> in a standardized way.
+</div>
+</div>
 </div>
 
-<!-- ============ 10. HARNESS KNOWLEDGE ============ -->
-<div class="slide" data-slide="10" data-rw="1280" data-rh="720" data-notes="Classic experiments provide three key resources.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Harness the Knowledge in Classic Experiments</h2>
-  <div style="margin-top:100px; display:flex; gap:20px; width:85%;">
-    <div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #FEF9E7, #fff); border-left:4px solid rgb(245,210,131); border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-      <div style="font-weight:700; color:#333; font-size:27px;">Detailed scenario description</div>
-    </div>
-    <div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #f0f0f8, #fff); border-left:4px solid #8B5CF6; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-      <div style="font-weight:700; color:#333; font-size:27px;">Documented bias effects</div>
-    </div>
-    <div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #E8F5F0, #fff); border-left:4px solid #6DBFAB; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
-      <div style="font-weight:700; color:#333; font-size:27px;">Validated Insights about Human Behavior</div>
-    </div>
-  </div>
+<div class="slide" data-slide="10" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="harness-the-knowledge-in-classic-experiments">Harness the Knowledge in Classic Experiments</h4>
+<div style="margin-top:100px; display:flex; gap:20px; width:85%;">
+<div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #FEF9E7, #fff); border-left:4px solid rgb(245,210,131); border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+<div style="font-weight:700; color:#333; font-size:0.95em;">Detailed scenario description</div>
+</div>
+<div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #f0f0f8, #fff); border-left:4px solid #8B5CF6; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+<div style="font-weight:700; color:#333; font-size:0.95em;">Documented bias effects</div>
+</div>
+<div style="flex:1; padding:18px 22px; background:linear-gradient(135deg, #E8F5F0, #fff); border-left:4px solid #6DBFAB; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+<div style="font-weight:700; color:#333; font-size:0.95em;">Validated Insights about Human Behavior</div>
+</div>
+</div>
 </div>
 
-<!-- ============ 11. COBRA CLOSED-LOOP ============ -->
-<div class="slide" data-slide="11" data-rw="1280" data-rh="720" data-notes="CoBRA closed-loop: calibration tasks plus behavioral regulation engine.">
-  <h2 style="font-size:32px; margin-bottom:12px;">CoBRA: Closed-loop</h2>
-  <div style="margin-top:60px; display:flex; gap:30px;">
-    <div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid rgb(245,210,131);">
-      <div style="font-weight:700; color:#333; font-size:29px; margin-bottom:10px;">Classical Experiments as Calibration Tasks</div>
-      <div style="font-size:24px; color:#888;">How biased is this agent?</div>
-    </div>
-    <div style="display:flex; align-items:center; font-size:42px; color:#ccc;">&rarr;</div>
-    <div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
-      <div style="font-weight:700; color:#333; font-size:29px; margin-bottom:10px;">Behavioral Regulation Engine</div>
-      <div style="font-size:24px; color:#888;">Set bias to a target level.</div>
-    </div>
-  </div>
-  <div style="margin-top:50px; text-align:center; font-size:27px; color:#555;">
-    <strong>measure</strong> &rarr; <strong>adjust</strong> &rarr; <strong>re-measure</strong> &rarr; ... &rarr; <strong>converge</strong>
-  </div>
+<div class="slide" data-slide="11" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="cobra-closed-loop">CoBRA: Closed-loop</h4>
+<div style="margin-top:60px; display:flex; gap:30px;">
+<div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid rgb(245,210,131);">
+<div style="font-weight:700; color:#333; font-size:1.05em; margin-bottom:10px;">Classical Experiments as Calibration Tasks</div>
+<div style="font-size:0.85em; color:#888;">How biased is this agent?</div>
+</div>
+<div style="display:flex; align-items:center; font-size:1.5em; color:#ccc;">&rarr;</div>
+<div style="flex:1; padding:24px; background:#f8f8f8; border-radius:10px; border-top:4px solid #6DBFAB;">
+<div style="font-weight:700; color:#333; font-size:1.05em; margin-bottom:10px;">Behavioral Regulation Engine</div>
+<div style="font-size:0.85em; color:#888;">Set bias to a target level.</div>
+</div>
+</div>
+<div style="margin-top:50px; text-align:center; font-size:0.95em; color:#555;">
+<strong>measure</strong> &rarr; <strong>adjust</strong> &rarr; <strong>re-measure</strong> &rarr; ... &rarr; <strong>converge</strong>
+</div>
 </div>
 
-<!-- ============ 12. CALIBRATION TASKS TABLE ============ -->
-<div class="slide" data-slide="12" data-rw="1280" data-rh="720" data-notes="Classic experiments serve as calibration tasks for four cognitive biases.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Classic Experiments as Calibration Tasks</h2>
-  <table style="margin-top:40px; width:90%; border-collapse:collapse; font-size:22px;">
-    <tr style="border-bottom:2px solid #e0e0e0;">
-      <th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:19px; text-transform:uppercase; letter-spacing:0.5px;">Cognitive Bias</th>
-      <th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:19px; text-transform:uppercase; letter-spacing:0.5px;">Paradigm A</th>
-      <th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:19px; text-transform:uppercase; letter-spacing:0.5px;">Paradigm B</th>
-    </tr>
-    <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Authority Effect</td>
-      <td style="padding:12px 16px; color:#555;">Milgram Obedience Experiment</td>
-      <td style="padding:12px 16px; color:#555;">Stanford Prison Experiment</td>
-    </tr>
-    <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Bandwagon Effect</td>
-      <td style="padding:12px 16px; color:#555;">Asch's Line Experiment</td>
-      <td style="padding:12px 16px; color:#555;">Hotel Towel Reuse Study</td>
-    </tr>
-    <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Confirmation Bias</td>
-      <td style="padding:12px 16px; color:#555;">Wason Selection Task</td>
-      <td style="padding:12px 16px; color:#555;">Biased Information Search</td>
-    </tr>
-    <tr>
-      <td style="padding:12px 16px; font-weight:700; color:#333;">Framing Effect</td>
-      <td style="padding:12px 16px; color:#555;">Asian Disease Problem</td>
-      <td style="padding:12px 16px; color:#555;">Investment &amp; Insurance Framing</td>
-    </tr>
-  </table>
-  <div style="margin-top:30px; font-size:24px; color:#4A8E7E; font-style:italic;">
-    &rarr; Open for contribution &amp; collaboration
-  </div>
-  <div style="margin-top:6px; font-size:20px; color:#888;">
-    Welcome operationalized paradigms for all kinds of social behavior, as reusable "gym" environments for AI agents.
-  </div>
-  <div style="position:absolute; bottom:30px; right:60px; font-size:20px; color:#888;">
-    Details &rarr; Paper
-  </div>
+<div class="slide" data-slide="12" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="classic-experiments-as-calibration-tasks">Classic Experiments as Calibration Tasks</h4>
+<table style="margin-top:40px; width:90%; border-collapse:collapse; font-size:0.8em;">
+<tr style="border-bottom:2px solid #e0e0e0;">
+<th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:0.85em; text-transform:uppercase; letter-spacing:0.5px;">Cognitive Bias</th>
+<th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:0.85em; text-transform:uppercase; letter-spacing:0.5px;">Paradigm A</th>
+<th style="text-align:left; padding:10px 16px; color:#4A8E7E; font-size:0.85em; text-transform:uppercase; letter-spacing:0.5px;">Paradigm B</th>
+</tr>
+<tr style="border-bottom:1px solid #f0f0f0;">
+<td style="padding:12px 16px; font-weight:700; color:#333;">Authority Effect</td>
+<td style="padding:12px 16px; color:#555;">Milgram Obedience Experiment</td>
+<td style="padding:12px 16px; color:#555;">Stanford Prison Experiment</td>
+</tr>
+<tr style="border-bottom:1px solid #f0f0f0;">
+<td style="padding:12px 16px; font-weight:700; color:#333;">Bandwagon Effect</td>
+<td style="padding:12px 16px; color:#555;">Asch's Line Experiment</td>
+<td style="padding:12px 16px; color:#555;">Hotel Towel Reuse Study</td>
+</tr>
+<tr style="border-bottom:1px solid #f0f0f0;">
+<td style="padding:12px 16px; font-weight:700; color:#333;">Confirmation Bias</td>
+<td style="padding:12px 16px; color:#555;">Wason Selection Task</td>
+<td style="padding:12px 16px; color:#555;">Biased Information Search</td>
+</tr>
+<tr>
+<td style="padding:12px 16px; font-weight:700; color:#333;">Framing Effect</td>
+<td style="padding:12px 16px; color:#555;">Asian Disease Problem</td>
+<td style="padding:12px 16px; color:#555;">Investment &amp; Insurance Framing</td>
+</tr>
+</table>
+<div style="margin-top:30px; font-size:0.85em; color:#4A8E7E; font-style:italic;">
+&rarr; Open for contribution &amp; collaboration
+</div>
+<div style="margin-top:6px; font-size:0.7em; color:#888;">
+Welcome operationalized paradigms for all kinds of social behavior, as reusable "gym" environments for AI agents.
+</div>
+<div style="position:absolute; bottom:30px; right:60px; font-size:0.7em; color:#888;">
+Details &rarr; Paper
+</div>
 </div>
 
-<!-- ============ 13. BEHAVIORAL REGULATION ENGINE ============ -->
-<div class="slide" data-slide="13" data-rw="1280" data-rh="720" data-notes="The Behavioral Regulation Engine aligns agent behavior to exhibit controlled cognitive bias.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Behavioral Regulation Engine</h2>
-  <div style="margin-top:20px; font-size:25px; color:#555; text-align:center;">
-    Aligns the agent's behavior to exhibit controlled cognitive bias.
-  </div>
-  <div style="margin-top:20px; text-align:center; font-size:31px; font-style:italic; color:#4A8E7E; font-weight:700;">
-    y = f<sub>&theta;</sub>( h( x ) )
-  </div>
-  <div style="margin-top:30px; display:flex; gap:16px; padding:20px; background:#f8faf9; border:1.5px solid rgba(109,191,171,0.25); border-radius:12px;">
-    <div style="flex:1; text-align:center; padding:16px 12px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:25px; margin-bottom:8px;">Prompt Engineering</div>
-      <div style="font-size:21px; color:#888; margin-bottom:10px;">Input Space (x)</div>
-      <div style="font-size:24px; color:#4A8E7E; font-style:italic;">x' = x + &Delta;x</div>
-    </div>
-    <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
-    <div style="flex:1; text-align:center; padding:16px 12px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:25px; margin-bottom:8px;">Representation Engineering</div>
-      <div style="font-size:21px; color:#888; margin-bottom:10px;">Activation Space (h)</div>
-      <div style="font-size:24px; color:#4A8E7E; font-style:italic;">&#x0125;<sub>i</sub> = h<sub>i</sub> + &alpha;v</div>
-    </div>
-    <div style="width:1px; background:rgba(109,191,171,0.25);"></div>
-    <div style="flex:1; text-align:center; padding:16px 12px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:25px; margin-bottom:8px;">Fine-Tuning</div>
-      <div style="font-size:21px; color:#888; margin-bottom:10px;">Parameter Space (&theta;)</div>
-      <div style="font-size:24px; color:#4A8E7E; font-style:italic;">&theta;' = &theta; + &lambda;(&theta;<sub>b</sub> - &theta;<sub>u</sub>)</div>
-    </div>
-  </div>
-  <div style="position:absolute; bottom:30px; right:60px; font-size:20px; color:#888;">
-    Details &rarr; Paper
-  </div>
+<div class="slide" data-slide="13" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="behavioral-regulation-engine">Behavioral Regulation Engine</h4>
+<div style="margin-top:20px; font-size:0.9em; color:#555; text-align:center;">
+Aligns the agent's behavior to exhibit controlled cognitive bias.
+</div>
+<div style="margin-top:20px; text-align:center; font-size:1.1em; font-style:italic; color:#4A8E7E; font-weight:700;">
+y = f<sub>&theta;</sub>( h( x ) )
+</div>
+<div style="margin-top:30px; display:flex; gap:16px; padding:20px; background:#f8faf9; border:1.5px solid rgba(109,191,171,0.25); border-radius:12px;">
+<div style="flex:1; text-align:center; padding:16px 12px;">
+<div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Prompt Engineering</div>
+<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Input Space (x)</div>
+<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">x' = x + &Delta;x</div>
+</div>
+<div style="width:1px; background:rgba(109,191,171,0.25);"></div>
+<div style="flex:1; text-align:center; padding:16px 12px;">
+<div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Representation Engineering</div>
+<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Activation Space (h)</div>
+<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">ĥ<sub>i</sub> = h<sub>i</sub> + &alpha;v</div>
+</div>
+<div style="width:1px; background:rgba(109,191,171,0.25);"></div>
+<div style="flex:1; text-align:center; padding:16px 12px;">
+<div style="font-weight:700; color:#4A8E7E; font-size:0.9em; margin-bottom:8px;">Fine-Tuning</div>
+<div style="font-size:0.75em; color:#888; margin-bottom:10px;">Parameter Space (&theta;)</div>
+<div style="font-size:0.85em; color:#4A8E7E; font-style:italic;">&theta;' = &theta; + &lambda;(&theta;<sub>b</sub> - &theta;<sub>u</sub>)</div>
+</div>
+</div>
+<div style="position:absolute; bottom:30px; right:60px; font-size:0.7em; color:#888;">
+Details &rarr; Paper
+</div>
 </div>
 
-<!-- ============ 14. EVALUATION TECHNICAL BENCHMARK ============ -->
-<div class="slide" data-slide="14" data-rw="1280" data-rh="720" data-notes="We evaluate CoBRA on reproducibility, controllability, and generalization.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Evaluation: Technical Benchmark</h2>
-  <div style="margin-top:50px; display:flex; flex-direction:column; gap:20px; width:85%;">
-    <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:27px; margin-bottom:6px;">Reproducibility</div>
-      <div style="font-size:22px; color:#666;">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
-    </div>
-    <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:27px; margin-bottom:6px;">Controllability</div>
-      <div style="font-size:22px; color:#666;">Precise and predictable control under both open-weight and API-only settings.</div>
-    </div>
-    <div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #8B5CF6; border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:27px; margin-bottom:6px;">Generalization</div>
-      <div style="font-size:22px; color:#666;">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
-    </div>
-  </div>
-  <div style="position:absolute; bottom:30px; right:60px; font-size:20px; color:#888;">
-    Details &rarr; Paper
-  </div>
+<div class="slide" data-slide="14" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="evaluation-technical-benchmark">Evaluation: Technical Benchmark</h4>
+<div style="margin-top:50px; display:flex; flex-direction:column; gap:20px; width:85%;">
+<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid rgb(245,210,131); border-radius:8px;">
+<div style="font-weight:700; color:#333; font-size:0.95em; margin-bottom:6px;">Reproducibility</div>
+<div style="font-size:0.8em; color:#666;">Consistent behavioral tendencies regardless of foundation model, sampling temperature, or reasoning mode.</div>
+</div>
+<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #6DBFAB; border-radius:8px;">
+<div style="font-weight:700; color:#333; font-size:0.95em; margin-bottom:6px;">Controllability</div>
+<div style="font-size:0.8em; color:#666;">Precise and predictable control under both open-weight and API-only settings.</div>
+</div>
+<div style="padding:18px 24px; background:#f8f8f8; border-left:4px solid #8B5CF6; border-radius:8px;">
+<div style="font-weight:700; color:#333; font-size:0.95em; margin-bottom:6px;">Generalization</div>
+<div style="font-size:0.8em; color:#666;">Bias specified on one experiment transfers to a different experiment for the same bias type.</div>
+</div>
+</div>
+<div style="position:absolute; bottom:30px; right:60px; font-size:0.7em; color:#888;">
+Details &rarr; Paper
+</div>
 </div>
 
-<!-- ============ 15. EMOTIONAL CONTAGION ============ -->
-<div class="slide" data-slide="15" data-rw="1280" data-rh="720" data-notes="Demonstration based on the Facebook emotional contagion study.">
-  <h2 style="font-size:32px; margin-bottom:12px;">Demonstration: Emotional Contagion Simulation</h2>
-  <div style="margin-top:40px; font-size:27px; color:#555; line-height:1.6; width:80%;">
-    Facebook altered news feeds of users for one week:
-  </div>
-  <div style="margin-top:30px; display:flex; align-items:center; gap:16px; width:85%;">
-    <div style="flex:1; padding:18px 22px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:8px;">
-      <div style="font-weight:700; color:#C62828; font-size:24px;">Fewer positive posts in feed</div>
-    </div>
-    <div style="font-size:36px; color:#ccc;">&rarr;</div>
-    <div style="flex:1; padding:18px 22px; background:#f8f8f8; border-left:4px solid #888; border-radius:8px;">
-      <div style="font-weight:700; color:#333; font-size:24px;">Users wrote <strong>more negative</strong> content</div>
-    </div>
-  </div>
-  <div style="margin-top:30px; padding:16px 22px; background:#FEF9E7; border-left:4px solid rgb(245,210,131); border-radius:8px; width:80%;">
-    <div style="font-size:25px; color:#555; line-height:1.5;">
-      <strong style="color:#B8860B;">Expected:</strong><br /> Higher <strong>follow-the-crowd bias</strong> &rarr; stronger emotional contagion
-    </div>
-  </div>
-  <div class="citation">
-    Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788&ndash;8790.
-  </div>
+<div class="slide" data-slide="15" data-rw="1280" data-rh="720" data-notes="">
+<h4 id="demonstration-emotional-contagion-simulation">Demonstration: Emotional Contagion Simulation</h4>
+<div style="margin-top:40px; font-size:0.95em; color:#555; line-height:1.6; width:80%;">
+Facebook altered news feeds of <strong>users</strong> for one week:
+</div>
+<div style="margin-top:30px; display:flex; align-items:center; gap:16px; width:85%;">
+<div style="flex:1; padding:18px 22px; background:#FFEBEE; border-left:4px solid #EF4444; border-radius:8px;">
+<div style="font-weight:700; color:#C62828; font-size:0.85em;">Fewer positive posts in feed</div>
+</div>
+<div style="font-size:1.3em; color:#ccc;">&rarr;</div>
+<div style="flex:1; padding:18px 22px; background:#f8f8f8; border-left:4px solid #888; border-radius:8px;">
+<div style="font-weight:700; color:#333; font-size:0.85em;">Users wrote <strong>more negative</strong> content</div>
+</div>
+</div>
+<div style="margin-top:30px; padding:16px 22px; background:#FEF9E7; border-left:4px solid rgb(245,210,131); border-radius:8px; width:80%;">
+<div style="font-size:0.9em; color:#555; line-height:1.5;">
+<strong style="color:#B8860B;">Expected:</strong><br /> Higher <strong>follow-the-crowd bias</strong> &rarr; stronger emotional contagion
+</div>
+</div>
+<div class="citation">
+Kramer, A.D.I., Guillory, J.E., &amp; Hancock, J.T. (2014). Experimental evidence of massive-scale emotional contagion through social networks. <em>PNAS</em>, 111(24), 8788&ndash;8790.
+</div>
 </div>
 
-<!-- ============ 16. BASELINE ============ -->
-<div class="slide" data-slide="16" data-rw="1280" data-rh="720" data-notes="Baseline with implicit natural language specification shows no meaningful separation.">
-  <h2 style="font-size:40px; margin-bottom:12px;">Baseline: Implicit Natural Language Specification</h2>
-  <p style="font-size:28px; color:var(--g600); margin-bottom:16px;">"You are a user with (no/little/some/much) follow-the-crowd bias."</p>
-  <div style="display:flex; justify-content:center; align-items:center; flex:1; min-height:0;">
-    <img src="figures/baseline_emotional_contagion.png" style="max-width:700px; max-height:90%; object-fit:contain;" />
-  </div>
+<div class="slide" data-slide="16" data-rw="1280" data-rh="720" data-notes="">
+<h2 id="baseline-implicit-natural-language-specification">Baseline: Implicit Natural Language Specification</h2>
+<p>“You are a user with (no/little/some/much) follow-the-crowd bias.”</p>
+<img src="figures/baseline_emotional_contagion.png" width="700" />
 </div>
 
-<!-- ============ 17. BASELINE vs COBRA ============ -->
-<div class="slide" data-slide="17" data-rw="1280" data-rh="720" data-notes="Side-by-side: baseline shows no separation, CoBRA shows clear dose-response.">
-  <div style="display:flex; gap:20px; width:100%; flex:1; min-height:0; align-items:center;">
-    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px;">
-      <div style="font-weight:700; color:#888; font-size:24px; margin-bottom:8px;">Baseline (Implicit Specification)</div>
-      <img src="figures/baseline_emotional_contagion.png" style="max-width:580px; max-height:85%; object-fit:contain;" />
-    </div>
-    <div style="flex:1; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px;">
-      <div style="font-weight:700; color:#4A8E7E; font-size:24px; margin-bottom:8px;">CoBRA</div>
-      <img src="figures/cobra_emotional_contagion.png" style="max-width:580px; max-height:85%; object-fit:contain;" />
-    </div>
-  </div>
+<div class="slide" data-slide="17" data-rw="1280" data-rh="720" data-notes="">
+<div style="display:flex; gap:20px;">
+<div style="text-align:center;">
+<div style="font-weight:700; color:#888; font-size:0.85em; margin-bottom:8px;">Baseline (Implicit Specification)</div>
+<img src="figures/baseline_emotional_contagion.png" width="580" />
+</div>
+<div style="text-align:center;">
+<div style="font-weight:700; color:#4A8E7E; font-size:0.85em; margin-bottom:8px;">CoBRA</div>
+<img src="figures/cobra_emotional_contagion.png" width="580" />
+</div>
+</div>
 </div>
 
-<!-- ============ 26. THANK YOU ============ -->
 <div class="slide slide-end" data-slide="26" style="flex-direction:column; align-items:center; justify-content:center; padding:24px 64px; position:relative;" data-rw="1280" data-rh="720" data-notes="Thank you for your attention. The code, data, and interactive demo are all available online. I am happy to take questions.">
   <!-- Video: iframe ignores clicks; transparent layer receives clicks so document click handler can showSlide(current+1) -->
   <div style="width:100%; flex:1; min-height:0; overflow:hidden; position:relative; padding-top:12px; box-sizing:border-box;">
