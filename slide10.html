@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide 10 — Harness the Knowledge in Classic Experiments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cobra: #5BA898;
+      --cobra-dark: #5BA898;
+      --cobra-darker: #4A8E7E;
+      --cobra-mint: #6DBFAB;
+      --bg: #ffffff;
+      --fg: #171717;
+      --g800: #1f2937;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      background: #1a1a1a;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* Scale slide to fit window while keeping 1280×720 design */
+    .viewport {
+      width: 1280px;
+      height: 720px;
+      flex-shrink: 0;
+      transform-origin: center center;
+      transform: scale(min(calc(100vw / 1280), calc(100vh / 720)));
+    }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: var(--bg);
+      padding: 78px;
+      font-size: 29px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+    h4 {
+      font-size: 1.05em;
+      font-weight: 700;
+      color: var(--g800);
+      line-height: 1.25;
+      margin: 0 0 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <main class="slide" data-slide="10" aria-label="Slide 10">
+      <h4 id="harness-the-knowledge-in-classic-experiments" style="font-size: 38px;">Harness the Knowledge in Classic Experiments</h4>
+      <div style="margin-top:48px; display:flex; flex-direction:column; gap:22px; width:88%;">
+        <div style="padding:18px 22px; background:#E8F5F0; border-left:4px solid var(--cobra-mint); border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+          <div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px;">Detailed scenario description</div>
+        </div>
+        <div style="padding:18px 22px; background:#E0F0EA; border-left:4px solid #4A8E7E; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+          <div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px;">Documented bias effects</div>
+        </div>
+        <div style="padding:18px 22px; background:#D6EBE3; border-left:4px solid #3A7565; border-radius:8px; box-shadow:1px 2px 6px rgba(0,0,0,0.06);">
+          <div style="font-weight: 700; color: rgb(51, 51, 51); font-size: 36px;">Validated Insights about Human Behavior</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
