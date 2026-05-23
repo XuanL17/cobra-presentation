@@ -1,0 +1,167 @@
+Page 1:
+￼
+Hi! I’m so happy to be here to share our work, CoBRA: Programming Cognitive Bias in Social Agents Using Classic Social Science Experiments. 
+
+CoBRA is a toolkit for precise and consistent agent behavior specification. 
+
+I’m Xuan Liu, and this is joint work with my collaborators Haoyang and my advisor Haojian. We’re from UC San Diego.
+
+
+Page 2:
+￼
+LLM-based agent social simulation is rising. 
+
+So here’s the question: when we drop an LLM into a simulated society or an experimental environment as a “person,” how do we actually specify them?
+
+
+Page 3:
+￼
+The dominant practice in prior work is implicit natural-language description.
+
+For example, John Lin is a xxx
+
+However, the research community still has limited empirical understanding of whether this implicit approach is sufficient for reproducible and controllable scientific research.
+
+For example, would the conclusion of the social simulation change if we change the foundation models, the temperature, the reasoning mode, or the prompts?
+
+So in practice, a lot of LLM social simulation still ends up as a qualitative takeaway.
+
+
+Page 4:
+￼
+CoBRA offers another path: 
+
+We complement implicit natural language description with explicit, quantitative agent specification. 
+
+The demo here uses a follow-the-crowd bias to illustrate how we use CoBRA. 
+
+For example, we want to control the agents’ response to a scenario 
+where the agent is a hotel guest and has been informed that most guests in this hotel choose to reuse their towels during their stay. 
+
+If we want the agents to follow the majority to reuse the towels, then we can simply move the slider to a higher value, let’s say a 3.6 out of 4 scale. If we want the agents to show independence against the crowd, then we can move the slider to a lower value. The right side of the demo shows the agent’s response under different bias levels.
+
+Now that we have a glance at CoBRA. Next, I’ll walk through how we got here.
+
+Page 5:
+￼
+Implicit specification assumes two premises. 
+
+First, LLMs can detect subtle cues in implicit language. Second, once detected, LLMs can role-play the specification.
+
+CoBRA does not assume those premises.
+
+We treat them as empirical questions that require study and validation.
+
+
+Page 6:
+￼
+We use the framing-effect experiment as our pilot study to understand whether these premises hold or not. 
+
+In the classic human experiment setup, participants read a scenario—for example, a disease outbreak is expected to kill many people. Two programs that describe the same outcome are proposed.  One is phrased as a positive frame. The other is phrased as a negative frame.
+
+Although they are equivalent, common people tend to favor the positive frame and choose program A. This is called the framing effect.
+
+Studies’ results show that the domain expert, for example, an economist, typically shows less framing effect than the common person, because they have relevant background knowledge and have received professional training.
+
+We use this validated experiment to test whether implicit specification can capture these behavioral differences and maintain consistent behavior when models are changed.
+
+
+Page 7:
+￼
+
+We ran 3 agent profiles across 4 models: common refers to a pharmacy shopkeeper persona, and economist refers to a professor of economics. We only vary the occupation background while keeping other descriptions the same.
+
+Page 8:
+￼
+
+Our results show that
+
+The same specification produced inconsistent framing behavior across models
+
+The implicit specification did not reliably produce the expected behavior. 
+For instance, “economist” did not consistently behave less framing-sensitive than the layperson, which contradicts the human results.
+
+These findings suggest the premises behind implicit agent specification are not reliable, which highlights the need for explicit, quantitative control that we can verify.
+
+Page 9:
+￼
+
+How to resolve it? Validated social science knowledge already gives us a way out.
+
+CoBRA operationalizes classical social science experiments as reusable “gym” environments for LLM agents. 
+
+So bias and behavior can be measured and controlled in a standardized way.
+ 
+
+Page 10:
+
+
+
+￼
+So what kinds of knowledge can these classic experiments provide? 
+
+For example, I would say the clear experiment protocols, which we can map those paradigms a multiple-choicse quesntiosn for comparable responses.
+
+Also, these experiments give us information about bias-behavior correlation xxx
+
+The validated hypotheses is another importance information. xxx
+衔接一下念
+
+
+
+Page 11:
+
+￼
+CoBRA implements this idea through a closed-loop system that uses classic social science experiments as calibration tasks to continuously measure agents’ cognitive biases and adjust their behavior until on target.
+
+
+Page 12:
+
+￼
+
+COBRA has two components. The first one is the classic experiment testbed for measuring the cognitive bias. The testbed currently covers 4 types of cognitive bias, each with two classic experimental paradigms. By the way, we are also building an open human study bench, which is open for contributions and collaborations. If you are interested in this part, just pin me anytime for a quick chat.
+
+Page 13:
+￼
+Behavioral Regulation Engine aligns the agent’s behavior to a chosen bias level, using different calibration methods and covering all three intervention spaces of an LLM—prompt for input space, representation engineering for activations space, and fine-tuning for parameter space.
+
+Detailed methodology for each control space is detailed in the paper, and the code is open-sourced.
+
+Page 14:
+
+
+￼
+Finally, we come to the evaluation part. We evaluate Cobra through 3 aspects. xxx
+
+Page 15:
+
+￼
+We also provide a demonstration in an emotional-contagion simulation to show CoBRA’s real-world application.
+
+Users exposed to more negative posts tend to write posts that are more negative
+
+
+We use CoBRA to control the follow-the-crowd bias in this scenario.
+
+We expect that higher follow-the-crowd bias leads to stronger emotional contagion in the agents’ outputs.
+
+A stronger bias should result in a steeper drop in sentiment and a lower overall curve.
+
+
+Page 16:
+
+
+
+￼
+
+However, as shown here, the implicit specification’s control curve of different bias level is overlop with each other, representing a bad control.
+
+Page 17:
+￼
+While for cobra, each bias level is separate and stays in the correct position without any overlap, which represents a successful control.
+
+Page 18:
+
+
+￼
+
